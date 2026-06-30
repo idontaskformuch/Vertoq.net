@@ -1,0 +1,28 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { translations } from '../../../i18n/translations';
+import { langCodes } from '../../../i18n/languages';
+import LoanCalculator from '../../../components/LoanCalculator.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+
+export function getStaticPaths() {
+  return langCodes.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = translations[lang as keyof typeof translations].loan;
+---
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="loan">
+  <section class="page-head">
+    <p class="eyebrow">Vertoq</p>
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+  </section>
+
+  <LoanCalculator lang={lang} />
+
+  <FaqSection lang={lang} tool="loan" />
+
+  <AdSlot />
+</Layout>

@@ -1,0 +1,33 @@
+---
+import { translations } from '../i18n/translations';
+import { languages, langCodes } from '../i18n/languages';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations];
+
+// Avgör vilken undersida vi är på, för att kunna byta språk utan att tappa sidan
+const url = new URL(Astro.request.url);
+const segments = url.pathname.split('/').filter(Boolean);
+const restPath = segments.slice(1).join('/'); // allt efter språkkoden
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href={`/${lang}/`}>
+      {t.siteName}<span class="dot">·</span>
+    </a>
+    <nav class="nav-links">
+      <a href={`/${lang}/`}>{t.nav.home}</a>
+      <a href={`/${lang}/units/`}>{t.nav.units}</a>
+      <a href={`/${lang}/time/`}>{t.nav.time}</a>
+      <a href={`/${lang}/percent/`}>{t.nav.percent}</a>
+    </nav>
+    <div class="lang-switcher">
+      {langCodes.map((code) => (
+        <a href={`/${code}/${restPath}`} class={code === lang ? 'active' : ''}>
+          {languages[code as keyof typeof languages].label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>

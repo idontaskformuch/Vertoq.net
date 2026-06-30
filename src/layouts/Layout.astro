@@ -1,0 +1,98 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { langCodes } from '../i18n/languages';
+import '../styles/global.css';
+
+interface Props {
+  lang: string;
+  title: string;
+  description: string;
+  path: string;
+}
+
+const { lang, title, description, path } = Astro.props as Props;
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://vertoq.net';
+const canonical = path ? `${site}/${lang}/${path}/` : `${site}/${lang}/`;
+const ogImage = `${site}/icons/icon-512.png`;
+---
+<!DOCTYPE html>
+<html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- Primary meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Vertoq" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Hreflang -->
+    {langCodes.map((code) => (
+      <link rel="alternate" hreflang={code} href={`${site}/${code}/${path ? path + '/' : ''}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${site}/en/${path ? path + '/' : ''}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:site_name" content="Vertoq" />
+    <meta property="og:locale" content={lang} />
+    {langCodes.filter((c) => c !== lang).map((code) => (
+      <meta property="og:locale:alternate" content={code} />
+    ))}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#16324a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Vertoq" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icons/icon-192.png" type="image/png" sizes="192x192" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AdSense: klistra in script här när kontot är godkänt -->
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Hoppa till innehåll</a>
+    <Header lang={lang} />
+    <main class="wrap" id="main-content">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <!-- PWA service worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].loan;
+---
+<div class="converter" id="loan-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="loan-principal">{t.principalLabel}</label>
+      <input id="loan-principal" type="number" value="10000" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="loan-rate">{t.rateLabel}</label>
+      <input id="loan-rate" type="number" value="6" step="0.1" />
+    </div>
+  </div>
+
+  <div class="conv-grid" style="margin-top:14px">
+    <div class="field">
+      <label for="loan-years">{t.yearsLabel}</label>
+      <input id="loan-years" type="number" value="10" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="loan-monthly">{t.monthlyLabel}</label>
+      <input id="loan-monthly" type="number" value="500" min="0" />
+    </div>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="loan-result">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.contributedLabel}</span>
+    <span class="value" id="loan-contributed" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.interestLabel}</span>
+    <span class="value" id="loan-interest" style="font-size:1.3rem">—</span>
+  </div>
+</div>
+
+<script>
+  const principalEl = document.getElementById('loan-principal');
+  const rateEl = document.getElementById('loan-rate');
+  const yearsEl = document.getElementById('loan-years');
+  const monthlyEl = document.getElementById('loan-monthly');
+  const resultEl = document.getElementById('loan-result');
+  const contributedEl = document.getElementById('loan-contributed');
+  const interestEl = document.getElementById('loan-interest');
+
+  function fmt(n) {
+    if (!isFinite(n)) return '—';
+    return Math.round(n).toLocaleString();
+  }
+
+  function calc() {
+    const principal = parseFloat(principalEl.value);
+    const annualRate = parseFloat(rateEl.value);
+    const years = parseFloat(yearsEl.value);
+    const monthly = parseFloat(monthlyEl.value) || 0;
+
+    if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || years < 0) {
+      resultEl.textContent = '—';
+      contributedEl.textContent = '—';
+      interestEl.textContent = '—';
+      return;
+    }
+
+    const monthlyRate = annualRate / 100 / 12;
+    const months = Math.round(years * 12);
+
+    // Sammansatt månadsvis: startkapital växer + varje månadsinsättning växer från sin egen startpunkt
+    let balance = principal;
+    for (let i = 0; i < months; i++) {
+      balance = balance * (1 + monthlyRate) + monthly;
+    }
+
+    const totalContributed = principal + monthly * months;
+    const interestEarned = balance - totalContributed;
+
+    resultEl.textContent = fmt(balance);
+    contributedEl.textContent = fmt(totalContributed);
+    interestEl.textContent = fmt(interestEarned);
+  }
+
+  [principalEl, rateEl, yearsEl, monthlyEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

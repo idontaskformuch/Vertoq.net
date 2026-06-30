@@ -1,0 +1,109 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].tdee;
+const activityLevels = JSON.stringify(t.activityLevels);
+---
+<div class="converter" id="tdee-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="tdee-weight">{t.weightLabel}</label>
+      <input id="tdee-weight" type="number" value="70" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="tdee-height">{t.heightLabel}</label>
+      <input id="tdee-height" type="number" value="175" min="0" />
+    </div>
+  </div>
+
+  <div class="conv-grid" style="margin-top:14px">
+    <div class="field">
+      <label for="tdee-age">{t.ageLabel}</label>
+      <input id="tdee-age" type="number" value="30" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="tdee-sex">{t.sexLabel}</label>
+      <select id="tdee-sex">
+        <option value="male">{t.male}</option>
+        <option value="female">{t.female}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field" style="margin-top:14px">
+    <label for="tdee-activity">{t.activityLabel}</label>
+    <select id="tdee-activity"></select>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.bmrLabel}</span>
+    <span class="value" id="tdee-bmr" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="tdee-result">—</span>
+    <span class="unit">kcal</span>
+  </div>
+</div>
+
+<script define:vars={{ activityLevels }}>
+  const levels = JSON.parse(activityLevels);
+  const multipliers = { sedentary: 1.2, light: 1.375, moderate: 1.55, active: 1.725, veryActive: 1.9 };
+
+  const weightEl = document.getElementById('tdee-weight');
+  const heightEl = document.getElementById('tdee-height');
+  const ageEl = document.getElementById('tdee-age');
+  const sexEl = document.getElementById('tdee-sex');
+  const activityEl = document.getElementById('tdee-activity');
+  const bmrEl = document.getElementById('tdee-bmr');
+  const resultEl = document.getElementById('tdee-result');
+
+  Object.keys(levels).forEach((key) => activityEl.add(new Option(levels[key], key)));
+  activityEl.value = 'light';
+
+  function calc() {
+    const weight = parseFloat(weightEl.value);
+    const height = parseFloat(heightEl.value);
+    const age = parseFloat(ageEl.value);
+    if (isNaN(weight) || isNaN(height) || isNaN(age) || weight <= 0 || height <= 0 || age <= 0) {
+      bmrEl.textContent = '—';
+      resultEl.textContent = '—';
+      return;
+    }
+
+    // Mifflin St Jeor
+    let bmr = 10 * weight + 6.25 * height - 5 * age;
+    bmr += sexEl.value === 'male' ? 5 : -161;
+
+    const multiplier = multipliers[activityEl.value] || 1.2;
+    const tdee = bmr * multiplier;
+
+    bmrEl.textContent = Math.round(bmr).toLocaleString();
+    resultEl.textContent = Math.round(tdee).toLocaleString();
+  }
+
+  [weightEl, heightEl, ageEl, sexEl, activityEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

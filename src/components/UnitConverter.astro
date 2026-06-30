@@ -1,0 +1,171 @@
+---
+import { categories, categoryKeys } from '../data/units';
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].units;
+
+// Skicka med all data klienten behöver för att räkna utan extra requests
+const categoriesData = JSON.stringify(categories);
+const unitNames = JSON.stringify(t.unitNames);
+const catLabels = JSON.stringify(t.categories);
+---
+<div class="converter" id="converter">
+  <div class="cat-tabs" id="cat-tabs" role="tablist">
+    {categoryKeys.map((key, i) => (
+      <button
+        class="cat-tab"
+        role="tab"
+        aria-pressed={i === 0 ? 'true' : 'false'}
+        data-cat={key}
+      >
+        {t.categories[key]}
+      </button>
+    ))}
+  </div>
+
+  <div class="conv-grid">
+    <div class="field">
+      <label for="from-unit">{t.from}</label>
+      <select id="from-unit"></select>
+      <input id="from-value" type="number" inputmode="decimal" value="1" />
+    </div>
+
+    <button class="swap-btn" id="swap-btn" title={t.swap} aria-label={t.swap}>⇄</button>
+
+    <div class="field">
+      <label for="to-unit">{t.to}</label>
+      <select id="to-unit"></select>
+      <input id="to-value" type="text" readonly tabindex="-1" />
+    </div>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="result-value">—</span>
+    <span class="unit" id="result-unit"></span>
+  </div>
+</div>
+
+<script define:vars={{ categoriesData, unitNames, catLabels }}>
+  const categories = JSON.parse(categoriesData);
+  const unitNamesMap = JSON.parse(unitNames);
+  const categoryKeys = Object.keys(categories);
+
+  const tabsEl = document.getElementById('cat-tabs');
+  const fromUnitEl = document.getElementById('from-unit');
+  const toUnitEl = document.getElementById('to-unit');
+  const fromValueEl = document.getElementById('from-value');
+  const toValueEl = document.getElementById('to-value');
+  const swapBtn = document.getElementById('swap-btn');
+  const resultValueEl = document.getElementById('result-value');
+  const resultUnitEl = document.getElementById('result-unit');
+
+  let currentCat = categoryKeys[0];
+
+  function populateSelects() {
+    const cat = categories[currentCat];
+    fromUnitEl.innerHTML = '';
+    toUnitEl.innerHTML = '';
+    cat.units.forEach((u) => {
+      const label = unitNamesMap[u] || u;
+      fromUnitEl.add(new Option(`${label} (${u})`, u));
+      toUnitEl.add(new Option(`${label} (${u})`, u));
+    });
+    fromUnitEl.value = cat.defaultFrom;
+    toUnitEl.value = cat.defaultTo;
+  }
+
+  function celsiusFrom(value, unit) {
+    if (unit === 'c') return value;
+    if (unit === 'f') return (value - 32) * (5 / 9);
+    if (unit === 'k') return value - 273.15;
+    return value;
+  }
+  function celsiusTo(value, unit) {
+    if (unit === 'c') return value;
+    if (unit === 'f') return value * (9 / 5) + 32;
+    if (unit === 'k') return value + 273.15;
+    return value;
+  }
+
+  function formatNumber(n) {
+    if (!isFinite(n)) return '—';
+    // Visa upp till 6 decimaler men trimma onödiga nollor
+    const rounded = Math.round(n * 1e6) / 1e6;
+    return rounded.toString();
+  }
+
+  function calculate() {
+    const cat = categories[currentCat];
+    const raw = parseFloat(fromValueEl.value);
+    const fromU = fromUnitEl.value;
+    const toU = toUnitEl.value;
+
+    if (isNaN(raw)) {
+      resultValueEl.textContent = '—';
+      toValueEl.value = '';
+      return;
+    }
+
+    let result;
+    if (cat.special) {
+      const c = celsiusFrom(raw, fromU);
+      result = celsiusTo(c, toU);
+    } else {
+      const valueInBase = raw * cat.factors[fromU];
+      result = valueInBase / cat.factors[toU];
+    }
+
+    const formatted = formatNumber(result);
+    resultValueEl.textContent = formatted;
+    resultUnitEl.textContent = toU;
+    toValueEl.value = formatted;
+  }
+
+  tabsEl.querySelectorAll('.cat-tab').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentCat = btn.dataset.cat;
+      tabsEl.querySelectorAll('.cat-tab').forEach((b) => {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      populateSelects();
+      calculate();
+    });
+  });
+
+  swapBtn.addEventListener('click', () => {
+    const f = fromUnitEl.value;
+    const t = toUnitEl.value;
+    fromUnitEl.value = t;
+    toUnitEl.value = f;
+    calculate();
+  });
+
+  [fromValueEl, fromUnitEl, toUnitEl].forEach((el) => {
+    el.addEventListener('input', calculate);
+    el.addEventListener('change', calculate);
+  });
+
+  populateSelects();
+  calculate();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

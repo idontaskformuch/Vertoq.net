@@ -1,0 +1,30 @@
+---
+import { faqContent, faqHeadings } from '../i18n/faq';
+
+interface Props { lang: string; tool: 'units' | 'time' | 'percent' | 'age' | 'bmi' | 'tdee' | 'loan' | 'loancost'; }
+const { lang, tool } = Astro.props as Props;
+
+const items = faqContent[lang]?.[tool] ?? faqContent.en[tool];
+const heading = faqHeadings[lang] ?? faqHeadings.en;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+<section class="faq">
+  <h2>{heading}</h2>
+  {items.map((item) => (
+    <details>
+      <summary>{item.q}</summary>
+      <p>{item.a}</p>
+    </details>
+  ))}
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

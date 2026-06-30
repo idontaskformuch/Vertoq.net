@@ -1,0 +1,107 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].loancost;
+---
+<div class="converter" id="loancost-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="lc-principal">{t.principalLabel}</label>
+      <input id="lc-principal" type="number" value="200000" min="0" inputmode="numeric" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="lc-rate">{t.rateLabel}</label>
+      <input id="lc-rate" type="number" value="6.9" step="0.1" min="0" inputmode="decimal" />
+    </div>
+  </div>
+
+  <div class="field" style="margin-top:14px">
+    <label for="lc-years">{t.yearsLabel}</label>
+    <input id="lc-years" type="number" value="3" min="1" max="30" inputmode="numeric" />
+  </div>
+
+  <div class="result-row" style="margin-top:24px">
+    <span class="label">{t.monthlyPaymentLabel}</span>
+    <span class="value" id="lc-monthly">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.totalPaidLabel}</span>
+    <span class="value" id="lc-total" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.totalInterestLabel}</span>
+    <span class="value" id="lc-interest" style="font-size:1.3rem; color: var(--signal)">—</span>
+  </div>
+</div>
+
+<script>
+  const principalEl = document.getElementById('lc-principal') as HTMLInputElement;
+  const rateEl = document.getElementById('lc-rate') as HTMLInputElement;
+  const yearsEl = document.getElementById('lc-years') as HTMLInputElement;
+  const monthlyEl = document.getElementById('lc-monthly')!;
+  const totalEl = document.getElementById('lc-total')!;
+  const interestEl = document.getElementById('lc-interest')!;
+
+  function fmt(n: number) {
+    if (!isFinite(n)) return '—';
+    return Math.round(n).toLocaleString();
+  }
+
+  function calc() {
+    const principal = parseFloat(principalEl.value);
+    const annualRate = parseFloat(rateEl.value);
+    const years = parseFloat(yearsEl.value);
+
+    if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || principal <= 0 || years <= 0) {
+      monthlyEl.textContent = '—';
+      totalEl.textContent = '—';
+      interestEl.textContent = '—';
+      return;
+    }
+
+    const n = Math.round(years * 12); // antal månadsbetalningar
+
+    let monthly: number;
+    if (annualRate === 0) {
+      monthly = principal / n;
+    } else {
+      const r = annualRate / 100 / 12;
+      // Annuitetsformeln: M = P * r * (1+r)^n / ((1+r)^n - 1)
+      const factor = Math.pow(1 + r, n);
+      monthly = principal * r * factor / (factor - 1);
+    }
+
+    const totalPaid = monthly * n;
+    const totalInterest = totalPaid - principal;
+
+    monthlyEl.textContent = fmt(monthly);
+    totalEl.textContent = fmt(totalPaid);
+    interestEl.textContent = fmt(totalInterest);
+  }
+
+  [principalEl, rateEl, yearsEl].forEach((el) => {
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+  calc();
+
+  // Enter-navigering
+  (function() {
+    const container = document.querySelector('#loancost-calc') as HTMLElement;
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll<HTMLElement>('input, select, button'));
+    container.addEventListener('keydown', function(e: KeyboardEvent) {
+      if (e.key !== 'Enter') return;
+      const el = e.target as HTMLElement;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

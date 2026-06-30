@@ -1,0 +1,29 @@
+---
+// Statisk fallback-sida på "/". Försöker gissa språk client-side,
+// annars hamnar besökaren på engelska. Sökmotorer ska huvudsakligen
+// indexera /sv/, /en/ osv — den här sidan är bara en trafikslussa.
+import { langCodes, defaultLang } from '../i18n/languages';
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vertoq</title>
+    <meta name="robots" content="noindex" />
+    <script define:vars={{ langCodes, defaultLang }}>
+      const browserLangs = navigator.languages || [navigator.language];
+      let target = defaultLang;
+      for (const bl of browserLangs) {
+        const short = bl.slice(0, 2).toLowerCase();
+        if (langCodes.includes(short)) {
+          target = short;
+          break;
+        }
+      }
+      window.location.replace(`/${target}/`);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting… <a href={`/${defaultLang}/`}>Continue</a></p>
+  </body>
+</html>

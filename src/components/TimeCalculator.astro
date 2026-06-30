@@ -1,0 +1,226 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].time;
+
+const unitLabels = JSON.stringify(t.units);
+---
+<div class="converter" id="time-calc">
+  <div class="cat-tabs" id="mode-tabs" role="tablist">
+    <button class="cat-tab" role="tab" aria-pressed="true" data-mode="difference">{t.modes.difference}</button>
+    <button class="cat-tab" role="tab" aria-pressed="false" data-mode="addSubtract">{t.modes.addSubtract}</button>
+  </div>
+
+  <!-- Läge: skillnad mellan två tidpunkter -->
+  <div id="mode-difference" class="time-mode">
+    <div class="conv-grid">
+      <div class="field">
+        <label for="diff-start">{t.difference.startLabel}</label>
+        <input id="diff-start" type="datetime-local" step="1" />
+      </div>
+      <span></span>
+      <div class="field">
+        <label for="diff-end">{t.difference.endLabel}</label>
+        <input id="diff-end" type="datetime-local" step="1" />
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.difference.resultLabel}</span>
+      <span class="value" id="diff-result">—</span>
+    </div>
+  </div>
+
+  <!-- Läge: lägg till / dra av -->
+  <div id="mode-addSubtract" class="time-mode" style="display:none">
+    <div class="field" style="margin-bottom:18px">
+      <label for="as-date">{t.addSubtract.dateLabel}</label>
+      <input id="as-date" type="datetime-local" step="1" />
+    </div>
+
+    <div class="as-unit-grid">
+      <div class="field">
+        <label for="as-years">{t.units.years}</label>
+        <input id="as-years" type="number" inputmode="numeric" value="0" />
+      </div>
+      <div class="field">
+        <label for="as-months">{t.units.months}</label>
+        <input id="as-months" type="number" inputmode="numeric" value="0" />
+      </div>
+      <div class="field">
+        <label for="as-days">{t.units.days}</label>
+        <input id="as-days" type="number" inputmode="numeric" value="0" />
+      </div>
+      <div class="field">
+        <label for="as-hours">{t.units.hours}</label>
+        <input id="as-hours" type="number" inputmode="numeric" value="0" />
+      </div>
+      <div class="field">
+        <label for="as-minutes">{t.units.minutes}</label>
+        <input id="as-minutes" type="number" inputmode="numeric" value="0" />
+      </div>
+      <div class="field">
+        <label for="as-seconds">{t.units.seconds}</label>
+        <input id="as-seconds" type="number" inputmode="numeric" value="0" />
+      </div>
+    </div>
+
+    <div class="result-row">
+      <span class="label">{t.addSubtract.resultLabel}</span>
+      <span class="value" id="as-result">—</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .as-unit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 480px) {
+    .as-unit-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script define:vars={{ unitLabels }}>
+  const labels = JSON.parse(unitLabels);
+
+  const tabsEl = document.getElementById('mode-tabs');
+  const modeDiff = document.getElementById('mode-difference');
+  const modeAS = document.getElementById('mode-addSubtract');
+
+  tabsEl.querySelectorAll('.cat-tab').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.cat-tab').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      const mode = btn.dataset.mode;
+      modeDiff.style.display = mode === 'difference' ? 'block' : 'none';
+      modeAS.style.display = mode === 'addSubtract' ? 'block' : 'none';
+    });
+  });
+
+  // --- Läge 1: skillnad mellan två tidpunkter ---
+  const startEl = document.getElementById('diff-start');
+  const endEl = document.getElementById('diff-end');
+  const diffResultEl = document.getElementById('diff-result');
+
+  function calcDifference() {
+    if (!startEl.value || !endEl.value) {
+      diffResultEl.textContent = '—';
+      return;
+    }
+    const start = new Date(startEl.value);
+    const end = new Date(endEl.value);
+    let ms = end.getTime() - start.getTime();
+    const negative = ms < 0;
+    ms = Math.abs(ms);
+
+    // Kalenderkorrekt nedbrytning i år/månader/dagar/timmar/minuter
+    let from = negative ? new Date(end) : new Date(start);
+    let to = negative ? new Date(start) : new Date(end);
+
+    let years = to.getFullYear() - from.getFullYear();
+    let months = to.getMonth() - from.getMonth();
+    let days = to.getDate() - from.getDate();
+    let hours = to.getHours() - from.getHours();
+    let minutes = to.getMinutes() - from.getMinutes();
+    let seconds = to.getSeconds() - from.getSeconds();
+
+    if (seconds < 0) { seconds += 60; minutes -= 1; }
+    if (minutes < 0) { minutes += 60; hours -= 1; }
+    if (hours < 0) { hours += 24; days -= 1; }
+    if (days < 0) {
+      const prevMonth = new Date(to.getFullYear(), to.getMonth(), 0);
+      days += prevMonth.getDate();
+      months -= 1;
+    }
+    if (months < 0) { months += 12; years -= 1; }
+
+    const parts = [];
+    if (years) parts.push(`${years} ${labels.years}`);
+    if (months) parts.push(`${months} ${labels.months}`);
+    if (days || (!years && !months)) parts.push(`${days} ${labels.days}`);
+    if (hours) parts.push(`${hours} ${labels.hours}`);
+    if (minutes) parts.push(`${minutes} ${labels.minutes}`);
+    if (seconds || (!years && !months && !days && !hours && !minutes)) parts.push(`${seconds} ${labels.seconds}`);
+
+    diffResultEl.textContent = (negative ? '-' : '') + parts.join(', ');
+  }
+
+  [startEl, endEl].forEach((el) => el.addEventListener('input', calcDifference));
+
+  // Sätt vettiga default-värden: nu och en vecka framåt
+  const now = new Date();
+  const inOneWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+  function toLocalInputValue(d) {
+    const pad = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+  startEl.value = toLocalInputValue(now);
+  endEl.value = toLocalInputValue(inOneWeek);
+  calcDifference();
+
+  // --- Läge 2: lägg till / dra av ---
+  const asDateEl = document.getElementById('as-date');
+  const asYearsEl = document.getElementById('as-years');
+  const asMonthsEl = document.getElementById('as-months');
+  const asDaysEl = document.getElementById('as-days');
+  const asHoursEl = document.getElementById('as-hours');
+  const asMinutesEl = document.getElementById('as-minutes');
+  const asSecondsEl = document.getElementById('as-seconds');
+  const asResultEl = document.getElementById('as-result');
+
+  asDateEl.value = toLocalInputValue(now);
+
+  function calcAddSubtract() {
+    if (!asDateEl.value) {
+      asResultEl.textContent = '—';
+      return;
+    }
+    const years = parseFloat(asYearsEl.value) || 0;
+    const months = parseFloat(asMonthsEl.value) || 0;
+    const days = parseFloat(asDaysEl.value) || 0;
+    const hours = parseFloat(asHoursEl.value) || 0;
+    const minutes = parseFloat(asMinutesEl.value) || 0;
+    const seconds = parseFloat(asSecondsEl.value) || 0;
+
+    const base = new Date(asDateEl.value);
+    const result = new Date(base);
+
+    // Alla sex enheter appliceras tillsammans, positiva värden lägger till, negativa drar av
+    result.setFullYear(result.getFullYear() + years);
+    result.setMonth(result.getMonth() + months);
+    result.setDate(result.getDate() + days);
+    result.setHours(result.getHours() + hours);
+    result.setMinutes(result.getMinutes() + minutes);
+    result.setSeconds(result.getSeconds() + seconds);
+
+    const pad = (n) => String(n).padStart(2, '0');
+    asResultEl.textContent = `${result.getFullYear()}-${pad(result.getMonth() + 1)}-${pad(result.getDate())} ${pad(result.getHours())}:${pad(result.getMinutes())}:${pad(result.getSeconds())}`;
+  }
+
+  [asDateEl, asYearsEl, asMonthsEl, asDaysEl, asHoursEl, asMinutesEl, asSecondsEl].forEach((el) => {
+    el.addEventListener('input', calcAddSubtract);
+    el.addEventListener('change', calcAddSubtract);
+  });
+  calcAddSubtract();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

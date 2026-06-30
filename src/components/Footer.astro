@@ -1,0 +1,32 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations];
+const year = new Date().getFullYear();
+
+const tools = [
+  { href: 'units', label: t.nav.units },
+  { href: 'time', label: t.nav.time },
+  { href: 'percent', label: t.nav.percent },
+  { href: 'age', label: t.nav.age },
+  { href: 'bmi', label: t.nav.bmi },
+  { href: 'tdee', label: t.tdee.title },
+  { href: 'loan', label: t.nav.loan },
+  { href: 'loancost', label: t.loancost.title },
+];
+---
+<footer class="site-footer">
+  <div class="wrap" style="flex-direction:column; gap:14px;">
+    <nav class="lang-switcher" aria-label="Alla verktyg">
+      {tools.map((tool) => (
+        <a href={`/${lang}/${tool.href}/`}>{tool.label}</a>
+      ))}
+    </nav>
+    <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <span>{t.siteName} © {year}, {t.footer.rights}</span>
+      <span>{t.footer.disclaimer}</span>
+    </div>
+  </div>
+</footer>

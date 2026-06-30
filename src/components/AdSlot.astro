@@ -1,0 +1,7 @@
+---
+interface Props { label?: string; }
+const { label = 'Annonsplats' } = Astro.props as Props;
+---
+<div class="ad-slot">
+  {label}: <!-- TODO: klistra in <ins class="adsbygoogle">-taggen härifrån AdSense här --> 320×100 / responsiv
+</div>

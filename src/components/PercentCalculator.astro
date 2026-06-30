@@ -1,0 +1,206 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].percent;
+
+const labels = JSON.stringify({
+  increase: t.change.increase,
+  decrease: t.change.decrease,
+});
+---
+<div class="converter" id="percent-calc">
+  <div class="cat-tabs" id="percent-tabs" role="tablist">
+    <button class="cat-tab" role="tab" aria-pressed="true" data-mode="percentOf">{t.modes.percentOf}</button>
+    <button class="cat-tab" role="tab" aria-pressed="false" data-mode="isWhatPercent">{t.modes.isWhatPercent}</button>
+    <button class="cat-tab" role="tab" aria-pressed="false" data-mode="change">{t.modes.change}</button>
+    <button class="cat-tab" role="tab" aria-pressed="false" data-mode="discount">{t.modes.discount}</button>
+  </div>
+
+  <!-- X% av Y -->
+  <div id="mode-percentOf" class="percent-mode">
+    <div class="conv-grid">
+      <div class="field">
+        <label for="po-percent">{t.percentOf.percentLabel} (%)</label>
+        <input id="po-percent" type="number" value="15" />
+      </div>
+      <span></span>
+      <div class="field">
+        <label for="po-of">{t.percentOf.ofLabel}</label>
+        <input id="po-of" type="number" value="850" />
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.percentOf.resultLabel}</span>
+      <span class="value" id="po-result">—</span>
+    </div>
+  </div>
+
+  <!-- X är hur många % av Y -->
+  <div id="mode-isWhatPercent" class="percent-mode" style="display:none">
+    <div class="conv-grid">
+      <div class="field">
+        <label for="iwp-part">{t.isWhatPercent.partLabel}</label>
+        <input id="iwp-part" type="number" value="200" />
+      </div>
+      <span></span>
+      <div class="field">
+        <label for="iwp-whole">{t.isWhatPercent.wholeLabel}</label>
+        <input id="iwp-whole" type="number" value="850" />
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.isWhatPercent.resultLabel}</span>
+      <span class="value" id="iwp-result">—</span>
+      <span class="unit">%</span>
+    </div>
+  </div>
+
+  <!-- Procentuell förändring -->
+  <div id="mode-change" class="percent-mode" style="display:none">
+    <div class="conv-grid">
+      <div class="field">
+        <label for="ch-from">{t.change.fromLabel}</label>
+        <input id="ch-from" type="number" value="850" />
+      </div>
+      <span></span>
+      <div class="field">
+        <label for="ch-to">{t.change.toLabel}</label>
+        <input id="ch-to" type="number" value="920" />
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.change.resultLabel}</span>
+      <span class="value" id="ch-result">—</span>
+      <span class="unit" id="ch-direction"></span>
+    </div>
+  </div>
+
+  <!-- Rabatt -->
+  <div id="mode-discount" class="percent-mode" style="display:none">
+    <div class="conv-grid">
+      <div class="field">
+        <label for="d-price">{t.discount.priceLabel}</label>
+        <input id="d-price" type="number" value="850" />
+      </div>
+      <span></span>
+      <div class="field">
+        <label for="d-percent">{t.discount.percentLabel}</label>
+        <input id="d-percent" type="number" value="15" />
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.discount.resultLabel}</span>
+      <span class="value" id="d-result">—</span>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.discount.savedLabel}</span>
+      <span class="value" id="d-saved" style="font-size:1.3rem">—</span>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ labels }}>
+  const dirLabels = JSON.parse(labels);
+
+  const tabsEl = document.getElementById('percent-tabs');
+  const modes = ['percentOf', 'isWhatPercent', 'change', 'discount'];
+  const modeEls = {};
+  modes.forEach((m) => { modeEls[m] = document.getElementById(`mode-${m}`); });
+
+  tabsEl.querySelectorAll('.cat-tab').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.cat-tab').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      const mode = btn.dataset.mode;
+      modes.forEach((m) => { modeEls[m].style.display = m === mode ? 'block' : 'none'; });
+    });
+  });
+
+  function fmt(n) {
+    if (!isFinite(n)) return '—';
+    return (Math.round(n * 100) / 100).toString();
+  }
+
+  // X% av Y
+  const poPercent = document.getElementById('po-percent');
+  const poOf = document.getElementById('po-of');
+  const poResult = document.getElementById('po-result');
+  function calcPercentOf() {
+    const p = parseFloat(poPercent.value);
+    const of = parseFloat(poOf.value);
+    poResult.textContent = isNaN(p) || isNaN(of) ? '—' : fmt((p / 100) * of);
+  }
+  [poPercent, poOf].forEach((el) => el.addEventListener('input', calcPercentOf));
+  calcPercentOf();
+
+  // X är hur många % av Y
+  const iwpPart = document.getElementById('iwp-part');
+  const iwpWhole = document.getElementById('iwp-whole');
+  const iwpResult = document.getElementById('iwp-result');
+  function calcIsWhatPercent() {
+    const part = parseFloat(iwpPart.value);
+    const whole = parseFloat(iwpWhole.value);
+    iwpResult.textContent = isNaN(part) || isNaN(whole) || whole === 0 ? '—' : fmt((part / whole) * 100);
+  }
+  [iwpPart, iwpWhole].forEach((el) => el.addEventListener('input', calcIsWhatPercent));
+  calcIsWhatPercent();
+
+  // Procentuell förändring
+  const chFrom = document.getElementById('ch-from');
+  const chTo = document.getElementById('ch-to');
+  const chResult = document.getElementById('ch-result');
+  const chDirection = document.getElementById('ch-direction');
+  function calcChange() {
+    const from = parseFloat(chFrom.value);
+    const to = parseFloat(chTo.value);
+    if (isNaN(from) || isNaN(to) || from === 0) {
+      chResult.textContent = '—';
+      chDirection.textContent = '';
+      return;
+    }
+    const change = ((to - from) / Math.abs(from)) * 100;
+    chResult.textContent = fmt(Math.abs(change)) + ' %';
+    chDirection.textContent = change >= 0 ? dirLabels.increase : dirLabels.decrease;
+  }
+  [chFrom, chTo].forEach((el) => el.addEventListener('input', calcChange));
+  calcChange();
+
+  // Rabatt
+  const dPrice = document.getElementById('d-price');
+  const dPercent = document.getElementById('d-percent');
+  const dResult = document.getElementById('d-result');
+  const dSaved = document.getElementById('d-saved');
+  function calcDiscount() {
+    const price = parseFloat(dPrice.value);
+    const pct = parseFloat(dPercent.value);
+    if (isNaN(price) || isNaN(pct)) {
+      dResult.textContent = '—';
+      dSaved.textContent = '—';
+      return;
+    }
+    const saved = price * (pct / 100);
+    dResult.textContent = fmt(price - saved);
+    dSaved.textContent = fmt(saved);
+  }
+  [dPrice, dPercent].forEach((el) => el.addEventListener('input', calcDiscount));
+  calcDiscount();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

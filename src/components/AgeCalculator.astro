@@ -1,0 +1,112 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].age;
+const unitLabels = JSON.stringify(t.units);
+---
+<div class="converter" id="age-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="age-birth">{t.birthLabel}</label>
+      <input id="age-birth" type="date" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="age-asof">{t.asOfLabel}</label>
+      <input id="age-asof" type="date" />
+    </div>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="age-result">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.totalDaysLabel}</span>
+    <span class="value" id="age-total-days" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.nextBirthdayLabel}</span>
+    <span class="value" id="age-next-bday" style="font-size:1.3rem">—</span>
+  </div>
+</div>
+
+<script define:vars={{ unitLabels }}>
+  const labels = JSON.parse(unitLabels);
+
+  const birthEl = document.getElementById('age-birth');
+  const asOfEl = document.getElementById('age-asof');
+  const resultEl = document.getElementById('age-result');
+  const totalDaysEl = document.getElementById('age-total-days');
+  const nextBdayEl = document.getElementById('age-next-bday');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function toInputDate(d) { return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
+
+  const today = new Date();
+  asOfEl.value = toInputDate(today);
+
+  function calc() {
+    if (!birthEl.value || !asOfEl.value) {
+      resultEl.textContent = '—';
+      totalDaysEl.textContent = '—';
+      nextBdayEl.textContent = '—';
+      return;
+    }
+    const birth = new Date(birthEl.value);
+    const asOf = new Date(asOfEl.value);
+
+    if (asOf < birth) {
+      resultEl.textContent = '—';
+      totalDaysEl.textContent = '—';
+      nextBdayEl.textContent = '—';
+      return;
+    }
+
+    let years = asOf.getFullYear() - birth.getFullYear();
+    let months = asOf.getMonth() - birth.getMonth();
+    let days = asOf.getDate() - birth.getDate();
+    if (days < 0) {
+      const prevMonth = new Date(asOf.getFullYear(), asOf.getMonth(), 0);
+      days += prevMonth.getDate();
+      months -= 1;
+    }
+    if (months < 0) { months += 12; years -= 1; }
+
+    resultEl.textContent = `${years} ${labels.years}, ${months} ${labels.months}, ${days} ${labels.days}`;
+
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const totalDays = Math.floor((asOf.getTime() - birth.getTime()) / msPerDay);
+    totalDaysEl.textContent = totalDays.toLocaleString();
+
+    let nextBday = new Date(asOf.getFullYear(), birth.getMonth(), birth.getDate());
+    if (nextBday < asOf || (nextBday.getTime() === asOf.getTime() && false)) {
+      nextBday = new Date(asOf.getFullYear() + 1, birth.getMonth(), birth.getDate());
+    }
+    const daysUntil = Math.round((nextBday.getTime() - asOf.getTime()) / msPerDay);
+    nextBdayEl.textContent = `${daysUntil} ${labels.days}`;
+  }
+
+  [birthEl, asOfEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

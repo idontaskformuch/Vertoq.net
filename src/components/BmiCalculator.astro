@@ -1,0 +1,77 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].bmi;
+const categoryLabels = JSON.stringify(t.categories);
+---
+<div class="converter" id="bmi-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="bmi-weight">{t.weightLabel}</label>
+      <input id="bmi-weight" type="number" value="70" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="bmi-height">{t.heightLabel}</label>
+      <input id="bmi-height" type="number" value="175" min="0" />
+    </div>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="bmi-result">—</span>
+    <span class="unit" id="bmi-category"></span>
+  </div>
+</div>
+
+<script define:vars={{ categoryLabels }}>
+  const categories = JSON.parse(categoryLabels);
+
+  const weightEl = document.getElementById('bmi-weight');
+  const heightEl = document.getElementById('bmi-height');
+  const resultEl = document.getElementById('bmi-result');
+  const categoryEl = document.getElementById('bmi-category');
+
+  function calc() {
+    const weight = parseFloat(weightEl.value);
+    const heightCm = parseFloat(heightEl.value);
+    if (isNaN(weight) || isNaN(heightCm) || heightCm <= 0) {
+      resultEl.textContent = '—';
+      categoryEl.textContent = '';
+      return;
+    }
+    const heightM = heightCm / 100;
+    const bmi = weight / (heightM * heightM);
+    resultEl.textContent = (Math.round(bmi * 10) / 10).toString();
+
+    let cat;
+    if (bmi < 18.5) cat = categories.underweight;
+    else if (bmi < 25) cat = categories.normal;
+    else if (bmi < 30) cat = categories.overweight;
+    else cat = categories.obese;
+    categoryEl.textContent = cat;
+  }
+
+  [weightEl, heightEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

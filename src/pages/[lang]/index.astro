@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../i18n/translations';
+import { langCodes } from '../../i18n/languages';
+import AdSlot from '../../components/AdSlot.astro';
+
+export function getStaticPaths() {
+  return langCodes.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = translations[lang as keyof typeof translations];
+---
+<Layout lang={lang} title={`${t.siteName}, ${t.tagline}`} description={t.home.intro} path="">
+  <section class="page-head">
+    <p class="eyebrow">{t.tagline}</p>
+    <h1>{t.home.heading}</h1>
+    <p>{t.home.intro}</p>
+  </section>
+
+  <section class="category-block">
+    <h2 class="category-heading">{t.home.categoryUnits}</h2>
+    <div class="card-grid">
+      <a class="card" href={`/${lang}/units/`} style="display:block">
+        <h3>{t.home.unitsCardTitle}</h3>
+        <p>{t.home.unitsCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="category-block">
+    <h2 class="category-heading">{t.home.categoryHealth}</h2>
+    <div class="card-grid">
+      <a class="card" href={`/${lang}/bmi/`} style="display:block">
+        <h3>{t.home.bmiCardTitle}</h3>
+        <p>{t.home.bmiCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+      <a class="card" href={`/${lang}/tdee/`} style="display:block">
+        <h3>{t.home.tdeeCardTitle}</h3>
+        <p>{t.home.tdeeCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="category-block">
+    <h2 class="category-heading">{t.home.categoryEconomy}</h2>
+    <div class="card-grid">
+      <a class="card" href={`/${lang}/percent/`} style="display:block">
+        <h3>{t.home.percentCardTitle}</h3>
+        <p>{t.home.percentCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+      <a class="card" href={`/${lang}/loan/`} style="display:block">
+        <h3>{t.home.loanCardTitle}</h3>
+        <p>{t.home.loanCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+      <a class="card" href={`/${lang}/loancost/`} style="display:block">
+        <h3>{t.home.loanCostCardTitle}</h3>
+        <p>{t.home.loanCostCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="category-block">
+    <h2 class="category-heading">{t.home.categoryTime}</h2>
+    <div class="card-grid">
+      <a class="card" href={`/${lang}/time/`} style="display:block">
+        <h3>{t.home.timeCardTitle}</h3>
+        <p>{t.home.timeCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+      <a class="card" href={`/${lang}/age/`} style="display:block">
+        <h3>{t.home.ageCardTitle}</h3>
+        <p>{t.home.ageCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+    </div>
+  </section>
+
+  <AdSlot />
+</Layout>
