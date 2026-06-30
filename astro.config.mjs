@@ -5,5 +5,5 @@ import sitemap from '@astrojs/sitemap';
 // Det styr canonical-URLer, sitemap.xml och hreflang-länkar.
 export default defineConfig({
   site: 'https://vertoq.net',
-  integrations: [sitemap()],
+  integrations: [],
 });
