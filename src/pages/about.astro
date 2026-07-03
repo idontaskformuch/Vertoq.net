@@ -1,13 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+
+// Hämta lang från URL:en
+const { lang } = Astro.params;
 ---
 
-<Layout title="Contact Us">
+<Layout title="About Us" lang={lang}>
   <main style="padding: 2rem; max-width: 800px; margin: 0 auto;">
-    <h1>Contact Us</h1>
-    <p>Thank you for using vertoq.net. We are dedicated to providing efficient and user-friendly digital tools to streamline your workflow.</p>
-    <p>If you have any questions, feedback, or suggestions for new features, we would love to hear from you. Please reach out to us at:</p>
-    <p><strong>Email: <a href="mailto:info@vertoq.net">info@vertoq.net</a></strong></p>
-    <p>We strive to respond to all inquiries as promptly as possible.</p>
+    <h1>About Us</h1>
+    <p>Welcome to <strong>vertoq.net</strong>, your go-to destination for fast, reliable, and user-friendly digital tools.</p>
+    <p>We understand that modern digital tasks should be simple and efficient. That is why we have created a suite of tools designed to streamline your daily workflow—whether you are working on professional projects, student assignments, or everyday calculations. Our goal is to provide a clean, distraction-free environment where you can get the job done quickly and accurately.</p>
+    <p><strong>vertoq.net</strong> is built with a focus on simplicity, speed, and accessibility. We are constantly improving and adding new features to ensure our tools meet the needs of our global community.</p>
+    <p>Thank you for making us a part of your daily routine!</p>
   </main>
 </Layout>
