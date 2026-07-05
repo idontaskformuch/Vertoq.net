@@ -22,7 +22,9 @@ const tools = [
   <div class="wrap" style="flex-direction:column; gap:14px;">
     <nav class="lang-switcher" aria-label="Alla verktyg">
       {tools.map((tool) => (
-        <a href={`/${lang}/${tool.href}/`}>{tool.label}</a>
+        tool.label && (
+          <a href={`/${lang}/${tool.href}/`}>{tool.label}</a>
+        )
       ))}
     </nav>
   </div>
