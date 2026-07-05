@@ -12,9 +12,9 @@ const tools = [
   { href: 'percent', label: t.nav.percent },
   { href: 'age', label: t.nav.age },
   { href: 'bmi', label: t.nav.bmi },
-  { href: 'tdee', label: t.nav.tdee.title },
+  { href: 'tdee', label: t.nav.tdee?.title || 'TDEE' },
   { href: 'loan', label: t.nav.loan },
-  { href: 'loanhost', label: t.nav.loancost.title },
+  { href: 'loancost', label: t.nav.loancost?.title || 'Loan Cost' },
 ];
 ---
 
@@ -27,12 +27,12 @@ const tools = [
         )
       ))}
     </nav>
-  </div>
-  <div style="display:flex; flex-wrap: wrap; justify-content:center; gap:16px;">
-    <span>{t.siteName} &copy; {year}, {t.footer.rights}</span>
-    <a href={`/${lang}/about`}>About</a>
-    <a href={`/${lang}/contact`}>Contact</a>
-    <a href={`/${lang}/privacy`}>Privacy Policy</a>
-    <span>{t.footer.disclaimer}</span>
+    <div style="display:flex; flex-wrap: wrap; justify-content:center; gap:16px;">
+      <span>{t.siteName} &copy; {year}, {t.footer.rights}</span>
+      <a href={`/${lang}/about`}>About</a>
+      <a href={`/${lang}/contact`}>Contact</a>
+      <a href={`/${lang}/privacy`}>Privacy Policy</a>
+      <span>{t.footer.disclaimer}</span>
+    </div>
   </div>
 </footer>
