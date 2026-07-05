@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { langCodes } from '../../i18n/languages';
+
+export function getStaticPaths() {
+  return langCodes.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+---
+
+<Layout 
+  lang={lang} 
+  title="Contact Us" 
+  description="Contact us at vertoq.net" 
+  path="/contact"
+>
+  <main style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+    <h1>Contact Us</h1>
+    <p>If you have any questions or feedback, feel free to reach out to us!</p>
+    <p><strong>Email:</strong> <a href="mailto:info@vertoq.net">info@vertoq.net</a></p>
+  </main>
+</Layout>
