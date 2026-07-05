@@ -24,7 +24,7 @@ const tools = [
         <a href={`/${lang}/${tool.href}/`}>{tool.label}</a>
       ))}
     </nav>
-    <div style="display:flex; justify-content:space-between; gap:16px;">
+    <div style="display:flex; flex-wrap: wrap; justify-content:center; gap:16px;">
       <span>{t.siteName} &copy; {year}, {t.footer.rights}</span>
       <a href={`/${lang}/about`}>About</a>
       <a href={`/${lang}/contact`}>Contact</a>
