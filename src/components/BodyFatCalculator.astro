@@ -1,0 +1,164 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const tb = translations[lang as keyof typeof translations].bmi;
+const tt = translations[lang as keyof typeof translations].tdee;
+const t = translations[lang as keyof typeof translations].bodyfat;
+const categories = JSON.stringify(t.categories);
+---
+<div class="converter" id="bodyfat-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="bf-height">{tb.heightLabel}</label>
+      <input id="bf-height" type="number" value="175" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="bf-sex">{tt.sexLabel}</label>
+      <select id="bf-sex">
+        <option value="male">{tt.male}</option>
+        <option value="female">{tt.female}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="conv-grid" style="margin-top:14px">
+    <div class="field">
+      <label for="bf-neck">{t.neckLabel}</label>
+      <input id="bf-neck" type="number" value="38" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="bf-waist">{t.waistLabel}</label>
+      <input id="bf-waist" type="number" value="85" min="0" />
+    </div>
+  </div>
+
+  <div class="field" id="bf-hip-field" style="margin-top:14px; display:none">
+    <label for="bf-hip">{t.hipLabel}</label>
+    <input id="bf-hip" type="number" value="95" min="0" />
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="bf-result">—</span>
+    <span class="unit" id="bf-category"></span>
+  </div>
+  <p class="calc-error" id="bf-error" style="display:none"></p>
+</div>
+
+<script define:vars={{ categories, errorMessage: t.errorMessage }}>
+  const cats = JSON.parse(categories);
+
+  const heightEl = document.getElementById('bf-height');
+  const neckEl = document.getElementById('bf-neck');
+  const waistEl = document.getElementById('bf-waist');
+  const hipEl = document.getElementById('bf-hip');
+  const sexEl = document.getElementById('bf-sex');
+  const hipFieldEl = document.getElementById('bf-hip-field');
+  const resultEl = document.getElementById('bf-result');
+  const categoryEl = document.getElementById('bf-category');
+  const errorEl = document.getElementById('bf-error');
+
+  function updateHipVisibility() {
+    hipFieldEl.style.display = sexEl.value === 'female' ? '' : 'none';
+  }
+
+  function showError() {
+    resultEl.textContent = '—';
+    categoryEl.textContent = '';
+    errorEl.textContent = errorMessage;
+    errorEl.style.display = 'block';
+  }
+
+  function clearError() {
+    errorEl.textContent = '';
+    errorEl.style.display = 'none';
+  }
+
+  function categoryFor(bf, sex) {
+    if (sex === 'male') {
+      if (bf < 6) return cats.essential;
+      if (bf < 14) return cats.athletes;
+      if (bf < 18) return cats.fitness;
+      if (bf < 25) return cats.average;
+      return cats.obese;
+    }
+    if (bf < 14) return cats.essential;
+    if (bf < 21) return cats.athletes;
+    if (bf < 25) return cats.fitness;
+    if (bf < 32) return cats.average;
+    return cats.obese;
+  }
+
+  function calc() {
+    const height = parseFloat(heightEl.value);
+    const neck = parseFloat(neckEl.value);
+    const waist = parseFloat(waistEl.value);
+    const sex = sexEl.value;
+
+    if (isNaN(height) || isNaN(neck) || isNaN(waist) || height <= 0 || neck <= 0 || waist <= 0) {
+      resultEl.textContent = '—';
+      categoryEl.textContent = '';
+      clearError();
+      return;
+    }
+
+    let logArg = waist - neck;
+    let hip = 0;
+    if (sex === 'female') {
+      hip = parseFloat(hipEl.value);
+      if (isNaN(hip) || hip <= 0) {
+        resultEl.textContent = '—';
+        categoryEl.textContent = '';
+        clearError();
+        return;
+      }
+      logArg = waist + hip - neck;
+    }
+
+    // Midja (plus höft för kvinnor) måste överstiga hals, annars blir log10-argumentet <= 0
+    if (logArg <= 0) {
+      showError();
+      return;
+    }
+
+    const bf = sex === 'male'
+      ? 495 / (1.0324 - 0.19077 * Math.log10(logArg) + 0.15456 * Math.log10(height)) - 450
+      : 495 / (1.29579 - 0.35004 * Math.log10(logArg) + 0.22100 * Math.log10(height)) - 450;
+
+    if (!isFinite(bf) || isNaN(bf) || bf <= 0) {
+      showError();
+      return;
+    }
+
+    clearError();
+    resultEl.textContent = (Math.round(bf * 10) / 10).toString();
+    categoryEl.textContent = categoryFor(bf, sex);
+  }
+
+  sexEl.addEventListener('change', () => { updateHipVisibility(); calc(); });
+  [heightEl, neckEl, waistEl, hipEl].forEach((el) => el.addEventListener('input', calc));
+  updateHipVisibility();
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button')).filter((el) => el.offsetParent !== null);
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

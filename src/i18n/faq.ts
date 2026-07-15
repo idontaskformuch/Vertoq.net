@@ -12,7 +12,7 @@ export const faqHeadings: Record<string, string> = {
 };
 
 type FaqItem = { q: string; a: string };
-type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; calorie: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
+type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; calorie: FaqItem[]; bodyfat: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
 
 export const faqContent: Record<string, ToolFaqs> = {
   sv: {
@@ -38,7 +38,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: 'Stämmer BMI för muskulösa eller vältränade personer?', a: 'Mindre bra. BMI skiljer inte på muskler och fett, så en muskulös person kan visas som överviktig trots låg fettprocent. Se begränsningarna ovan för mer om detta.' },
       { q: 'Hur ofta bör jag mäta mitt BMI?', a: 'För de flesta räcker det att mäta var några månader för att se en trend. BMI förändras långsamt, och dagliga mätningar speglar mest vätskebalans, inte verklig förändring.' },
-      { q: 'Vad är skillnaden mellan BMI och kroppsfettprocent?', a: 'BMI är ett förhållande mellan vikt och längd och säger inget om vad vikten består av. Kroppsfettprocent mäter den faktiska andelen fett i förhållande till muskelmassa, och är mer exakt, men kräver andra mätmetoder för att uppskattas.' },
+      { q: 'Vad är skillnaden mellan BMI och kroppsfettprocent?', a: 'BMI är ett förhållande mellan vikt och längd och säger inget om vad vikten består av. Kroppsfettprocent mäter den faktiska andelen fett i förhållande till muskelmassa och är mer exakt — prova vår Kroppsfettkalkylator för en uppskattning baserad på kroppsmått.' },
     ],
     tdee: [
       { q: 'Hur exakt är TDEE?', a: 'Det är en bra uppskattning, inte en exakt mätning. Den individuella ämnesomsättningen varierar med ungefär 10 till 15 procent, så se begränsningarna ovan för hur du justerar den utifrån dina egna resultat.' },
@@ -54,6 +54,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Varför behövs mitt TDEE först?', a: 'Eftersom ett kalorimål bara är meningsfullt i förhållande till en baslinje. Utan att veta ungefär hur många kalorier du förbränner per dag kan en siffra som 1,800 kcal vara ett underskott för en person och ett överskott för en annan.' },
       { q: 'Vilket mål ska jag välja om jag är osäker?', a: 'Börja med bibehåll vikten eller måttligt underskott. Aggressivt underskott ger snabbare viktnedgång på pappret, men det är svårare att hålla i och tar oftare med sig muskler tillsammans med fettet, så det passar bättre som en kort, medveten push än som en långsiktig plan.' },
       { q: 'Är 1 kg verkligen exakt 7,700 kcal?', a: 'Inte exakt. Det är ett ungefärligt genomsnitt som används för planering snarare än en exakt omräkning, och verklig fettförlust varierar något mellan olika personer beroende på kroppssammansättning, så se alla prognoser från det som en uppskattning, inte en garanti.' },
+    ],
+    bodyfat: [
+      { q: 'Hur exakt är US Navy-metoden?', a: 'Den ger en rimlig uppskattning för de flesta kroppstyper, oftast inom några procentenheter från mer exakta metoder som DEXA. Den tenderar att bli mindre exakt för ovanliga kroppsformer eller vid extremt låg eller hög kroppsfettprocent.' },
+      { q: 'Var exakt ska jag mäta?', a: 'Mät halsen strax under struphuvudet, midjan vid den smalaste punkten (eller vid naveln om det inte finns någon tydlig smalaste punkt), och för kvinnor höften vid den bredaste punkten. Håll måttbandet stramt men utan att trycka in huden.' },
+      { q: 'Varför behövs ett extra mått för kvinnor?', a: 'Formeln tar hänsyn till att fettfördelningen skiljer sig mellan män och kvinnor. Höftmåttet korrigerar för ett mönster som hals och midja ensamma skulle underskatta hos de flesta kvinnor.' },
     ],
     loan: [
       { q: 'Vad är ränta-på-ränta?', a: 'Räntan du tjänar läggs till kapitalet, så du tjänar ränta på både startbeloppet och tidigare intjänad ränta.' },
@@ -89,7 +94,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: 'Is BMI accurate for muscular or athletic people?', a: "Less so. BMI can't tell muscle from fat, so a muscular person may show as overweight despite low body fat. See the limitations above for more on this." },
       { q: 'How often should I check my BMI?', a: 'For most people, every few months is enough to spot a trend, BMI changes slowly and daily checks mostly reflect water weight, not real change.' },
-      { q: "What's the difference between BMI and body fat percentage?", a: 'BMI is a ratio of weight to height and says nothing about what that weight is made of. Body fat percentage measures the actual proportion of fat versus lean mass, and is more precise, but needs different tools to estimate.' },
+      { q: "What's the difference between BMI and body fat percentage?", a: 'BMI is a ratio of weight to height and says nothing about what that weight is made of. Body fat percentage measures the actual proportion of fat versus lean mass and is more precise — try our Body Fat Calculator for a measurement-based estimate.' },
     ],
     tdee: [
       { q: 'How accurate is TDEE?', a: "It's a solid estimate, not an exact measurement. Individual metabolism varies by roughly 10 to 15%, so see the limitations above for how to adjust it based on your own results." },
@@ -105,6 +110,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Why does this need my TDEE first?', a: 'Because a calorie target only makes sense relative to a baseline. Without knowing roughly how many calories you burn in a day, a number like 1,800 kcal could be a deficit for one person and a surplus for another.' },
       { q: 'Which goal should I pick if I\'m not sure?', a: "Start with maintain or mild deficit. Aggressive deficit works faster on paper, but it's harder to sustain and more likely to cost muscle along with fat, so it fits a short, deliberate push better than an ongoing plan." },
       { q: 'Is 1 kg really equal to exactly 7,700 kcal?', a: 'Not exactly. It\'s a rough average used for planning rather than a precise conversion, and real fat loss varies somewhat between people depending on body composition, so treat any projection from it as an estimate, not a guarantee.' },
+    ],
+    bodyfat: [
+      { q: 'How accurate is the US Navy method?', a: "It's a reasonable estimate for most body types, typically within a few percentage points of more precise methods like DEXA. It tends to be less accurate for people with unusual body shapes or body fat levels at the extremes." },
+      { q: 'Where exactly should I measure?', a: "Measure your neck just below the larynx, your waist at the narrowest point (or at the navel if there isn't one), and, for women, your hip at the widest point. Keep the tape snug but not compressing the skin." },
+      { q: 'Why is there an extra measurement for women?', a: 'The formula accounts for how fat distribution differs between men and women. Adding hip measurement corrects for a pattern that neck and waist alone would underestimate for most women.' },
     ],
     loan: [
       { q: 'What is compound interest?', a: 'The interest you earn each period is added to your balance, so you earn interest on both your starting amount and past interest.' },
@@ -140,7 +150,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: 'O IMC é preciso para pessoas musculosas ou atléticas?', a: 'Menos preciso. O IMC não diferencia músculo de gordura, então uma pessoa musculosa pode aparecer como acima do peso mesmo com baixo percentual de gordura. Veja as limitações acima para saber mais.' },
       { q: 'Com que frequência devo verificar meu IMC?', a: 'Para a maioria das pessoas, a cada poucos meses já é suficiente para notar uma tendência. O IMC muda devagar, e verificações diárias refletem principalmente retenção de líquidos, não uma mudança real.' },
-      { q: 'Qual a diferença entre IMC e percentual de gordura corporal?', a: 'O IMC é uma relação entre peso e altura e não diz nada sobre do que esse peso é composto. O percentual de gordura corporal mede a proporção real de gordura em relação à massa magra, e é mais preciso, mas exige outras ferramentas para ser estimado.' },
+      { q: 'Qual a diferença entre IMC e percentual de gordura corporal?', a: 'O IMC é uma relação entre peso e altura e não diz nada sobre do que esse peso é composto. O percentual de gordura corporal mede a proporção real de gordura em relação à massa magra e é mais preciso — experimente nossa Calculadora de Gordura Corporal para uma estimativa baseada em medidas.' },
     ],
     tdee: [
       { q: 'Quão preciso é o TDEE?', a: 'É uma boa estimativa, não uma medição exata. O metabolismo individual varia cerca de 10 a 15%, então veja as limitações acima para saber como ajustá-lo com base nos seus próprios resultados.' },
@@ -156,6 +166,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Por que isso precisa do meu TDEE primeiro?', a: 'Porque uma meta calórica só faz sentido em relação a uma base. Sem saber aproximadamente quantas calorias você queima por dia, um número como 1,800 kcal pode ser um déficit para uma pessoa e um superávit para outra.' },
       { q: 'Qual objetivo devo escolher se não tenho certeza?', a: 'Comece com manter o peso ou déficit leve. O déficit agressivo emagrece mais rápido no papel, mas é mais difícil de manter e mais propenso a custar músculo junto com a gordura, então serve melhor para um esforço curto e deliberado do que para um plano contínuo.' },
       { q: '1 kg é realmente igual a exatamente 7,700 kcal?', a: 'Não exatamente. É uma média aproximada usada para planejamento, não uma conversão precisa, e a perda de gordura real varia um pouco entre as pessoas de acordo com a composição corporal, então trate qualquer projeção feita com ela como uma estimativa, não uma garantia.' },
+    ],
+    bodyfat: [
+      { q: 'Quão precisa é a fórmula da Marinha dos EUA?', a: 'É uma estimativa razoável para a maioria dos tipos de corpo, geralmente dentro de alguns pontos percentuais de métodos mais precisos como o DEXA. Costuma ser menos precisa para formatos corporais incomuns ou níveis extremos de gordura corporal.' },
+      { q: 'Onde exatamente devo medir?', a: 'Meça o pescoço logo abaixo da laringe, a cintura no ponto mais estreito (ou na altura do umbigo, se não houver um ponto claro) e, para mulheres, o quadril no ponto mais largo. Mantenha a fita justa, mas sem apertar a pele.' },
+      { q: 'Por que há uma medida extra para mulheres?', a: 'A fórmula leva em conta como a distribuição de gordura difere entre homens e mulheres. A medida do quadril corrige um padrão que pescoço e cintura sozinhos subestimariam na maioria das mulheres.' },
     ],
     loan: [
       { q: 'O que são juros compostos?', a: 'Os juros ganhos em cada período são somados ao saldo, então você ganha juros sobre o valor inicial e sobre os juros anteriores.' },
@@ -191,7 +206,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: '¿El IMC es preciso para personas musculosas o atléticas?', a: 'Menos preciso. El IMC no distingue entre músculo y grasa, así que una persona musculosa puede aparecer con sobrepeso aunque tenga poca grasa corporal. Consulta las limitaciones arriba para más detalles.' },
       { q: '¿Con qué frecuencia debo medir mi IMC?', a: 'Para la mayoría de las personas, cada pocos meses es suficiente para detectar una tendencia. El IMC cambia lentamente, y las mediciones diarias reflejan sobre todo retención de líquidos, no un cambio real.' },
-      { q: '¿Cuál es la diferencia entre el IMC y el porcentaje de grasa corporal?', a: 'El IMC es una relación entre peso y estatura y no dice nada sobre de qué está hecho ese peso. El porcentaje de grasa corporal mide la proporción real de grasa frente a masa magra, y es más preciso, pero requiere otras herramientas para estimarlo.' },
+      { q: '¿Cuál es la diferencia entre el IMC y el porcentaje de grasa corporal?', a: 'El IMC es una relación entre peso y estatura y no dice nada sobre de qué está hecho ese peso. El porcentaje de grasa corporal mide la proporción real de grasa frente a masa magra y es más preciso — prueba nuestra Calculadora de Grasa Corporal para una estimación basada en medidas.' },
     ],
     tdee: [
       { q: '¿Qué tan preciso es el TDEE?', a: 'Es una buena estimación, no una medición exacta. El metabolismo individual varía en torno a un 10 a 15%, así que consulta las limitaciones arriba para ver cómo ajustarlo según tus propios resultados.' },
@@ -207,6 +222,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Por qué esto necesita primero mi TDEE?', a: 'Porque un objetivo calórico solo tiene sentido en relación con una base. Sin saber aproximadamente cuántas calorías quemas al día, una cifra como 1,800 kcal podría ser un déficit para una persona y un superávit para otra.' },
       { q: '¿Qué objetivo debo elegir si no estoy seguro?', a: 'Empieza con mantener el peso o déficit leve. El déficit agresivo adelgaza más rápido sobre el papel, pero es más difícil de mantener y más probable que cueste músculo además de grasa, así que encaja mejor con un empujón corto y deliberado que con un plan continuo.' },
       { q: '¿1 kg equivale realmente a exactamente 7,700 kcal?', a: 'No exactamente. Es un promedio aproximado usado para planificar, no una conversión precisa, y la pérdida de grasa real varía algo entre personas según la composición corporal, así que trata cualquier proyección basada en ella como una estimación, no una garantía.' },
+    ],
+    bodyfat: [
+      { q: '¿Qué tan precisa es la fórmula de la Marina de EE. UU.?', a: 'Es una estimación razonable para la mayoría de los tipos de cuerpo, normalmente dentro de unos pocos puntos porcentuales de métodos más precisos como el DEXA. Suele ser menos precisa en formas corporales poco habituales o niveles extremos de grasa corporal.' },
+      { q: '¿Dónde exactamente debo medir?', a: 'Mide el cuello justo debajo de la laringe, la cintura en el punto más estrecho (o a la altura del ombligo si no hay uno claro) y, en mujeres, la cadera en el punto más ancho. Mantén la cinta ajustada pero sin comprimir la piel.' },
+      { q: '¿Por qué hay una medida extra para las mujeres?', a: 'La fórmula tiene en cuenta que la distribución de grasa difiere entre hombres y mujeres. La medida de la cadera corrige un patrón que el cuello y la cintura por sí solos subestimarían en la mayoría de las mujeres.' },
     ],
     loan: [
       { q: '¿Qué es el interés compuesto?', a: 'El interés que ganas cada periodo se suma al saldo, así ganas interés tanto sobre el monto inicial como sobre el interés anterior.' },
@@ -242,7 +262,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: 'Ist der BMI bei muskulösen oder sportlichen Menschen genau?', a: 'Weniger genau. Der BMI unterscheidet nicht zwischen Muskeln und Fett, sodass muskulöse Personen trotz niedrigem Körperfettanteil als übergewichtig eingestuft werden können. Mehr dazu in den Einschränkungen oben.' },
       { q: 'Wie oft sollte ich meinen BMI prüfen?', a: 'Für die meisten reicht es, alle paar Monate zu messen, um einen Trend zu erkennen. Der BMI ändert sich langsam, und tägliche Messungen spiegeln vor allem den Wasserhaushalt wider, keine echte Veränderung.' },
-      { q: 'Was ist der Unterschied zwischen BMI und Körperfettanteil?', a: 'Der BMI ist ein Verhältnis von Gewicht zu Größe und sagt nichts darüber aus, woraus dieses Gewicht besteht. Der Körperfettanteil misst den tatsächlichen Anteil von Fett gegenüber Muskelmasse und ist genauer, erfordert aber andere Messmethoden.' },
+      { q: 'Was ist der Unterschied zwischen BMI und Körperfettanteil?', a: 'Der BMI ist ein Verhältnis von Gewicht zu Größe und sagt nichts darüber aus, woraus dieses Gewicht besteht. Der Körperfettanteil misst den tatsächlichen Anteil von Fett gegenüber Muskelmasse und ist genauer — probiere unseren Körperfett-Rechner für eine Schätzung anhand von Körpermaßen.' },
     ],
     tdee: [
       { q: 'Wie genau ist der TDEE?', a: 'Er ist eine solide Schätzung, keine exakte Messung. Der individuelle Stoffwechsel variiert um etwa 10 bis 15 Prozent, daher lohnt sich ein Blick auf die Einschränkungen oben, um ihn an die eigenen Ergebnisse anzupassen.' },
@@ -258,6 +278,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Warum wird dafür zuerst mein TDEE benötigt?', a: 'Weil ein Kalorienziel nur im Verhältnis zu einer Ausgangsbasis Sinn ergibt. Ohne zu wissen, wie viele Kalorien du ungefähr am Tag verbrauchst, könnte eine Zahl wie 1,800 kcal für die eine Person ein Defizit und für eine andere ein Überschuss sein.' },
       { q: 'Welches Ziel sollte ich wählen, wenn ich mir nicht sicher bin?', a: 'Beginne mit Gewicht halten oder leichtem Defizit. Ein aggressives Defizit lässt das Gewicht auf dem Papier schneller sinken, ist aber schwerer durchzuhalten und geht eher auch auf Kosten von Muskelmasse statt nur Fett, daher passt es besser zu einem kurzen, bewussten Push als zu einem dauerhaften Plan.' },
       { q: 'Entspricht 1 kg wirklich genau 7,700 kcal?', a: 'Nicht genau. Es ist ein grober Durchschnittswert für die Planung, keine präzise Umrechnung, und der tatsächliche Fettabbau variiert je nach Körperzusammensetzung etwas von Person zu Person, daher solltest du jede daraus abgeleitete Prognose als Schätzung behandeln, nicht als Garantie.' },
+    ],
+    bodyfat: [
+      { q: 'Wie genau ist die US-Navy-Methode?', a: 'Sie liefert für die meisten Körpertypen eine vernünftige Schätzung, meist innerhalb weniger Prozentpunkte genauerer Methoden wie DEXA. Bei ungewöhnlichen Körperformen oder sehr niedrigem oder hohem Körperfettanteil wird sie tendenziell ungenauer.' },
+      { q: 'Wo genau soll ich messen?', a: 'Miss den Hals direkt unterhalb des Kehlkopfs, die Taille an der schmalsten Stelle (oder auf Bauchnabelhöhe, falls es keine eindeutig schmalste Stelle gibt) und bei Frauen die Hüfte an der breitesten Stelle. Halte das Maßband stramm, ohne die Haut einzudrücken.' },
+      { q: 'Warum gibt es bei Frauen ein zusätzliches Maß?', a: 'Die Formel berücksichtigt, dass sich die Fettverteilung zwischen Männern und Frauen unterscheidet. Das Hüftmaß gleicht ein Muster aus, das Hals und Taille allein bei den meisten Frauen unterschätzen würden.' },
     ],
     loan: [
       { q: 'Was ist Zinseszins?', a: 'Die Zinsen, die du jede Periode verdienst, werden dem Saldo hinzugefügt, sodass du Zinsen auf den Startbetrag und frühere Zinsen verdienst.' },
@@ -293,7 +318,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: '筋肉質やアスリート体型の人にもBMIは正確ですか？', a: 'あまり正確ではありません。BMIは筋肉と脂肪を区別できないため、筋肉質な人は体脂肪率が低くても肥満と表示されることがあります。詳しくは上記の限界の説明をご覧ください。' },
       { q: 'BMIはどのくらいの頻度で確認すればいいですか？', a: '多くの場合、数か月ごとの確認で傾向をつかむには十分です。BMIはゆっくり変化するため、毎日の測定は実際の変化よりも水分量の変動を反映していることがほとんどです。' },
-      { q: 'BMIと体脂肪率の違いは何ですか？', a: 'BMIは体重と身長の比率であり、その体重が何でできているかは示しません。体脂肪率は脂肪と除脂肪量の実際の割合を測定するためより正確ですが、算出には別の測定方法が必要です。' },
+      { q: 'BMIと体脂肪率の違いは何ですか？', a: 'BMIは体重と身長の比率であり、その体重が何でできているかは示しません。体脂肪率は脂肪と除脂肪量の実際の割合を測定するためより正確です — 体のサイズから推定する体脂肪率計算機もぜひお試しください。' },
     ],
     tdee: [
       { q: 'TDEEはどのくらい正確ですか？', a: 'しっかりした推定値ではありますが、正確な測定値ではありません。個人の代謝は10〜15%ほど変動するため、自分の結果に合わせて調整する方法は上記の「限界」をご覧ください。' },
@@ -309,6 +334,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'なぜ最初にTDEEが必要なのですか？', a: 'カロリー目標は基準値との比較で初めて意味を持つからです。1日に燃焼するおおよそのカロリーが分からなければ、1,800kcalという数字も、ある人にとっては不足量になり、別の人にとっては余剰量になり得ます。' },
       { q: '迷ったらどの目標を選べばいいですか？', a: '維持または軽度のカロリー不足から始めてください。積極的なカロリー不足は数字の上では速く減量できますが、続けるのが難しく、脂肪と一緒に筋肉も失いやすいため、長期的な計画よりも短期集中の取り組みに向いています。' },
       { q: '1kgは本当にちょうど7,700kcalに相当するのですか？', a: '正確にはそうではありません。これは計画のためのおおまかな平均値であり、正確な換算式ではなく、実際の脂肪減少は体組成によって人によってある程度異なるため、そこから導いた予測はあくまで目安として捉え、保証と考えないでください。' },
+    ],
+    bodyfat: [
+      { q: 'US Navy法はどのくらい正確ですか？', a: '多くの体型で妥当な推定値が得られ、DEXA法などより正確な方法との差は数パーセントポイント程度が一般的です。特殊な体型や、体脂肪率が極端に低い・高い場合は精度が下がる傾向があります。' },
+      { q: '正確にはどこを測ればいいですか？', a: '首は喉頭のすぐ下、ウエストは最も細い部分（明確なくびれがない場合はへその高さ）、女性の場合はヒップを最も広い部分で測ってください。メジャーは肌に食い込ませず、ぴったりと沿わせてください。' },
+      { q: 'なぜ女性だけ測定項目が一つ多いのですか？', a: 'この式は、男女で脂肪の付き方が異なることを考慮しています。ヒップの測定値を加えることで、首とウエストだけでは多くの女性で過小評価されてしまう部分を補正しています。' },
     ],
     loan: [
       { q: '複利とは何ですか？', a: '各期間で得た利息が元本に加算され、元本と過去の利息の両方に利息がつく仕組みです。' },
@@ -344,7 +374,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: 'BMI对肌肉发达或运动员体型的人准确吗？', a: '不太准确。BMI无法区分肌肉和脂肪，因此肌肉发达的人即使体脂率很低，也可能被归为超重。更多内容见上文的局限性说明。' },
       { q: '应该多久测一次BMI？', a: '对大多数人来说，每隔几个月测一次就足以观察趋势，BMI变化缓慢，每天测量的波动大多反映的是水分变化，而非真实变化。' },
-      { q: 'BMI和体脂率有什么区别？', a: 'BMI是体重与身高的比值，无法说明这些体重具体由什么构成。体脂率衡量的是脂肪相对于瘦体重的实际比例，更精确，但需要其他工具才能估算。' },
+      { q: 'BMI和体脂率有什么区别？', a: 'BMI是体重与身高的比值，无法说明这些体重具体由什么构成。体脂率衡量的是脂肪相对于瘦体重的实际比例，更加精确——可以试试我们的体脂率计算器，通过身体围度来估算。' },
     ],
     tdee: [
       { q: 'TDEE有多准确？', a: '它是一个可靠的估算值，而不是精确测量。个体代谢会有大约10%至15%的差异，具体如何根据自己的实际情况调整，可参考上文的局限性说明。' },
@@ -360,6 +390,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '为什么需要先知道我的TDEE？', a: '因为热量目标只有相对于一个基准才有意义。如果不知道自己每天大致消耗多少热量，像1,800千卡这样的数字，对一个人来说可能是热量缺口，对另一个人来说却可能是热量盈余。' },
       { q: '如果不确定，应该选哪个目标？', a: '可以先从维持体重或轻度热量缺口开始。大幅热量缺口在数字上减重更快，但更难坚持，也更容易在减脂的同时流失肌肉，所以它更适合短期、有计划的冲刺，而不是长期方案。' },
       { q: '1公斤真的正好等于7,700千卡吗？', a: '并不完全精确。这只是一个用于规划的大致平均值，而不是精确的换算，实际的脂肪减少会因体成分不同而因人而异，所以任何基于它得出的预测都应视为估算，而不是保证。' },
+    ],
+    bodyfat: [
+      { q: '美国海军法有多准确？', a: '对大多数体型来说，它能给出合理的估算，通常与DEXA等更精确方法相差几个百分点以内。对于体型特殊或体脂率处于极端水平的人，准确度会有所下降。' },
+      { q: '具体应该在哪里测量？', a: '在喉结下方测量颈围，在最窄处测量腰围（如果没有明显最窄处，可在肚脐处测量），女性还需在最宽处测量臀围。卷尺要贴合但不要勒紧皮肤。' },
+      { q: '为什么女性要多测一项？', a: '这个公式考虑了男女脂肪分布的差异。加入臀围测量，是为了修正仅凭颈围和腰围会对大多数女性造成的低估。' },
     ],
     loan: [
       { q: '什么是复利？', a: '每期获得的利息会计入本金，因此你既能从本金又能从之前的利息中获得利息。' },
@@ -395,7 +430,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: '근육질이거나 운동선수 체형인 사람에게도 BMI가 정확한가요?', a: '덜 정확합니다. BMI는 근육과 지방을 구분하지 못하기 때문에, 체지방률이 낮아도 근육질인 사람은 과체중으로 표시될 수 있습니다. 자세한 내용은 위의 한계점을 참고하세요.' },
       { q: 'BMI는 얼마나 자주 확인해야 하나요?', a: '대부분의 경우 몇 달에 한 번씩 확인하는 것으로 추세를 파악하기에 충분합니다. BMI는 천천히 변하며, 매일 측정하면 실제 변화보다는 대부분 수분 변화를 반영합니다.' },
-      { q: 'BMI와 체지방률의 차이는 무엇인가요?', a: 'BMI는 체중과 키의 비율일 뿐, 그 체중이 무엇으로 이루어져 있는지는 알려주지 않습니다. 체지방률은 지방과 제지방량의 실제 비율을 측정하므로 더 정확하지만, 추정하려면 다른 도구가 필요합니다.' },
+      { q: 'BMI와 체지방률의 차이는 무엇인가요?', a: 'BMI는 체중과 키의 비율일 뿐, 그 체중이 무엇으로 이루어져 있는지는 알려주지 않습니다. 체지방률은 지방과 제지방량의 실제 비율을 측정하므로 더 정확합니다 — 신체 치수를 기반으로 추정하는 체지방률 계산기를 사용해 보세요.' },
     ],
     tdee: [
       { q: 'TDEE는 얼마나 정확한가요?', a: 'TDEE는 꽤 믿을 만한 추정치이지만 정확한 측정값은 아닙니다. 개인의 대사량은 약 10~15% 차이가 날 수 있으니, 자신의 실제 결과에 맞춰 조정하는 방법은 위의 한계점을 참고하세요.' },
@@ -411,6 +446,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '왜 먼저 제 TDEE가 필요한가요?', a: '칼로리 목표는 기준선과 비교했을 때만 의미가 있기 때문입니다. 하루에 대략 얼마나 많은 칼로리를 소비하는지 모르면, 1,800kcal 같은 수치도 어떤 사람에게는 결손이고 다른 사람에게는 잉여일 수 있습니다.' },
       { q: '잘 모르겠다면 어떤 목표를 선택해야 하나요?', a: '유지 또는 가벼운 칼로리 결손부터 시작하세요. 적극적인 칼로리 결손은 수치상으로는 더 빨리 체중을 줄이지만 유지하기 어렵고 지방과 함께 근육도 잃기 쉬워서, 장기 계획보다는 짧고 의도적인 집중 기간에 더 적합합니다.' },
       { q: '1kg이 정말 정확히 7,700kcal와 같나요?', a: '정확히는 아닙니다. 이는 계획을 위한 대략적인 평균값이지 정확한 환산값이 아니며, 실제 지방 감소는 체구성에 따라 사람마다 어느 정도 다르므로, 이를 바탕으로 한 예측은 보장이 아니라 추정치로 받아들이세요.' },
+    ],
+    bodyfat: [
+      { q: '미 해군 방식은 얼마나 정확한가요?', a: '대부분의 체형에서 합리적인 추정치를 제공하며, 보통 DEXA 같은 더 정밀한 방법과 몇 퍼센트포인트 이내로 차이가 납니다. 체형이 특이하거나 체지방률이 극단적으로 낮거나 높은 경우에는 정확도가 떨어지는 경향이 있습니다.' },
+      { q: '정확히 어디를 측정해야 하나요?', a: '목은 후두 바로 아래를, 허리는 가장 좁은 부분(뚜렷한 지점이 없다면 배꼽 높이)을, 여성의 경우 엉덩이는 가장 넓은 부분을 측정하세요. 줄자는 피부를 누르지 않으면서 밀착되게 감아주세요.' },
+      { q: '왜 여성만 측정 항목이 하나 더 있나요?', a: '이 공식은 남녀 간 지방 분포 차이를 반영합니다. 엉덩이 측정값을 추가하면 목과 허리만으로는 대부분의 여성에게서 과소평가되는 부분을 보정할 수 있습니다.' },
     ],
     loan: [
       { q: '복리란 무엇인가요?', a: '매 기간 얻은 이자가 잔액에 더해져, 원금과 이전 이자 모두에 대해 이자를 받게 됩니다.' },
@@ -446,7 +486,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: 'क्या मांसपेशियों वाले या एथलेटिक लोगों के लिए BMI सटीक है?', a: 'उतना सटीक नहीं। BMI मांसपेशियों और वसा में फ़र्क नहीं कर पाता, इसलिए मांसपेशियों वाला व्यक्ति कम फैट होने के बावजूद अधिक वज़न वाला दिख सकता है। ज़्यादा जानकारी के लिए ऊपर दी गई सीमाएँ देखें।' },
       { q: 'मुझे अपना BMI कितनी बार जाँचना चाहिए?', a: 'अधिकतर लोगों के लिए हर कुछ महीनों में एक बार जाँचना ट्रेंड देखने के लिए काफ़ी है। BMI धीरे-धीरे बदलता है, और रोज़ाना जाँच ज़्यादातर पानी के वज़न में बदलाव दिखाती है, असली बदलाव नहीं।' },
-      { q: 'BMI और बॉडी फैट प्रतिशत में क्या अंतर है?', a: 'BMI वज़न और लंबाई का अनुपात है और यह नहीं बताता कि वह वज़न किससे बना है। बॉडी फैट प्रतिशत वसा और लीन मास के वास्तविक अनुपात को मापता है, और अधिक सटीक है, लेकिन इसे मापने के लिए अलग उपकरणों की ज़रूरत होती है।' },
+      { q: 'BMI और बॉडी फैट प्रतिशत में क्या अंतर है?', a: 'BMI वज़न और लंबाई का अनुपात है और यह नहीं बताता कि वह वज़न किससे बना है। बॉडी फैट प्रतिशत वसा और लीन मास के वास्तविक अनुपात को मापता है और अधिक सटीक है — शरीर के माप से अनुमान लगाने वाला हमारा बॉडी फैट कैलकुलेटर आज़माएं।' },
     ],
     tdee: [
       { q: 'TDEE कितना सटीक है?', a: 'यह एक अच्छा अनुमान है, कोई सटीक माप नहीं। हर व्यक्ति का मेटाबॉलिज्म करीब 10 से 15% तक अलग हो सकता है, इसलिए अपने असली नतीजों के हिसाब से इसे कैसे एडजस्ट करें, यह जानने के लिए ऊपर दी गई सीमाएँ देखें।' },
@@ -462,6 +502,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'इसके लिए पहले मेरा TDEE क्यों चाहिए?', a: 'क्योंकि कैलोरी लक्ष्य सिर्फ़ एक बेसलाइन के मुक़ाबले ही मायने रखता है। आप रोज़ाना लगभग कितनी कैलोरी खर्च करते हैं यह जाने बिना, 1,800 kcal जैसा आंकड़ा किसी एक व्यक्ति के लिए कमी हो सकता है और किसी दूसरे के लिए अतिरिक्त।' },
       { q: 'अगर मुझे यक़ीन न हो तो कौन सा लक्ष्य चुनूं?', a: 'वज़न बनाए रखें या हल्की कैलोरी कमी से शुरू करें। ज़्यादा कैलोरी कमी कागज़ पर तेज़ी से वज़न घटाती है, लेकिन इसे बनाए रखना मुश्किल होता है और इससे फैट के साथ मांसपेशियां घटने की संभावना भी ज़्यादा रहती है, इसलिए यह लंबी योजना के बजाय छोटी, सोची-समझी पुश के लिए बेहतर है।' },
       { q: 'क्या 1 kg वाकई ठीक 7,700 kcal के बराबर होता है?', a: 'बिल्कुल सटीक नहीं। यह योजना बनाने के लिए एक अंदाज़न औसत है, कोई सटीक कन्वर्शन नहीं, और असली फैट लॉस शरीर की बनावट के हिसाब से हर व्यक्ति में थोड़ा अलग होता है, इसलिए इससे निकाला गया कोई भी अनुमान एक अंदाज़ा मानें, गारंटी नहीं।' },
+    ],
+    bodyfat: [
+      { q: 'US नेवी विधि कितनी सटीक है?', a: 'यह ज़्यादातर शरीर के प्रकारों के लिए एक उचित अनुमान देती है, आमतौर पर DEXA जैसी ज़्यादा सटीक विधियों से कुछ प्रतिशत अंकों के भीतर। असामान्य शरीर आकार या बेहद कम या ज़्यादा बॉडी फैट वाले लोगों के लिए यह कम सटीक होती है।' },
+      { q: 'मुझे ठीक कहां माप लेना चाहिए?', a: 'गर्दन को एडम्स ऐपल से थोड़ा नीचे, कमर को सबसे पतले हिस्से पर (या अगर कोई साफ़ पतला हिस्सा न हो तो नाभि के पास), और महिलाओं के लिए कूल्हे को सबसे चौड़े हिस्से पर मापें। टेप को कसकर लेकिन त्वचा को दबाए बिना रखें।' },
+      { q: 'महिलाओं के लिए एक अतिरिक्त माप क्यों है?', a: 'यह फ़ॉर्मूला इस बात को ध्यान में रखता है कि पुरुषों और महिलाओं में फैट जमा होने का तरीका अलग होता है। कूल्हे का माप जोड़ने से उस पैटर्न की भरपाई होती है जिसे अकेले गर्दन और कमर ज़्यादातर महिलाओं के लिए कम आंकते।' },
     ],
     loan: [
       { q: 'चक्रवृद्धि ब्याज क्या है?', a: 'हर अवधि में अर्जित ब्याज को मूलधन में जोड़ दिया जाता है, जिससे आपको मूलधन और पिछले ब्याज दोनों पर ब्याज मिलता है।' },
@@ -497,7 +542,7 @@ export const faqContent: Record<string, ToolFaqs> = {
     bmi: [
       { q: 'Apakah BMI akurat untuk orang berotot atau atletis?', a: 'Kurang akurat. BMI tidak bisa membedakan otot dari lemak, jadi orang yang berotot bisa saja tercatat sebagai kelebihan berat badan meski lemak tubuhnya rendah. Lihat batasan di atas untuk penjelasan lebih lanjut.' },
       { q: 'Seberapa sering saya harus memeriksa BMI saya?', a: 'Bagi kebanyakan orang, memeriksa setiap beberapa bulan sudah cukup untuk melihat tren. BMI berubah secara perlahan, dan pemeriksaan harian kebanyakan mencerminkan perubahan berat air, bukan perubahan yang sebenarnya.' },
-      { q: 'Apa perbedaan antara BMI dan persentase lemak tubuh?', a: 'BMI adalah rasio antara berat dan tinggi badan, dan tidak menjelaskan apa yang menyusun berat tersebut. Persentase lemak tubuh mengukur proporsi lemak yang sebenarnya dibandingkan massa tanpa lemak, dan lebih akurat, tetapi memerlukan alat lain untuk memperkirakannya.' },
+      { q: 'Apa perbedaan antara BMI dan persentase lemak tubuh?', a: 'BMI adalah rasio antara berat dan tinggi badan, dan tidak menjelaskan apa yang menyusun berat tersebut. Persentase lemak tubuh mengukur proporsi lemak yang sebenarnya dibandingkan massa tanpa lemak dan lebih akurat — coba Kalkulator Lemak Tubuh kami untuk perkiraan berdasarkan ukuran tubuh.' },
     ],
     tdee: [
       { q: 'Seberapa akurat TDEE?', a: 'Ini perkiraan yang cukup baik, bukan pengukuran yang pasti. Metabolisme setiap orang bisa berbeda sekitar 10 hingga 15%, jadi lihat bagian keterbatasan di atas untuk cara menyesuaikannya dengan hasilmu sendiri.' },
@@ -513,6 +558,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Kenapa ini butuh TDEE saya lebih dulu?', a: 'Karena target kalori hanya masuk akal jika dibandingkan dengan suatu dasar. Tanpa mengetahui kira-kira berapa banyak kalori yang kamu bakar dalam sehari, angka seperti 1,800 kkal bisa jadi defisit bagi satu orang dan surplus bagi orang lain.' },
       { q: 'Target mana yang sebaiknya saya pilih kalau belum yakin?', a: 'Mulailah dengan mempertahankan berat badan atau defisit ringan. Defisit agresif menurunkan berat badan lebih cepat di atas kertas, tetapi lebih sulit dipertahankan dan lebih berisiko mengurangi massa otot selain lemak, jadi lebih cocok untuk dorongan singkat dan terencana daripada rencana jangka panjang.' },
       { q: 'Apakah 1 kg benar-benar sama dengan tepat 7,700 kkal?', a: 'Tidak persis. Ini adalah rata-rata perkiraan yang digunakan untuk perencanaan, bukan konversi yang presisi, dan penurunan lemak sebenarnya sedikit bervariasi antar orang tergantung komposisi tubuh, jadi anggap perkiraan apa pun darinya sebagai estimasi, bukan jaminan.' },
+    ],
+    bodyfat: [
+      { q: 'Seberapa akurat metode Angkatan Laut AS ini?', a: 'Ini memberikan perkiraan yang wajar untuk sebagian besar bentuk tubuh, biasanya hanya berbeda beberapa poin persentase dari metode yang lebih presisi seperti DEXA. Metode ini cenderung kurang akurat untuk bentuk tubuh yang tidak biasa atau tingkat lemak tubuh yang sangat rendah atau sangat tinggi.' },
+      { q: 'Tepatnya di mana saya harus mengukur?', a: 'Ukur leher tepat di bawah jakun, pinggang di titik paling sempit (atau di sekitar pusar jika tidak ada titik yang jelas), dan untuk wanita, pinggul di titik paling lebar. Jaga agar pita pengukur pas tapi tidak menekan kulit.' },
+      { q: 'Kenapa ada ukuran tambahan untuk wanita?', a: 'Rumus ini memperhitungkan bahwa distribusi lemak berbeda antara pria dan wanita. Menambahkan ukuran pinggul mengoreksi pola yang jika hanya mengandalkan leher dan pinggang akan meremehkan hasil untuk sebagian besar wanita.' },
     ],
     loan: [
       { q: 'Apa itu bunga berbunga?', a: 'Bunga yang diperoleh setiap periode ditambahkan ke saldo, sehingga kamu mendapatkan bunga dari jumlah awal maupun bunga sebelumnya.' },

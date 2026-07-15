@@ -337,6 +337,15 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
+.calc-error {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--signal);
+  border-radius: var(--radius);
+  color: var(--signal);
+  font-size: 0.88rem;
+}
+
 /* --- Ad slot --- */
 .ad-slot {
   border: 1px dashed var(--line-faint);
