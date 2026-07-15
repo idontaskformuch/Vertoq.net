@@ -47,6 +47,11 @@ const t = translations[lang as keyof typeof translations];
         <p>{t.home.bmrCardDesc}</p>
         <span class="go">→</span>
       </a>
+      <a class="card" href={`/${lang}/calorie/`} style="display:block">
+        <h3>{t.home.calorieCardTitle}</h3>
+        <p>{t.home.calorieCardDesc}</p>
+        <span class="go">→</span>
+      </a>
     </div>
   </section>
 

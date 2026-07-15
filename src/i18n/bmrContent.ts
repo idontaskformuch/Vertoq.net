@@ -17,6 +17,8 @@ export interface BmrContent {
     bmiDescription: string;
     tdeeLinkText: string;
     tdeeDescription: string;
+    calorieLinkText: string;
+    calorieDescription: string;
   };
   resultCta: { text: string; linkText: string };
 }
@@ -50,6 +52,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— se hur din vikt och längd förhåller sig till standardintervallen för BMI.`,
       tdeeLinkText: `TDEE-kalkylator`,
       tdeeDescription: `— omvandla den här vilosiffran till ditt fullständiga dagliga kaloribehov genom att lägga till din aktivitetsnivå.`,
+      calorieLinkText: `Kalorikalkylator`,
+      calorieDescription: `— omvandla dina siffror till ett dagligt kaloribehov för viktnedgång, viktuppgång eller bibehållen vikt.`,
     },
     resultCta: {
       text: `Det här är din vilosiffra.`,
@@ -85,6 +89,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— see how your weight and height compare to standard BMI ranges.`,
       tdeeLinkText: `TDEE Calculator`,
       tdeeDescription: `— turn this resting number into your full daily calorie needs by adding your activity level.`,
+      calorieLinkText: `Calorie Calculator`,
+      calorieDescription: `— turn your numbers into a daily calorie target for losing, gaining, or maintaining weight.`,
     },
     resultCta: {
       text: `This is your resting number.`,
@@ -120,6 +126,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— veja como seu peso e altura se comparam às faixas padrão de IMC.`,
       tdeeLinkText: `Calculadora de TDEE`,
       tdeeDescription: `— transforme esse número de repouso na sua necessidade calórica diária completa, somando seu nível de atividade.`,
+      calorieLinkText: `Calculadora de Calorias`,
+      calorieDescription: `— transforme seus números em uma meta calórica diária para perder, ganhar ou manter peso.`,
     },
     resultCta: {
       text: `Esse é o seu número de repouso.`,
@@ -155,6 +163,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— comprueba cómo se comparan tu peso y estatura con los rangos estándar de IMC.`,
       tdeeLinkText: `Calculadora de TDEE`,
       tdeeDescription: `— convierte esta cifra de reposo en tu necesidad calórica diaria completa sumando tu nivel de actividad.`,
+      calorieLinkText: `Calculadora de Calorías`,
+      calorieDescription: `— convierte tus cifras en un objetivo calórico diario para perder, ganar o mantener peso.`,
     },
     resultCta: {
       text: `Esta es tu cifra de reposo.`,
@@ -190,6 +200,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— sieh, wie dein Gewicht und deine Größe im Vergleich zu den Standard-BMI-Bereichen stehen.`,
       tdeeLinkText: `TDEE-Rechner`,
       tdeeDescription: `— mach aus dieser Ruhezahl deinen vollständigen täglichen Kalorienbedarf, indem du dein Aktivitätslevel hinzufügst.`,
+      calorieLinkText: `Kalorienrechner`,
+      calorieDescription: `— verwandle deine Werte in ein tägliches Kalorienziel zum Abnehmen, Zunehmen oder Halten.`,
     },
     resultCta: {
       text: `Das ist deine Ruhezahl.`,
@@ -225,6 +237,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— 体重と身長が標準的なBMI範囲とどう比較されるか確認できます。`,
       tdeeLinkText: `TDEE計算機`,
       tdeeDescription: `— 活動レベルを加えて、この安静時の数値を1日の総必要カロリーに変換できます。`,
+      calorieLinkText: `カロリー計算機`,
+      calorieDescription: `— あなたの数値を、減量・増量・維持のための1日の目標カロリーに変換できます。`,
     },
     resultCta: {
       text: `これはあなたの安静時の数値です。`,
@@ -260,6 +274,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— 看看你的体重和身高与标准BMI范围相比如何。`,
       tdeeLinkText: `TDEE计算器`,
       tdeeDescription: `— 加上你的活动水平，把这个静息数值转化为完整的每日热量需求。`,
+      calorieLinkText: `热量计算器`,
+      calorieDescription: `— 把你的数值转化为减重、增重或维持体重所需的每日热量目标。`,
     },
     resultCta: {
       text: `这是你的静息热量。`,
@@ -295,6 +311,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— 체중과 키가 표준 BMI 범위와 어떻게 비교되는지 확인해 보세요.`,
       tdeeLinkText: `TDEE 계산기`,
       tdeeDescription: `— 활동 수준을 더해 이 휴식 수치를 전체 일일 칼로리 필요량으로 바꿔보세요.`,
+      calorieLinkText: `칼로리 계산기`,
+      calorieDescription: `— 당신의 수치를 체중 감량, 증량, 유지를 위한 일일 칼로리 목표로 바꿔보세요.`,
     },
     resultCta: {
       text: `이것은 당신의 휴식 칼로리입니다.`,
@@ -330,6 +348,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— देखें कि आपका वज़न और लंबाई मानक BMI सीमाओं से कैसे तुलना करते हैं।`,
       tdeeLinkText: `TDEE कैलकुलेटर`,
       tdeeDescription: `— अपनी गतिविधि स्तर जोड़कर इस आराम वाली कैलोरी को अपनी पूरी दैनिक कैलोरी ज़रूरत में बदलें।`,
+      calorieLinkText: `कैलोरी कैलकुलेटर`,
+      calorieDescription: `— अपने आंकड़ों को वज़न घटाने, बढ़ाने या बनाए रखने के लिए दैनिक कैलोरी लक्ष्य में बदलें।`,
     },
     resultCta: {
       text: `यह आपकी आराम वाली कैलोरी है।`,
@@ -365,6 +385,8 @@ export const bmrContent: Record<string, BmrContent> = {
       bmiDescription: `— lihat bagaimana berat dan tinggi badanmu dibandingkan dengan rentang BMI standar.`,
       tdeeLinkText: `Kalkulator TDEE`,
       tdeeDescription: `— ubah angka istirahat ini menjadi kebutuhan kalori harian lengkap dengan menambahkan tingkat aktivitasmu.`,
+      calorieLinkText: `Kalkulator Kalori`,
+      calorieDescription: `— ubah angka-angkamu menjadi target kalori harian untuk menurunkan, menambah, atau mempertahankan berat badan.`,
     },
     resultCta: {
       text: `Ini adalah angka istirahatmu.`,

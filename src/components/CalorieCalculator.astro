@@ -1,0 +1,116 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const tt = translations[lang as keyof typeof translations].tdee;
+const t = translations[lang as keyof typeof translations].calorie;
+const activityLevels = JSON.stringify(tt.activityLevels);
+const goals = JSON.stringify(t.goals);
+---
+<div class="converter" id="calorie-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="calorie-weight">{tt.weightLabel}</label>
+      <input id="calorie-weight" type="number" value="70" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="calorie-height">{tt.heightLabel}</label>
+      <input id="calorie-height" type="number" value="175" min="0" />
+    </div>
+  </div>
+
+  <div class="conv-grid" style="margin-top:14px">
+    <div class="field">
+      <label for="calorie-age">{tt.ageLabel}</label>
+      <input id="calorie-age" type="number" value="30" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="calorie-sex">{tt.sexLabel}</label>
+      <select id="calorie-sex">
+        <option value="male">{tt.male}</option>
+        <option value="female">{tt.female}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field" style="margin-top:14px">
+    <label for="calorie-activity">{tt.activityLabel}</label>
+    <select id="calorie-activity"></select>
+  </div>
+
+  <div class="field" style="margin-top:14px">
+    <label for="calorie-goal">{t.goalLabel}</label>
+    <select id="calorie-goal"></select>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="calorie-result">—</span>
+    <span class="unit">kcal</span>
+  </div>
+</div>
+
+<script define:vars={{ activityLevels, goals }}>
+  const levels = JSON.parse(activityLevels);
+  const goalOptions = JSON.parse(goals);
+  const multipliers = { sedentary: 1.2, light: 1.375, moderate: 1.55, active: 1.725, veryActive: 1.9 };
+  const adjustments = { maintain: 0, mildDeficit: -500, aggressiveDeficit: -750, leanBulk: 375 };
+
+  const weightEl = document.getElementById('calorie-weight');
+  const heightEl = document.getElementById('calorie-height');
+  const ageEl = document.getElementById('calorie-age');
+  const sexEl = document.getElementById('calorie-sex');
+  const activityEl = document.getElementById('calorie-activity');
+  const goalEl = document.getElementById('calorie-goal');
+  const resultEl = document.getElementById('calorie-result');
+
+  Object.keys(levels).forEach((key) => activityEl.add(new Option(levels[key], key)));
+  activityEl.value = 'light';
+
+  Object.keys(goalOptions).forEach((key) => goalEl.add(new Option(goalOptions[key], key)));
+  goalEl.value = 'maintain';
+
+  function calc() {
+    const weight = parseFloat(weightEl.value);
+    const height = parseFloat(heightEl.value);
+    const age = parseFloat(ageEl.value);
+    if (isNaN(weight) || isNaN(height) || isNaN(age) || weight <= 0 || height <= 0 || age <= 0) {
+      resultEl.textContent = '—';
+      return;
+    }
+
+    // Mifflin St Jeor, samma som TdeeCalculator
+    let bmr = 10 * weight + 6.25 * height - 5 * age;
+    bmr += sexEl.value === 'male' ? 5 : -161;
+
+    const multiplier = multipliers[activityEl.value] || 1.2;
+    const tdee = bmr * multiplier;
+    const adjustment = adjustments[goalEl.value] || 0;
+
+    resultEl.textContent = Math.round(tdee + adjustment).toString();
+  }
+
+  [weightEl, heightEl, ageEl, sexEl, activityEl, goalEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

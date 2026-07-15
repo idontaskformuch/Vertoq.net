@@ -12,7 +12,7 @@ export const faqHeadings: Record<string, string> = {
 };
 
 type FaqItem = { q: string; a: string };
-type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
+type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; calorie: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
 
 export const faqContent: Record<string, ToolFaqs> = {
   sv: {
@@ -49,6 +49,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Är BMR samma för alla vid samma vikt?', a: 'Nej. Ålder, kön och muskelmassa påverkar alla värdet, vilket är därför formeln tar hänsyn till ålder och kön, och varför två personer med samma vikt kan ha märkbart olika BMR.' },
       { q: 'Bör jag äta exakt mitt BMR?', a: 'Nej, att äta på eller under ditt BMR under längre perioder är inget säkert mål. Kroppen behöver mer än så bara för att ta sig igenom en vanlig dag, så använd TDEE-kalkylatorn för ett realistiskt dagligt kaloritak som tar hänsyn till din aktivitetsnivå.' },
       { q: 'Kan jag höja mitt BMR?', a: 'Till viss del: att bygga muskler höjer det, eftersom muskler förbränner mer energi i vila än fett. Den åldersrelaterade minskningen ligger till stor del utanför din kontroll, och det finns ingen tillförlitlig genväg utöver konsekvent styrketräning och tillräckligt med protein över tid.' },
+    ],
+    calorie: [
+      { q: 'Varför behövs mitt TDEE först?', a: 'Eftersom ett kalorimål bara är meningsfullt i förhållande till en baslinje. Utan att veta ungefär hur många kalorier du förbränner per dag kan en siffra som 1,800 kcal vara ett underskott för en person och ett överskott för en annan.' },
+      { q: 'Vilket mål ska jag välja om jag är osäker?', a: 'Börja med bibehåll vikten eller måttligt underskott. Aggressivt underskott ger snabbare viktnedgång på pappret, men det är svårare att hålla i och tar oftare med sig muskler tillsammans med fettet, så det passar bättre som en kort, medveten push än som en långsiktig plan.' },
+      { q: 'Är 1 kg verkligen exakt 7,700 kcal?', a: 'Inte exakt. Det är ett ungefärligt genomsnitt som används för planering snarare än en exakt omräkning, och verklig fettförlust varierar något mellan olika personer beroende på kroppssammansättning, så se alla prognoser från det som en uppskattning, inte en garanti.' },
     ],
     loan: [
       { q: 'Vad är ränta-på-ränta?', a: 'Räntan du tjänar läggs till kapitalet, så du tjänar ränta på både startbeloppet och tidigare intjänad ränta.' },
@@ -96,6 +101,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Should I eat exactly my BMR?', a: "No, eating at or below your BMR for long periods isn't a safe target. Your body needs more than that just to get through a normal day, so use the TDEE Calculator to get a realistic daily calorie number that includes your activity level." },
       { q: 'Can I increase my BMR?', a: "To some extent: building muscle raises it, since muscle burns more energy at rest than fat does. Age-related decline is largely outside your control, and there's no reliable shortcut beyond consistent strength training and adequate protein over time." },
     ],
+    calorie: [
+      { q: 'Why does this need my TDEE first?', a: 'Because a calorie target only makes sense relative to a baseline. Without knowing roughly how many calories you burn in a day, a number like 1,800 kcal could be a deficit for one person and a surplus for another.' },
+      { q: 'Which goal should I pick if I\'m not sure?', a: "Start with maintain or mild deficit. Aggressive deficit works faster on paper, but it's harder to sustain and more likely to cost muscle along with fat, so it fits a short, deliberate push better than an ongoing plan." },
+      { q: 'Is 1 kg really equal to exactly 7,700 kcal?', a: 'Not exactly. It\'s a rough average used for planning rather than a precise conversion, and real fat loss varies somewhat between people depending on body composition, so treat any projection from it as an estimate, not a guarantee.' },
+    ],
     loan: [
       { q: 'What is compound interest?', a: 'The interest you earn each period is added to your balance, so you earn interest on both your starting amount and past interest.' },
       { q: 'How often is interest calculated?', a: 'Monthly, which is common for savings accounts and funds, giving a realistic picture of growth over time.' },
@@ -141,6 +151,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'A TMB é a mesma para todos com o mesmo peso?', a: 'Não. Idade, sexo e massa muscular influenciam o valor, por isso a fórmula considera idade e sexo, e por isso duas pessoas com o mesmo peso podem ter uma TMB bem diferente.' },
       { q: 'Devo comer exatamente minha TMB?', a: 'Não, comer na sua TMB ou abaixo dela por longos períodos não é uma meta segura. Seu corpo precisa de mais do que isso só para passar um dia normal, então use a Calculadora de TDEE para obter um número diário de calorias realista que inclua seu nível de atividade.' },
       { q: 'Posso aumentar minha TMB?', a: 'Até certo ponto: ganhar massa muscular a aumenta, já que o músculo queima mais energia em repouso do que a gordura. O declínio relacionado à idade está em grande parte fora do seu controle, e não existe atalho confiável além de treino de força consistente e proteína suficiente ao longo do tempo.' },
+    ],
+    calorie: [
+      { q: 'Por que isso precisa do meu TDEE primeiro?', a: 'Porque uma meta calórica só faz sentido em relação a uma base. Sem saber aproximadamente quantas calorias você queima por dia, um número como 1,800 kcal pode ser um déficit para uma pessoa e um superávit para outra.' },
+      { q: 'Qual objetivo devo escolher se não tenho certeza?', a: 'Comece com manter o peso ou déficit leve. O déficit agressivo emagrece mais rápido no papel, mas é mais difícil de manter e mais propenso a custar músculo junto com a gordura, então serve melhor para um esforço curto e deliberado do que para um plano contínuo.' },
+      { q: '1 kg é realmente igual a exatamente 7,700 kcal?', a: 'Não exatamente. É uma média aproximada usada para planejamento, não uma conversão precisa, e a perda de gordura real varia um pouco entre as pessoas de acordo com a composição corporal, então trate qualquer projeção feita com ela como uma estimativa, não uma garantia.' },
     ],
     loan: [
       { q: 'O que são juros compostos?', a: 'Os juros ganhos em cada período são somados ao saldo, então você ganha juros sobre o valor inicial e sobre os juros anteriores.' },
@@ -188,6 +203,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Debo comer exactamente mi TMB?', a: 'No, comer en tu TMB o por debajo de ella durante mucho tiempo no es una meta segura. Tu cuerpo necesita más que eso solo para pasar un día normal, así que usa la Calculadora de TDEE para obtener una cifra diaria de calorías realista que incluya tu nivel de actividad.' },
       { q: '¿Puedo aumentar mi TMB?', a: 'Hasta cierto punto: ganar masa muscular la aumenta, ya que el músculo quema más energía en reposo que la grasa. El descenso relacionado con la edad está en gran parte fuera de tu control, y no hay ningún atajo fiable más allá de entrenamiento de fuerza constante y suficiente proteína a lo largo del tiempo.' },
     ],
+    calorie: [
+      { q: '¿Por qué esto necesita primero mi TDEE?', a: 'Porque un objetivo calórico solo tiene sentido en relación con una base. Sin saber aproximadamente cuántas calorías quemas al día, una cifra como 1,800 kcal podría ser un déficit para una persona y un superávit para otra.' },
+      { q: '¿Qué objetivo debo elegir si no estoy seguro?', a: 'Empieza con mantener el peso o déficit leve. El déficit agresivo adelgaza más rápido sobre el papel, pero es más difícil de mantener y más probable que cueste músculo además de grasa, así que encaja mejor con un empujón corto y deliberado que con un plan continuo.' },
+      { q: '¿1 kg equivale realmente a exactamente 7,700 kcal?', a: 'No exactamente. Es un promedio aproximado usado para planificar, no una conversión precisa, y la pérdida de grasa real varía algo entre personas según la composición corporal, así que trata cualquier proyección basada en ella como una estimación, no una garantía.' },
+    ],
     loan: [
       { q: '¿Qué es el interés compuesto?', a: 'El interés que ganas cada periodo se suma al saldo, así ganas interés tanto sobre el monto inicial como sobre el interés anterior.' },
       { q: '¿Con qué frecuencia se calcula el interés?', a: 'Mensualmente, algo común en cuentas de ahorro y fondos, lo que da una imagen realista del crecimiento con el tiempo.' },
@@ -233,6 +253,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Ist der Grundumsatz bei gleichem Gewicht für alle gleich?', a: 'Nein. Alter, Geschlecht und Muskelmasse beeinflussen ihn alle, deshalb berücksichtigt die Formel Alter und Geschlecht, und deshalb können zwei Personen mit demselben Gewicht einen deutlich unterschiedlichen Grundumsatz haben.' },
       { q: 'Sollte ich genau meinen Grundumsatz essen?', a: 'Nein, dauerhaft auf oder unter dem Grundumsatz zu essen ist kein sicheres Ziel. Dein Körper braucht mehr als das, nur um durch einen normalen Tag zu kommen, nutze also den TDEE-Rechner für eine realistische tägliche Kalorienzahl inklusive deines Aktivitätslevels.' },
       { q: 'Kann ich meinen Grundumsatz erhöhen?', a: 'Bis zu einem gewissen Grad: Muskelaufbau erhöht ihn, weil Muskeln in Ruhe mehr Energie verbrennen als Fett. Der altersbedingte Rückgang liegt größtenteils außerhalb deiner Kontrolle, und es gibt keine verlässliche Abkürzung außer konsequentem Krafttraining und ausreichend Protein über die Zeit.' },
+    ],
+    calorie: [
+      { q: 'Warum wird dafür zuerst mein TDEE benötigt?', a: 'Weil ein Kalorienziel nur im Verhältnis zu einer Ausgangsbasis Sinn ergibt. Ohne zu wissen, wie viele Kalorien du ungefähr am Tag verbrauchst, könnte eine Zahl wie 1,800 kcal für die eine Person ein Defizit und für eine andere ein Überschuss sein.' },
+      { q: 'Welches Ziel sollte ich wählen, wenn ich mir nicht sicher bin?', a: 'Beginne mit Gewicht halten oder leichtem Defizit. Ein aggressives Defizit lässt das Gewicht auf dem Papier schneller sinken, ist aber schwerer durchzuhalten und geht eher auch auf Kosten von Muskelmasse statt nur Fett, daher passt es besser zu einem kurzen, bewussten Push als zu einem dauerhaften Plan.' },
+      { q: 'Entspricht 1 kg wirklich genau 7,700 kcal?', a: 'Nicht genau. Es ist ein grober Durchschnittswert für die Planung, keine präzise Umrechnung, und der tatsächliche Fettabbau variiert je nach Körperzusammensetzung etwas von Person zu Person, daher solltest du jede daraus abgeleitete Prognose als Schätzung behandeln, nicht als Garantie.' },
     ],
     loan: [
       { q: 'Was ist Zinseszins?', a: 'Die Zinsen, die du jede Periode verdienst, werden dem Saldo hinzugefügt, sodass du Zinsen auf den Startbetrag und frühere Zinsen verdienst.' },
@@ -280,6 +305,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '自分のBMRぴったりの量を食べるべきですか？', a: 'いいえ、長期間BMR以下または同程度の量しか食べないのは安全な目標ではありません。普通の1日を過ごすだけでもそれ以上のカロリーが必要なので、活動レベルを考慮した現実的な1日の必要カロリーを知るにはTDEE計算機を使ってください。' },
       { q: 'BMRを上げることはできますか？', a: 'ある程度は可能です。筋肉は安静時でも脂肪より多くのエネルギーを消費するため、筋肉をつけるとBMRは上がります。加齢による低下の多くは自分でコントロールできませんが、継続的な筋力トレーニングと十分なタンパク質摂取以外に確実な近道はありません。' },
     ],
+    calorie: [
+      { q: 'なぜ最初にTDEEが必要なのですか？', a: 'カロリー目標は基準値との比較で初めて意味を持つからです。1日に燃焼するおおよそのカロリーが分からなければ、1,800kcalという数字も、ある人にとっては不足量になり、別の人にとっては余剰量になり得ます。' },
+      { q: '迷ったらどの目標を選べばいいですか？', a: '維持または軽度のカロリー不足から始めてください。積極的なカロリー不足は数字の上では速く減量できますが、続けるのが難しく、脂肪と一緒に筋肉も失いやすいため、長期的な計画よりも短期集中の取り組みに向いています。' },
+      { q: '1kgは本当にちょうど7,700kcalに相当するのですか？', a: '正確にはそうではありません。これは計画のためのおおまかな平均値であり、正確な換算式ではなく、実際の脂肪減少は体組成によって人によってある程度異なるため、そこから導いた予測はあくまで目安として捉え、保証と考えないでください。' },
+    ],
     loan: [
       { q: '複利とは何ですか？', a: '各期間で得た利息が元本に加算され、元本と過去の利息の両方に利息がつく仕組みです。' },
       { q: '利息はどのくらいの頻度で計算されますか？', a: '毎月計算され、預金や投資信託で一般的な方式で、時間とともに増える様子を現実的に示します。' },
@@ -325,6 +355,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '体重相同的人BMR都一样吗？', a: '不一样。年龄、性别和肌肉量都会影响BMR，这也是公式中要考虑年龄和性别的原因，也是为什么体重相同的两个人BMR可能相差不小。' },
       { q: '我应该刚好摄入等于BMR的热量吗？', a: '不需要，长期只摄入等于或低于BMR的热量并不是一个安全的目标。你的身体即使只是度过普通的一天，也需要比这更多的热量，所以可以用TDEE计算器获得一个把活动水平也算进去的、更现实的每日热量数字。' },
       { q: '我能提高自己的BMR吗？', a: '在一定程度上可以：增加肌肉量能提高BMR，因为肌肉在静息状态下消耗的能量比脂肪多。随年龄增长而出现的下降大多不受你控制，除了持续的力量训练和长期摄入足够的蛋白质之外，没有什么可靠的捷径。' },
+    ],
+    calorie: [
+      { q: '为什么需要先知道我的TDEE？', a: '因为热量目标只有相对于一个基准才有意义。如果不知道自己每天大致消耗多少热量，像1,800千卡这样的数字，对一个人来说可能是热量缺口，对另一个人来说却可能是热量盈余。' },
+      { q: '如果不确定，应该选哪个目标？', a: '可以先从维持体重或轻度热量缺口开始。大幅热量缺口在数字上减重更快，但更难坚持，也更容易在减脂的同时流失肌肉，所以它更适合短期、有计划的冲刺，而不是长期方案。' },
+      { q: '1公斤真的正好等于7,700千卡吗？', a: '并不完全精确。这只是一个用于规划的大致平均值，而不是精确的换算，实际的脂肪减少会因体成分不同而因人而异，所以任何基于它得出的预测都应视为估算，而不是保证。' },
     ],
     loan: [
       { q: '什么是复利？', a: '每期获得的利息会计入本金，因此你既能从本金又能从之前的利息中获得利息。' },
@@ -372,6 +407,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '제 BMR만큼만 먹어야 하나요?', a: '아니요, 장기간 BMR 이하 또는 그 정도로만 먹는 것은 안전한 목표가 아닙니다. 평범한 하루를 보내는 데도 그보다 더 많은 칼로리가 필요하니, 활동 수준까지 반영한 현실적인 일일 칼로리 수치를 알고 싶다면 TDEE 계산기를 사용하세요.' },
       { q: 'BMR을 높일 수 있나요?', a: '어느 정도는 가능합니다. 근육은 휴식 중에도 지방보다 더 많은 에너지를 소비하므로 근육을 키우면 BMR이 올라갑니다. 나이가 들면서 나타나는 감소는 대부분 스스로 조절하기 어려우며, 꾸준한 근력 운동과 충분한 단백질 섭취 외에는 확실한 지름길이 없습니다.' },
     ],
+    calorie: [
+      { q: '왜 먼저 제 TDEE가 필요한가요?', a: '칼로리 목표는 기준선과 비교했을 때만 의미가 있기 때문입니다. 하루에 대략 얼마나 많은 칼로리를 소비하는지 모르면, 1,800kcal 같은 수치도 어떤 사람에게는 결손이고 다른 사람에게는 잉여일 수 있습니다.' },
+      { q: '잘 모르겠다면 어떤 목표를 선택해야 하나요?', a: '유지 또는 가벼운 칼로리 결손부터 시작하세요. 적극적인 칼로리 결손은 수치상으로는 더 빨리 체중을 줄이지만 유지하기 어렵고 지방과 함께 근육도 잃기 쉬워서, 장기 계획보다는 짧고 의도적인 집중 기간에 더 적합합니다.' },
+      { q: '1kg이 정말 정확히 7,700kcal와 같나요?', a: '정확히는 아닙니다. 이는 계획을 위한 대략적인 평균값이지 정확한 환산값이 아니며, 실제 지방 감소는 체구성에 따라 사람마다 어느 정도 다르므로, 이를 바탕으로 한 예측은 보장이 아니라 추정치로 받아들이세요.' },
+    ],
     loan: [
       { q: '복리란 무엇인가요?', a: '매 기간 얻은 이자가 잔액에 더해져, 원금과 이전 이자 모두에 대해 이자를 받게 됩니다.' },
       { q: '이자는 얼마나 자주 계산되나요?', a: '매월 계산되며, 이는 저축 계좌나 펀드에서 일반적이며 시간에 따른 성장을 현실적으로 보여줍니다.' },
@@ -418,6 +458,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'क्या मुझे बिल्कुल अपने BMR जितना ही खाना चाहिए?', a: 'नहीं, लंबे समय तक अपने BMR के बराबर या उससे कम खाना कोई सुरक्षित लक्ष्य नहीं है। एक सामान्य दिन बिताने के लिए भी आपके शरीर को इससे ज़्यादा कैलोरी चाहिए होती है, इसलिए अपनी गतिविधि स्तर को शामिल करते हुए एक असली दैनिक कैलोरी आंकड़ा जानने के लिए TDEE कैलकुलेटर का उपयोग करें।' },
       { q: 'क्या मैं अपना BMR बढ़ा सकता हूँ?', a: 'कुछ हद तक: मांसपेशियां बनाने से यह बढ़ता है, क्योंकि मांसपेशियां आराम की अवस्था में भी फैट से ज़्यादा ऊर्जा खर्च करती हैं। उम्र के साथ होने वाली गिरावट काफ़ी हद तक आपके नियंत्रण से बाहर होती है, और लगातार स्ट्रेंथ ट्रेनिंग और पर्याप्त प्रोटीन के अलावा कोई भरोसेमंद शॉर्टकट नहीं है।' },
     ],
+    calorie: [
+      { q: 'इसके लिए पहले मेरा TDEE क्यों चाहिए?', a: 'क्योंकि कैलोरी लक्ष्य सिर्फ़ एक बेसलाइन के मुक़ाबले ही मायने रखता है। आप रोज़ाना लगभग कितनी कैलोरी खर्च करते हैं यह जाने बिना, 1,800 kcal जैसा आंकड़ा किसी एक व्यक्ति के लिए कमी हो सकता है और किसी दूसरे के लिए अतिरिक्त।' },
+      { q: 'अगर मुझे यक़ीन न हो तो कौन सा लक्ष्य चुनूं?', a: 'वज़न बनाए रखें या हल्की कैलोरी कमी से शुरू करें। ज़्यादा कैलोरी कमी कागज़ पर तेज़ी से वज़न घटाती है, लेकिन इसे बनाए रखना मुश्किल होता है और इससे फैट के साथ मांसपेशियां घटने की संभावना भी ज़्यादा रहती है, इसलिए यह लंबी योजना के बजाय छोटी, सोची-समझी पुश के लिए बेहतर है।' },
+      { q: 'क्या 1 kg वाकई ठीक 7,700 kcal के बराबर होता है?', a: 'बिल्कुल सटीक नहीं। यह योजना बनाने के लिए एक अंदाज़न औसत है, कोई सटीक कन्वर्शन नहीं, और असली फैट लॉस शरीर की बनावट के हिसाब से हर व्यक्ति में थोड़ा अलग होता है, इसलिए इससे निकाला गया कोई भी अनुमान एक अंदाज़ा मानें, गारंटी नहीं।' },
+    ],
     loan: [
       { q: 'चक्रवृद्धि ब्याज क्या है?', a: 'हर अवधि में अर्जित ब्याज को मूलधन में जोड़ दिया जाता है, जिससे आपको मूलधन और पिछले ब्याज दोनों पर ब्याज मिलता है।' },
       { q: 'ब्याज की गणना कितनी बार होती है?', a: 'मासिक रूप से, जो बचत खातों और फंडों में सामान्य है और समय के साथ वृद्धि की एक यथार्थवादी तस्वीर देता है।' },
@@ -463,6 +508,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Apakah BMR sama untuk semua orang dengan berat badan yang sama?', a: 'Tidak. Usia, jenis kelamin, dan massa otot semuanya memengaruhi BMR, itulah sebabnya rumusnya memperhitungkan usia dan jenis kelamin, dan mengapa dua orang dengan berat badan sama bisa memiliki BMR yang cukup berbeda.' },
       { q: 'Haruskah saya makan tepat sesuai BMR saya?', a: 'Tidak, makan pada atau di bawah BMR-mu dalam jangka panjang bukan target yang aman. Tubuhmu membutuhkan lebih dari itu hanya untuk menjalani hari yang normal, jadi gunakan Kalkulator TDEE untuk mendapatkan angka kalori harian yang realistis dan sudah memperhitungkan tingkat aktivitasmu.' },
       { q: 'Bisakah saya meningkatkan BMR saya?', a: 'Sampai batas tertentu: membangun otot akan meningkatkannya, karena otot membakar lebih banyak energi saat istirahat dibandingkan lemak. Penurunan akibat usia sebagian besar di luar kendalimu, dan tidak ada jalan pintas yang benar-benar bisa diandalkan selain latihan kekuatan yang konsisten dan asupan protein yang cukup dari waktu ke waktu.' },
+    ],
+    calorie: [
+      { q: 'Kenapa ini butuh TDEE saya lebih dulu?', a: 'Karena target kalori hanya masuk akal jika dibandingkan dengan suatu dasar. Tanpa mengetahui kira-kira berapa banyak kalori yang kamu bakar dalam sehari, angka seperti 1,800 kkal bisa jadi defisit bagi satu orang dan surplus bagi orang lain.' },
+      { q: 'Target mana yang sebaiknya saya pilih kalau belum yakin?', a: 'Mulailah dengan mempertahankan berat badan atau defisit ringan. Defisit agresif menurunkan berat badan lebih cepat di atas kertas, tetapi lebih sulit dipertahankan dan lebih berisiko mengurangi massa otot selain lemak, jadi lebih cocok untuk dorongan singkat dan terencana daripada rencana jangka panjang.' },
+      { q: 'Apakah 1 kg benar-benar sama dengan tepat 7,700 kkal?', a: 'Tidak persis. Ini adalah rata-rata perkiraan yang digunakan untuk perencanaan, bukan konversi yang presisi, dan penurunan lemak sebenarnya sedikit bervariasi antar orang tergantung komposisi tubuh, jadi anggap perkiraan apa pun darinya sebagai estimasi, bukan jaminan.' },
     ],
     loan: [
       { q: 'Apa itu bunga berbunga?', a: 'Bunga yang diperoleh setiap periode ditambahkan ke saldo, sehingga kamu mendapatkan bunga dari jumlah awal maupun bunga sebelumnya.' },

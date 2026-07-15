@@ -22,7 +22,7 @@ export interface TdeeContent {
   };
   useCase: { heading: string; body: string };
   limitations: { heading: string; body: string };
-  related: { heading: string; linkText: string; description: string };
+  related: { heading: string; linkText: string; description: string; calorieLinkText: string; calorieDescription: string };
 }
 
 export const tdeeContent: Record<string, TdeeContent> = {
@@ -66,9 +66,11 @@ export const tdeeContent: Record<string, TdeeContent> = {
       body: `TDEE är en uppskattning, inte en mätning. Även med en träffsäker formel varierar den individuella ämnesomsättningen med ungefär 10 till 15 procent på grund av faktorer som genetik, muskelmassa och hormoner. Se siffran som en utgångspunkt och justera den utifrån hur din vikt faktiskt utvecklas över 2 till 3 veckor, snarare än att lita enbart på uppskattningen.`,
     },
     related: {
-      heading: `Relaterad kalkylator`,
+      heading: `Relaterade kalkylatorer`,
       linkText: `BMI-kalkylator`,
       description: `— se hur din vikt och längd förhåller sig till standardintervallen för BMI.`,
+      calorieLinkText: `Kalorikalkylator`,
+      calorieDescription: `— omvandla dina siffror till ett dagligt kaloribehov för viktnedgång, viktuppgång eller bibehållen vikt.`,
     },
   },
 
@@ -112,9 +114,11 @@ export const tdeeContent: Record<string, TdeeContent> = {
       body: `TDEE is an estimate, not a measurement. Even with an accurate formula, individual metabolism varies by roughly 10 to 15% due to factors like genetics, muscle mass, and hormones. Treat the number as a starting point, and adjust it based on how your weight actually trends over 2 to 3 weeks rather than relying on the estimate alone.`,
     },
     related: {
-      heading: `Related calculator`,
+      heading: `Related calculators`,
       linkText: `BMI Calculator`,
       description: `— see how your weight and height compare to standard BMI ranges.`,
+      calorieLinkText: `Calorie Calculator`,
+      calorieDescription: `— turn your numbers into a daily calorie target for losing, gaining, or maintaining weight.`,
     },
   },
 
@@ -158,9 +162,11 @@ export const tdeeContent: Record<string, TdeeContent> = {
       body: `O TDEE é uma estimativa, não uma medição. Mesmo com uma fórmula precisa, o metabolismo individual varia cerca de 10 a 15% devido a fatores como genética, massa muscular e hormônios. Use o número como ponto de partida e ajuste-o com base em como seu peso realmente evolui ao longo de 2 a 3 semanas, em vez de confiar apenas na estimativa.`,
     },
     related: {
-      heading: `Calculadora relacionada`,
+      heading: `Calculadoras relacionadas`,
       linkText: `Calculadora de IMC`,
       description: `— veja como seu peso e altura se comparam às faixas padrão de IMC.`,
+      calorieLinkText: `Calculadora de Calorias`,
+      calorieDescription: `— transforme seus números em uma meta calórica diária para perder, ganhar ou manter peso.`,
     },
   },
 
@@ -204,9 +210,11 @@ export const tdeeContent: Record<string, TdeeContent> = {
       body: `El TDEE es una estimación, no una medición. Incluso con una fórmula precisa, el metabolismo individual varía en torno a un 10 a 15% por factores como la genética, la masa muscular y las hormonas. Toma el número como punto de partida y ajústalo según cómo evolucione realmente tu peso a lo largo de 2 a 3 semanas, en lugar de confiar únicamente en la estimación.`,
     },
     related: {
-      heading: `Calculadora relacionada`,
+      heading: `Calculadoras relacionadas`,
       linkText: `Calculadora de IMC`,
       description: `— comprueba cómo se comparan tu peso y estatura con los rangos estándar de IMC.`,
+      calorieLinkText: `Calculadora de Calorías`,
+      calorieDescription: `— convierte tus cifras en un objetivo calórico diario para perder, ganar o mantener peso.`,
     },
   },
 
@@ -250,9 +258,11 @@ export const tdeeContent: Record<string, TdeeContent> = {
       body: `Der TDEE ist eine Schätzung, keine Messung. Selbst mit einer genauen Formel variiert der individuelle Stoffwechsel um etwa 10 bis 15 Prozent, bedingt durch Faktoren wie Genetik, Muskelmasse und Hormone. Behandle die Zahl als Ausgangspunkt und passe sie anhand deines tatsächlichen Gewichtsverlaufs über 2 bis 3 Wochen an, statt dich allein auf die Schätzung zu verlassen.`,
     },
     related: {
-      heading: `Verwandter Rechner`,
+      heading: `Verwandte Rechner`,
       linkText: `BMI-Rechner`,
       description: `— sieh, wie dein Gewicht und deine Größe im Vergleich zu den Standard-BMI-Bereichen stehen.`,
+      calorieLinkText: `Kalorienrechner`,
+      calorieDescription: `— verwandle deine Werte in ein tägliches Kalorienziel zum Abnehmen, Zunehmen oder Halten.`,
     },
   },
 
@@ -299,6 +309,8 @@ export const tdeeContent: Record<string, TdeeContent> = {
       heading: `関連する計算機`,
       linkText: `BMI計算機`,
       description: `— 体重と身長が標準的なBMI範囲とどう比較されるか確認できます。`,
+      calorieLinkText: `カロリー計算機`,
+      calorieDescription: `— あなたの数値を、減量・増量・維持のための1日の目標カロリーに変換できます。`,
     },
   },
 
@@ -345,6 +357,8 @@ export const tdeeContent: Record<string, TdeeContent> = {
       heading: `相关计算器`,
       linkText: `BMI计算器`,
       description: `— 看看你的体重和身高与标准BMI范围相比如何。`,
+      calorieLinkText: `热量计算器`,
+      calorieDescription: `— 把你的数值转化为减重、增重或维持体重所需的每日热量目标。`,
     },
   },
 
@@ -391,6 +405,8 @@ export const tdeeContent: Record<string, TdeeContent> = {
       heading: `관련 계산기`,
       linkText: `BMI 계산기`,
       description: `— 체중과 키가 표준 BMI 범위와 어떻게 비교되는지 확인해 보세요.`,
+      calorieLinkText: `칼로리 계산기`,
+      calorieDescription: `— 당신의 수치를 체중 감량, 증량, 유지를 위한 일일 칼로리 목표로 바꿔보세요.`,
     },
   },
 
@@ -437,6 +453,8 @@ export const tdeeContent: Record<string, TdeeContent> = {
       heading: `संबंधित कैलकुलेटर`,
       linkText: `BMI कैलकुलेटर`,
       description: `— देखें कि आपका वज़न और लंबाई मानक BMI सीमाओं से कैसे तुलना करते हैं।`,
+      calorieLinkText: `कैलोरी कैलकुलेटर`,
+      calorieDescription: `— अपने आंकड़ों को वज़न घटाने, बढ़ाने या बनाए रखने के लिए दैनिक कैलोरी लक्ष्य में बदलें।`,
     },
   },
 
@@ -483,6 +501,8 @@ export const tdeeContent: Record<string, TdeeContent> = {
       heading: `Kalkulator terkait`,
       linkText: `Kalkulator BMI`,
       description: `— lihat bagaimana berat dan tinggi badanmu dibandingkan dengan rentang BMI standar.`,
+      calorieLinkText: `Kalkulator Kalori`,
+      calorieDescription: `— ubah angka-angkamu menjadi target kalori harian untuk menurunkan, menambah, atau mempertahankan berat badan.`,
     },
   },
 };

@@ -73,9 +73,10 @@ const c = tdeeContent[lang as keyof typeof tdeeContent];
         <p>
           <a href={`/${lang}/bmi/`}>{c.related.linkText}</a> {c.related.description}
         </p>
+        <p>
+          <a href={`/${lang}/calorie/`}>{c.related.calorieLinkText}</a> {c.related.calorieDescription}
+        </p>
       </section>
-
-      {/* TODO: cross-link forward to Calorie Calculator once that page exists (build order per content-brief-fitness-cluster.md: TDEE → Calorie) */}
     </div>
   )}
 

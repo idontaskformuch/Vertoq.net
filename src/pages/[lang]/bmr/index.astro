@@ -56,9 +56,10 @@ const c = bmrContent[lang as keyof typeof bmrContent];
         <p>
           <a href={`/${lang}/tdee/`}>{c.related.tdeeLinkText}</a> {c.related.tdeeDescription}
         </p>
+        <p>
+          <a href={`/${lang}/calorie/`}>{c.related.calorieLinkText}</a> {c.related.calorieDescription}
+        </p>
       </section>
-
-      {/* TODO: cross-link forward to Calorie Calculator once that page exists (build order per content-brief-fitness-cluster.md: BMR → Calorie) */}
     </div>
   )}
 
