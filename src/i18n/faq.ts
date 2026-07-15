@@ -36,9 +36,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Kan jag räkna ut min ålder vid ett annat datum?', a: 'Ja, ändra fältet "Räkna fram till" för att se din ålder vid valfritt datum, dåtid eller framtid.' },
     ],
     bmi: [
-      { q: 'Vad är BMI och hur räknas det ut?', a: 'Vikt i kilogram delat med längd i meter i kvadrat, ett mått på kroppssammansättning.' },
-      { q: 'Vad betyder kategorierna?', a: 'De följer WHO:s standardgränser men tar inte hänsyn till muskelmassa, ålder eller kroppsbyggnad.' },
-      { q: 'Är BMI ett perfekt hälsomått?', a: 'Nej, det är ett screeningverktyg och bör ses som en utgångspunkt, rådfråga vårdpersonal vid frågor.' },
+      { q: 'Stämmer BMI för muskulösa eller vältränade personer?', a: 'Mindre bra. BMI skiljer inte på muskler och fett, så en muskulös person kan visas som överviktig trots låg fettprocent. Se begränsningarna ovan för mer om detta.' },
+      { q: 'Hur ofta bör jag mäta mitt BMI?', a: 'För de flesta räcker det att mäta var några månader för att se en trend. BMI förändras långsamt, och dagliga mätningar speglar mest vätskebalans, inte verklig förändring.' },
+      { q: 'Vad är skillnaden mellan BMI och kroppsfettprocent?', a: 'BMI är ett förhållande mellan vikt och längd och säger inget om vad vikten består av. Kroppsfettprocent mäter den faktiska andelen fett i förhållande till muskelmassa, och är mer exakt, men kräver andra mätmetoder för att uppskattas.' },
     ],
     tdee: [
       { q: 'Vad är skillnaden mellan basalmetabolism och TDEE?', a: 'Basalmetabolism (BMR) är kalorierna kroppen förbränner i vila. TDEE lägger till kalorierna du förbränner genom vardagsaktivitet och träning.' },
@@ -116,9 +116,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Posso calcular minha idade em outra data?', a: 'Sim, altere o campo "Calcular até" para ver sua idade em qualquer data, passada ou futura.' },
     ],
     bmi: [
-      { q: 'O que é IMC e como é calculado?', a: 'Peso em quilogramas dividido pela altura em metros ao quadrado, uma medida da composição corporal.' },
-      { q: 'O que significam as categorias?', a: 'Seguem os limites padrão da OMS, mas não consideram massa muscular, idade ou estrutura corporal.' },
-      { q: 'O IMC é uma medida perfeita de saúde?', a: 'Não, é uma ferramenta de triagem e deve ser vista como ponto de partida, consulte um profissional de saúde em caso de dúvidas.' },
+      { q: 'O IMC é preciso para pessoas musculosas ou atléticas?', a: 'Menos preciso. O IMC não diferencia músculo de gordura, então uma pessoa musculosa pode aparecer como acima do peso mesmo com baixo percentual de gordura. Veja as limitações acima para saber mais.' },
+      { q: 'Com que frequência devo verificar meu IMC?', a: 'Para a maioria das pessoas, a cada poucos meses já é suficiente para notar uma tendência. O IMC muda devagar, e verificações diárias refletem principalmente retenção de líquidos, não uma mudança real.' },
+      { q: 'Qual a diferença entre IMC e percentual de gordura corporal?', a: 'O IMC é uma relação entre peso e altura e não diz nada sobre do que esse peso é composto. O percentual de gordura corporal mede a proporção real de gordura em relação à massa magra, e é mais preciso, mas exige outras ferramentas para ser estimado.' },
     ],
     tdee: [
       { q: 'Qual a diferença entre TMB e TDEE?', a: 'A taxa metabólica basal (TMB) é o quanto seu corpo gasta em repouso. O TDEE soma as calorias gastas com atividade diária e exercício.' },
@@ -156,9 +156,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Puedo calcular mi edad en otra fecha?', a: 'Sí, cambia el campo "Calcular a fecha de" para ver tu edad en cualquier fecha, pasada o futura.' },
     ],
     bmi: [
-      { q: '¿Qué es el IMC y cómo se calcula?', a: 'Peso en kilogramos dividido por la altura en metros al cuadrado, una medida de la composición corporal.' },
-      { q: '¿Qué significan las categorías?', a: 'Siguen los límites estándar de la OMS, pero no tienen en cuenta la masa muscular, la edad ni la complexión.' },
-      { q: '¿Es el IMC una medida perfecta de salud?', a: 'No, es una herramienta de detección y debe verse como punto de partida, consulta a un profesional de salud si tienes dudas.' },
+      { q: '¿El IMC es preciso para personas musculosas o atléticas?', a: 'Menos preciso. El IMC no distingue entre músculo y grasa, así que una persona musculosa puede aparecer con sobrepeso aunque tenga poca grasa corporal. Consulta las limitaciones arriba para más detalles.' },
+      { q: '¿Con qué frecuencia debo medir mi IMC?', a: 'Para la mayoría de las personas, cada pocos meses es suficiente para detectar una tendencia. El IMC cambia lentamente, y las mediciones diarias reflejan sobre todo retención de líquidos, no un cambio real.' },
+      { q: '¿Cuál es la diferencia entre el IMC y el porcentaje de grasa corporal?', a: 'El IMC es una relación entre peso y estatura y no dice nada sobre de qué está hecho ese peso. El porcentaje de grasa corporal mide la proporción real de grasa frente a masa magra, y es más preciso, pero requiere otras herramientas para estimarlo.' },
     ],
     tdee: [
       { q: '¿Cuál es la diferencia entre TMB y TDEE?', a: 'La tasa metabólica basal (TMB) es lo que tu cuerpo gasta en reposo. El TDEE suma las calorías que gastas con actividad diaria y ejercicio.' },
@@ -196,9 +196,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Kann ich mein Alter an einem anderen Datum berechnen?', a: 'Ja, ändere das Feld "Berechnen zum", um dein Alter an jedem beliebigen Datum zu sehen, vergangen oder zukünftig.' },
     ],
     bmi: [
-      { q: 'Was ist der BMI und wie wird er berechnet?', a: 'Gewicht in Kilogramm geteilt durch die Größe in Metern im Quadrat, ein Maß für die Körperzusammensetzung.' },
-      { q: 'Was bedeuten die Kategorien?', a: 'Sie folgen den WHO-Standardgrenzwerten, berücksichtigen aber keine Muskelmasse, Alter oder Körperbau.' },
-      { q: 'Ist der BMI ein perfektes Gesundheitsmaß?', a: 'Nein, er ist ein Screening-Tool und sollte als Ausgangspunkt gesehen werden, bei Fragen eine Fachperson konsultieren.' },
+      { q: 'Ist der BMI bei muskulösen oder sportlichen Menschen genau?', a: 'Weniger genau. Der BMI unterscheidet nicht zwischen Muskeln und Fett, sodass muskulöse Personen trotz niedrigem Körperfettanteil als übergewichtig eingestuft werden können. Mehr dazu in den Einschränkungen oben.' },
+      { q: 'Wie oft sollte ich meinen BMI prüfen?', a: 'Für die meisten reicht es, alle paar Monate zu messen, um einen Trend zu erkennen. Der BMI ändert sich langsam, und tägliche Messungen spiegeln vor allem den Wasserhaushalt wider, keine echte Veränderung.' },
+      { q: 'Was ist der Unterschied zwischen BMI und Körperfettanteil?', a: 'Der BMI ist ein Verhältnis von Gewicht zu Größe und sagt nichts darüber aus, woraus dieses Gewicht besteht. Der Körperfettanteil misst den tatsächlichen Anteil von Fett gegenüber Muskelmasse und ist genauer, erfordert aber andere Messmethoden.' },
     ],
     tdee: [
       { q: 'Was ist der Unterschied zwischen Grundumsatz und TDEE?', a: 'Der Grundumsatz ist, was dein Körper im Ruhezustand verbraucht. Der TDEE addiert die Kalorien, die du durch Alltagsaktivität und Training verbrauchst.' },
@@ -236,9 +236,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '別の日付での年齢も計算できますか？', a: 'はい、「基準日」を変更すれば過去や未来の任意の日付での年齢を確認できます。' },
     ],
     bmi: [
-      { q: 'BMIとは何で、どう計算されますか？', a: '体重（kg）を身長（m）の2乗で割った値で、体組成のおおよその指標です。' },
-      { q: 'カテゴリーはそれぞれ何を意味しますか？', a: 'WHOの標準基準に基づいていますが、筋肉量や年齢、体格は考慮されません。' },
-      { q: 'BMIは健康の完璧な指標ですか？', a: 'いいえ、あくまでスクリーニング指標であり出発点として捉え、疑問があれば医療専門家に相談してください。' },
+      { q: '筋肉質やアスリート体型の人にもBMIは正確ですか？', a: 'あまり正確ではありません。BMIは筋肉と脂肪を区別できないため、筋肉質な人は体脂肪率が低くても肥満と表示されることがあります。詳しくは上記の限界の説明をご覧ください。' },
+      { q: 'BMIはどのくらいの頻度で確認すればいいですか？', a: '多くの場合、数か月ごとの確認で傾向をつかむには十分です。BMIはゆっくり変化するため、毎日の測定は実際の変化よりも水分量の変動を反映していることがほとんどです。' },
+      { q: 'BMIと体脂肪率の違いは何ですか？', a: 'BMIは体重と身長の比率であり、その体重が何でできているかは示しません。体脂肪率は脂肪と除脂肪量の実際の割合を測定するためより正確ですが、算出には別の測定方法が必要です。' },
     ],
     tdee: [
       { q: '基礎代謝量とTDEEの違いは何ですか?', a: '基礎代謝量は安静時に消費するカロリーです。TDEEはそこに日常活動や運動で消費するカロリーを加えたものです。' },
@@ -276,9 +276,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '可以计算其他日期的年龄吗？', a: '可以，更改"计算截止日期"字段即可查看过去或未来任意日期的年龄。' },
     ],
     bmi: [
-      { q: 'BMI是什么，如何计算？', a: '体重（kg）除以身高（m）的平方，是衡量身体组成的一个指标。' },
-      { q: '各分类代表什么？', a: '它们遵循世界卫生组织的标准范围，但未考虑肌肉量、年龄或体型。' },
-      { q: 'BMI是衡量健康的完美指标吗？', a: '不是，它只是一个筛查工具，应作为参考起点, 如有疑问请咨询医疗专业人士。' },
+      { q: 'BMI对肌肉发达或运动员体型的人准确吗？', a: '不太准确。BMI无法区分肌肉和脂肪，因此肌肉发达的人即使体脂率很低，也可能被归为超重。更多内容见上文的局限性说明。' },
+      { q: '应该多久测一次BMI？', a: '对大多数人来说，每隔几个月测一次就足以观察趋势，BMI变化缓慢，每天测量的波动大多反映的是水分变化，而非真实变化。' },
+      { q: 'BMI和体脂率有什么区别？', a: 'BMI是体重与身高的比值，无法说明这些体重具体由什么构成。体脂率衡量的是脂肪相对于瘦体重的实际比例，更精确，但需要其他工具才能估算。' },
     ],
     tdee: [
       { q: '基础代谢率和TDEE有什么区别?', a: '基础代谢率是身体在静息状态下消耗的热量。TDEE则加上了日常活动和运动消耗的热量。' },
@@ -316,9 +316,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '다른 날짜의 나이도 계산할 수 있나요?', a: '네, "기준 날짜" 필드를 변경하면 과거나 미래의 어떤 날짜에서의 나이도 확인할 수 있습니다.' },
     ],
     bmi: [
-      { q: 'BMI란 무엇이고 어떻게 계산하나요?', a: '체중(kg)을 키(m)의 제곱으로 나눈 값으로, 체구성에 대한 대략적인 지표입니다.' },
-      { q: '각 분류는 무엇을 의미하나요?', a: 'WHO 표준 기준을 따르지만 근육량, 나이, 체형은 고려하지 않습니다.' },
-      { q: 'BMI는 건강을 완벽하게 측정하는 지표인가요?', a: '아니요, 선별 도구일 뿐이며 출발점으로 보아야 합니다, 궁금한 점이 있으면 의료 전문가와 상담하세요.' },
+      { q: '근육질이거나 운동선수 체형인 사람에게도 BMI가 정확한가요?', a: '덜 정확합니다. BMI는 근육과 지방을 구분하지 못하기 때문에, 체지방률이 낮아도 근육질인 사람은 과체중으로 표시될 수 있습니다. 자세한 내용은 위의 한계점을 참고하세요.' },
+      { q: 'BMI는 얼마나 자주 확인해야 하나요?', a: '대부분의 경우 몇 달에 한 번씩 확인하는 것으로 추세를 파악하기에 충분합니다. BMI는 천천히 변하며, 매일 측정하면 실제 변화보다는 대부분 수분 변화를 반영합니다.' },
+      { q: 'BMI와 체지방률의 차이는 무엇인가요?', a: 'BMI는 체중과 키의 비율일 뿐, 그 체중이 무엇으로 이루어져 있는지는 알려주지 않습니다. 체지방률은 지방과 제지방량의 실제 비율을 측정하므로 더 정확하지만, 추정하려면 다른 도구가 필요합니다.' },
     ],
     tdee: [
       { q: '기초대사량과 TDEE의 차이는 무엇인가요?', a: '기초대사량은 신체가 휴식 상태에서 소비하는 칼로리입니다. TDEE는 여기에 일상 활동과 운동으로 소비하는 칼로리를 더한 것입니다.' },
@@ -356,9 +356,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'क्या मैं किसी अन्य तारीख़ पर अपनी उम्र निकाल सकता हूँ?', a: 'हाँ, "किस तारीख़ तक गणना करें" फ़ील्ड बदलें ताकि किसी भी भूत या भविष्य की तारीख़ पर अपनी उम्र देख सकें।' },
     ],
     bmi: [
-      { q: 'BMI क्या है और इसे कैसे निकाला जाता है?', a: 'वज़न (kg) को लंबाई (m) के वर्ग से विभाजित करना, शरीर संरचना का एक माप।' },
-      { q: 'श्रेणियों का क्या मतलब है?', a: 'ये WHO के मानक मानदंडों का पालन करती हैं, लेकिन मांसपेशियों, उम्र या शरीर की बनावट को ध्यान में नहीं रखती हैं।' },
-      { q: 'क्या BMI स्वास्थ्य का संपूर्ण माप है?', a: 'नहीं, यह एक स्क्रीनिंग उपकरण है और इसे एक शुरुआती बिंदु के रूप में देखा जाना चाहिए, सवाल होने पर डॉक्टर से सलाह लें।' },
+      { q: 'क्या मांसपेशियों वाले या एथलेटिक लोगों के लिए BMI सटीक है?', a: 'उतना सटीक नहीं। BMI मांसपेशियों और वसा में फ़र्क नहीं कर पाता, इसलिए मांसपेशियों वाला व्यक्ति कम फैट होने के बावजूद अधिक वज़न वाला दिख सकता है। ज़्यादा जानकारी के लिए ऊपर दी गई सीमाएँ देखें।' },
+      { q: 'मुझे अपना BMI कितनी बार जाँचना चाहिए?', a: 'अधिकतर लोगों के लिए हर कुछ महीनों में एक बार जाँचना ट्रेंड देखने के लिए काफ़ी है। BMI धीरे-धीरे बदलता है, और रोज़ाना जाँच ज़्यादातर पानी के वज़न में बदलाव दिखाती है, असली बदलाव नहीं।' },
+      { q: 'BMI और बॉडी फैट प्रतिशत में क्या अंतर है?', a: 'BMI वज़न और लंबाई का अनुपात है और यह नहीं बताता कि वह वज़न किससे बना है। बॉडी फैट प्रतिशत वसा और लीन मास के वास्तविक अनुपात को मापता है, और अधिक सटीक है, लेकिन इसे मापने के लिए अलग उपकरणों की ज़रूरत होती है।' },
     ],
     tdee: [
       { q: 'बेसल मेटाबॉलिक रेट और TDEE में क्या अंतर है?', a: 'बेसल मेटाबॉलिक रेट वह है जो आपका शरीर आराम की अवस्था में खर्च करता है। TDEE में दैनिक गतिविधि और व्यायाम से खर्च होने वाली कैलोरी भी जोड़ी जाती है।' },
@@ -396,9 +396,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Bisakah saya menghitung usia pada tanggal lain?', a: 'Ya, ubah kolom "Hitung sampai tanggal" untuk melihat usia kamu pada tanggal apa pun, di masa lalu atau masa depan.' },
     ],
     bmi: [
-      { q: 'Apa itu BMI dan bagaimana cara menghitungnya?', a: 'Berat badan (kg) dibagi tinggi badan (m) kuadrat, ukuran komposisi tubuh.' },
-      { q: 'Apa arti dari setiap kategori?', a: 'Mengikuti ambang batas standar WHO, tetapi tidak memperhitungkan massa otot, usia, atau bentuk tubuh.' },
-      { q: 'Apakah BMI ukuran kesehatan yang sempurna?', a: 'Tidak, ini adalah alat penyaringan dan sebaiknya dilihat sebagai titik awal, konsultasikan dengan tenaga medis jika ada pertanyaan.' },
+      { q: 'Apakah BMI akurat untuk orang berotot atau atletis?', a: 'Kurang akurat. BMI tidak bisa membedakan otot dari lemak, jadi orang yang berotot bisa saja tercatat sebagai kelebihan berat badan meski lemak tubuhnya rendah. Lihat batasan di atas untuk penjelasan lebih lanjut.' },
+      { q: 'Seberapa sering saya harus memeriksa BMI saya?', a: 'Bagi kebanyakan orang, memeriksa setiap beberapa bulan sudah cukup untuk melihat tren. BMI berubah secara perlahan, dan pemeriksaan harian kebanyakan mencerminkan perubahan berat air, bukan perubahan yang sebenarnya.' },
+      { q: 'Apa perbedaan antara BMI dan persentase lemak tubuh?', a: 'BMI adalah rasio antara berat dan tinggi badan, dan tidak menjelaskan apa yang menyusun berat tersebut. Persentase lemak tubuh mengukur proporsi lemak yang sebenarnya dibandingkan massa tanpa lemak, dan lebih akurat, tetapi memerlukan alat lain untuk memperkirakannya.' },
     ],
     tdee: [
       { q: 'Apa perbedaan antara BMR dan TDEE?', a: 'BMR adalah kalori yang dibakar tubuh saat istirahat. TDEE menambahkan kalori yang dibakar melalui aktivitas harian dan olahraga.' },

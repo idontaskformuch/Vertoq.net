@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { translations } from '../../../i18n/translations';
 import { langCodes } from '../../../i18n/languages';
+import { bmiContent } from '../../../i18n/bmiContent';
 import BmiCalculator from '../../../components/BmiCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = translations[lang as keyof typeof translations].bmi;
+const c = bmiContent[lang as keyof typeof bmiContent];
 ---
 <Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="bmi">
   <section class="page-head">
@@ -22,120 +24,78 @@ const t = translations[lang as keyof typeof translations].bmi;
 
   <BmiCalculator lang={lang} />
 
-  {lang === 'en' && (
+  {c && (
     <div class="content-block-group">
       <section class="content-block">
-        <h2>What is BMI?</h2>
-        <p>
-          Body Mass Index (BMI) is a simple screening measure that estimates body fatness from your weight and
-          height. It doesn't measure body fat directly, but it correlates closely enough with more direct
-          measures to be a useful, low-cost starting point for tracking weight status over time.
-        </p>
+        <h2>{c.whatIsBmi.heading}</h2>
+        <p>{c.whatIsBmi.body}</p>
       </section>
 
       <section class="content-block">
-        <h2>Adult BMI classification (WHO)</h2>
+        <h2>{c.whoTable.heading}</h2>
         <div class="table-scroll">
           <table class="data-table">
             <thead>
-              <tr><th>Category</th><th>BMI range</th></tr>
+              <tr><th>{c.whoTable.categoryHeader}</th><th>{c.whoTable.rangeHeader}</th></tr>
             </thead>
             <tbody>
-              <tr><td>Severe Thinness</td><td>Below 16</td></tr>
-              <tr><td>Moderate Thinness</td><td>16 – 17</td></tr>
-              <tr><td>Mild Thinness</td><td>17 – 18.5</td></tr>
-              <tr><td>Normal</td><td>18.5 – 25</td></tr>
-              <tr><td>Overweight</td><td>25 – 30</td></tr>
-              <tr><td>Obese Class I</td><td>30 – 35</td></tr>
-              <tr><td>Obese Class II</td><td>35 – 40</td></tr>
-              <tr><td>Obese Class III</td><td>Above 40</td></tr>
+              {c.whoTable.rows.map(([category, range]) => (
+                <tr><td>{category}</td><td>{range}</td></tr>
+              ))}
             </tbody>
           </table>
         </div>
-        <p class="source-note">Source: World Health Organization (WHO) BMI classification.</p>
+        <p class="source-note">{c.whoTable.source}</p>
       </section>
 
       <section class="content-block">
-        <h2>BMI for children and teens (2–20 years)</h2>
-        <p>
-          For children and teens, a single set of fixed BMI ranges doesn't work, growing bodies change shape at
-          different rates by age and sex. Instead, the CDC plots BMI against age- and sex-specific percentiles
-          from a reference population:
-        </p>
+        <h2>{c.children.heading}</h2>
+        <p>{c.children.intro}</p>
         <div class="table-scroll">
           <table class="data-table">
             <thead>
-              <tr><th>Category</th><th>Percentile</th></tr>
+              <tr><th>{c.children.categoryHeader}</th><th>{c.children.percentileHeader}</th></tr>
             </thead>
             <tbody>
-              <tr><td>Underweight</td><td>Below 5th percentile</td></tr>
-              <tr><td>Healthy weight</td><td>5th – 85th percentile</td></tr>
-              <tr><td>At risk of overweight</td><td>85th – 95th percentile</td></tr>
-              <tr><td>Overweight</td><td>Above 95th percentile</td></tr>
+              {c.children.rows.map(([category, percentile]) => (
+                <tr><td>{category}</td><td>{percentile}</td></tr>
+              ))}
             </tbody>
           </table>
         </div>
-        <p class="source-note">Source: CDC BMI-for-age growth charts.</p>
+        <p class="source-note">{c.children.source}</p>
       </section>
 
       <section class="content-block">
-        <h2>How BMI is calculated</h2>
-        <p><strong>Metric formula:</strong> <code>BMI = weight (kg) / height (m)²</code></p>
-        <p><strong>US formula:</strong> <code>BMI = 703 × weight (lb) / height (in)²</code></p>
-        <h3>Worked example</h3>
-        <p>
-          Metric: a person weighing 70 kg at 175 cm (1.75 m) tall: 70 / (1.75 × 1.75) = 70 / 3.0625 ≈
-          <strong> 22.9</strong>.
-        </p>
-        <p>
-          US units: a person weighing 160 lb at 5'8" (68 in) tall: 703 × 160 / (68 × 68) = 112,480 / 4,624 ≈
-          <strong> 24.3</strong>.
-        </p>
+        <h2>{c.formula.heading}</h2>
+        <p><strong>{c.formula.metricFormulaLabel}</strong> <code>{c.formula.metricFormulaCode}</code></p>
+        <p><strong>{c.formula.usFormulaLabel}</strong> <code>{c.formula.usFormulaCode}</code></p>
+        <h3>{c.formula.exampleHeading}</h3>
+        <p set:html={c.formula.metricExampleHtml} />
+        <p set:html={c.formula.usExampleHtml} />
       </section>
 
       <section class="content-block">
-        <h2>BMI Prime</h2>
-        <p>
-          BMI Prime expresses BMI as a ratio to the upper bound of the normal range (25), rather than as an
-          absolute number: <code>BMI Prime = BMI / 25</code>. A BMI Prime of 1.0 sits exactly at the
-          normal/overweight boundary, values below 1.0 fall within the normal range, and values above 1.0 exceed
-          it. For the 22.9 example above, BMI Prime is 22.9 / 25 ≈ 0.92.
-        </p>
+        <h2>{c.bmiPrime.heading}</h2>
+        <p set:html={c.bmiPrime.bodyHtml} />
       </section>
 
       <section class="content-block">
-        <h2>BMI and health risk</h2>
-        <p>
-          Population-level research associates BMI outside the normal range with a higher likelihood of certain
-          health conditions. At the lower end, a BMI under 18.5 is associated with nutritional deficiency and
-          weakened immune function. At the higher end, a BMI over 25, and more so over 30, is associated with a
-          higher likelihood of conditions such as type 2 diabetes, cardiovascular disease, and joint strain.
-          These are statistical associations across populations, not individual diagnoses, and BMI alone does
-          not determine any one person's health status.
-        </p>
-        <p class="source-note">Sources: CDC, WHO.</p>
+        <h2>{c.healthRisk.heading}</h2>
+        <p>{c.healthRisk.body}</p>
+        <p class="source-note">{c.healthRisk.source}</p>
       </section>
 
       <section class="content-block">
-        <h2>Limitations</h2>
-        <p>
-          <strong>Adults:</strong> BMI doesn't distinguish muscle from fat, so muscular or highly athletic
-          individuals can register as overweight despite low body fat. It also doesn't account for fat
-          distribution, age-related muscle loss, or differences across ethnic groups, and shouldn't be used
-          alone to assess an individual's health.
-        </p>
-        <p>
-          <strong>Children and teens:</strong> because body composition changes continuously through growth, a
-          raw BMI number means little on its own for this age group. It has to be read against the age- and
-          sex-specific percentile charts above, not the adult category table.
-        </p>
+        <h2>{c.limitations.heading}</h2>
+        <p><strong>{c.limitations.adultsLabel}</strong> {c.limitations.adultsBody}</p>
+        <p><strong>{c.limitations.childrenLabel}</strong> {c.limitations.childrenBody}</p>
       </section>
 
       <section class="content-block related-calculators">
-        <h2>Related calculator</h2>
+        <h2>{c.related.heading}</h2>
         <p>
-          <a href={`/${lang}/tdee/`}>TDEE Calculator</a> — use your weight and height to estimate your daily
-          calorie needs based on activity level.
+          <a href={`/${lang}/tdee/`}>{c.related.linkText}</a> {c.related.description}
         </p>
       </section>
     </div>
