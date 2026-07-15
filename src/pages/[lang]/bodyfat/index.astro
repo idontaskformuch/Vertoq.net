@@ -66,9 +66,10 @@ const c = bodyFatContent[lang as keyof typeof bodyFatContent];
         <p>
           <a href={`/${lang}/bmi/`}>{c.related.linkText}</a> {c.related.description}
         </p>
+        <p>
+          <a href={`/${lang}/idealweight/`}>{c.related.idealweightLinkText}</a> {c.related.idealweightDescription}
+        </p>
       </section>
-
-      {/* TODO: cross-link forward to Ideal Weight Calculator once that page exists (build order per content-brief-fitness-cluster.md: Body Fat → Ideal Weight) */}
     </div>
   )}
 

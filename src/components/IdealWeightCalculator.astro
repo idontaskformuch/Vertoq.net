@@ -1,0 +1,125 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const tb = translations[lang as keyof typeof translations].bmi;
+const tt = translations[lang as keyof typeof translations].tdee;
+const t = translations[lang as keyof typeof translations].idealweight;
+---
+<div class="converter" id="idealweight-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="iw-height">{tb.heightLabel}</label>
+      <input id="iw-height" type="number" value="175" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="iw-sex">{tt.sexLabel}</label>
+      <select id="iw-sex">
+        <option value="male">{tt.male}</option>
+        <option value="female">{tt.female}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.devineLabel}</span>
+    <span class="value" id="iw-devine">—</span>
+    <span class="unit">kg</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.robinsonLabel}</span>
+    <span class="value" id="iw-robinson" style="font-size:1.3rem">—</span>
+    <span class="unit">kg</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.hamwiLabel}</span>
+    <span class="value" id="iw-hamwi" style="font-size:1.3rem">—</span>
+    <span class="unit">kg</span>
+  </div>
+  <p class="calc-error" id="iw-error" style="display:none"></p>
+</div>
+
+<script define:vars={{ errorMessage: t.errorMessage }}>
+  const heightEl = document.getElementById('iw-height');
+  const sexEl = document.getElementById('iw-sex');
+  const devineEl = document.getElementById('iw-devine');
+  const robinsonEl = document.getElementById('iw-robinson');
+  const hamwiEl = document.getElementById('iw-hamwi');
+  const errorEl = document.getElementById('iw-error');
+
+  function clearResults() {
+    devineEl.textContent = '—';
+    robinsonEl.textContent = '—';
+    hamwiEl.textContent = '—';
+  }
+
+  function showError() {
+    clearResults();
+    errorEl.textContent = errorMessage;
+    errorEl.style.display = 'block';
+  }
+
+  function clearError() {
+    errorEl.textContent = '';
+    errorEl.style.display = 'none';
+  }
+
+  function calc() {
+    const heightCm = parseFloat(heightEl.value);
+    const sex = sexEl.value;
+
+    if (isNaN(heightCm) || heightCm <= 0) {
+      clearResults();
+      clearError();
+      return;
+    }
+
+    const heightIn = heightCm / 2.54;
+
+    // Devine/Robinson/Hamwi är bara definierade över 60 tum (152.4 cm)
+    if (heightIn <= 60) {
+      showError();
+      return;
+    }
+
+    const over60 = heightIn - 60;
+    let devine, robinson, hamwi;
+    if (sex === 'male') {
+      devine = 50 + 2.3 * over60;
+      robinson = 52 + 1.9 * over60;
+      hamwi = 48.0 + 2.7 * over60;
+    } else {
+      devine = 45.5 + 2.3 * over60;
+      robinson = 49 + 1.7 * over60;
+      hamwi = 45.5 + 2.2 * over60;
+    }
+
+    clearError();
+    devineEl.textContent = (Math.round(devine * 10) / 10).toString();
+    robinsonEl.textContent = (Math.round(robinson * 10) / 10).toString();
+    hamwiEl.textContent = (Math.round(hamwi * 10) / 10).toString();
+  }
+
+  [heightEl, sexEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

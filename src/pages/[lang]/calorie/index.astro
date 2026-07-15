@@ -72,9 +72,10 @@ const c = calorieContent[lang as keyof typeof calorieContent];
         <p>
           <a href={`/${lang}/bmr/`}>{c.related.bmrLinkText}</a> {c.related.bmrDescription}
         </p>
+        <p>
+          <a href={`/${lang}/bodyfat/`}>{c.related.bodyfatLinkText}</a> {c.related.bodyfatDescription}
+        </p>
       </section>
-
-      {/* TODO: cross-link forward to Body Fat Calculator once that page exists (build order per content-brief-fitness-cluster.md: Calorie → Body Fat) */}
     </div>
   )}
 

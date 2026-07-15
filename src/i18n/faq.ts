@@ -12,7 +12,7 @@ export const faqHeadings: Record<string, string> = {
 };
 
 type FaqItem = { q: string; a: string };
-type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; calorie: FaqItem[]; bodyfat: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
+type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; calorie: FaqItem[]; bodyfat: FaqItem[]; idealweight: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
 
 export const faqContent: Record<string, ToolFaqs> = {
   sv: {
@@ -59,6 +59,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Hur exakt är US Navy-metoden?', a: 'Den ger en rimlig uppskattning för de flesta kroppstyper, oftast inom några procentenheter från mer exakta metoder som DEXA. Den tenderar att bli mindre exakt för ovanliga kroppsformer eller vid extremt låg eller hög kroppsfettprocent.' },
       { q: 'Var exakt ska jag mäta?', a: 'Mät halsen strax under struphuvudet, midjan vid den smalaste punkten (eller vid naveln om det inte finns någon tydlig smalaste punkt), och för kvinnor höften vid den bredaste punkten. Håll måttbandet stramt men utan att trycka in huden.' },
       { q: 'Varför behövs ett extra mått för kvinnor?', a: 'Formeln tar hänsyn till att fettfördelningen skiljer sig mellan män och kvinnor. Höftmåttet korrigerar för ett mönster som hals och midja ensamma skulle underskatta hos de flesta kvinnor.' },
+    ],
+    idealweight: [
+      { q: 'Varför ger de tre formlerna olika siffror?', a: 'De togs fram oberoende av varandra, med olika referenspopulationer och under olika decennier. Ingen är mer "rätt" än de andra. Spridningen mellan dem är det ärliga svaret, inte en enskild siffra.' },
+      { q: 'Vilken formel ska jag använda?', a: 'Det finns ingen given vinnare. Devine är mest citerad i kliniska sammanhang, men alla tre är populationsgenomsnitt, inte personliga mål. Se spridningen som svaret snarare än att välja en.' },
+      { q: 'Tar den här hänsyn till muskelmassa eller kroppsbyggnad?', a: 'Nej, formlerna använder bara längd och kön. Någon muskulös eller med större kroppsbyggnad väger rimligen mer än de här siffrorna antyder utan att vara överviktig. Det är precis därför de inte är personlig medicinsk vägledning.' },
     ],
     loan: [
       { q: 'Vad är ränta-på-ränta?', a: 'Räntan du tjänar läggs till kapitalet, så du tjänar ränta på både startbeloppet och tidigare intjänad ränta.' },
@@ -116,6 +121,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Where exactly should I measure?', a: "Measure your neck just below the larynx, your waist at the narrowest point (or at the navel if there isn't one), and, for women, your hip at the widest point. Keep the tape snug but not compressing the skin." },
       { q: 'Why is there an extra measurement for women?', a: 'The formula accounts for how fat distribution differs between men and women. Adding hip measurement corrects for a pattern that neck and waist alone would underestimate for most women.' },
     ],
+    idealweight: [
+      { q: 'Why do the three formulas give different numbers?', a: "They were developed independently, using different reference populations and decades. None is more 'correct' than the others. The range between them is the honest answer, not any single number." },
+      { q: 'Which formula should I use?', a: "There's no clear winner. Devine is the most widely cited in clinical contexts, but all three are population averages, not personalized targets. Treat the spread as your answer rather than picking one." },
+      { q: 'Does this account for muscle mass or body frame?', a: "No, these formulas only use height and sex. Someone muscular or with a larger frame will reasonably weigh more than these numbers suggest without being overweight. That's exactly why they're not personalized medical guidance." },
+    ],
     loan: [
       { q: 'What is compound interest?', a: 'The interest you earn each period is added to your balance, so you earn interest on both your starting amount and past interest.' },
       { q: 'How often is interest calculated?', a: 'Monthly, which is common for savings accounts and funds, giving a realistic picture of growth over time.' },
@@ -171,6 +181,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Quão precisa é a fórmula da Marinha dos EUA?', a: 'É uma estimativa razoável para a maioria dos tipos de corpo, geralmente dentro de alguns pontos percentuais de métodos mais precisos como o DEXA. Costuma ser menos precisa para formatos corporais incomuns ou níveis extremos de gordura corporal.' },
       { q: 'Onde exatamente devo medir?', a: 'Meça o pescoço logo abaixo da laringe, a cintura no ponto mais estreito (ou na altura do umbigo, se não houver um ponto claro) e, para mulheres, o quadril no ponto mais largo. Mantenha a fita justa, mas sem apertar a pele.' },
       { q: 'Por que há uma medida extra para mulheres?', a: 'A fórmula leva em conta como a distribuição de gordura difere entre homens e mulheres. A medida do quadril corrige um padrão que pescoço e cintura sozinhos subestimariam na maioria das mulheres.' },
+    ],
+    idealweight: [
+      { q: 'Por que as três fórmulas dão números diferentes?', a: 'Elas foram desenvolvidas de forma independente, usando populações de referência e décadas diferentes. Nenhuma é mais "correta" que as outras. A variação entre elas é a resposta honesta, não um único número.' },
+      { q: 'Qual fórmula devo usar?', a: 'Não há uma vencedora clara. A Devine é a mais citada em contextos clínicos, mas as três são médias populacionais, não metas personalizadas. Encare a variação como a resposta, em vez de escolher uma.' },
+      { q: 'Isso considera massa muscular ou estrutura corporal?', a: 'Não, essas fórmulas usam apenas altura e sexo. Alguém musculoso ou com estrutura corporal maior pode pesar mais do que esses números sugerem sem estar acima do peso. É exatamente por isso que elas não são orientação médica personalizada.' },
     ],
     loan: [
       { q: 'O que são juros compostos?', a: 'Os juros ganhos em cada período são somados ao saldo, então você ganha juros sobre o valor inicial e sobre os juros anteriores.' },
@@ -228,6 +243,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Dónde exactamente debo medir?', a: 'Mide el cuello justo debajo de la laringe, la cintura en el punto más estrecho (o a la altura del ombligo si no hay uno claro) y, en mujeres, la cadera en el punto más ancho. Mantén la cinta ajustada pero sin comprimir la piel.' },
       { q: '¿Por qué hay una medida extra para las mujeres?', a: 'La fórmula tiene en cuenta que la distribución de grasa difiere entre hombres y mujeres. La medida de la cadera corrige un patrón que el cuello y la cintura por sí solos subestimarían en la mayoría de las mujeres.' },
     ],
+    idealweight: [
+      { q: '¿Por qué las tres fórmulas dan números diferentes?', a: 'Se desarrollaron de forma independiente, con distintas poblaciones de referencia y en décadas diferentes. Ninguna es más "correcta" que las otras. El rango entre ellas es la respuesta honesta, no una cifra única.' },
+      { q: '¿Qué fórmula debería usar?', a: 'No hay una ganadora clara. Devine es la más citada en contextos clínicos, pero las tres son promedios poblacionales, no objetivos personalizados. Toma el rango como la respuesta en lugar de elegir una.' },
+      { q: '¿Esto tiene en cuenta la masa muscular o la complexión?', a: 'No, estas fórmulas solo usan la estatura y el sexo. Alguien musculoso o con una complexión más grande razonablemente pesará más de lo que sugieren estas cifras sin tener sobrepeso. Por eso mismo no son orientación médica personalizada.' },
+    ],
     loan: [
       { q: '¿Qué es el interés compuesto?', a: 'El interés que ganas cada periodo se suma al saldo, así ganas interés tanto sobre el monto inicial como sobre el interés anterior.' },
       { q: '¿Con qué frecuencia se calcula el interés?', a: 'Mensualmente, algo común en cuentas de ahorro y fondos, lo que da una imagen realista del crecimiento con el tiempo.' },
@@ -283,6 +303,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Wie genau ist die US-Navy-Methode?', a: 'Sie liefert für die meisten Körpertypen eine vernünftige Schätzung, meist innerhalb weniger Prozentpunkte genauerer Methoden wie DEXA. Bei ungewöhnlichen Körperformen oder sehr niedrigem oder hohem Körperfettanteil wird sie tendenziell ungenauer.' },
       { q: 'Wo genau soll ich messen?', a: 'Miss den Hals direkt unterhalb des Kehlkopfs, die Taille an der schmalsten Stelle (oder auf Bauchnabelhöhe, falls es keine eindeutig schmalste Stelle gibt) und bei Frauen die Hüfte an der breitesten Stelle. Halte das Maßband stramm, ohne die Haut einzudrücken.' },
       { q: 'Warum gibt es bei Frauen ein zusätzliches Maß?', a: 'Die Formel berücksichtigt, dass sich die Fettverteilung zwischen Männern und Frauen unterscheidet. Das Hüftmaß gleicht ein Muster aus, das Hals und Taille allein bei den meisten Frauen unterschätzen würden.' },
+    ],
+    idealweight: [
+      { q: 'Warum ergeben die drei Formeln unterschiedliche Zahlen?', a: 'Sie wurden unabhängig voneinander entwickelt, mit unterschiedlichen Referenzpopulationen und in verschiedenen Jahrzehnten. Keine ist "richtiger" als die anderen. Die Spanne zwischen ihnen ist die ehrliche Antwort, keine einzelne Zahl.' },
+      { q: 'Welche Formel sollte ich verwenden?', a: 'Es gibt keinen klaren Sieger. Devine wird im klinischen Kontext am häufigsten zitiert, aber alle drei sind Bevölkerungsdurchschnitte, keine personalisierten Ziele. Betrachte die Spanne als Antwort, statt eine auszuwählen.' },
+      { q: 'Berücksichtigt das Muskelmasse oder Körperbau?', a: 'Nein, diese Formeln verwenden nur Größe und Geschlecht. Jemand Muskulöses oder mit größerem Körperbau wiegt vernünftigerweise mehr, als diese Zahlen nahelegen, ohne übergewichtig zu sein. Genau deshalb sind sie keine personalisierte medizinische Beratung.' },
     ],
     loan: [
       { q: 'Was ist Zinseszins?', a: 'Die Zinsen, die du jede Periode verdienst, werden dem Saldo hinzugefügt, sodass du Zinsen auf den Startbetrag und frühere Zinsen verdienst.' },
@@ -340,6 +365,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '正確にはどこを測ればいいですか？', a: '首は喉頭のすぐ下、ウエストは最も細い部分（明確なくびれがない場合はへその高さ）、女性の場合はヒップを最も広い部分で測ってください。メジャーは肌に食い込ませず、ぴったりと沿わせてください。' },
       { q: 'なぜ女性だけ測定項目が一つ多いのですか？', a: 'この式は、男女で脂肪の付き方が異なることを考慮しています。ヒップの測定値を加えることで、首とウエストだけでは多くの女性で過小評価されてしまう部分を補正しています。' },
     ],
+    idealweight: [
+      { q: 'なぜ3つの式で数値が違うのですか？', a: 'それぞれ独立して、異なる基準集団と異なる年代に基づいて作られたためです。どれか一つが他より「正しい」ということはありません。単一の数値ではなく、それらの間のばらつきこそが誠実な答えです。' },
+      { q: 'どの式を使えばいいですか？', a: '明確な正解はありません。Devine式は臨床の現場で最もよく引用されますが、3つとも集団の平均値であり、個人向けの目標値ではありません。一つを選ぶのではなく、ばらつき自体を答えとして捉えてください。' },
+      { q: 'これは筋肉量や骨格の大きさを考慮していますか？', a: 'いいえ、これらの式は身長と性別しか使っていません。筋肉質な人や骨格が大きい人は、太りすぎでなくてもこれらの数値より妥当に重くなります。だからこそ、これは個人向けの医学的アドバイスではないのです。' },
+    ],
     loan: [
       { q: '複利とは何ですか？', a: '各期間で得た利息が元本に加算され、元本と過去の利息の両方に利息がつく仕組みです。' },
       { q: '利息はどのくらいの頻度で計算されますか？', a: '毎月計算され、預金や投資信託で一般的な方式で、時間とともに増える様子を現実的に示します。' },
@@ -395,6 +425,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '美国海军法有多准确？', a: '对大多数体型来说，它能给出合理的估算，通常与DEXA等更精确方法相差几个百分点以内。对于体型特殊或体脂率处于极端水平的人，准确度会有所下降。' },
       { q: '具体应该在哪里测量？', a: '在喉结下方测量颈围，在最窄处测量腰围（如果没有明显最窄处，可在肚脐处测量），女性还需在最宽处测量臀围。卷尺要贴合但不要勒紧皮肤。' },
       { q: '为什么女性要多测一项？', a: '这个公式考虑了男女脂肪分布的差异。加入臀围测量，是为了修正仅凭颈围和腰围会对大多数女性造成的低估。' },
+    ],
+    idealweight: [
+      { q: '为什么三个公式给出的数字不一样？', a: '它们是各自独立开发的，使用了不同的参考人群，也来自不同的年代。没有哪一个比其他更「正确」。它们之间的差异范围才是诚实的答案，而不是某一个具体数字。' },
+      { q: '我应该用哪个公式？', a: '没有明确的最佳答案。Devine公式在临床场景中被引用最多，但三者都只是群体平均值，不是个人化的目标。与其挑选一个，不如把这个差异范围本身当作答案。' },
+      { q: '这个计算考虑肌肉量或骨架大小吗？', a: '不考虑，这些公式只使用身高和性别。肌肉发达或骨架较大的人，体重合理地会比这些数字建议的更重，但并不代表超重。这正是它们不能作为个人医疗建议的原因。' },
     ],
     loan: [
       { q: '什么是复利？', a: '每期获得的利息会计入本金，因此你既能从本金又能从之前的利息中获得利息。' },
@@ -452,6 +487,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '정확히 어디를 측정해야 하나요?', a: '목은 후두 바로 아래를, 허리는 가장 좁은 부분(뚜렷한 지점이 없다면 배꼽 높이)을, 여성의 경우 엉덩이는 가장 넓은 부분을 측정하세요. 줄자는 피부를 누르지 않으면서 밀착되게 감아주세요.' },
       { q: '왜 여성만 측정 항목이 하나 더 있나요?', a: '이 공식은 남녀 간 지방 분포 차이를 반영합니다. 엉덩이 측정값을 추가하면 목과 허리만으로는 대부분의 여성에게서 과소평가되는 부분을 보정할 수 있습니다.' },
     ],
+    idealweight: [
+      { q: '왜 세 공식의 결과가 다른가요?', a: '이 공식들은 서로 다른 기준 인구 집단과 서로 다른 시대를 기반으로 각각 독립적으로 개발되었습니다. 어느 것도 다른 것보다 더 "정확"하지 않습니다. 단일 숫자가 아니라 이들 사이의 범위 자체가 정직한 답입니다.' },
+      { q: '어떤 공식을 사용해야 하나요?', a: '명확한 정답은 없습니다. Devine 공식이 임상에서 가장 많이 인용되지만, 세 공식 모두 인구 평균일 뿐 개인 맞춤 목표가 아닙니다. 하나를 고르기보다는 그 범위 자체를 답으로 받아들이세요.' },
+      { q: '이 계산이 근육량이나 골격 크기를 반영하나요?', a: '아니요, 이 공식들은 키와 성별만 사용합니다. 근육질이거나 골격이 큰 사람은 과체중이 아니어도 이 수치보다 합리적으로 더 무거울 수 있습니다. 바로 그래서 이는 개인 맞춤 의학적 조언이 아닙니다.' },
+    ],
     loan: [
       { q: '복리란 무엇인가요?', a: '매 기간 얻은 이자가 잔액에 더해져, 원금과 이전 이자 모두에 대해 이자를 받게 됩니다.' },
       { q: '이자는 얼마나 자주 계산되나요?', a: '매월 계산되며, 이는 저축 계좌나 펀드에서 일반적이며 시간에 따른 성장을 현실적으로 보여줍니다.' },
@@ -508,6 +548,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'मुझे ठीक कहां माप लेना चाहिए?', a: 'गर्दन को एडम्स ऐपल से थोड़ा नीचे, कमर को सबसे पतले हिस्से पर (या अगर कोई साफ़ पतला हिस्सा न हो तो नाभि के पास), और महिलाओं के लिए कूल्हे को सबसे चौड़े हिस्से पर मापें। टेप को कसकर लेकिन त्वचा को दबाए बिना रखें।' },
       { q: 'महिलाओं के लिए एक अतिरिक्त माप क्यों है?', a: 'यह फ़ॉर्मूला इस बात को ध्यान में रखता है कि पुरुषों और महिलाओं में फैट जमा होने का तरीका अलग होता है। कूल्हे का माप जोड़ने से उस पैटर्न की भरपाई होती है जिसे अकेले गर्दन और कमर ज़्यादातर महिलाओं के लिए कम आंकते।' },
     ],
+    idealweight: [
+      { q: 'तीनों फ़ॉर्मूले अलग-अलग आंकड़े क्यों देते हैं?', a: 'इन्हें अलग-अलग तरीके से बनाया गया था, अलग-अलग संदर्भ जनसंख्या और अलग-अलग दशकों के आधार पर। कोई भी दूसरे से ज़्यादा "सही" नहीं है। इनके बीच की रेंज ही ईमानदार जवाब है, कोई एक आंकड़ा नहीं।' },
+      { q: 'मुझे कौन सा फ़ॉर्मूला इस्तेमाल करना चाहिए?', a: 'कोई साफ़ विजेता नहीं है। क्लिनिकल संदर्भों में Devine सबसे ज़्यादा इस्तेमाल होता है, लेकिन तीनों जनसंख्या के औसत हैं, व्यक्तिगत लक्ष्य नहीं। एक चुनने के बजाय, रेंज को ही अपना जवाब मानें।' },
+      { q: 'क्या यह मांसपेशियों या शरीर की बनावट को ध्यान में रखता है?', a: 'नहीं, ये फ़ॉर्मूले सिर्फ़ लंबाई और लिंग का उपयोग करते हैं। मांसपेशियों वाला या बड़ी बनावट वाला व्यक्ति बिना ओवरवेट हुए इन आंकड़ों से वाजिब तौर पर ज़्यादा वज़न का हो सकता है। इसीलिए ये व्यक्तिगत मेडिकल सलाह नहीं हैं।' },
+    ],
     loan: [
       { q: 'चक्रवृद्धि ब्याज क्या है?', a: 'हर अवधि में अर्जित ब्याज को मूलधन में जोड़ दिया जाता है, जिससे आपको मूलधन और पिछले ब्याज दोनों पर ब्याज मिलता है।' },
       { q: 'ब्याज की गणना कितनी बार होती है?', a: 'मासिक रूप से, जो बचत खातों और फंडों में सामान्य है और समय के साथ वृद्धि की एक यथार्थवादी तस्वीर देता है।' },
@@ -563,6 +608,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Seberapa akurat metode Angkatan Laut AS ini?', a: 'Ini memberikan perkiraan yang wajar untuk sebagian besar bentuk tubuh, biasanya hanya berbeda beberapa poin persentase dari metode yang lebih presisi seperti DEXA. Metode ini cenderung kurang akurat untuk bentuk tubuh yang tidak biasa atau tingkat lemak tubuh yang sangat rendah atau sangat tinggi.' },
       { q: 'Tepatnya di mana saya harus mengukur?', a: 'Ukur leher tepat di bawah jakun, pinggang di titik paling sempit (atau di sekitar pusar jika tidak ada titik yang jelas), dan untuk wanita, pinggul di titik paling lebar. Jaga agar pita pengukur pas tapi tidak menekan kulit.' },
       { q: 'Kenapa ada ukuran tambahan untuk wanita?', a: 'Rumus ini memperhitungkan bahwa distribusi lemak berbeda antara pria dan wanita. Menambahkan ukuran pinggul mengoreksi pola yang jika hanya mengandalkan leher dan pinggang akan meremehkan hasil untuk sebagian besar wanita.' },
+    ],
+    idealweight: [
+      { q: 'Kenapa ketiga rumus memberikan angka yang berbeda?', a: 'Rumus-rumus ini dikembangkan secara terpisah, menggunakan populasi acuan dan dekade yang berbeda. Tidak ada satu pun yang lebih "benar" dari yang lain. Rentang di antara ketiganya adalah jawaban yang jujur, bukan satu angka tunggal.' },
+      { q: 'Rumus mana yang sebaiknya saya gunakan?', a: 'Tidak ada pemenang yang jelas. Devine paling sering dikutip dalam konteks klinis, tetapi ketiganya adalah rata-rata populasi, bukan target yang dipersonalisasi. Anggap rentangnya sebagai jawabanmu, bukan memilih salah satu.' },
+      { q: 'Apakah ini memperhitungkan massa otot atau ukuran rangka tubuh?', a: 'Tidak, rumus-rumus ini hanya menggunakan tinggi badan dan jenis kelamin. Orang yang berotot atau memiliki rangka tubuh lebih besar secara wajar akan lebih berat daripada yang disarankan angka-angka ini tanpa berarti kelebihan berat badan. Itulah sebabnya rumus ini bukan panduan medis yang dipersonalisasi.' },
     ],
     loan: [
       { q: 'Apa itu bunga berbunga?', a: 'Bunga yang diperoleh setiap periode ditambahkan ke saldo, sehingga kamu mendapatkan bunga dari jumlah awal maupun bunga sebelumnya.' },

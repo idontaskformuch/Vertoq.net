@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { translations } from '../../../i18n/translations';
+import { langCodes } from '../../../i18n/languages';
+import { idealWeightContent } from '../../../i18n/idealWeightContent';
+import IdealWeightCalculator from '../../../components/IdealWeightCalculator.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+
+export function getStaticPaths() {
+  return langCodes.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = translations[lang as keyof typeof translations].idealweight;
+const c = idealWeightContent[lang as keyof typeof idealWeightContent];
+---
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="idealweight">
+  <section class="page-head">
+    <p class="eyebrow">Vertoq</p>
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+  </section>
+
+  <IdealWeightCalculator lang={lang} />
+
+  {c && (
+    <div class="content-block-group">
+      <section class="content-block">
+        <h2>{c.whatIsIdealWeight.heading}</h2>
+        <p>{c.whatIsIdealWeight.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.formulas.heading}</h2>
+        <p>{c.formulas.intro}</p>
+        <h3>{c.formulas.devineLabel}</h3>
+        <p>{c.formulas.maleLabel} <code>{c.formulas.devineMaleCode}</code></p>
+        <p>{c.formulas.femaleLabel} <code>{c.formulas.devineFemaleCode}</code></p>
+        <h3>{c.formulas.robinsonLabel}</h3>
+        <p>{c.formulas.maleLabel} <code>{c.formulas.robinsonMaleCode}</code></p>
+        <p>{c.formulas.femaleLabel} <code>{c.formulas.robinsonFemaleCode}</code></p>
+        <h3>{c.formulas.hamwiLabel}</h3>
+        <p>{c.formulas.maleLabel} <code>{c.formulas.hamwiMaleCode}</code></p>
+        <p>{c.formulas.femaleLabel} <code>{c.formulas.hamwiFemaleCode}</code></p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.disclaimer.heading}</h2>
+        <p>{c.disclaimer.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.limitations.heading}</h2>
+        <p>{c.limitations.body}</p>
+      </section>
+
+      <section class="content-block related-calculators">
+        <h2>{c.related.heading}</h2>
+        <p>
+          <a href={`/${lang}/bmi/`}>{c.related.bmiLinkText}</a> {c.related.bmiDescription}
+        </p>
+        <p>
+          <a href={`/${lang}/bodyfat/`}>{c.related.bodyfatLinkText}</a> {c.related.bodyfatDescription}
+        </p>
+      </section>
+    </div>
+  )}
+
+  <FaqSection lang={lang} tool="idealweight" />
+
+  <AdSlot />
+</Layout>
