@@ -55,7 +55,7 @@ const t = translations[lang as keyof typeof translations].loan;
 
   function fmt(n) {
     if (!isFinite(n)) return '—';
-    return Math.round(n).toLocaleString();
+    return Math.round(n).toString();
   }
 
   function calc() {

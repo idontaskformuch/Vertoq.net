@@ -47,7 +47,7 @@ const t = translations[lang as keyof typeof translations].loancost;
 
   function fmt(n: number) {
     if (!isFinite(n)) return '—';
-    return Math.round(n).toLocaleString();
+    return Math.round(n).toString();
   }
 
   function calc() {

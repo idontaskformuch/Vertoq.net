@@ -79,7 +79,7 @@ const unitLabels = JSON.stringify(t.units);
 
     const msPerDay = 24 * 60 * 60 * 1000;
     const totalDays = Math.floor((asOf.getTime() - birth.getTime()) / msPerDay);
-    totalDaysEl.textContent = totalDays.toLocaleString();
+    totalDaysEl.textContent = totalDays.toString();
 
     let nextBday = new Date(asOf.getFullYear(), birth.getMonth(), birth.getDate());
     if (nextBday < asOf || (nextBday.getTime() === asOf.getTime() && false)) {

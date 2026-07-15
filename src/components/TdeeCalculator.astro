@@ -82,8 +82,8 @@ const activityLevels = JSON.stringify(t.activityLevels);
     const multiplier = multipliers[activityEl.value] || 1.2;
     const tdee = bmr * multiplier;
 
-    bmrEl.textContent = Math.round(bmr).toLocaleString();
-    resultEl.textContent = Math.round(tdee).toLocaleString();
+    bmrEl.textContent = Math.round(bmr).toString();
+    resultEl.textContent = Math.round(tdee).toString();
   }
 
   [weightEl, heightEl, ageEl, sexEl, activityEl].forEach((el) => el.addEventListener('input', calc));
