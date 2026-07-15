@@ -17,6 +17,8 @@ export interface CalorieContent {
     tdeeDescription: string;
     bmrLinkText: string;
     bmrDescription: string;
+    bodyfatLinkText: string;
+    bodyfatDescription: string;
   };
 }
 
@@ -56,6 +58,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— se underhållssiffran den här kalkylatorn bygger på, uppdelad efter aktivitetsnivå.`,
       bmrLinkText: `BMR-kalkylator`,
       bmrDescription: `— se din vilokalorinivå innan aktivitet räknas in.`,
+      bodyfatLinkText: `Kroppsfettkalkylator`,
+      bodyfatDescription: `— få en mer direkt bild av kroppssammansättningen att komplettera ditt kaloribehov med.`,
     },
   },
 
@@ -94,6 +98,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— see the maintenance number this calculator is built on, broken down by activity level.`,
       bmrLinkText: `BMR Calculator`,
       bmrDescription: `— see the resting calorie baseline before activity is factored in.`,
+      bodyfatLinkText: `Body Fat Calculator`,
+      bodyfatDescription: `— get a more direct look at body composition to pair with your calorie target.`,
     },
   },
 
@@ -132,6 +138,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— veja o número de manutenção em que esta calculadora se baseia, detalhado por nível de atividade.`,
       bmrLinkText: `Calculadora de TMB`,
       bmrDescription: `— veja sua base calórica de repouso antes de considerar a atividade.`,
+      bodyfatLinkText: `Calculadora de Gordura Corporal`,
+      bodyfatDescription: `— tenha um olhar mais direto sobre a composição corporal para complementar sua meta calórica.`,
     },
   },
 
@@ -170,6 +178,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— consulta la cifra de mantenimiento en la que se basa esta calculadora, desglosada por nivel de actividad.`,
       bmrLinkText: `Calculadora de TMB`,
       bmrDescription: `— consulta tu base calórica en reposo antes de tener en cuenta la actividad.`,
+      bodyfatLinkText: `Calculadora de Grasa Corporal`,
+      bodyfatDescription: `— obtén una mirada más directa a tu composición corporal para complementar tu objetivo calórico.`,
     },
   },
 
@@ -208,6 +218,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— sieh die Erhaltungskalorienzahl, auf der dieser Rechner basiert, aufgeschlüsselt nach Aktivitätslevel.`,
       bmrLinkText: `BMR-Rechner`,
       bmrDescription: `— sieh deinen Ruhekalorien-Basiswert, bevor Aktivität einberechnet wird.`,
+      bodyfatLinkText: `Körperfett-Rechner`,
+      bodyfatDescription: `— ein direkterer Blick auf die Körperzusammensetzung als Ergänzung zu deinem Kalorienziel.`,
     },
   },
 
@@ -246,6 +258,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— この計算機の土台となる維持カロリーを、活動レベル別に確認できます。`,
       bmrLinkText: `BMR計算機`,
       bmrDescription: `— 活動量を加える前の、安静時カロリーの基準値を確認できます。`,
+      bodyfatLinkText: `体脂肪率計算機`,
+      bodyfatDescription: `— カロリー目標と合わせて、より直接的に体組成を確認できます。`,
     },
   },
 
@@ -284,6 +298,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— 查看这个计算器所基于的维持热量，并按活动水平细分。`,
       bmrLinkText: `BMR计算器`,
       bmrDescription: `— 查看未计入活动量之前的静息热量基准。`,
+      bodyfatLinkText: `体脂率计算器`,
+      bodyfatDescription: `— 结合你的热量目标，更直接地了解身体成分。`,
     },
   },
 
@@ -322,6 +338,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— 이 계산기의 기반이 되는 유지 칼로리를 활동 수준별로 확인해 보세요.`,
       bmrLinkText: `BMR 계산기`,
       bmrDescription: `— 활동량을 반영하기 전의 휴식 칼로리 기준치를 확인해 보세요.`,
+      bodyfatLinkText: `체지방률 계산기`,
+      bodyfatDescription: `— 칼로리 목표와 함께 체구성을 더 직접적으로 확인해 보세요.`,
     },
   },
 
@@ -360,6 +378,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— वह मेंटेनेंस आंकड़ा देखें जिस पर यह कैलकुलेटर आधारित है, गतिविधि स्तर के हिसाब से विभाजित।`,
       bmrLinkText: `BMR कैलकुलेटर`,
       bmrDescription: `— गतिविधि जोड़ने से पहले अपनी आराम वाली कैलोरी का आधार देखें।`,
+      bodyfatLinkText: `बॉडी फैट कैलकुलेटर`,
+      bodyfatDescription: `— अपने कैलोरी लक्ष्य के साथ शरीर की संरचना को ज़्यादा सीधे तरीके से देखें।`,
     },
   },
 
@@ -398,6 +418,8 @@ export const calorieContent: Record<string, CalorieContent> = {
       tdeeDescription: `— lihat angka pemeliharaan yang menjadi dasar kalkulator ini, dirinci berdasarkan tingkat aktivitas.`,
       bmrLinkText: `Kalkulator BMR`,
       bmrDescription: `— lihat kalori dasar saat istirahat sebelum aktivitas diperhitungkan.`,
+      bodyfatLinkText: `Kalkulator Lemak Tubuh`,
+      bodyfatDescription: `— lihat komposisi tubuh secara lebih langsung untuk melengkapi target kalorimu.`,
     },
   },
 };

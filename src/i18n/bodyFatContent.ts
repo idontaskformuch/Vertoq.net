@@ -18,7 +18,7 @@ export interface BodyFatContent {
     rows: [string, string, string][];
   };
   limitations: { heading: string; body: string };
-  related: { heading: string; linkText: string; description: string };
+  related: { heading: string; linkText: string; description: string; idealweightLinkText: string; idealweightDescription: string };
 }
 
 export const bodyFatContent: Record<string, BodyFatContent> = {
@@ -55,9 +55,11 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       body: `Omkretsbaserade metoder som den här är uppskattningar, inte exakta mätningar. De är känsliga för mättekniken och kan bli missvisande för kroppsformer som formeln inte är kalibrerad för. DEXA-skanning och kaliper mäter kroppsfett mer exakt, men de kräver utrustning eller tränad personal som den här kalkylatorn inte kan ersätta. Den här metoden byter en del precision mot något vem som helst kan göra hemma med ett måttband.`,
     },
     related: {
-      heading: `Relaterad kalkylator`,
+      heading: `Relaterade kalkylatorer`,
       linkText: `BMI-kalkylator`,
       description: `— se hur din vikt och längd förhåller sig till standardintervallen för BMI.`,
+      idealweightLinkText: `Idealviktskalkylator`,
+      idealweightDescription: `— se ett referensintervall på populationsnivå istället för en enskild siffra.`,
     },
   },
 
@@ -94,9 +96,11 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       body: `Circumference-based methods like this one are estimates, not precise measurements. They're sensitive to measurement technique and can be thrown off by body shapes the formula wasn't tuned for. DEXA scans and skinfold calipers measure body fat more accurately, but they need equipment or trained hands this calculator can't replace. This method trades some precision for something anyone can do at home with a tape measure.`,
     },
     related: {
-      heading: `Related calculator`,
+      heading: `Related calculators`,
       linkText: `BMI Calculator`,
       description: `— see how your weight and height compare to standard BMI ranges.`,
+      idealweightLinkText: `Ideal Weight Calculator`,
+      idealweightDescription: `— see a population-level reference range instead of one number.`,
     },
   },
 
@@ -133,9 +137,11 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       body: `Métodos baseados em circunferência como esse são estimativas, não medições precisas. Eles são sensíveis à técnica de medição e podem ficar imprecisos para formatos corporais para os quais a fórmula não foi calibrada. Exames de DEXA e adipômetros medem a gordura corporal com mais precisão, mas exigem equipamento ou mãos treinadas que essa calculadora não substitui. Esse método troca um pouco de precisão por algo que qualquer pessoa consegue fazer em casa com uma fita métrica.`,
     },
     related: {
-      heading: `Calculadora relacionada`,
+      heading: `Calculadoras relacionadas`,
       linkText: `Calculadora de IMC`,
       description: `— veja como seu peso e altura se comparam às faixas padrão de IMC.`,
+      idealweightLinkText: `Calculadora de Peso Ideal`,
+      idealweightDescription: `— veja uma faixa de referência populacional em vez de um único número.`,
     },
   },
 
@@ -172,9 +178,11 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       body: `Los métodos basados en circunferencias como este son estimaciones, no mediciones precisas. Son sensibles a la técnica de medición y pueden fallar con formas corporales para las que la fórmula no fue ajustada. Los escáneres DEXA y los calibradores de pliegues cutáneos miden la grasa corporal con más precisión, pero requieren equipo o manos entrenadas que esta calculadora no puede sustituir. Este método cambia algo de precisión por algo que cualquiera puede hacer en casa con una cinta métrica.`,
     },
     related: {
-      heading: `Calculadora relacionada`,
+      heading: `Calculadoras relacionadas`,
       linkText: `Calculadora de IMC`,
       description: `— comprueba cómo se comparan tu peso y estatura con los rangos estándar de IMC.`,
+      idealweightLinkText: `Calculadora de Peso Ideal`,
+      idealweightDescription: `— consulta un rango de referencia poblacional en lugar de una sola cifra.`,
     },
   },
 
@@ -211,9 +219,11 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       body: `Umfangsbasierte Methoden wie diese sind Schätzungen, keine präzisen Messungen. Sie reagieren empfindlich auf die Messtechnik und können bei Körperformen daneben liegen, für die die Formel nicht kalibriert wurde. DEXA-Scans und Hautfaltenmessungen erfassen den Körperfettanteil genauer, erfordern aber Geräte oder geschulte Hände, die dieser Rechner nicht ersetzen kann. Diese Methode tauscht etwas Genauigkeit gegen etwas, das jeder zu Hause mit einem Maßband machen kann.`,
     },
     related: {
-      heading: `Verwandter Rechner`,
+      heading: `Verwandte Rechner`,
       linkText: `BMI-Rechner`,
       description: `— sieh, wie dein Gewicht und deine Größe im Vergleich zu den Standard-BMI-Bereichen stehen.`,
+      idealweightLinkText: `Idealgewicht-Rechner`,
+      idealweightDescription: `— sieh einen Referenzbereich auf Bevölkerungsebene statt einer einzelnen Zahl.`,
     },
   },
 
@@ -253,6 +263,8 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       heading: `関連する計算機`,
       linkText: `BMI計算機`,
       description: `— 体重と身長が標準的なBMI範囲とどう比較されるか確認できます。`,
+      idealweightLinkText: `理想体重計算機`,
+      idealweightDescription: `— 一つの数値ではなく、集団レベルの参考範囲を確認できます。`,
     },
   },
 
@@ -292,6 +304,8 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       heading: `相关计算器`,
       linkText: `BMI计算器`,
       description: `— 看看你的体重和身高与标准BMI范围相比如何。`,
+      idealweightLinkText: `理想体重计算器`,
+      idealweightDescription: `— 查看群体层面的参考区间，而不是单一数字。`,
     },
   },
 
@@ -331,6 +345,8 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       heading: `관련 계산기`,
       linkText: `BMI 계산기`,
       description: `— 체중과 키가 표준 BMI 범위와 어떻게 비교되는지 확인해 보세요.`,
+      idealweightLinkText: `이상 체중 계산기`,
+      idealweightDescription: `— 하나의 숫자 대신 인구 집단 수준의 참고 범위를 확인해 보세요.`,
     },
   },
 
@@ -370,6 +386,8 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       heading: `संबंधित कैलकुलेटर`,
       linkText: `BMI कैलकुलेटर`,
       description: `— देखें कि आपका वज़न और लंबाई मानक BMI सीमाओं से कैसे तुलना करते हैं।`,
+      idealweightLinkText: `आदर्श वज़न कैलकुलेटर`,
+      idealweightDescription: `— एक अकेले आंकड़े के बजाय जनसंख्या-स्तर की संदर्भ रेंज देखें।`,
     },
   },
 
@@ -409,6 +427,8 @@ export const bodyFatContent: Record<string, BodyFatContent> = {
       heading: `Kalkulator terkait`,
       linkText: `Kalkulator BMI`,
       description: `— lihat bagaimana berat dan tinggi badanmu dibandingkan dengan rentang BMI standar.`,
+      idealweightLinkText: `Kalkulator Berat Badan Ideal`,
+      idealweightDescription: `— lihat rentang acuan tingkat populasi, bukan satu angka saja.`,
     },
   },
 };
