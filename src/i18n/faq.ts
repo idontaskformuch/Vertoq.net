@@ -41,8 +41,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Vad är skillnaden mellan BMI och kroppsfettprocent?', a: 'BMI är ett förhållande mellan vikt och längd och säger inget om vad vikten består av. Kroppsfettprocent mäter den faktiska andelen fett i förhållande till muskelmassa, och är mer exakt, men kräver andra mätmetoder för att uppskattas.' },
     ],
     tdee: [
-      { q: 'Vad är skillnaden mellan basalmetabolism och TDEE?', a: 'Basalmetabolism (BMR) är kalorierna kroppen förbränner i vila. TDEE lägger till kalorierna du förbränner genom vardagsaktivitet och träning.' },
-      { q: 'Vilken formel används?', a: 'Mifflin St Jeor-formeln, som de flesta näringsexperter idag anser ge den mest tillförlitliga uppskattningen för de flesta kroppstyper.' },
+      { q: 'Hur exakt är TDEE?', a: 'Det är en bra uppskattning, inte en exakt mätning. Den individuella ämnesomsättningen varierar med ungefär 10 till 15 procent, så se begränsningarna ovan för hur du justerar den utifrån dina egna resultat.' },
+      { q: 'Vilken aktivitetsnivå ska jag välja?', a: 'Välj det alternativ som stämmer med din vanliga vecka, inte din bästa eller sämsta dag. De flesta överskattar hur aktiva de faktiskt är, så välj hellre ett lägre alternativ om du är osäker.' },
+      { q: 'Bör jag äta exakt mitt TDEE varje dag?', a: 'Nej, intaget varierar naturligt från dag till dag. Det som spelar roll är genomsnittet över en vecka eller två, så se TDEE som ett mål att sikta mot snarare än en siffra att träffa exakt varje dag.' },
     ],
     loan: [
       { q: 'Vad är ränta-på-ränta?', a: 'Räntan du tjänar läggs till kapitalet, så du tjänar ränta på både startbeloppet och tidigare intjänad ränta.' },
@@ -81,8 +82,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: "What's the difference between BMI and body fat percentage?", a: 'BMI is a ratio of weight to height and says nothing about what that weight is made of. Body fat percentage measures the actual proportion of fat versus lean mass, and is more precise, but needs different tools to estimate.' },
     ],
     tdee: [
-      { q: 'What\'s the difference between BMR and TDEE?', a: 'Basal metabolic rate (BMR) is the calories your body burns at rest. TDEE adds the calories you burn through daily activity and exercise.' },
-      { q: 'Which formula is used?', a: 'The Mifflin St Jeor formula, considered by most nutrition experts today to give the most reliable estimate for most body types.' },
+      { q: 'How accurate is TDEE?', a: "It's a solid estimate, not an exact measurement. Individual metabolism varies by roughly 10 to 15%, so see the limitations above for how to adjust it based on your own results." },
+      { q: 'Which activity level should I choose?', a: 'Pick the option that matches your typical week, not your best or worst day. Most people overestimate how active they really are, so when in doubt, choose the lower option.' },
+      { q: 'Should I eat exactly my TDEE every day?', a: 'No, day-to-day intake naturally varies. What matters is your average over a week or two, so treat TDEE as a target to aim near rather than a number to hit exactly every day.' },
     ],
     loan: [
       { q: 'What is compound interest?', a: 'The interest you earn each period is added to your balance, so you earn interest on both your starting amount and past interest.' },
@@ -121,8 +123,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Qual a diferença entre IMC e percentual de gordura corporal?', a: 'O IMC é uma relação entre peso e altura e não diz nada sobre do que esse peso é composto. O percentual de gordura corporal mede a proporção real de gordura em relação à massa magra, e é mais preciso, mas exige outras ferramentas para ser estimado.' },
     ],
     tdee: [
-      { q: 'Qual a diferença entre TMB e TDEE?', a: 'A taxa metabólica basal (TMB) é o quanto seu corpo gasta em repouso. O TDEE soma as calorias gastas com atividade diária e exercício.' },
-      { q: 'Qual fórmula é usada?', a: 'A fórmula de Mifflin St Jeor, considerada pela maioria dos especialistas em nutrição a mais confiável para a maioria dos tipos de corpo.' },
+      { q: 'Quão preciso é o TDEE?', a: 'É uma boa estimativa, não uma medição exata. O metabolismo individual varia cerca de 10 a 15%, então veja as limitações acima para saber como ajustá-lo com base nos seus próprios resultados.' },
+      { q: 'Qual nível de atividade devo escolher?', a: 'Escolha a opção que corresponde à sua semana típica, não ao seu melhor ou pior dia. A maioria das pessoas superestima o quanto é ativa, então, na dúvida, escolha a opção mais baixa.' },
+      { q: 'Devo comer exatamente meu TDEE todos os dias?', a: 'Não, a ingestão varia naturalmente de um dia para o outro. O que importa é a média ao longo de uma ou duas semanas, então trate o TDEE como uma meta a se aproximar, não um número a bater exatamente todo dia.' },
     ],
     loan: [
       { q: 'O que são juros compostos?', a: 'Os juros ganhos em cada período são somados ao saldo, então você ganha juros sobre o valor inicial e sobre os juros anteriores.' },
@@ -161,8 +164,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Cuál es la diferencia entre el IMC y el porcentaje de grasa corporal?', a: 'El IMC es una relación entre peso y estatura y no dice nada sobre de qué está hecho ese peso. El porcentaje de grasa corporal mide la proporción real de grasa frente a masa magra, y es más preciso, pero requiere otras herramientas para estimarlo.' },
     ],
     tdee: [
-      { q: '¿Cuál es la diferencia entre TMB y TDEE?', a: 'La tasa metabólica basal (TMB) es lo que tu cuerpo gasta en reposo. El TDEE suma las calorías que gastas con actividad diaria y ejercicio.' },
-      { q: '¿Qué fórmula se utiliza?', a: 'La fórmula de Mifflin St Jeor, considerada por la mayoría de expertos en nutrición como la más fiable para la mayoría de tipos de cuerpo.' },
+      { q: '¿Qué tan preciso es el TDEE?', a: 'Es una buena estimación, no una medición exacta. El metabolismo individual varía en torno a un 10 a 15%, así que consulta las limitaciones arriba para ver cómo ajustarlo según tus propios resultados.' },
+      { q: '¿Qué nivel de actividad debo elegir?', a: 'Elige la opción que se ajuste a tu semana típica, no a tu mejor o peor día. La mayoría de la gente sobreestima lo activa que realmente es, así que, si tienes dudas, elige la opción más baja.' },
+      { q: '¿Debo comer exactamente mi TDEE todos los días?', a: 'No, la ingesta varía de forma natural de un día a otro. Lo que importa es el promedio a lo largo de una o dos semanas, así que trata el TDEE como una meta a la que acercarte, no una cifra exacta que cumplir cada día.' },
     ],
     loan: [
       { q: '¿Qué es el interés compuesto?', a: 'El interés que ganas cada periodo se suma al saldo, así ganas interés tanto sobre el monto inicial como sobre el interés anterior.' },
@@ -201,8 +205,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Was ist der Unterschied zwischen BMI und Körperfettanteil?', a: 'Der BMI ist ein Verhältnis von Gewicht zu Größe und sagt nichts darüber aus, woraus dieses Gewicht besteht. Der Körperfettanteil misst den tatsächlichen Anteil von Fett gegenüber Muskelmasse und ist genauer, erfordert aber andere Messmethoden.' },
     ],
     tdee: [
-      { q: 'Was ist der Unterschied zwischen Grundumsatz und TDEE?', a: 'Der Grundumsatz ist, was dein Körper im Ruhezustand verbraucht. Der TDEE addiert die Kalorien, die du durch Alltagsaktivität und Training verbrauchst.' },
-      { q: 'Welche Formel wird verwendet?', a: 'Die Mifflin St Jeor Formel, die von den meisten Ernährungsexperten heute als zuverlässigste Schätzung für die meisten Körpertypen angesehen wird.' },
+      { q: 'Wie genau ist der TDEE?', a: 'Er ist eine solide Schätzung, keine exakte Messung. Der individuelle Stoffwechsel variiert um etwa 10 bis 15 Prozent, daher lohnt sich ein Blick auf die Einschränkungen oben, um ihn an die eigenen Ergebnisse anzupassen.' },
+      { q: 'Welches Aktivitätslevel sollte ich wählen?', a: 'Wähle die Option, die zu deiner typischen Woche passt, nicht zu deinem besten oder schlechtesten Tag. Die meisten überschätzen, wie aktiv sie wirklich sind, also im Zweifel lieber die niedrigere Option wählen.' },
+      { q: 'Sollte ich jeden Tag genau meinen TDEE essen?', a: 'Nein, die Kalorienzufuhr schwankt von Tag zu Tag ganz natürlich. Entscheidend ist der Durchschnitt über ein bis zwei Wochen, daher besser den TDEE als Richtwert sehen, dem man sich annähert, statt als exakten Wert, den man jeden Tag treffen muss.' },
     ],
     loan: [
       { q: 'Was ist Zinseszins?', a: 'Die Zinsen, die du jede Periode verdienst, werden dem Saldo hinzugefügt, sodass du Zinsen auf den Startbetrag und frühere Zinsen verdienst.' },
@@ -241,8 +246,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'BMIと体脂肪率の違いは何ですか？', a: 'BMIは体重と身長の比率であり、その体重が何でできているかは示しません。体脂肪率は脂肪と除脂肪量の実際の割合を測定するためより正確ですが、算出には別の測定方法が必要です。' },
     ],
     tdee: [
-      { q: '基礎代謝量とTDEEの違いは何ですか?', a: '基礎代謝量は安静時に消費するカロリーです。TDEEはそこに日常活動や運動で消費するカロリーを加えたものです。' },
-      { q: 'どの計算式が使われていますか?', a: '多くの栄養専門家が現在多くの体型に対して最も信頼できると考えるMifflin St Jeor式を使用しています。' },
+      { q: 'TDEEはどのくらい正確ですか？', a: 'しっかりした推定値ではありますが、正確な測定値ではありません。個人の代謝は10〜15%ほど変動するため、自分の結果に合わせて調整する方法は上記の「限界」をご覧ください。' },
+      { q: 'どの活動レベルを選べばいいですか？', a: '一番良い日や悪い日ではなく、普段の1週間に近い選択肢を選んでください。多くの人は自分の活動量を実際より高く見積もりがちなので、迷ったら低めの選択肢を選ぶのがおすすめです。' },
+      { q: '毎日TDEEぴったりのカロリーを摂るべきですか？', a: 'いいえ、日々の摂取量は自然に変動します。大切なのは1〜2週間の平均であり、TDEEは毎日ぴったり合わせる数値ではなく、目安として近づけていく目標として捉えてください。' },
     ],
     loan: [
       { q: '複利とは何ですか？', a: '各期間で得た利息が元本に加算され、元本と過去の利息の両方に利息がつく仕組みです。' },
@@ -281,8 +287,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'BMI和体脂率有什么区别？', a: 'BMI是体重与身高的比值，无法说明这些体重具体由什么构成。体脂率衡量的是脂肪相对于瘦体重的实际比例，更精确，但需要其他工具才能估算。' },
     ],
     tdee: [
-      { q: '基础代谢率和TDEE有什么区别?', a: '基础代谢率是身体在静息状态下消耗的热量。TDEE则加上了日常活动和运动消耗的热量。' },
-      { q: '使用的是哪个公式?', a: 'Mifflin St Jeor公式，目前大多数营养专家认为它对大多数体型给出的估算最为可靠。' },
+      { q: 'TDEE有多准确？', a: '它是一个可靠的估算值，而不是精确测量。个体代谢会有大约10%至15%的差异，具体如何根据自己的实际情况调整，可参考上文的局限性说明。' },
+      { q: '应该选择哪个活动水平？', a: '选择最符合你日常一周状态的选项，而不是最好或最差的那一天。大多数人会高估自己的活跃程度，所以如果拿不准，选低一档更稳妥。' },
+      { q: '每天摄入的热量必须刚好等于TDEE吗？', a: '不需要，每天的摄入量本来就会有自然波动。真正重要的是一到两周的平均值，把TDEE当作一个大致靠近的目标，而不是每天都要精确达到的数字。' },
     ],
     loan: [
       { q: '什么是复利？', a: '每期获得的利息会计入本金，因此你既能从本金又能从之前的利息中获得利息。' },
@@ -321,8 +328,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'BMI와 체지방률의 차이는 무엇인가요?', a: 'BMI는 체중과 키의 비율일 뿐, 그 체중이 무엇으로 이루어져 있는지는 알려주지 않습니다. 체지방률은 지방과 제지방량의 실제 비율을 측정하므로 더 정확하지만, 추정하려면 다른 도구가 필요합니다.' },
     ],
     tdee: [
-      { q: '기초대사량과 TDEE의 차이는 무엇인가요?', a: '기초대사량은 신체가 휴식 상태에서 소비하는 칼로리입니다. TDEE는 여기에 일상 활동과 운동으로 소비하는 칼로리를 더한 것입니다.' },
-      { q: '어떤 공식이 사용되나요?', a: '대부분의 영양 전문가가 현재 대부분의 체형에 가장 신뢰할 수 있는 추정치를 제공한다고 보는 Mifflin St Jeor 공식입니다.' },
+      { q: 'TDEE는 얼마나 정확한가요?', a: 'TDEE는 꽤 믿을 만한 추정치이지만 정확한 측정값은 아닙니다. 개인의 대사량은 약 10~15% 차이가 날 수 있으니, 자신의 실제 결과에 맞춰 조정하는 방법은 위의 한계점을 참고하세요.' },
+      { q: '어떤 활동 수준을 선택해야 하나요?', a: '가장 컨디션이 좋았던 날이나 나빴던 날이 아니라, 평소 일주일을 기준으로 가장 가까운 옵션을 선택하세요. 대부분의 사람은 자신의 활동량을 실제보다 높게 평가하는 경향이 있으니, 확실하지 않다면 더 낮은 옵션을 선택하는 편이 좋습니다.' },
+      { q: '매일 정확히 TDEE만큼 먹어야 하나요?', a: '아니요, 하루하루의 섭취량은 자연스럽게 달라집니다. 중요한 것은 1~2주간의 평균이므로, TDEE는 매일 정확히 맞춰야 하는 숫자가 아니라 대략적으로 가까워지려는 목표로 생각하세요.' },
     ],
     loan: [
       { q: '복리란 무엇인가요?', a: '매 기간 얻은 이자가 잔액에 더해져, 원금과 이전 이자 모두에 대해 이자를 받게 됩니다.' },
@@ -361,8 +369,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'BMI और बॉडी फैट प्रतिशत में क्या अंतर है?', a: 'BMI वज़न और लंबाई का अनुपात है और यह नहीं बताता कि वह वज़न किससे बना है। बॉडी फैट प्रतिशत वसा और लीन मास के वास्तविक अनुपात को मापता है, और अधिक सटीक है, लेकिन इसे मापने के लिए अलग उपकरणों की ज़रूरत होती है।' },
     ],
     tdee: [
-      { q: 'बेसल मेटाबॉलिक रेट और TDEE में क्या अंतर है?', a: 'बेसल मेटाबॉलिक रेट वह है जो आपका शरीर आराम की अवस्था में खर्च करता है। TDEE में दैनिक गतिविधि और व्यायाम से खर्च होने वाली कैलोरी भी जोड़ी जाती है।' },
-      { q: 'कौन सा फ़ॉर्मूला उपयोग होता है?', a: 'Mifflin St Jeor फ़ॉर्मूला, जिसे अधिकांश पोषण विशेषज्ञ आज अधिकतर शरीर के प्रकारों के लिए सबसे भरोसेमंद अनुमान मानते हैं।' },
+      { q: 'TDEE कितना सटीक है?', a: 'यह एक अच्छा अनुमान है, कोई सटीक माप नहीं। हर व्यक्ति का मेटाबॉलिज्म करीब 10 से 15% तक अलग हो सकता है, इसलिए अपने असली नतीजों के हिसाब से इसे कैसे एडजस्ट करें, यह जानने के लिए ऊपर दी गई सीमाएँ देखें।' },
+      { q: 'मुझे कौन सी गतिविधि स्तर चुननी चाहिए?', a: 'अपने सबसे अच्छे या सबसे खराब दिन के बजाय, अपने सामान्य हफ़्ते से मेल खाने वाला विकल्प चुनें। ज़्यादातर लोग अपनी असल सक्रियता को ज़्यादा आंकते हैं, इसलिए अगर पक्का न हो तो कम वाला विकल्प चुनना बेहतर है।' },
+      { q: 'क्या मुझे हर दिन बिल्कुल अपने TDEE जितना ही खाना चाहिए?', a: 'नहीं, रोज़ाना का सेवन स्वाभाविक रूप से थोड़ा घटता-बढ़ता रहता है। असली मायने रखता है एक या दो हफ़्ते का औसत, इसलिए TDEE को हर दिन बिल्कुल हासिल करने वाला आंकड़ा न मानकर, एक ऐसा लक्ष्य मानें जिसके करीब रहना है।' },
     ],
     loan: [
       { q: 'चक्रवृद्धि ब्याज क्या है?', a: 'हर अवधि में अर्जित ब्याज को मूलधन में जोड़ दिया जाता है, जिससे आपको मूलधन और पिछले ब्याज दोनों पर ब्याज मिलता है।' },
@@ -401,8 +410,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Apa perbedaan antara BMI dan persentase lemak tubuh?', a: 'BMI adalah rasio antara berat dan tinggi badan, dan tidak menjelaskan apa yang menyusun berat tersebut. Persentase lemak tubuh mengukur proporsi lemak yang sebenarnya dibandingkan massa tanpa lemak, dan lebih akurat, tetapi memerlukan alat lain untuk memperkirakannya.' },
     ],
     tdee: [
-      { q: 'Apa perbedaan antara BMR dan TDEE?', a: 'BMR adalah kalori yang dibakar tubuh saat istirahat. TDEE menambahkan kalori yang dibakar melalui aktivitas harian dan olahraga.' },
-      { q: 'Rumus apa yang digunakan?', a: 'Rumus Mifflin St Jeor, yang dianggap sebagian besar ahli gizi saat ini memberikan perkiraan paling andal untuk sebagian besar bentuk tubuh.' },
+      { q: 'Seberapa akurat TDEE?', a: 'Ini perkiraan yang cukup baik, bukan pengukuran yang pasti. Metabolisme setiap orang bisa berbeda sekitar 10 hingga 15%, jadi lihat bagian keterbatasan di atas untuk cara menyesuaikannya dengan hasilmu sendiri.' },
+      { q: 'Tingkat aktivitas mana yang harus saya pilih?', a: 'Pilih opsi yang sesuai dengan minggu normalmu, bukan hari terbaik atau terburukmu. Kebanyakan orang menilai aktivitas mereka lebih tinggi dari kenyataannya, jadi kalau ragu, pilih opsi yang lebih rendah.' },
+      { q: 'Apakah saya harus makan tepat sesuai TDEE setiap hari?', a: 'Tidak, asupan harian secara alami akan bervariasi. Yang penting adalah rata-rata selama satu atau dua minggu, jadi anggap TDEE sebagai target untuk didekati, bukan angka yang harus dicapai persis setiap hari.' },
     ],
     loan: [
       { q: 'Apa itu bunga berbunga?', a: 'Bunga yang diperoleh setiap periode ditambahkan ke saldo, sehingga kamu mendapatkan bunga dari jumlah awal maupun bunga sebelumnya.' },

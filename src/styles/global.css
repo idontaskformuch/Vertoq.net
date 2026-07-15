@@ -357,6 +357,73 @@ h1, h2, h3 {
   * { transition: none !important; animation: none !important; }
 }
 
+/* --- Content sections (tool pages: explanations, tables, formulas) --- */
+.content-block-group {
+  margin: 8px 0 32px;
+}
+.content-block {
+  margin: 32px 0;
+}
+.content-block h2 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--chalk);
+}
+.content-block h3 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brass-bright);
+  margin: 20px 0 8px;
+}
+.content-block p {
+  color: var(--line);
+  line-height: 1.6;
+  margin: 0 0 12px;
+  max-width: 720px;
+}
+.content-block strong { color: var(--chalk); }
+.content-block code {
+  font-family: var(--font-mono);
+  background: var(--ink-deep);
+  padding: 2px 6px;
+  border-radius: var(--radius);
+  color: var(--brass-bright);
+  font-size: 0.9em;
+}
+.content-block .source-note {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--line);
+  opacity: 0.8;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line-faint);
+  white-space: nowrap;
+}
+.data-table th {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brass-bright);
+}
+.data-table td { color: var(--line); }
+
 /* --- FAQ --- */
 .faq {
   margin: 40px 0;
@@ -416,4 +483,6 @@ h1, h2, h3 {
   .cat-tabs { gap: 6px; }
   .conv-grid { gap: 12px; }
   .as-unit-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .data-table { font-size: 0.82rem; }
+  .data-table th, .data-table td { padding: 6px 8px; }
 }
