@@ -76,9 +76,9 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Can I calculate my age on a different date?', a: 'Yes, change the "Calculate as of" field to see your age on any date, past or future.' },
     ],
     bmi: [
-      { q: 'What is BMI and how is it calculated?', a: 'Weight in kilograms divided by height in meters squared, a measure of body composition.' },
-      { q: 'What do the categories mean?', a: "They follow WHO standard thresholds but don't account for muscle mass, age, or body frame." },
-      { q: 'Is BMI a perfect measure of health?', a: "No, it's a screening tool and should be seen as a starting point, consult a healthcare professional with questions." },
+      { q: 'Is BMI accurate for muscular or athletic people?', a: "Less so. BMI can't tell muscle from fat, so a muscular person may show as overweight despite low body fat. See the limitations above for more on this." },
+      { q: 'How often should I check my BMI?', a: 'For most people, every few months is enough to spot a trend, BMI changes slowly and daily checks mostly reflect water weight, not real change.' },
+      { q: "What's the difference between BMI and body fat percentage?", a: 'BMI is a ratio of weight to height and says nothing about what that weight is made of. Body fat percentage measures the actual proportion of fat versus lean mass, and is more precise, but needs different tools to estimate.' },
     ],
     tdee: [
       { q: 'What\'s the difference between BMR and TDEE?', a: 'Basal metabolic rate (BMR) is the calories your body burns at rest. TDEE adds the calories you burn through daily activity and exercise.' },
