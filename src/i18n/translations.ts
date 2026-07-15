@@ -13,6 +13,7 @@ export const translations = {
       ageCardTitle: 'Åldersräknare', ageCardDesc: 'Exakt ålder i år, månader och dagar, plus nedräkning till nästa födelsedag.',
       bmiCardTitle: 'BMI-kalkylator', bmiCardDesc: 'Räkna ut ditt BMI utifrån längd och vikt.',
       tdeeCardTitle: 'TDEE-kalkylator', tdeeCardDesc: 'Räkna ut ditt dagliga kaloribehov utifrån ålder, kön, vikt, längd och aktivitetsnivå.',
+      bmrCardTitle: 'BMR-kalkylator', bmrCardDesc: 'Räkna ut din basala ämnesomsättning utifrån ålder, kön, vikt och längd.',
       loanCardTitle: 'Sparkalkylator', loanCardDesc: 'Se hur ett sparbelopp växer med ränta-på-ränta över tid.',
       loanCostCardTitle: 'Avbetalningskalkylator', loanCostCardDesc: 'Räkna ut totala kostnaden för ett lån eller köp på avbetalning, inklusive ränta.',
       comingSoon: 'Fler verktyg är på väg', comingSoonList: 'Valuta',
@@ -63,6 +64,10 @@ export const translations = {
       activityLevels: { sedentary: 'Stillasittande, lite eller ingen träning', light: 'Lätt aktiv, träning 1 till 3 dagar i veckan', moderate: 'Måttligt aktiv, träning 3 till 5 dagar i veckan', active: 'Mycket aktiv, träning 6 till 7 dagar i veckan', veryActive: 'Extremt aktiv, hårt fysiskt arbete eller dubbelpass' },
       bmrLabel: 'Basalmetabolism', resultLabel: 'Dagligt kaloribehov',
     },
+    bmr: {
+      title: 'BMR-kalkylator', metaDescription: 'Räkna ut din basala ämnesomsättning (BMR), kalorierna kroppen förbränner i vila, utifrån ålder, kön, vikt och längd.',
+      intro: 'Ange dina uppgifter för att se din basala ämnesomsättning.',
+    },
     loan: {
       title: 'Sparkalkylator', metaDescription: 'Se hur ett sparbelopp växer över tid med ränta-på-ränta-effekten.',
       intro: 'Ange startbelopp, ränta och tidshorisont för att se hur sparandet växer.',
@@ -92,6 +97,7 @@ export const translations = {
       ageCardTitle: 'Age Calculator', ageCardDesc: 'Exact age in years, months, and days, plus a countdown to your next birthday.',
       bmiCardTitle: 'BMI Calculator', bmiCardDesc: 'Calculate your BMI from your height and weight.',
       tdeeCardTitle: 'TDEE Calculator', tdeeCardDesc: 'Calculate your daily calorie needs from age, sex, weight, height, and activity level.',
+      bmrCardTitle: 'BMR Calculator', bmrCardDesc: 'Calculate your basal metabolic rate from age, sex, weight, and height.',
       loanCardTitle: 'Savings Calculator', loanCardDesc: 'See how savings grow over time with compound interest.',
       loanCostCardTitle: 'Loan Cost Calculator', loanCostCardDesc: 'Calculate the total cost of a loan or installment purchase, including interest.',
       comingSoon: 'More tools coming soon', comingSoonList: 'Currency',
@@ -142,6 +148,10 @@ export const translations = {
       activityLevels: { sedentary: 'Sedentary, little or no exercise', light: 'Lightly active, exercise 1 to 3 days a week', moderate: 'Moderately active, exercise 3 to 5 days a week', active: 'Very active, exercise 6 to 7 days a week', veryActive: 'Extremely active, hard physical job or training twice a day' },
       bmrLabel: 'Basal metabolic rate', resultLabel: 'Daily calorie needs',
     },
+    bmr: {
+      title: 'BMR Calculator', metaDescription: 'Calculate your Basal Metabolic Rate (BMR), the calories your body burns at rest, from your age, sex, weight, and height.',
+      intro: 'Enter your details to see your basal metabolic rate.',
+    },
     loan: {
       title: 'Savings Calculator', metaDescription: 'See how savings grow over time with the power of compound interest.',
       intro: 'Enter a starting amount, interest rate, and time horizon to see how your savings grow.',
@@ -171,6 +181,7 @@ export const translations = {
       ageCardTitle: 'Calculadora de Idade', ageCardDesc: 'Idade exata em anos, meses e dias, mais contagem até seu próximo aniversário.',
       bmiCardTitle: 'Calculadora de IMC', bmiCardDesc: 'Calcule seu IMC a partir da altura e peso.',
       tdeeCardTitle: 'Calculadora de TDEE', tdeeCardDesc: 'Calcule sua necessidade calórica diária a partir da idade, sexo, peso, altura e nível de atividade.',
+      bmrCardTitle: 'Calculadora de TMB', bmrCardDesc: 'Calcule sua taxa metabólica basal a partir da idade, sexo, peso e altura.',
       loanCardTitle: 'Calculadora de Poupança', loanCardDesc: 'Veja como um valor cresce ao longo do tempo com juros compostos.',
       loanCostCardTitle: 'Calculadora de Custo de Empréstimo', loanCostCardDesc: 'Calcule o custo total de um empréstimo ou compra parcelada, incluindo juros.',
       comingSoon: 'Mais ferramentas em breve', comingSoonList: 'Moeda',
@@ -221,6 +232,10 @@ export const translations = {
       activityLevels: { sedentary: 'Sedentário, pouco ou nenhum exercício', light: 'Levemente ativo, exercício de 1 a 3 dias por semana', moderate: 'Moderadamente ativo, exercício de 3 a 5 dias por semana', active: 'Muito ativo, exercício de 6 a 7 dias por semana', veryActive: 'Extremamente ativo, trabalho físico pesado ou treino duas vezes ao dia' },
       bmrLabel: 'Taxa metabólica basal', resultLabel: 'Necessidade calórica diária',
     },
+    bmr: {
+      title: 'Calculadora de TMB', metaDescription: 'Calcule sua Taxa Metabólica Basal (TMB), as calorias que seu corpo queima em repouso, a partir da idade, sexo, peso e altura.',
+      intro: 'Informe seus dados para ver sua taxa metabólica basal.',
+    },
     loan: {
       title: 'Calculadora de Poupança', metaDescription: 'Veja como um valor cresce ao longo do tempo com o poder dos juros compostos.',
       intro: 'Informe um valor inicial, taxa de juros e horizonte de tempo para ver como sua poupança cresce.',
@@ -250,6 +265,7 @@ export const translations = {
       ageCardTitle: 'Calculadora de Edad', ageCardDesc: 'Edad exacta en años, meses y días, más cuenta atrás hasta tu próximo cumpleaños.',
       bmiCardTitle: 'Calculadora de IMC', bmiCardDesc: 'Calcula tu IMC a partir de tu altura y peso.',
       tdeeCardTitle: 'Calculadora de TDEE', tdeeCardDesc: 'Calcula tu necesidad calórica diaria a partir de la edad, sexo, peso, altura y nivel de actividad.',
+      bmrCardTitle: 'Calculadora de TMB', bmrCardDesc: 'Calcula tu tasa metabólica basal a partir de la edad, sexo, peso y estatura.',
       loanCardTitle: 'Calculadora de Ahorro', loanCardDesc: 'Mira cómo crece un ahorro con el interés compuesto a lo largo del tiempo.',
       loanCostCardTitle: 'Calculadora de Costo de Préstamo', loanCostCardDesc: 'Calcula el costo total de un préstamo o compra a plazos, incluyendo intereses.',
       comingSoon: 'Más herramientas próximamente', comingSoonList: 'Moneda',
@@ -300,6 +316,10 @@ export const translations = {
       activityLevels: { sedentary: 'Sedentario, poco o ningún ejercicio', light: 'Ligeramente activo, ejercicio de 1 a 3 días por semana', moderate: 'Moderadamente activo, ejercicio de 3 a 5 días por semana', active: 'Muy activo, ejercicio de 6 a 7 días por semana', veryActive: 'Extremadamente activo, trabajo físico exigente o entrenamiento dos veces al día' },
       bmrLabel: 'Tasa metabólica basal', resultLabel: 'Necesidad calórica diaria',
     },
+    bmr: {
+      title: 'Calculadora de TMB', metaDescription: 'Calcula tu Tasa Metabólica Basal (TMB), las calorías que tu cuerpo quema en reposo, a partir de tu edad, sexo, peso y estatura.',
+      intro: 'Introduce tus datos para ver tu tasa metabólica basal.',
+    },
     loan: {
       title: 'Calculadora de Ahorro', metaDescription: 'Mira cómo crece un ahorro con el poder del interés compuesto a lo largo del tiempo.',
       intro: 'Introduce un monto inicial, tasa de interés y horizonte de tiempo para ver cómo crece tu ahorro.',
@@ -329,6 +349,7 @@ export const translations = {
       ageCardTitle: 'Altersrechner', ageCardDesc: 'Exaktes Alter in Jahren, Monaten und Tagen, plus Countdown zum nächsten Geburtstag.',
       bmiCardTitle: 'BMI-Rechner', bmiCardDesc: 'Berechne deinen BMI aus Größe und Gewicht.',
       tdeeCardTitle: 'TDEE-Rechner', tdeeCardDesc: 'Berechne deinen täglichen Kalorienbedarf aus Alter, Geschlecht, Gewicht, Größe und Aktivitätslevel.',
+      bmrCardTitle: 'Grundumsatz-Rechner', bmrCardDesc: 'Berechne deinen Grundumsatz aus Alter, Geschlecht, Gewicht und Größe.',
       loanCardTitle: 'Sparrechner', loanCardDesc: 'Sieh, wie ein Sparbetrag mit Zinseszins über die Zeit wächst.',
       loanCostCardTitle: 'Kreditkostenrechner', loanCostCardDesc: 'Berechne die Gesamtkosten eines Kredits oder Ratenkaufs, einschließlich Zinsen.',
       comingSoon: 'Weitere Tools folgen bald', comingSoonList: 'Währung',
@@ -379,6 +400,10 @@ export const translations = {
       activityLevels: { sedentary: 'Sitzend, wenig oder kein Training', light: 'Leicht aktiv, Training 1 bis 3 Tage pro Woche', moderate: 'Mäßig aktiv, Training 3 bis 5 Tage pro Woche', active: 'Sehr aktiv, Training 6 bis 7 Tage pro Woche', veryActive: 'Extrem aktiv, körperlich harte Arbeit oder zweimal täglich Training' },
       bmrLabel: 'Grundumsatz', resultLabel: 'Täglicher Kalorienbedarf',
     },
+    bmr: {
+      title: 'Grundumsatz-Rechner', metaDescription: 'Berechne deinen Grundumsatz (BMR), die Kalorien, die dein Körper im Ruhezustand verbrennt, anhand von Alter, Geschlecht, Gewicht und Größe.',
+      intro: 'Gib deine Daten ein, um deinen Grundumsatz zu sehen.',
+    },
     loan: {
       title: 'Sparrechner', metaDescription: 'Sieh, wie ein Sparbetrag mit der Kraft des Zinseszinses über die Zeit wächst.',
       intro: 'Gib Startbetrag, Zinssatz und Zeithorizont ein, um zu sehen, wie dein Ersparnis wächst.',
@@ -408,6 +433,7 @@ export const translations = {
       ageCardTitle: '年齢計算機', ageCardDesc: '年・月・日単位の正確な年齢と、次の誕生日までのカウントダウン。',
       bmiCardTitle: 'BMI計算機', bmiCardDesc: '身長と体重からBMIを計算します。',
       tdeeCardTitle: 'TDEE計算機', tdeeCardDesc: '年齢、性別、体重、身長、活動レベルから1日の消費カロリーを計算します。',
+      bmrCardTitle: '基礎代謝量計算機', bmrCardDesc: '年齢、性別、体重、身長から基礎代謝量を計算します。',
       loanCardTitle: '積立計算機', loanCardDesc: '複利でお金がどう増えるかを確認できます。',
       loanCostCardTitle: 'ローン費用計算機', loanCostCardDesc: 'ローンや分割払いの総費用を利息込みで計算します。',
       comingSoon: '近日公開予定', comingSoonList: '為替',
@@ -458,6 +484,10 @@ export const translations = {
       activityLevels: { sedentary: '座りがち、運動はほとんどしない', light: '軽い活動、週1から3日運動', moderate: '中程度の活動、週3から5日運動', active: '非常に活発、週6から7日運動', veryActive: '非常に活発、肉体労働または1日2回の運動' },
       bmrLabel: '基礎代謝量', resultLabel: '1日の消費カロリー',
     },
+    bmr: {
+      title: '基礎代謝量計算機', metaDescription: '年齢・性別・体重・身長から、安静時に消費するカロリーである基礎代謝量（BMR）を計算します。',
+      intro: '基礎代謝量を確認するには、あなたの情報を入力してください。',
+    },
     loan: {
       title: '積立計算機', metaDescription: '複利の力でお金がどう増えるかを確認します。',
       intro: '初期金額、利率、期間を入力すると積立がどう増えるか確認できます。',
@@ -487,6 +517,7 @@ export const translations = {
       ageCardTitle: '年龄计算器', ageCardDesc: '精确到年、月、日的年龄，以及距下次生日的倒计时。',
       bmiCardTitle: 'BMI计算器', bmiCardDesc: '根据身高和体重计算你的BMI。',
       tdeeCardTitle: 'TDEE计算器', tdeeCardDesc: '根据年龄、性别、体重、身高和活动水平计算每日卡路里需求。',
+      bmrCardTitle: '基础代谢率计算器', bmrCardDesc: '根据年龄、性别、体重和身高计算基础代谢率。',
       loanCardTitle: '储蓄计算器', loanCardDesc: '查看储蓄在复利作用下随时间的增长情况。',
       loanCostCardTitle: '贷款费用计算器', loanCostCardDesc: '计算贷款或分期付款的总费用, 包括利息。',
       comingSoon: '更多工具即将上线', comingSoonList: '汇率',
@@ -537,6 +568,10 @@ export const translations = {
       activityLevels: { sedentary: '久坐, 很少或不运动', light: '轻度活跃, 每周运动1到3天', moderate: '中度活跃, 每周运动3到5天', active: '非常活跃, 每周运动6到7天', veryActive: '极度活跃, 体力劳动或每天训练两次' },
       bmrLabel: '基础代谢率', resultLabel: '每日卡路里需求',
     },
+    bmr: {
+      title: '基础代谢率计算器', metaDescription: '根据年龄、性别、体重和身高，计算你在静息状态下消耗的基础代谢率（BMR）。',
+      intro: '输入你的信息，查看你的基础代谢率。',
+    },
     loan: {
       title: '储蓄计算器', metaDescription: '查看复利的力量如何让储蓄随时间增长。',
       intro: '输入初始金额、利率和时间范围，查看储蓄如何增长。',
@@ -566,6 +601,7 @@ export const translations = {
       ageCardTitle: '나이 계산기', ageCardDesc: '년/월/일 단위의 정확한 나이와 다음 생일까지의 카운트다운.',
       bmiCardTitle: 'BMI 계산기', bmiCardDesc: '키와 체중으로 BMI를 계산합니다.',
       tdeeCardTitle: 'TDEE 계산기', tdeeCardDesc: '나이, 성별, 체중, 키, 활동 수준으로 일일 칼로리 필요량을 계산합니다.',
+      bmrCardTitle: 'BMR 계산기', bmrCardDesc: '나이, 성별, 체중, 키로 기초대사량을 계산합니다.',
       loanCardTitle: '저축 계산기', loanCardDesc: '복리로 저축이 시간에 따라 어떻게 늘어나는지 확인하세요.',
       loanCostCardTitle: '대출 비용 계산기', loanCostCardDesc: '대출이나 할부 구매의 총비용을 이자를 포함하여 계산합니다.',
       comingSoon: '더 많은 도구가 곧 추가됩니다', comingSoonList: '환율',
@@ -616,6 +652,10 @@ export const translations = {
       activityLevels: { sedentary: '앉아서 생활, 운동을 거의 하지 않음', light: '가벼운 활동, 주 1에서 3일 운동', moderate: '보통 활동, 주 3에서 5일 운동', active: '활발한 활동, 주 6에서 7일 운동', veryActive: '매우 활발한 활동, 육체 노동 또는 하루 두 번 운동' },
       bmrLabel: '기초대사량', resultLabel: '일일 칼로리 필요량',
     },
+    bmr: {
+      title: 'BMR 계산기', metaDescription: '나이, 성별, 체중, 키를 바탕으로 휴식 상태에서 소비하는 칼로리인 기초대사량(BMR)을 계산합니다.',
+      intro: '기초대사량을 확인하려면 정보를 입력하세요.',
+    },
     loan: {
       title: '저축 계산기', metaDescription: '복리의 힘으로 저축이 시간에 따라 어떻게 늘어나는지 확인합니다.',
       intro: '초기 금액, 이자율, 기간을 입력하면 저축이 어떻게 늘어나는지 확인할 수 있습니다.',
@@ -645,6 +685,7 @@ export const translations = {
       ageCardTitle: 'आयु कैलकुलेटर', ageCardDesc: 'साल, महीने और दिन में सटीक उम्र, साथ ही अगले जन्मदिन की उल्टी गिनती।',
       bmiCardTitle: 'BMI कैलकुलेटर', bmiCardDesc: 'अपनी लंबाई और वज़न से BMI निकालें।',
       tdeeCardTitle: 'TDEE कैलकुलेटर', tdeeCardDesc: 'उम्र, लिंग, वज़न, लंबाई और गतिविधि स्तर से अपनी दैनिक कैलोरी ज़रूरत निकालें।',
+      bmrCardTitle: 'BMR कैलकुलेटर', bmrCardDesc: 'उम्र, लिंग, वज़न और लंबाई से अपना बेसल मेटाबॉलिक रेट निकालें।',
       loanCardTitle: 'बचत कैलकुलेटर', loanCardDesc: 'देखें कि चक्रवृद्धि ब्याज से बचत समय के साथ कैसे बढ़ती है।',
       loanCostCardTitle: 'ऋण लागत कैलकुलेटर', loanCostCardDesc: 'ब्याज सहित ऋण या किस्तों पर खरीदारी की कुल लागत निकालें।',
       comingSoon: 'और उपकरण जल्द आ रहे हैं', comingSoonList: 'मुद्रा',
@@ -695,6 +736,10 @@ export const translations = {
       activityLevels: { sedentary: 'गतिहीन, बहुत कम या कोई व्यायाम नहीं', light: 'हल्की सक्रियता, सप्ताह में 1 से 3 दिन व्यायाम', moderate: 'मध्यम सक्रियता, सप्ताह में 3 से 5 दिन व्यायाम', active: 'अत्यधिक सक्रिय, सप्ताह में 6 से 7 दिन व्यायाम', veryActive: 'बेहद सक्रिय, कठिन शारीरिक काम या दिन में दो बार व्यायाम' },
       bmrLabel: 'बेसल मेटाबॉलिक रेट', resultLabel: 'दैनिक कैलोरी ज़रूरत',
     },
+    bmr: {
+      title: 'BMR कैलकुलेटर', metaDescription: 'अपनी उम्र, लिंग, वज़न और लंबाई के आधार पर बेसल मेटाबॉलिक रेट (BMR), यानी आराम की अवस्था में खर्च होने वाली कैलोरी, निकालें।',
+      intro: 'अपना बेसल मेटाबॉलिक रेट देखने के लिए अपनी जानकारी दर्ज करें।',
+    },
     loan: {
       title: 'बचत कैलकुलेटर', metaDescription: 'चक्रवृद्धि ब्याज की ताक़त से बचत समय के साथ कैसे बढ़ती है, यह देखें।',
       intro: 'शुरुआती राशि, ब्याज दर और अवधि दर्ज करें ताकि देखा जा सके कि आपकी बचत कैसे बढ़ती है।',
@@ -724,6 +769,7 @@ export const translations = {
       ageCardTitle: 'Kalkulator Usia', ageCardDesc: 'Usia tepat dalam tahun, bulan, dan hari, plus hitung mundur ke ulang tahun berikutnya.',
       bmiCardTitle: 'Kalkulator BMI', bmiCardDesc: 'Hitung BMI kamu dari tinggi dan berat badan.',
       tdeeCardTitle: 'Kalkulator TDEE', tdeeCardDesc: 'Hitung kebutuhan kalori harianmu dari usia, jenis kelamin, berat, tinggi, dan tingkat aktivitas.',
+      bmrCardTitle: 'Kalkulator BMR', bmrCardDesc: 'Hitung basal metabolic rate kamu dari usia, jenis kelamin, berat, dan tinggi badan.',
       loanCardTitle: 'Kalkulator Tabungan', loanCardDesc: 'Lihat bagaimana tabungan tumbuh seiring waktu dengan bunga berbunga.',
       loanCostCardTitle: 'Kalkulator Biaya Pinjaman', loanCostCardDesc: 'Hitung total biaya pinjaman atau pembelian cicilan, termasuk bunga.',
       comingSoon: 'Alat lainnya segera hadir', comingSoonList: 'Mata Uang',
@@ -773,6 +819,10 @@ export const translations = {
       activityLabel: 'Tingkat aktivitas',
       activityLevels: { sedentary: 'Tidak banyak gerak, sedikit atau tanpa olahraga', light: 'Sedikit aktif, olahraga 1 sampai 3 hari seminggu', moderate: 'Cukup aktif, olahraga 3 sampai 5 hari seminggu', active: 'Sangat aktif, olahraga 6 sampai 7 hari seminggu', veryActive: 'Ekstrem aktif, pekerjaan fisik berat atau latihan dua kali sehari' },
       bmrLabel: 'Tingkat metabolisme basal', resultLabel: 'Kebutuhan kalori harian',
+    },
+    bmr: {
+      title: 'Kalkulator BMR', metaDescription: 'Hitung Basal Metabolic Rate (BMR) kamu, kalori yang dibakar tubuh saat istirahat, berdasarkan usia, jenis kelamin, berat, dan tinggi badan.',
+      intro: 'Masukkan data kamu untuk melihat basal metabolic rate kamu.',
     },
     loan: {
       title: 'Kalkulator Tabungan', metaDescription: 'Lihat bagaimana kekuatan bunga berbunga membuat tabungan tumbuh seiring waktu.',

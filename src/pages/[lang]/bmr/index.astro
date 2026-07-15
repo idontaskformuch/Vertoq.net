@@ -1,0 +1,68 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { translations } from '../../../i18n/translations';
+import { langCodes } from '../../../i18n/languages';
+import { bmrContent } from '../../../i18n/bmrContent';
+import BmrCalculator from '../../../components/BmrCalculator.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+
+export function getStaticPaths() {
+  return langCodes.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = translations[lang as keyof typeof translations].bmr;
+const c = bmrContent[lang as keyof typeof bmrContent];
+---
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="bmr">
+  <section class="page-head">
+    <p class="eyebrow">Vertoq</p>
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+  </section>
+
+  <BmrCalculator lang={lang} />
+
+  {c && (
+    <div class="content-block-group">
+      <section class="content-block">
+        <h2>{c.whatIsBmr.heading}</h2>
+        <p>{c.whatIsBmr.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.formula.heading}</h2>
+        <p><strong>{c.formula.label}</strong> {c.formula.note}</p>
+        <p>{c.formula.maleLabel} <code>{c.formula.maleCode}</code></p>
+        <p>{c.formula.femaleLabel} <code>{c.formula.femaleCode}</code></p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.bmrVsTdee.heading}</h2>
+        <p>{c.bmrVsTdee.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.factors.heading}</h2>
+        <p>{c.factors.body}</p>
+      </section>
+
+      <section class="content-block related-calculators">
+        <h2>{c.related.heading}</h2>
+        <p>
+          <a href={`/${lang}/bmi/`}>{c.related.bmiLinkText}</a> {c.related.bmiDescription}
+        </p>
+        <p>
+          <a href={`/${lang}/tdee/`}>{c.related.tdeeLinkText}</a> {c.related.tdeeDescription}
+        </p>
+      </section>
+
+      {/* TODO: cross-link forward to Calorie Calculator once that page exists (build order per content-brief-fitness-cluster.md: BMR → Calorie) */}
+    </div>
+  )}
+
+  <FaqSection lang={lang} tool="bmr" />
+
+  <AdSlot />
+</Layout>

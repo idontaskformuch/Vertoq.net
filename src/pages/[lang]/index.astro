@@ -42,6 +42,11 @@ const t = translations[lang as keyof typeof translations];
         <p>{t.home.tdeeCardDesc}</p>
         <span class="go">→</span>
       </a>
+      <a class="card" href={`/${lang}/bmr/`} style="display:block">
+        <h3>{t.home.bmrCardTitle}</h3>
+        <p>{t.home.bmrCardDesc}</p>
+        <span class="go">→</span>
+      </a>
     </div>
   </section>
 

@@ -326,6 +326,17 @@ h1, h2, h3 {
   color: var(--line);
 }
 
+.result-cta {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-faint);
+  font-size: 0.88rem;
+  color: var(--line);
+}
+.result-cta a {
+  font-weight: 600;
+}
+
 /* --- Ad slot --- */
 .ad-slot {
   border: 1px dashed var(--line-faint);

@@ -12,7 +12,7 @@ export const faqHeadings: Record<string, string> = {
 };
 
 type FaqItem = { q: string; a: string };
-type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
+type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
 
 export const faqContent: Record<string, ToolFaqs> = {
   sv: {
@@ -44,6 +44,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Hur exakt är TDEE?', a: 'Det är en bra uppskattning, inte en exakt mätning. Den individuella ämnesomsättningen varierar med ungefär 10 till 15 procent, så se begränsningarna ovan för hur du justerar den utifrån dina egna resultat.' },
       { q: 'Vilken aktivitetsnivå ska jag välja?', a: 'Välj det alternativ som stämmer med din vanliga vecka, inte din bästa eller sämsta dag. De flesta överskattar hur aktiva de faktiskt är, så välj hellre ett lägre alternativ om du är osäker.' },
       { q: 'Bör jag äta exakt mitt TDEE varje dag?', a: 'Nej, intaget varierar naturligt från dag till dag. Det som spelar roll är genomsnittet över en vecka eller två, så se TDEE som ett mål att sikta mot snarare än en siffra att träffa exakt varje dag.' },
+    ],
+    bmr: [
+      { q: 'Är BMR samma för alla vid samma vikt?', a: 'Nej. Ålder, kön och muskelmassa påverkar alla värdet, vilket är därför formeln tar hänsyn till ålder och kön, och varför två personer med samma vikt kan ha märkbart olika BMR.' },
+      { q: 'Bör jag äta exakt mitt BMR?', a: 'Nej, att äta på eller under ditt BMR under längre perioder är inget säkert mål. Kroppen behöver mer än så bara för att ta sig igenom en vanlig dag, så använd TDEE-kalkylatorn för ett realistiskt dagligt kaloritak som tar hänsyn till din aktivitetsnivå.' },
+      { q: 'Kan jag höja mitt BMR?', a: 'Till viss del: att bygga muskler höjer det, eftersom muskler förbränner mer energi i vila än fett. Den åldersrelaterade minskningen ligger till stor del utanför din kontroll, och det finns ingen tillförlitlig genväg utöver konsekvent styrketräning och tillräckligt med protein över tid.' },
     ],
     loan: [
       { q: 'Vad är ränta-på-ränta?', a: 'Räntan du tjänar läggs till kapitalet, så du tjänar ränta på både startbeloppet och tidigare intjänad ränta.' },
@@ -86,6 +91,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Which activity level should I choose?', a: 'Pick the option that matches your typical week, not your best or worst day. Most people overestimate how active they really are, so when in doubt, choose the lower option.' },
       { q: 'Should I eat exactly my TDEE every day?', a: 'No, day-to-day intake naturally varies. What matters is your average over a week or two, so treat TDEE as a target to aim near rather than a number to hit exactly every day.' },
     ],
+    bmr: [
+      { q: 'Is BMR the same for everyone at the same weight?', a: 'No. Age, sex, and muscle mass all shift it, which is why the formula accounts for age and sex, and why two people at the same weight can have noticeably different BMR.' },
+      { q: 'Should I eat exactly my BMR?', a: "No, eating at or below your BMR for long periods isn't a safe target. Your body needs more than that just to get through a normal day, so use the TDEE Calculator to get a realistic daily calorie number that includes your activity level." },
+      { q: 'Can I increase my BMR?', a: "To some extent: building muscle raises it, since muscle burns more energy at rest than fat does. Age-related decline is largely outside your control, and there's no reliable shortcut beyond consistent strength training and adequate protein over time." },
+    ],
     loan: [
       { q: 'What is compound interest?', a: 'The interest you earn each period is added to your balance, so you earn interest on both your starting amount and past interest.' },
       { q: 'How often is interest calculated?', a: 'Monthly, which is common for savings accounts and funds, giving a realistic picture of growth over time.' },
@@ -126,6 +136,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Quão preciso é o TDEE?', a: 'É uma boa estimativa, não uma medição exata. O metabolismo individual varia cerca de 10 a 15%, então veja as limitações acima para saber como ajustá-lo com base nos seus próprios resultados.' },
       { q: 'Qual nível de atividade devo escolher?', a: 'Escolha a opção que corresponde à sua semana típica, não ao seu melhor ou pior dia. A maioria das pessoas superestima o quanto é ativa, então, na dúvida, escolha a opção mais baixa.' },
       { q: 'Devo comer exatamente meu TDEE todos os dias?', a: 'Não, a ingestão varia naturalmente de um dia para o outro. O que importa é a média ao longo de uma ou duas semanas, então trate o TDEE como uma meta a se aproximar, não um número a bater exatamente todo dia.' },
+    ],
+    bmr: [
+      { q: 'A TMB é a mesma para todos com o mesmo peso?', a: 'Não. Idade, sexo e massa muscular influenciam o valor, por isso a fórmula considera idade e sexo, e por isso duas pessoas com o mesmo peso podem ter uma TMB bem diferente.' },
+      { q: 'Devo comer exatamente minha TMB?', a: 'Não, comer na sua TMB ou abaixo dela por longos períodos não é uma meta segura. Seu corpo precisa de mais do que isso só para passar um dia normal, então use a Calculadora de TDEE para obter um número diário de calorias realista que inclua seu nível de atividade.' },
+      { q: 'Posso aumentar minha TMB?', a: 'Até certo ponto: ganhar massa muscular a aumenta, já que o músculo queima mais energia em repouso do que a gordura. O declínio relacionado à idade está em grande parte fora do seu controle, e não existe atalho confiável além de treino de força consistente e proteína suficiente ao longo do tempo.' },
     ],
     loan: [
       { q: 'O que são juros compostos?', a: 'Os juros ganhos em cada período são somados ao saldo, então você ganha juros sobre o valor inicial e sobre os juros anteriores.' },
@@ -168,6 +183,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Qué nivel de actividad debo elegir?', a: 'Elige la opción que se ajuste a tu semana típica, no a tu mejor o peor día. La mayoría de la gente sobreestima lo activa que realmente es, así que, si tienes dudas, elige la opción más baja.' },
       { q: '¿Debo comer exactamente mi TDEE todos los días?', a: 'No, la ingesta varía de forma natural de un día a otro. Lo que importa es el promedio a lo largo de una o dos semanas, así que trata el TDEE como una meta a la que acercarte, no una cifra exacta que cumplir cada día.' },
     ],
+    bmr: [
+      { q: '¿La TMB es la misma para todos con el mismo peso?', a: 'No. La edad, el sexo y la masa muscular influyen en el valor, por eso la fórmula tiene en cuenta la edad y el sexo, y por eso dos personas con el mismo peso pueden tener una TMB bastante distinta.' },
+      { q: '¿Debo comer exactamente mi TMB?', a: 'No, comer en tu TMB o por debajo de ella durante mucho tiempo no es una meta segura. Tu cuerpo necesita más que eso solo para pasar un día normal, así que usa la Calculadora de TDEE para obtener una cifra diaria de calorías realista que incluya tu nivel de actividad.' },
+      { q: '¿Puedo aumentar mi TMB?', a: 'Hasta cierto punto: ganar masa muscular la aumenta, ya que el músculo quema más energía en reposo que la grasa. El descenso relacionado con la edad está en gran parte fuera de tu control, y no hay ningún atajo fiable más allá de entrenamiento de fuerza constante y suficiente proteína a lo largo del tiempo.' },
+    ],
     loan: [
       { q: '¿Qué es el interés compuesto?', a: 'El interés que ganas cada periodo se suma al saldo, así ganas interés tanto sobre el monto inicial como sobre el interés anterior.' },
       { q: '¿Con qué frecuencia se calcula el interés?', a: 'Mensualmente, algo común en cuentas de ahorro y fondos, lo que da una imagen realista del crecimiento con el tiempo.' },
@@ -208,6 +228,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Wie genau ist der TDEE?', a: 'Er ist eine solide Schätzung, keine exakte Messung. Der individuelle Stoffwechsel variiert um etwa 10 bis 15 Prozent, daher lohnt sich ein Blick auf die Einschränkungen oben, um ihn an die eigenen Ergebnisse anzupassen.' },
       { q: 'Welches Aktivitätslevel sollte ich wählen?', a: 'Wähle die Option, die zu deiner typischen Woche passt, nicht zu deinem besten oder schlechtesten Tag. Die meisten überschätzen, wie aktiv sie wirklich sind, also im Zweifel lieber die niedrigere Option wählen.' },
       { q: 'Sollte ich jeden Tag genau meinen TDEE essen?', a: 'Nein, die Kalorienzufuhr schwankt von Tag zu Tag ganz natürlich. Entscheidend ist der Durchschnitt über ein bis zwei Wochen, daher besser den TDEE als Richtwert sehen, dem man sich annähert, statt als exakten Wert, den man jeden Tag treffen muss.' },
+    ],
+    bmr: [
+      { q: 'Ist der Grundumsatz bei gleichem Gewicht für alle gleich?', a: 'Nein. Alter, Geschlecht und Muskelmasse beeinflussen ihn alle, deshalb berücksichtigt die Formel Alter und Geschlecht, und deshalb können zwei Personen mit demselben Gewicht einen deutlich unterschiedlichen Grundumsatz haben.' },
+      { q: 'Sollte ich genau meinen Grundumsatz essen?', a: 'Nein, dauerhaft auf oder unter dem Grundumsatz zu essen ist kein sicheres Ziel. Dein Körper braucht mehr als das, nur um durch einen normalen Tag zu kommen, nutze also den TDEE-Rechner für eine realistische tägliche Kalorienzahl inklusive deines Aktivitätslevels.' },
+      { q: 'Kann ich meinen Grundumsatz erhöhen?', a: 'Bis zu einem gewissen Grad: Muskelaufbau erhöht ihn, weil Muskeln in Ruhe mehr Energie verbrennen als Fett. Der altersbedingte Rückgang liegt größtenteils außerhalb deiner Kontrolle, und es gibt keine verlässliche Abkürzung außer konsequentem Krafttraining und ausreichend Protein über die Zeit.' },
     ],
     loan: [
       { q: 'Was ist Zinseszins?', a: 'Die Zinsen, die du jede Periode verdienst, werden dem Saldo hinzugefügt, sodass du Zinsen auf den Startbetrag und frühere Zinsen verdienst.' },
@@ -250,6 +275,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'どの活動レベルを選べばいいですか？', a: '一番良い日や悪い日ではなく、普段の1週間に近い選択肢を選んでください。多くの人は自分の活動量を実際より高く見積もりがちなので、迷ったら低めの選択肢を選ぶのがおすすめです。' },
       { q: '毎日TDEEぴったりのカロリーを摂るべきですか？', a: 'いいえ、日々の摂取量は自然に変動します。大切なのは1〜2週間の平均であり、TDEEは毎日ぴったり合わせる数値ではなく、目安として近づけていく目標として捉えてください。' },
     ],
+    bmr: [
+      { q: '同じ体重なら誰でもBMRは同じですか？', a: 'いいえ。年齢、性別、筋肉量がすべてBMRに影響するため、式には年齢と性別が組み込まれており、同じ体重でも人によってBMRがかなり異なることがあります。' },
+      { q: '自分のBMRぴったりの量を食べるべきですか？', a: 'いいえ、長期間BMR以下または同程度の量しか食べないのは安全な目標ではありません。普通の1日を過ごすだけでもそれ以上のカロリーが必要なので、活動レベルを考慮した現実的な1日の必要カロリーを知るにはTDEE計算機を使ってください。' },
+      { q: 'BMRを上げることはできますか？', a: 'ある程度は可能です。筋肉は安静時でも脂肪より多くのエネルギーを消費するため、筋肉をつけるとBMRは上がります。加齢による低下の多くは自分でコントロールできませんが、継続的な筋力トレーニングと十分なタンパク質摂取以外に確実な近道はありません。' },
+    ],
     loan: [
       { q: '複利とは何ですか？', a: '各期間で得た利息が元本に加算され、元本と過去の利息の両方に利息がつく仕組みです。' },
       { q: '利息はどのくらいの頻度で計算されますか？', a: '毎月計算され、預金や投資信託で一般的な方式で、時間とともに増える様子を現実的に示します。' },
@@ -290,6 +320,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'TDEE有多准确？', a: '它是一个可靠的估算值，而不是精确测量。个体代谢会有大约10%至15%的差异，具体如何根据自己的实际情况调整，可参考上文的局限性说明。' },
       { q: '应该选择哪个活动水平？', a: '选择最符合你日常一周状态的选项，而不是最好或最差的那一天。大多数人会高估自己的活跃程度，所以如果拿不准，选低一档更稳妥。' },
       { q: '每天摄入的热量必须刚好等于TDEE吗？', a: '不需要，每天的摄入量本来就会有自然波动。真正重要的是一到两周的平均值，把TDEE当作一个大致靠近的目标，而不是每天都要精确达到的数字。' },
+    ],
+    bmr: [
+      { q: '体重相同的人BMR都一样吗？', a: '不一样。年龄、性别和肌肉量都会影响BMR，这也是公式中要考虑年龄和性别的原因，也是为什么体重相同的两个人BMR可能相差不小。' },
+      { q: '我应该刚好摄入等于BMR的热量吗？', a: '不需要，长期只摄入等于或低于BMR的热量并不是一个安全的目标。你的身体即使只是度过普通的一天，也需要比这更多的热量，所以可以用TDEE计算器获得一个把活动水平也算进去的、更现实的每日热量数字。' },
+      { q: '我能提高自己的BMR吗？', a: '在一定程度上可以：增加肌肉量能提高BMR，因为肌肉在静息状态下消耗的能量比脂肪多。随年龄增长而出现的下降大多不受你控制，除了持续的力量训练和长期摄入足够的蛋白质之外，没有什么可靠的捷径。' },
     ],
     loan: [
       { q: '什么是复利？', a: '每期获得的利息会计入本金，因此你既能从本金又能从之前的利息中获得利息。' },
@@ -332,6 +367,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '어떤 활동 수준을 선택해야 하나요?', a: '가장 컨디션이 좋았던 날이나 나빴던 날이 아니라, 평소 일주일을 기준으로 가장 가까운 옵션을 선택하세요. 대부분의 사람은 자신의 활동량을 실제보다 높게 평가하는 경향이 있으니, 확실하지 않다면 더 낮은 옵션을 선택하는 편이 좋습니다.' },
       { q: '매일 정확히 TDEE만큼 먹어야 하나요?', a: '아니요, 하루하루의 섭취량은 자연스럽게 달라집니다. 중요한 것은 1~2주간의 평균이므로, TDEE는 매일 정확히 맞춰야 하는 숫자가 아니라 대략적으로 가까워지려는 목표로 생각하세요.' },
     ],
+    bmr: [
+      { q: '체중이 같으면 BMR도 모두 같나요?', a: '아니요. 나이, 성별, 근육량이 모두 BMR에 영향을 미치기 때문에 공식에 나이와 성별이 포함되어 있으며, 체중이 같아도 사람마다 BMR이 꽤 다를 수 있습니다.' },
+      { q: '제 BMR만큼만 먹어야 하나요?', a: '아니요, 장기간 BMR 이하 또는 그 정도로만 먹는 것은 안전한 목표가 아닙니다. 평범한 하루를 보내는 데도 그보다 더 많은 칼로리가 필요하니, 활동 수준까지 반영한 현실적인 일일 칼로리 수치를 알고 싶다면 TDEE 계산기를 사용하세요.' },
+      { q: 'BMR을 높일 수 있나요?', a: '어느 정도는 가능합니다. 근육은 휴식 중에도 지방보다 더 많은 에너지를 소비하므로 근육을 키우면 BMR이 올라갑니다. 나이가 들면서 나타나는 감소는 대부분 스스로 조절하기 어려우며, 꾸준한 근력 운동과 충분한 단백질 섭취 외에는 확실한 지름길이 없습니다.' },
+    ],
     loan: [
       { q: '복리란 무엇인가요?', a: '매 기간 얻은 이자가 잔액에 더해져, 원금과 이전 이자 모두에 대해 이자를 받게 됩니다.' },
       { q: '이자는 얼마나 자주 계산되나요?', a: '매월 계산되며, 이는 저축 계좌나 펀드에서 일반적이며 시간에 따른 성장을 현실적으로 보여줍니다.' },
@@ -373,6 +413,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'मुझे कौन सी गतिविधि स्तर चुननी चाहिए?', a: 'अपने सबसे अच्छे या सबसे खराब दिन के बजाय, अपने सामान्य हफ़्ते से मेल खाने वाला विकल्प चुनें। ज़्यादातर लोग अपनी असल सक्रियता को ज़्यादा आंकते हैं, इसलिए अगर पक्का न हो तो कम वाला विकल्प चुनना बेहतर है।' },
       { q: 'क्या मुझे हर दिन बिल्कुल अपने TDEE जितना ही खाना चाहिए?', a: 'नहीं, रोज़ाना का सेवन स्वाभाविक रूप से थोड़ा घटता-बढ़ता रहता है। असली मायने रखता है एक या दो हफ़्ते का औसत, इसलिए TDEE को हर दिन बिल्कुल हासिल करने वाला आंकड़ा न मानकर, एक ऐसा लक्ष्य मानें जिसके करीब रहना है।' },
     ],
+    bmr: [
+      { q: 'क्या समान वज़न वाले सभी लोगों का BMR एक जैसा होता है?', a: 'नहीं। उम्र, लिंग और मांसपेशियों का द्रव्यमान सभी इसे प्रभावित करते हैं, इसलिए फ़ॉर्मूले में उम्र और लिंग शामिल किए गए हैं, और इसीलिए समान वज़न वाले दो लोगों का BMR काफ़ी अलग हो सकता है।' },
+      { q: 'क्या मुझे बिल्कुल अपने BMR जितना ही खाना चाहिए?', a: 'नहीं, लंबे समय तक अपने BMR के बराबर या उससे कम खाना कोई सुरक्षित लक्ष्य नहीं है। एक सामान्य दिन बिताने के लिए भी आपके शरीर को इससे ज़्यादा कैलोरी चाहिए होती है, इसलिए अपनी गतिविधि स्तर को शामिल करते हुए एक असली दैनिक कैलोरी आंकड़ा जानने के लिए TDEE कैलकुलेटर का उपयोग करें।' },
+      { q: 'क्या मैं अपना BMR बढ़ा सकता हूँ?', a: 'कुछ हद तक: मांसपेशियां बनाने से यह बढ़ता है, क्योंकि मांसपेशियां आराम की अवस्था में भी फैट से ज़्यादा ऊर्जा खर्च करती हैं। उम्र के साथ होने वाली गिरावट काफ़ी हद तक आपके नियंत्रण से बाहर होती है, और लगातार स्ट्रेंथ ट्रेनिंग और पर्याप्त प्रोटीन के अलावा कोई भरोसेमंद शॉर्टकट नहीं है।' },
+    ],
     loan: [
       { q: 'चक्रवृद्धि ब्याज क्या है?', a: 'हर अवधि में अर्जित ब्याज को मूलधन में जोड़ दिया जाता है, जिससे आपको मूलधन और पिछले ब्याज दोनों पर ब्याज मिलता है।' },
       { q: 'ब्याज की गणना कितनी बार होती है?', a: 'मासिक रूप से, जो बचत खातों और फंडों में सामान्य है और समय के साथ वृद्धि की एक यथार्थवादी तस्वीर देता है।' },
@@ -413,6 +458,11 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Seberapa akurat TDEE?', a: 'Ini perkiraan yang cukup baik, bukan pengukuran yang pasti. Metabolisme setiap orang bisa berbeda sekitar 10 hingga 15%, jadi lihat bagian keterbatasan di atas untuk cara menyesuaikannya dengan hasilmu sendiri.' },
       { q: 'Tingkat aktivitas mana yang harus saya pilih?', a: 'Pilih opsi yang sesuai dengan minggu normalmu, bukan hari terbaik atau terburukmu. Kebanyakan orang menilai aktivitas mereka lebih tinggi dari kenyataannya, jadi kalau ragu, pilih opsi yang lebih rendah.' },
       { q: 'Apakah saya harus makan tepat sesuai TDEE setiap hari?', a: 'Tidak, asupan harian secara alami akan bervariasi. Yang penting adalah rata-rata selama satu atau dua minggu, jadi anggap TDEE sebagai target untuk didekati, bukan angka yang harus dicapai persis setiap hari.' },
+    ],
+    bmr: [
+      { q: 'Apakah BMR sama untuk semua orang dengan berat badan yang sama?', a: 'Tidak. Usia, jenis kelamin, dan massa otot semuanya memengaruhi BMR, itulah sebabnya rumusnya memperhitungkan usia dan jenis kelamin, dan mengapa dua orang dengan berat badan sama bisa memiliki BMR yang cukup berbeda.' },
+      { q: 'Haruskah saya makan tepat sesuai BMR saya?', a: 'Tidak, makan pada atau di bawah BMR-mu dalam jangka panjang bukan target yang aman. Tubuhmu membutuhkan lebih dari itu hanya untuk menjalani hari yang normal, jadi gunakan Kalkulator TDEE untuk mendapatkan angka kalori harian yang realistis dan sudah memperhitungkan tingkat aktivitasmu.' },
+      { q: 'Bisakah saya meningkatkan BMR saya?', a: 'Sampai batas tertentu: membangun otot akan meningkatkannya, karena otot membakar lebih banyak energi saat istirahat dibandingkan lemak. Penurunan akibat usia sebagian besar di luar kendalimu, dan tidak ada jalan pintas yang benar-benar bisa diandalkan selain latihan kekuatan yang konsisten dan asupan protein yang cukup dari waktu ke waktu.' },
     ],
     loan: [
       { q: 'Apa itu bunga berbunga?', a: 'Bunga yang diperoleh setiap periode ditambahkan ke saldo, sehingga kamu mendapatkan bunga dari jumlah awal maupun bunga sebelumnya.' },

@@ -1,0 +1,95 @@
+---
+import { translations } from '../i18n/translations';
+import { bmrContent } from '../i18n/bmrContent';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].tdee;
+const c = bmrContent[lang as keyof typeof bmrContent];
+const tdeeHref = `/${lang}/tdee/`;
+---
+<div class="converter" id="bmr-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="bmr-weight">{t.weightLabel}</label>
+      <input id="bmr-weight" type="number" value="70" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="bmr-height">{t.heightLabel}</label>
+      <input id="bmr-height" type="number" value="175" min="0" />
+    </div>
+  </div>
+
+  <div class="conv-grid" style="margin-top:14px">
+    <div class="field">
+      <label for="bmr-age">{t.ageLabel}</label>
+      <input id="bmr-age" type="number" value="30" min="0" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="bmr-sex">{t.sexLabel}</label>
+      <select id="bmr-sex">
+        <option value="male">{t.male}</option>
+        <option value="female">{t.female}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-row">
+    <span class="label">{t.bmrLabel}</span>
+    <span class="value" id="bmr-result">—</span>
+    <span class="unit">kcal</span>
+  </div>
+
+  {c && (
+    <p class="result-cta">
+      {c.resultCta.text} <a href={tdeeHref}>{c.resultCta.linkText}</a>
+    </p>
+  )}
+</div>
+
+<script>
+  const weightEl = document.getElementById('bmr-weight');
+  const heightEl = document.getElementById('bmr-height');
+  const ageEl = document.getElementById('bmr-age');
+  const sexEl = document.getElementById('bmr-sex');
+  const resultEl = document.getElementById('bmr-result');
+
+  function calc() {
+    const weight = parseFloat(weightEl.value);
+    const height = parseFloat(heightEl.value);
+    const age = parseFloat(ageEl.value);
+    if (isNaN(weight) || isNaN(height) || isNaN(age) || weight <= 0 || height <= 0 || age <= 0) {
+      resultEl.textContent = '—';
+      return;
+    }
+
+    // Mifflin St Jeor, no activity multiplier
+    let bmr = 10 * weight + 6.25 * height - 5 * age;
+    bmr += sexEl.value === 'male' ? 5 : -161;
+
+    resultEl.textContent = Math.round(bmr).toLocaleString();
+  }
+
+  [weightEl, heightEl, ageEl, sexEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll('input, select, button'));
+    container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+      const el = e.target;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>
