@@ -1,0 +1,100 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].stddev;
+---
+<div class="converter" id="stddev-calc">
+  <div class="field">
+    <label for="sd-data">{t.dataLabel}</label>
+    <input id="sd-data" type="text" value="2, 4, 4, 4, 5, 5, 7, 9" inputmode="text" />
+  </div>
+
+  <div class="result-row" style="margin-top:24px">
+    <span class="label">{t.meanLabel}</span>
+    <span class="value" id="sd-mean">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.populationLabel}</span>
+    <span class="value" id="sd-population" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.sampleLabel}</span>
+    <span class="value" id="sd-sample" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.varianceLabel}</span>
+    <span class="value" id="sd-variance" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.countLabel}</span>
+    <span class="value" id="sd-count" style="font-size:1.3rem">—</span>
+  </div>
+  <p class="calc-error" id="sd-error" style="display:none">{t.errorMessage}</p>
+</div>
+
+<script>
+  const dataEl = document.getElementById('sd-data') as HTMLInputElement;
+  const meanEl = document.getElementById('sd-mean')!;
+  const populationEl = document.getElementById('sd-population')!;
+  const sampleEl = document.getElementById('sd-sample')!;
+  const varianceEl = document.getElementById('sd-variance')!;
+  const countEl = document.getElementById('sd-count')!;
+  const errorEl = document.getElementById('sd-error')!;
+
+  function fmt(n: number) {
+    if (!isFinite(n)) return '—';
+    return (Math.round(n * 1000000) / 1000000).toString();
+  }
+
+  function clearResults() {
+    meanEl.textContent = '—';
+    populationEl.textContent = '—';
+    sampleEl.textContent = '—';
+    varianceEl.textContent = '—';
+    countEl.textContent = '—';
+  }
+
+  function calc() {
+    const raw = dataEl.value.split(/[,\s]+/).map((s) => s.trim()).filter((s) => s.length > 0);
+    const nums = raw.map((s) => parseFloat(s));
+
+    if (nums.length < 2 || nums.some((n) => isNaN(n))) {
+      clearResults();
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    errorEl.style.display = 'none';
+
+    const n = nums.length;
+    const mean = nums.reduce((a, b) => a + b, 0) / n;
+    const sqDiffs = nums.map((x) => (x - mean) * (x - mean));
+    const sumSqDiffs = sqDiffs.reduce((a, b) => a + b, 0);
+    const popVariance = sumSqDiffs / n;
+    const sampleVariance = sumSqDiffs / (n - 1);
+
+    meanEl.textContent = fmt(mean);
+    populationEl.textContent = fmt(Math.sqrt(popVariance));
+    sampleEl.textContent = fmt(Math.sqrt(sampleVariance));
+    varianceEl.textContent = fmt(popVariance);
+    countEl.textContent = n.toString();
+  }
+
+  dataEl.addEventListener('input', calc);
+  calc();
+
+  // Enter-navigering
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    container.addEventListener('keydown', function(e: KeyboardEvent) {
+      if (e.key !== 'Enter') return;
+      const el = e.target as HTMLElement;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  })();
+</script>

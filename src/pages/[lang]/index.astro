@@ -117,5 +117,26 @@ const t = translations[lang as keyof typeof translations];
     </div>
   </section>
 
+  <section class="category-block">
+    <h2 class="category-heading">{t.home.categoryMath}</h2>
+    <div class="card-grid">
+      <a class="card" href={`/${lang}/fraction/`} style="display:block">
+        <h3>{t.home.fractionCardTitle}</h3>
+        <p>{t.home.fractionCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+      <a class="card" href={`/${lang}/ratio/`} style="display:block">
+        <h3>{t.home.ratioCardTitle}</h3>
+        <p>{t.home.ratioCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+      <a class="card" href={`/${lang}/stddev/`} style="display:block">
+        <h3>{t.home.stddevCardTitle}</h3>
+        <p>{t.home.stddevCardDesc}</p>
+        <span class="go">→</span>
+      </a>
+    </div>
+  </section>
+
   <AdSlot />
 </Layout>

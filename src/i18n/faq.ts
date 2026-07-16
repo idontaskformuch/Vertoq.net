@@ -20,6 +20,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Hur fungerar enhetsomvandlaren?', a: 'Välj kategori, ange ett värde och se resultatet uppdateras direkt, inga knappar att trycka på.' },
       { q: 'Är omvandlingarna exakta?', a: 'Ja, de bygger på officiella SI-definitioner och ger matematiskt exakta resultat, avrundade till sex decimaler.' },
       { q: 'Hanteras både metriska och brittiska/amerikanska enheter?', a: 'Ja, varje kategori innehåller både metriska enheter (meter, kilogram, liter) och brittiska/amerikanska enheter (tum, pound, gallon).' },
+      { q: 'Varför fungerar inte temperatur som de andra kategorierna?', a: 'Längd, vikt och volym omvandlas genom att multiplicera med en fast faktor, men temperaturskalor har olika nollpunkter, så det krävs en formel med både multiplikation och addition. Se förklaringen ovan.' },
     ],
     time: [
       { q: 'Vad är skillnaden mellan de två lägena?', a: '"Skillnad mellan tider" räknar ut tiden mellan två tidpunkter. "Lägg till / dra av" räknar fram ett nytt datum genom att addera eller subtrahera tid.' },
@@ -92,6 +93,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Räknar den in sociala avgifter eller pensionsavsättningar?', a: 'Nej, kalkylatorn drar bara av den enda procentsats du anger. Om du vill inkludera andra avdrag behöver du räkna in dem i skattesatsen själv, eller dra av dem separat från nettobeloppet.' },
       { q: 'Kan jag använda den här för att deklarera eller planera min skatt?', a: 'Nej, det här är en generell uppskattning, inte skatterådgivning för något specifikt land. Kontrollera alltid mot din lokala skattemyndighet för exakta siffror.' },
     ],
+    fraction: [
+      { q: 'Varför måste bråk ha samma nämnare för att adderas?', a: 'Nämnaren visar hur många lika stora delar det hela är delat i. Om delarna är olika stora (olika nämnare) går det inte att lägga ihop täljarna direkt, de måste först skalas om till samma delstorlek.' },
+      { q: 'Ger kalkylatorn alltid det förenklade svaret?', a: 'Ja, resultatet delas alltid med täljarens och nämnarens största gemensamma delare automatiskt, så du får svaret i sin enklaste form.' },
+      { q: 'Kan jag ange negativa tal?', a: 'Ja, både täljare och nämnare kan vara negativa, och tecknet hanteras korrekt i resultatet.' },
+    ],
+    ratio: [
+      { q: 'Vad är skillnaden mellan ett förhållande och ett bråk?', a: 'Ett förhållande jämför två separata mängder (till exempel 2 katter till 3 hundar), medan ett bråk visar en del av en helhet. De räknas ut på liknande sätt, men betyder olika saker.' },
+      { q: 'Måste term A och B vara heltal?', a: 'Nej, men förenklingen till minsta heltal fungerar bara för heltal. Med decimaltal visas förhållandet som det är, utan förenkling.' },
+      { q: 'Hur löser jag en proportion om jag vill hitta A istället för X?', a: 'Byt om vilka tal du matar in, om du känner till B, C och X men söker A, ange dem i motsvarande fält och läs av det förenklade förhållandet eller räkna om formeln för hand: A = (B × C) / X.' },
+    ],
+    stddev: [
+      { q: 'Varför är stickprovets standardavvikelse alltid större än populationens?', a: 'Eftersom stickprovet delar summan med n−1 istället för n, ett mindre tal att dela med ger ett större resultat. Det kompenserar för att ett stickprov med en viss sannolikhet underskattar den verkliga spridningen i hela populationen.' },
+      { q: 'Vad räknas som ett bra format på indata?', a: 'Ange talen separerade med kommatecken eller mellanslag, till exempel "2, 4, 6, 8" eller "2 4 6 8". Båda formaten fungerar, och du kan även blanda dem.' },
+      { q: 'Vad händer om jag bara anger ett tal?', a: 'Kalkylatorn kräver minst två värden. Med bara ett värde finns ingen spridning att mäta, och standardavvikelsen (särskilt stickprovets, som delar med n−1) blir odefinierad.' },
+    ],
   },
 
   en: {
@@ -99,6 +115,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'How does the unit converter work?', a: 'Pick a category, enter a value, and watch the result update instantly, no buttons to press.' },
       { q: 'Are the conversions exact?', a: "Yes, they're based on official SI definitions and give mathematically precise results, rounded to six decimals." },
       { q: 'Does it handle both metric and imperial units?', a: 'Yes, each category includes metric units (meters, kilograms, liters) and imperial/US units (inches, pounds, gallons).' },
+      { q: "Why doesn't temperature work like the other categories?", a: "Length, weight, and volume convert by multiplying by a fixed factor, but temperature scales have different zero points, so it needs a formula with both multiplication and addition. See the explanation above." },
     ],
     time: [
       { q: "What's the difference between the two modes?", a: '"Difference between times" calculates the time between two moments. "Add / subtract" works out a new date by adding or subtracting time.' },
@@ -171,6 +188,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Does it account for social contributions or pension deductions?', a: 'No, the calculator only subtracts the single percentage you enter. If you want to include other deductions, factor them into the rate yourself, or subtract them separately from the net amount.' },
       { q: 'Can I use this to file or plan my taxes?', a: "No, this is a generic estimate, not tax advice for any specific country. Always check against your local tax authority for exact figures." },
     ],
+    fraction: [
+      { q: 'Why do fractions need the same denominator to be added?', a: "The denominator shows how many equal parts the whole is divided into. If the parts are different sizes (different denominators), the numerators can't be combined directly, they first need to be rescaled to the same part size." },
+      { q: 'Does the calculator always give the simplified answer?', a: "Yes, the result is always automatically divided by the greatest common divisor of the numerator and denominator, so you get the answer in its simplest form." },
+      { q: 'Can I enter negative numbers?', a: 'Yes, both the numerator and denominator can be negative, and the sign is handled correctly in the result.' },
+    ],
+    ratio: [
+      { q: "What's the difference between a ratio and a fraction?", a: 'A ratio compares two separate quantities (like 2 cats to 3 dogs), while a fraction shows a part of a whole. They\'re calculated similarly but mean different things.' },
+      { q: 'Do Term A and B have to be whole numbers?', a: "No, but simplifying to the smallest whole numbers only applies to whole numbers. With decimals, the ratio is shown as entered, without simplification." },
+      { q: 'How do I solve a proportion if I want to find A instead of X?', a: 'Rearrange which numbers you enter, if you know B, C, and X but are looking for A, enter them in the corresponding fields and read off the simplified ratio, or rework the formula by hand: A = (B × C) / X.' },
+    ],
+    stddev: [
+      { q: "Why is the sample standard deviation always bigger than the population one?", a: "Because the sample divides the sum by n−1 instead of n, a smaller number to divide by gives a bigger result. That compensates for a sample tending to underestimate the true spread in the full population." },
+      { q: 'What counts as a valid input format?', a: 'Enter the numbers separated by commas or spaces, like "2, 4, 6, 8" or "2 4 6 8". Both formats work, and you can even mix them.' },
+      { q: 'What happens if I enter just one number?', a: "The calculator requires at least two values. With just one value there's no spread to measure, and the standard deviation (especially the sample one, which divides by n−1) becomes undefined." },
+    ],
   },
 
   pt: {
@@ -178,6 +210,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Como funciona o conversor de unidades?', a: 'Escolha uma categoria, digite um valor e veja o resultado atualizar instantaneamente, sem precisar clicar em nada.' },
       { q: 'As conversões são exatas?', a: 'Sim, baseiam-se em definições oficiais do SI e fornecem resultados matematicamente precisos, arredondados a seis decimais.' },
       { q: 'Funciona com unidades métricas e imperiais?', a: 'Sim, cada categoria inclui unidades métricas (metros, quilogramas, litros) e imperiais/americanas (polegadas, libras, galões).' },
+      { q: 'Por que a temperatura não funciona como as outras categorias?', a: 'Comprimento, peso e volume se convertem multiplicando por um fator fixo, mas as escalas de temperatura têm pontos zero diferentes, então é preciso uma fórmula com multiplicação e soma. Veja a explicação acima.' },
     ],
     time: [
       { q: 'Qual a diferença entre os dois modos?', a: '"Diferença entre horários" calcula o tempo entre dois momentos. "Somar / subtrair" calcula uma nova data somando ou subtraindo tempo.' },
@@ -250,6 +283,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Ela considera contribuições sociais ou descontos de previdência?', a: 'Não, a calculadora só subtrai a única porcentagem que você informar. Se quiser incluir outras deduções, incorpore-as na alíquota você mesmo, ou subtraia-as separadamente do valor líquido.' },
       { q: 'Posso usar isso para declarar ou planejar meus impostos?', a: 'Não, isso é uma estimativa genérica, não é aconselhamento fiscal para nenhum país específico. Sempre confira com sua autoridade fiscal local para números exatos.' },
     ],
+    fraction: [
+      { q: 'Por que as frações precisam do mesmo denominador para serem somadas?', a: 'O denominador mostra em quantas partes iguais o todo está dividido. Se as partes têm tamanhos diferentes (denominadores diferentes), os numeradores não podem ser combinados diretamente, eles precisam primeiro ser reajustados para o mesmo tamanho de parte.' },
+      { q: 'A calculadora sempre dá a resposta simplificada?', a: 'Sim, o resultado é sempre dividido automaticamente pelo máximo divisor comum do numerador e do denominador, então você recebe a resposta na sua forma mais simples.' },
+      { q: 'Posso informar números negativos?', a: 'Sim, tanto o numerador quanto o denominador podem ser negativos, e o sinal é tratado corretamente no resultado.' },
+    ],
+    ratio: [
+      { q: 'Qual a diferença entre uma proporção e uma fração?', a: 'Uma proporção compara duas quantidades separadas (como 2 gatos para 3 cachorros), enquanto uma fração mostra uma parte de um todo. Elas são calculadas de forma parecida, mas significam coisas diferentes.' },
+      { q: 'O Termo A e B precisam ser números inteiros?', a: 'Não, mas simplificar para os menores números inteiros só funciona com números inteiros. Com decimais, a proporção é mostrada como foi digitada, sem simplificação.' },
+      { q: 'Como resolvo uma proporção se eu quiser encontrar A em vez de X?', a: 'Reorganize quais números você informa, se você conhece B, C e X mas procura A, informe-os nos campos correspondentes e leia a proporção simplificada, ou refaça a fórmula manualmente: A = (B × C) / X.' },
+    ],
+    stddev: [
+      { q: 'Por que o desvio padrão amostral é sempre maior que o populacional?', a: 'Porque o amostral divide a soma por n−1 em vez de n, um número menor para dividir dá um resultado maior. Isso compensa a tendência de uma amostra subestimar a dispersão real de toda a população.' },
+      { q: 'Qual é um formato de entrada válido?', a: 'Informe os números separados por vírgulas ou espaços, como "2, 4, 6, 8" ou "2 4 6 8". Os dois formatos funcionam, e você pode até misturá-los.' },
+      { q: 'O que acontece se eu informar apenas um número?', a: 'A calculadora exige pelo menos dois valores. Com apenas um valor não há dispersão para medir, e o desvio padrão (especialmente o amostral, que divide por n−1) fica indefinido.' },
+    ],
   },
 
   es: {
@@ -257,6 +305,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Cómo funciona el conversor de unidades?', a: 'Elige una categoría, escribe un valor y observa el resultado actualizarse al instante, sin botones que pulsar.' },
       { q: '¿Las conversiones son exactas?', a: 'Sí, se basan en definiciones oficiales del SI y dan resultados matemáticamente precisos, redondeados a seis decimales.' },
       { q: '¿Funciona con unidades métricas e imperiales?', a: 'Sí, cada categoría incluye unidades métricas (metros, kilogramos, litros) e imperiales/estadounidenses (pulgadas, libras, galones).' },
+      { q: '¿Por qué la temperatura no funciona como las demás categorías?', a: 'La longitud, el peso y el volumen se convierten multiplicando por un factor fijo, pero las escalas de temperatura tienen puntos cero distintos, así que se necesita una fórmula con multiplicación y suma. Consulta la explicación de arriba.' },
     ],
     time: [
       { q: '¿Cuál es la diferencia entre los dos modos?', a: '"Diferencia entre horas" calcula el tiempo entre dos momentos. "Sumar / restar" calcula una nueva fecha sumando o restando tiempo.' },
@@ -329,6 +378,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Considera contribuciones sociales o descuentos de pensión?', a: 'No, la calculadora solo resta el único porcentaje que indiques. Si quieres incluir otras deducciones, incorpóralas tú mismo a la tasa, o réstalas por separado del monto neto.' },
       { q: '¿Puedo usar esto para declarar o planificar mis impuestos?', a: 'No, esto es una estimación genérica, no es asesoría fiscal para ningún país específico. Verifica siempre con tu autoridad fiscal local para cifras exactas.' },
     ],
+    fraction: [
+      { q: '¿Por qué las fracciones necesitan el mismo denominador para sumarse?', a: 'El denominador muestra en cuántas partes iguales está dividido el todo. Si las partes tienen tamaños distintos (denominadores distintos), los numeradores no se pueden combinar directamente, primero hay que reescalarlos al mismo tamaño de parte.' },
+      { q: '¿La calculadora siempre da la respuesta simplificada?', a: 'Sí, el resultado siempre se divide automáticamente entre el máximo común divisor del numerador y el denominador, así que obtienes la respuesta en su forma más simple.' },
+      { q: '¿Puedo introducir números negativos?', a: 'Sí, tanto el numerador como el denominador pueden ser negativos, y el signo se maneja correctamente en el resultado.' },
+    ],
+    ratio: [
+      { q: '¿Cuál es la diferencia entre una proporción y una fracción?', a: 'Una proporción compara dos cantidades separadas (como 2 gatos por cada 3 perros), mientras que una fracción muestra una parte de un todo. Se calculan de forma parecida, pero significan cosas distintas.' },
+      { q: '¿El Término A y B deben ser números enteros?', a: 'No, pero simplificar a los números enteros más pequeños solo aplica a números enteros. Con decimales, la proporción se muestra tal como se ingresó, sin simplificar.' },
+      { q: '¿Cómo resuelvo una proporción si quiero encontrar A en lugar de X?', a: 'Reorganiza qué números introduces, si conoces B, C y X pero buscas A, introdúcelos en los campos correspondientes y lee la proporción simplificada, o reordena la fórmula a mano: A = (B × C) / X.' },
+    ],
+    stddev: [
+      { q: '¿Por qué la desviación estándar muestral siempre es mayor que la poblacional?', a: 'Porque la muestral divide la suma entre n−1 en lugar de n, un número menor para dividir da un resultado mayor. Eso compensa que una muestra tiende a subestimar la dispersión real de toda la población.' },
+      { q: '¿Qué formato de entrada es válido?', a: 'Introduce los números separados por comas o espacios, como "2, 4, 6, 8" o "2 4 6 8". Ambos formatos funcionan, e incluso puedes combinarlos.' },
+      { q: '¿Qué pasa si introduzco solo un número?', a: 'La calculadora requiere al menos dos valores. Con un solo valor no hay dispersión que medir, y la desviación estándar (especialmente la muestral, que divide entre n−1) queda indefinida.' },
+    ],
   },
 
   de: {
@@ -336,6 +400,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Wie funktioniert der Einheitenumrechner?', a: 'Kategorie wählen, Wert eingeben und das Ergebnis sofort sehen, keine Schaltflächen nötig.' },
       { q: 'Sind die Umrechnungen exakt?', a: 'Ja, sie basieren auf offiziellen SI-Definitionen und liefern mathematisch genaue Ergebnisse, gerundet auf sechs Dezimalstellen.' },
       { q: 'Werden sowohl metrische als auch imperiale Einheiten unterstützt?', a: 'Ja, jede Kategorie enthält metrische Einheiten (Meter, Kilogramm, Liter) und imperiale/US-Einheiten (Zoll, Pfund, Gallonen).' },
+      { q: 'Warum funktioniert Temperatur nicht wie die anderen Kategorien?', a: 'Länge, Gewicht und Volumen werden durch Multiplikation mit einem festen Faktor umgerechnet, aber Temperaturskalen haben unterschiedliche Nullpunkte, daher braucht es eine Formel mit Multiplikation und Addition. Siehe die Erklärung oben.' },
     ],
     time: [
       { q: 'Was ist der Unterschied zwischen den beiden Modi?', a: '"Differenz zwischen Zeiten" berechnet die Zeit zwischen zwei Zeitpunkten. "Addieren / subtrahieren" berechnet ein neues Datum durch Hinzufügen oder Abziehen von Zeit.' },
@@ -408,6 +473,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Berücksichtigt er Sozialabgaben oder Rentenbeiträge?', a: 'Nein, der Rechner zieht nur den einen Prozentsatz ab, den du eingibst. Wenn du weitere Abzüge einbeziehen willst, rechne sie selbst in den Satz ein oder ziehe sie separat vom Nettobetrag ab.' },
       { q: 'Kann ich das für meine Steuererklärung oder -planung nutzen?', a: 'Nein, das ist eine generische Schätzung, keine Steuerberatung für ein bestimmtes Land. Prüfe für genaue Zahlen immer bei deiner lokalen Steuerbehörde nach.' },
     ],
+    fraction: [
+      { q: 'Warum brauchen Brüche denselben Nenner, um addiert zu werden?', a: 'Der Nenner zeigt, in wie viele gleich große Teile das Ganze geteilt ist. Sind die Teile unterschiedlich groß (unterschiedliche Nenner), können die Zähler nicht direkt zusammengezählt werden, sie müssen zuerst auf dieselbe Teilgröße skaliert werden.' },
+      { q: 'Gibt der Rechner immer das gekürzte Ergebnis aus?', a: 'Ja, das Ergebnis wird immer automatisch durch den größten gemeinsamen Teiler von Zähler und Nenner geteilt, sodass du die Antwort in ihrer einfachsten Form erhältst.' },
+      { q: 'Kann ich negative Zahlen eingeben?', a: 'Ja, sowohl Zähler als auch Nenner können negativ sein, und das Vorzeichen wird im Ergebnis korrekt behandelt.' },
+    ],
+    ratio: [
+      { q: 'Was ist der Unterschied zwischen einem Verhältnis und einem Bruch?', a: 'Ein Verhältnis vergleicht zwei getrennte Mengen (wie 2 Katzen zu 3 Hunden), während ein Bruch einen Teil eines Ganzen zeigt. Sie werden ähnlich berechnet, bedeuten aber unterschiedliche Dinge.' },
+      { q: 'Müssen Term A und B ganze Zahlen sein?', a: 'Nein, aber das Kürzen auf die kleinsten ganzen Zahlen funktioniert nur bei ganzen Zahlen. Bei Dezimalzahlen wird das Verhältnis so angezeigt, wie eingegeben, ohne Kürzung.' },
+      { q: 'Wie löse ich eine Proportion, wenn ich A statt X finden will?', a: 'Ordne um, welche Zahlen du eingibst, wenn du B, C und X kennst, aber A suchst, gib sie in die entsprechenden Felder ein und lies das gekürzte Verhältnis ab, oder rechne die Formel von Hand um: A = (B × C) / X.' },
+    ],
+    stddev: [
+      { q: 'Warum ist die Stichproben-Standardabweichung immer größer als die der Grundgesamtheit?', a: 'Weil die Stichprobe die Summe durch n−1 statt durch n teilt, eine kleinere Zahl als Divisor ergibt ein größeres Ergebnis. Das gleicht aus, dass eine Stichprobe dazu neigt, die tatsächliche Streuung der gesamten Grundgesamtheit zu unterschätzen.' },
+      { q: 'Was gilt als gültiges Eingabeformat?', a: 'Gib die Zahlen durch Kommas oder Leerzeichen getrennt ein, wie "2, 4, 6, 8" oder "2 4 6 8". Beide Formate funktionieren, du kannst sie sogar mischen.' },
+      { q: 'Was passiert, wenn ich nur eine Zahl eingebe?', a: 'Der Rechner benötigt mindestens zwei Werte. Bei nur einem Wert gibt es keine Streuung zu messen, und die Standardabweichung (besonders die der Stichprobe, die durch n−1 teilt) wird undefiniert.' },
+    ],
   },
 
   ja: {
@@ -415,6 +495,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '単位変換はどう使いますか？', a: 'カテゴリーを選び、値を入力するだけで結果がすぐに表示されます。' },
       { q: '変換結果は正確ですか？', a: 'はい、公式のSI定義に基づき、小数点以下6桁まで数学的に正確です。' },
       { q: 'メートル法とヤード・ポンド法の両方に対応していますか？', a: 'はい、各カテゴリーにメートル法（メートル、キログラム、リットル）と英米単位（インチ、ポンド、ガロン）の両方が含まれます。' },
+      { q: '温度だけ他のカテゴリーと計算方法が違うのはなぜですか？', a: '長さ、重さ、体積は固定の係数を掛けるだけで変換できますが、温度の目盛りはゼロ点が異なるため、掛け算と足し算の両方を使う式が必要です。上の説明をご覧ください。' },
     ],
     time: [
       { q: '2つのモードの違いは何ですか？', a: '「時間の差」は2つの時点間の時間を計算し、「加算・減算」は時間を加えたり引いたりして新しい日時を求めます。' },
@@ -487,6 +568,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '社会保険料や年金の控除は考慮されますか?', a: 'いいえ、この計算機はあなたが入力した単一のパーセントのみを差し引きます。他の控除を含めたい場合は、税率に自分で織り込むか、手取り額から別途差し引いてください。' },
       { q: 'これを確定申告や税金の計画に使えますか?', a: 'いいえ、これは一般的な見積もりであり、特定の国の税務アドバイスではありません。正確な数値については、必ず現地の税務当局に確認してください。' },
     ],
+    fraction: [
+      { q: 'なぜ分数を足すには分母をそろえる必要があるのですか?', a: '分母は全体がいくつの等しい部分に分けられているかを表します。部分の大きさが異なる（分母が異なる）と分子を直接足すことはできず、まず同じ大きさの部分になるように調整する必要があります。' },
+      { q: 'この計算機は常に約分された答えを出しますか?', a: 'はい、結果は常に分子と分母の最大公約数で自動的に割られるので、最も簡単な形で答えが得られます。' },
+      { q: 'マイナスの数値を入力できますか?', a: 'はい、分子・分母ともにマイナスの値を入力でき、符号は結果に正しく反映されます。' },
+    ],
+    ratio: [
+      { q: '比と分数の違いは何ですか?', a: '比は2つの別々の量を比較するもの（猫2匹に対して犬3匹など）で、分数は全体の中の一部分を表します。計算方法は似ていますが、意味するものは異なります。' },
+      { q: '項Aと項Bは整数である必要がありますか?', a: 'いいえ、ただし最小の整数への約分は整数の場合にのみ適用されます。小数の場合、比は入力されたとおりに表示され、約分はされません。' },
+      { q: 'XではなくAを求めたい場合、比例式をどう解けばいいですか?', a: '入力する数値を並べ替えてください。B、C、Xがわかっていて A を求めたい場合は、それぞれ対応する欄に入力して約分された比を読み取るか、式を手計算で組み替えてください：A = (B × C) / X。' },
+    ],
+    stddev: [
+      { q: 'なぜ標本の標準偏差は母集団の標準偏差より常に大きいのですか?', a: '標本の場合は合計をnではなくn−1で割るためです。割る数が小さいほど結果は大きくなります。これは、標本が母集団全体の実際のばらつきを過小評価しがちなことを補うためです。' },
+      { q: '有効な入力形式は何ですか?', a: '数値をカンマまたはスペースで区切って入力してください。例：「2, 4, 6, 8」または「2 4 6 8」。どちらの形式でも動作し、混在させることもできます。' },
+      { q: '数値を1つしか入力しなかった場合どうなりますか?', a: 'この計算機には少なくとも2つの値が必要です。値が1つだけだと測定するばらつきがなく、標準偏差（特にn−1で割る標本の標準偏差）は定義できなくなります。' },
+    ],
   },
 
   zh: {
@@ -494,6 +590,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '单位换算器如何使用？', a: '选择类别，输入数值，结果立即更新, 无需点击任何按钮。' },
       { q: '换算结果是否精确？', a: '是的，换算基于官方SI定义，结果在数学上精确，保留六位小数。' },
       { q: '是否同时支持公制和英制单位？', a: '是的，每个类别都包含公制单位（米、千克、升）和英制/美制单位（英寸、磅、加仑）。' },
+      { q: '为什么温度的换算方式和其他类别不一样？', a: '长度、重量和体积只需乘以一个固定系数即可换算，但温度标尺的零点不同，因此需要同时用到乘法和加法的公式。详见上面的说明。' },
     ],
     time: [
       { q: '两种模式有什么区别？', a: '"时间差"计算两个时间点之间的差值，"加减时间"通过加上或减去时间来得出新的日期。' },
@@ -566,6 +663,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '它是否考虑社保或养老金扣除?', a: '不考虑，这个计算器只会减去你输入的那一个百分比。如果你想计入其他扣除项，需要自己把它们折算进税率，或者从净收入中单独减去。' },
       { q: '我可以用这个来报税或做税务规划吗?', a: '不可以，这只是一个通用估算，并非针对任何特定国家的税务建议。具体数字请务必咨询当地税务机关。' },
     ],
+    fraction: [
+      { q: '为什么分数相加需要相同的分母?', a: '分母表示整体被分成了多少等份。如果每份大小不同（分母不同），分子就不能直接相加，必须先把它们调整为相同的份数大小。' },
+      { q: '这个计算器总是给出化简后的答案吗?', a: '是的，结果总是会自动除以分子和分母的最大公约数，所以你得到的答案总是最简形式。' },
+      { q: '我可以输入负数吗?', a: '可以，分子和分母都可以是负数，结果中的符号会被正确处理。' },
+    ],
+    ratio: [
+      { q: '比例和分数有什么区别?', a: '比例比较的是两个独立的量（比如2只猫对3只狗），而分数表示的是整体中的一部分。它们的计算方式类似，但含义不同。' },
+      { q: '项A和项B必须是整数吗?', a: '不是必须的，但化简为最小整数的功能只适用于整数。如果输入小数，比例会按输入的原样显示，不会化简。' },
+      { q: '如果我想求A而不是X，该如何求解比例式?', a: '重新排列你输入的数字。如果你知道B、C和X但要求A，把它们分别输入对应的字段并读取化简后的比例，或者手动改写公式：A = (B × C) / X。' },
+    ],
+    stddev: [
+      { q: '为什么样本标准差总是比总体标准差大?', a: '因为样本是用总和除以n−1而不是n，除数变小结果就变大。这是为了弥补样本往往会低估整个总体真实离散程度的倾向。' },
+      { q: '什么样的输入格式是有效的?', a: '用逗号或空格分隔输入数字，例如"2, 4, 6, 8"或"2 4 6 8"。两种格式都可以，甚至可以混合使用。' },
+      { q: '如果我只输入一个数字会怎样?', a: '这个计算器至少需要两个数值。只有一个值时没有离散程度可以衡量，标准差（尤其是除以n−1的样本标准差）会变得无法定义。' },
+    ],
   },
 
   ko: {
@@ -573,6 +685,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '단위 변환기는 어떻게 사용하나요?', a: '카테고리를 선택하고 값을 입력하면 결과가 즉시 업데이트됩니다, 버튼을 누를 필요가 없습니다.' },
       { q: '변환 결과는 정확한가요?', a: '네, 공식 SI 정의를 기반으로 하며 소수점 6자리까지 수학적으로 정확한 결과를 제공합니다.' },
       { q: '미터법과 야드파운드법을 모두 지원하나요?', a: '네, 각 카테고리에는 미터법 단위(미터, 킬로그램, 리터)와 야드파운드/US 단위(인치, 파운드, 갤런)가 모두 포함됩니다.' },
+      { q: '온도는 왜 다른 카테고리와 계산 방식이 다른가요?', a: '길이, 무게, 부피는 고정된 계수를 곱해서 변환하지만, 온도 눈금은 0점이 서로 달라서 곱셈과 덧셈이 모두 필요한 공식을 사용합니다. 위의 설명을 참고하세요.' },
     ],
     time: [
       { q: '두 모드의 차이는 무엇인가요?', a: '"시간 차이"는 두 시점 사이의 시간을 계산하고, "더하기 / 빼기"는 시간을 더하거나 빼서 새로운 날짜를 구합니다.' },
@@ -645,6 +758,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '사회보험료나 연금 공제도 반영되나요?', a: '아니요, 이 계산기는 당신이 입력한 단일 비율만 차감합니다. 다른 공제를 포함하고 싶다면 직접 세율에 반영하거나, 실수령액에서 별도로 빼야 합니다.' },
       { q: '이걸로 세금 신고나 세무 계획을 세울 수 있나요?', a: '아니요, 이는 범용 추정치이며 특정 국가에 대한 세무 조언이 아닙니다. 정확한 수치는 반드시 현지 세무 당국에 확인하세요.' },
     ],
+    fraction: [
+      { q: '분수를 더하려면 왜 분모가 같아야 하나요?', a: '분모는 전체가 몇 개의 동일한 조각으로 나뉘어 있는지를 나타냅니다. 조각의 크기가 다르면(분모가 다르면) 분자를 바로 더할 수 없으며, 먼저 같은 크기의 조각으로 맞춰야 합니다.' },
+      { q: '이 계산기는 항상 약분된 답을 주나요?', a: '네, 결과는 항상 분자와 분모의 최대공약수로 자동으로 나뉘어, 가장 간단한 형태의 답을 얻을 수 있습니다.' },
+      { q: '음수를 입력할 수 있나요?', a: '네, 분자와 분모 모두 음수가 될 수 있으며, 부호는 결과에 올바르게 반영됩니다.' },
+    ],
+    ratio: [
+      { q: '비율과 분수는 어떻게 다른가요?', a: '비율은 두 개의 별개 수량을 비교하는 것(고양이 2마리 대 개 3마리 등)이고, 분수는 전체 중 일부를 나타냅니다. 계산 방식은 비슷하지만 의미하는 바가 다릅니다.' },
+      { q: '항 A와 B는 정수여야 하나요?', a: '아니요, 하지만 가장 작은 정수로 약분하는 기능은 정수에만 적용됩니다. 소수를 입력하면 비율은 약분 없이 입력한 그대로 표시됩니다.' },
+      { q: 'X 대신 A를 구하려면 비례식을 어떻게 풀어야 하나요?', a: '입력하는 숫자의 순서를 바꾸세요. B, C, X를 알고 A를 구하고 싶다면 해당 필드에 각각 입력하고 약분된 비율을 확인하거나, 공식을 직접 재배열하세요: A = (B × C) / X.' },
+    ],
+    stddev: [
+      { q: '표본 표준편차는 왜 항상 모집단 표준편차보다 큰가요?', a: '표본은 합계를 n이 아닌 n−1로 나누기 때문입니다. 나누는 수가 작을수록 결과는 커집니다. 이는 표본이 전체 모집단의 실제 퍼짐 정도를 과소평가하는 경향을 보정하기 위한 것입니다.' },
+      { q: '유효한 입력 형식은 무엇인가요?', a: '숫자를 쉼표나 공백으로 구분해 입력하세요. 예: "2, 4, 6, 8" 또는 "2 4 6 8". 두 형식 모두 작동하며, 섞어서 사용할 수도 있습니다.' },
+      { q: '숫자를 하나만 입력하면 어떻게 되나요?', a: '이 계산기는 최소 두 개의 값이 필요합니다. 값이 하나뿐이면 측정할 퍼짐이 없어서, 표준편차(특히 n−1로 나누는 표본 표준편차)는 정의되지 않습니다.' },
+    ],
   },
 
   hi: {
@@ -652,6 +780,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'यूनिट कन्वर्टर कैसे काम करता है?', a: 'श्रेणी चुनें, मान दर्ज करें, और परिणाम तुरंत अपडेट होते देखें, कोई बटन दबाने की ज़रूरत नहीं।' },
       { q: 'क्या रूपांतरण सटीक हैं?', a: 'हाँ, ये आधिकारिक SI परिभाषाओं पर आधारित हैं और छह दशमलव स्थानों तक गणितीय रूप से सटीक परिणाम देते हैं।' },
       { q: 'क्या यह मेट्रिक और इंपीरियल दोनों इकाइयों को संभालता है?', a: 'हाँ, हर श्रेणी में मेट्रिक इकाइयाँ (मीटर, किलोग्राम, लीटर) और इंपीरियल/US इकाइयाँ (इंच, पाउंड, गैलन) दोनों शामिल हैं।' },
+      { q: 'तापमान दूसरी श्रेणियों की तरह काम क्यों नहीं करता?', a: 'लंबाई, वज़न और आयतन एक स्थिर गुणांक से गुणा करके बदले जाते हैं, लेकिन तापमान के पैमानों के शून्य बिंदु अलग-अलग होते हैं, इसलिए गुणा और जोड़ दोनों वाला फ़ॉर्मूला चाहिए। ऊपर दी गई व्याख्या देखें।' },
     ],
     time: [
       { q: 'दोनों मोड में क्या अंतर है?', a: '"समय का अंतर" दो समयों के बीच का समय निकालता है, जबकि "जोड़ें / घटाएँ" समय जोड़कर या घटाकर नई तारीख़ निकालता है।' },
@@ -724,6 +853,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'क्या यह सामाजिक अंशदान या पेंशन कटौती को ध्यान में रखता है?', a: 'नहीं, यह कैलकुलेटर सिर्फ़ आपके डाले गए एक ही प्रतिशत को घटाता है। अगर आप अन्य कटौतियां शामिल करना चाहते हैं, तो उन्हें खुद दर में जोड़ें, या नेट राशि से अलग से घटाएं।' },
       { q: 'क्या मैं इसका उपयोग टैक्स फ़ाइल करने या योजना बनाने के लिए कर सकता हूं?', a: 'नहीं, यह एक सामान्य अनुमान है, किसी खास देश के लिए टैक्स सलाह नहीं। सटीक आंकड़ों के लिए हमेशा अपने स्थानीय टैक्स विभाग से जांच करें।' },
     ],
+    fraction: [
+      { q: 'भिन्नों को जोड़ने के लिए एक जैसा हर क्यों चाहिए?', a: 'हर बताता है कि पूरे को कितने बराबर हिस्सों में बांटा गया है। अगर हिस्सों का आकार अलग-अलग है (अलग हर), तो अंशों को सीधे नहीं जोड़ा जा सकता, पहले उन्हें एक जैसे हिस्से के आकार में बदलना पड़ता है।' },
+      { q: 'क्या कैलकुलेटर हमेशा सरल किया हुआ जवाब देता है?', a: 'हां, नतीजे को हमेशा अंश और हर के महत्तम समापवर्तक से अपने आप भाग दिया जाता है, इसलिए आपको जवाब उसके सबसे सरल रूप में मिलता है।' },
+      { q: 'क्या मैं ऋणात्मक संख्याएं दर्ज कर सकता हूं?', a: 'हां, अंश और हर दोनों ऋणात्मक हो सकते हैं, और चिह्न को नतीजे में सही तरीके से संभाला जाता है।' },
+    ],
+    ratio: [
+      { q: 'अनुपात और भिन्न में क्या अंतर है?', a: 'अनुपात दो अलग-अलग मात्राओं की तुलना करता है (जैसे 2 बिल्लियां और 3 कुत्ते), जबकि भिन्न किसी पूर्ण का एक हिस्सा दिखाती है। दोनों की गणना एक जैसी होती है, लेकिन उनका मतलब अलग होता है।' },
+      { q: 'क्या पद A और B पूर्णांक होने चाहिए?', a: 'नहीं, लेकिन सबसे छोटे पूर्णांकों में सरल बनाना सिर्फ़ पूर्णांकों पर ही लागू होता है। दशमलव के साथ, अनुपात जैसा दर्ज किया गया है वैसा ही दिखाया जाता है, बिना सरल किए।' },
+      { q: 'अगर मुझे X के बजाय A निकालना है तो समानुपात कैसे हल करूं?', a: 'आप जो संख्याएं दर्ज करते हैं उन्हें फिर से व्यवस्थित करें, अगर आप B, C और X जानते हैं लेकिन A ढूंढ रहे हैं, तो उन्हें संबंधित फ़ील्ड में दर्ज करें और सरल किया गया अनुपात पढ़ें, या फ़ॉर्मूले को हाथ से फिर से लिखें: A = (B × C) / X।' },
+    ],
+    stddev: [
+      { q: 'नमूना मानक विचलन हमेशा जनसंख्या वाले से बड़ा क्यों होता है?', a: 'क्योंकि नमूना योग को n के बजाय n−1 से भाग देता है, भाग देने के लिए छोटी संख्या बड़ा नतीजा देती है। यह इस बात की भरपाई करता है कि नमूना पूरी जनसंख्या के असली फैलाव को कम आंकने की प्रवृत्ति रखता है।' },
+      { q: 'इनपुट का सही फ़ॉर्मेट क्या है?', a: 'संख्याओं को कॉमा या स्पेस से अलग करके दर्ज करें, जैसे "2, 4, 6, 8" या "2 4 6 8"। दोनों फ़ॉर्मेट काम करते हैं, और आप उन्हें मिला भी सकते हैं।' },
+      { q: 'अगर मैं सिर्फ़ एक संख्या दर्ज करूं तो क्या होगा?', a: 'इस कैलकुलेटर को कम से कम दो मान चाहिए। सिर्फ़ एक मान के साथ मापने के लिए कोई फैलाव नहीं होता, और मानक विचलन (खासकर नमूने वाला, जो n−1 से भाग देता है) अपरिभाषित हो जाता है।' },
+    ],
   },
 
   id: {
@@ -731,6 +875,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Bagaimana cara kerja konverter satuan?', a: 'Pilih kategori, masukkan nilai, dan lihat hasilnya langsung diperbarui, tidak perlu menekan tombol apa pun.' },
       { q: 'Apakah konversinya akurat?', a: 'Ya, berdasarkan definisi SI resmi dan memberikan hasil yang matematis akurat, dibulatkan hingga enam desimal.' },
       { q: 'Apakah mendukung satuan metrik dan imperial?', a: 'Ya, setiap kategori mencakup satuan metrik (meter, kilogram, liter) dan satuan imperial/AS (inci, pon, galon).' },
+      { q: 'Kenapa suhu tidak bekerja seperti kategori lainnya?', a: 'Panjang, berat, dan volume dikonversi dengan mengalikan faktor tetap, tapi skala suhu memiliki titik nol yang berbeda, jadi perlu rumus dengan perkalian sekaligus penjumlahan. Lihat penjelasan di atas.' },
     ],
     time: [
       { q: 'Apa perbedaan antara dua mode ini?', a: '"Selisih waktu" menghitung waktu antara dua momen, sedangkan "Tambah / kurang" menghitung tanggal baru dengan menambah atau mengurangi waktu.' },
@@ -802,6 +947,21 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Tarif pajak apa yang harus saya masukkan?', a: 'Tarif pajak efektifmu, yaitu berapa persen dari total pendapatan kotormu yang menjadi pajak, bukan tarif marjinal tertinggi. Lihat bagian di atas untuk perbedaannya.' },
       { q: 'Apakah ini memperhitungkan iuran sosial atau potongan pensiun?', a: 'Tidak, kalkulator ini hanya mengurangi satu persentase yang kamu masukkan. Jika ingin memasukkan potongan lain, hitung sendiri ke dalam tarifnya, atau kurangi secara terpisah dari jumlah bersih.' },
       { q: 'Bisakah saya menggunakan ini untuk lapor atau merencanakan pajak saya?', a: 'Tidak, ini adalah perkiraan generik, bukan nasihat pajak untuk negara tertentu. Selalu periksa dengan otoritas pajak setempat untuk angka yang tepat.' },
+    ],
+    fraction: [
+      { q: 'Kenapa pecahan perlu penyebut yang sama untuk dijumlahkan?', a: 'Penyebut menunjukkan menjadi berapa bagian sama besar sesuatu yang utuh dibagi. Jika bagian-bagiannya berbeda ukuran (penyebut berbeda), pembilang tidak bisa langsung digabungkan, keduanya harus disesuaikan dulu ke ukuran bagian yang sama.' },
+      { q: 'Apakah kalkulator selalu memberikan jawaban yang sudah disederhanakan?', a: 'Ya, hasilnya selalu otomatis dibagi dengan faktor persekutuan terbesar dari pembilang dan penyebut, jadi kamu mendapat jawaban dalam bentuk paling sederhana.' },
+      { q: 'Bisakah saya memasukkan angka negatif?', a: 'Bisa, baik pembilang maupun penyebut bisa negatif, dan tandanya ditangani dengan benar pada hasilnya.' },
+    ],
+    ratio: [
+      { q: 'Apa bedanya rasio dan pecahan?', a: 'Rasio membandingkan dua kuantitas terpisah (seperti 2 kucing berbanding 3 anjing), sedangkan pecahan menunjukkan bagian dari keseluruhan. Keduanya dihitung dengan cara mirip, tapi artinya berbeda.' },
+      { q: 'Apakah Suku A dan B harus bilangan bulat?', a: 'Tidak, tapi penyederhanaan ke bilangan bulat terkecil hanya berlaku untuk bilangan bulat. Dengan desimal, rasio ditampilkan apa adanya sesuai yang dimasukkan, tanpa disederhanakan.' },
+      { q: 'Bagaimana cara menyelesaikan proporsi jika saya ingin mencari A, bukan X?', a: 'Susun ulang angka mana yang kamu masukkan, jika kamu tahu B, C, dan X tapi mencari A, masukkan ke kolom yang sesuai dan baca rasio yang disederhanakan, atau susun ulang rumusnya secara manual: A = (B × C) / X.' },
+    ],
+    stddev: [
+      { q: 'Kenapa simpangan baku sampel selalu lebih besar dari populasi?', a: 'Karena sampel membagi jumlahnya dengan n−1, bukan n, angka pembagi yang lebih kecil menghasilkan hasil yang lebih besar. Ini mengompensasi kecenderungan sampel meremehkan sebaran sebenarnya dari seluruh populasi.' },
+      { q: 'Format input apa yang valid?', a: 'Masukkan angka dipisahkan dengan koma atau spasi, seperti "2, 4, 6, 8" atau "2 4 6 8". Kedua format berfungsi, dan kamu bahkan bisa mencampurnya.' },
+      { q: 'Apa yang terjadi jika saya hanya memasukkan satu angka?', a: 'Kalkulator ini memerlukan setidaknya dua nilai. Dengan hanya satu nilai, tidak ada sebaran yang bisa diukur, dan simpangan baku (terutama sampel, yang dibagi dengan n−1) menjadi tidak terdefinisi.' },
     ],
   },
 };

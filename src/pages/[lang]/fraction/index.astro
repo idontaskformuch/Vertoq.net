@@ -2,8 +2,8 @@
 import Layout from '../../../layouts/Layout.astro';
 import { translations } from '../../../i18n/translations';
 import { langCodes } from '../../../i18n/languages';
-import { unitsContent } from '../../../i18n/unitsContent';
-import UnitConverter from '../../../components/UnitConverter.astro';
+import { fractionContent } from '../../../i18n/fractionContent';
+import FractionCalculator from '../../../components/FractionCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 
@@ -12,39 +12,39 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = translations[lang as keyof typeof translations].units;
-const c = unitsContent[lang as keyof typeof unitsContent];
+const t = translations[lang as keyof typeof translations].fraction;
+const c = fractionContent[lang as keyof typeof fractionContent];
 ---
-<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="units">
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="fraction">
   <section class="page-head">
     <p class="eyebrow">Vertoq</p>
     <h1>{t.title}</h1>
     <p>{t.intro}</p>
   </section>
 
-  <UnitConverter lang={lang} />
+  <FractionCalculator lang={lang} />
 
   {c && (
     <div class="content-block-group">
       <section class="content-block">
-        <h2>{c.whatIsConverter.heading}</h2>
-        <p>{c.whatIsConverter.body}</p>
+        <h2>{c.whatIsFraction.heading}</h2>
+        <p>{c.whatIsFraction.body}</p>
       </section>
 
       <section class="content-block">
-        <h2>{c.categoriesOverview.heading}</h2>
-        <p>{c.categoriesOverview.body}</p>
+        <h2>{c.operations.heading}</h2>
+        <p>{c.operations.addSub}</p>
+        <p>{c.operations.mulDiv}</p>
       </section>
 
       <section class="content-block">
-        <h2>{c.temperature.heading}</h2>
-        <p>{c.temperature.body}</p>
-        <p><code>{c.temperature.code}</code></p>
+        <h2>{c.simplifying.heading}</h2>
+        <p>{c.simplifying.body}</p>
       </section>
 
       <section class="content-block">
-        <h2>{c.accuracy.heading}</h2>
-        <p>{c.accuracy.body}</p>
+        <h2>{c.mixedNumbers.heading}</h2>
+        <p>{c.mixedNumbers.body}</p>
       </section>
 
       <section class="content-block related-calculators">
@@ -56,7 +56,7 @@ const c = unitsContent[lang as keyof typeof unitsContent];
     </div>
   )}
 
-  <FaqSection lang={lang} tool="units" />
+  <FaqSection lang={lang} tool="fraction" />
 
   <AdSlot />
 </Layout>

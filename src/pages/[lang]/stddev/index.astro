@@ -2,8 +2,8 @@
 import Layout from '../../../layouts/Layout.astro';
 import { translations } from '../../../i18n/translations';
 import { langCodes } from '../../../i18n/languages';
-import { unitsContent } from '../../../i18n/unitsContent';
-import UnitConverter from '../../../components/UnitConverter.astro';
+import { stddevContent } from '../../../i18n/stddevContent';
+import StdDevCalculator from '../../../components/StdDevCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 
@@ -12,39 +12,45 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = translations[lang as keyof typeof translations].units;
-const c = unitsContent[lang as keyof typeof unitsContent];
+const t = translations[lang as keyof typeof translations].stddev;
+const c = stddevContent[lang as keyof typeof stddevContent];
 ---
-<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="units">
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="stddev">
   <section class="page-head">
     <p class="eyebrow">Vertoq</p>
     <h1>{t.title}</h1>
     <p>{t.intro}</p>
   </section>
 
-  <UnitConverter lang={lang} />
+  <StdDevCalculator lang={lang} />
 
   {c && (
     <div class="content-block-group">
       <section class="content-block">
-        <h2>{c.whatIsConverter.heading}</h2>
-        <p>{c.whatIsConverter.body}</p>
+        <h2>{c.whatIsStdDev.heading}</h2>
+        <p>{c.whatIsStdDev.body}</p>
       </section>
 
       <section class="content-block">
-        <h2>{c.categoriesOverview.heading}</h2>
-        <p>{c.categoriesOverview.body}</p>
+        <h2>{c.populationVsSample.heading}</h2>
+        <p>{c.populationVsSample.body}</p>
       </section>
 
       <section class="content-block">
-        <h2>{c.temperature.heading}</h2>
-        <p>{c.temperature.body}</p>
-        <p><code>{c.temperature.code}</code></p>
+        <h2>{c.formulas.heading}</h2>
+        <p><code>{c.formulas.populationCode}</code></p>
+        <p><code>{c.formulas.sampleCode}</code></p>
+        <p>{c.formulas.note}</p>
       </section>
 
       <section class="content-block">
-        <h2>{c.accuracy.heading}</h2>
-        <p>{c.accuracy.body}</p>
+        <h2>{c.workedExample.heading}</h2>
+        <p>{c.workedExample.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.variance.heading}</h2>
+        <p>{c.variance.body}</p>
       </section>
 
       <section class="content-block related-calculators">
@@ -56,7 +62,7 @@ const c = unitsContent[lang as keyof typeof unitsContent];
     </div>
   )}
 
-  <FaqSection lang={lang} tool="units" />
+  <FaqSection lang={lang} tool="stddev" />
 
   <AdSlot />
 </Layout>
