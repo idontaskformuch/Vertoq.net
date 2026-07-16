@@ -1,0 +1,94 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].tip;
+---
+<div class="converter" id="tip-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="tip-bill">{t.billLabel}</label>
+      <input id="tip-bill" type="number" value="800" min="0" inputmode="decimal" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="tip-percent">{t.tipPercentLabel}</label>
+      <input id="tip-percent" type="number" value="15" min="0" step="1" inputmode="decimal" />
+    </div>
+  </div>
+
+  <div class="field" style="margin-top:14px">
+    <label for="tip-people">{t.peopleLabel}</label>
+    <input id="tip-people" type="number" value="1" min="1" step="1" inputmode="numeric" />
+  </div>
+
+  <div class="result-row" style="margin-top:24px">
+    <span class="label">{t.tipAmountLabel}</span>
+    <span class="value" id="tip-amount">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.totalLabel}</span>
+    <span class="value" id="tip-total" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.perPersonLabel}</span>
+    <span class="value" id="tip-perperson" style="font-size:1.3rem">—</span>
+  </div>
+</div>
+
+<script>
+  const billEl = document.getElementById('tip-bill') as HTMLInputElement;
+  const percentEl = document.getElementById('tip-percent') as HTMLInputElement;
+  const peopleEl = document.getElementById('tip-people') as HTMLInputElement;
+  const amountEl = document.getElementById('tip-amount')!;
+  const totalEl = document.getElementById('tip-total')!;
+  const perPersonEl = document.getElementById('tip-perperson')!;
+
+  function fmt(n: number) {
+    if (!isFinite(n)) return '—';
+    return (Math.round(n * 100) / 100).toString();
+  }
+
+  function calc() {
+    const bill = parseFloat(billEl.value);
+    const pct = parseFloat(percentEl.value);
+    const people = parseFloat(peopleEl.value);
+
+    if (isNaN(bill) || isNaN(pct) || isNaN(people) || bill < 0 || pct < 0 || people < 1) {
+      amountEl.textContent = '—';
+      totalEl.textContent = '—';
+      perPersonEl.textContent = '—';
+      return;
+    }
+
+    const tipAmount = bill * (pct / 100);
+    const total = bill + tipAmount;
+    const perPerson = total / people;
+
+    amountEl.textContent = fmt(tipAmount);
+    totalEl.textContent = fmt(total);
+    perPersonEl.textContent = fmt(perPerson);
+  }
+
+  [billEl, percentEl, peopleEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll<HTMLElement>('input, select, button'));
+    container.addEventListener('keydown', function(e: KeyboardEvent) {
+      if (e.key !== 'Enter') return;
+      const el = e.target as HTMLElement;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

@@ -12,7 +12,7 @@ export const faqHeadings: Record<string, string> = {
 };
 
 type FaqItem = { q: string; a: string };
-type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; calorie: FaqItem[]; bodyfat: FaqItem[]; idealweight: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[] };
+type ToolFaqs = { units: FaqItem[]; time: FaqItem[]; percent: FaqItem[]; age: FaqItem[]; bmi: FaqItem[]; tdee: FaqItem[]; bmr: FaqItem[]; calorie: FaqItem[]; bodyfat: FaqItem[]; idealweight: FaqItem[]; loan: FaqItem[]; loancost: FaqItem[]; savingsgoal: FaqItem[]; tip: FaqItem[]; salary: FaqItem[]; fraction: FaqItem[]; ratio: FaqItem[]; stddev: FaqItem[] };
 
 export const faqContent: Record<string, ToolFaqs> = {
   sv: {
@@ -29,6 +29,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Vilket läge ska jag använda för en rabatt?', a: 'Använd "Rabatt", ange pris och rabattprocent för att se nytt pris och hur mycket du sparar.' },
       { q: 'Hur räknar jag ut en procentuell ökning?', a: 'Använd "Procentuell förändring", ange ursprungsvärde och nytt värde för att se förändringen i procent.' },
       { q: 'Vad är skillnaden mellan "procent av tal" och "hur många procent"?', a: 'Det första räknar ut ett värde från en procentsats, det andra räknar ut vilken procentsats en del motsvarar av en helhet.' },
+      { q: 'Är moms samma sak som rabatt, fast tvärtom?', a: 'Ja, rent matematiskt. Rabatt drar bort en procentsats från priset, moms lägger till en. Använd läget "Moms" för att lägga till en procentsats istället för att dra bort den.' },
     ],
     age: [
       { q: 'Hur räknas min exakta ålder ut?', a: 'Kalenderkorrekt från ditt födelsedatum till valt datum, visat i fullständiga år, månader och dagar.' },
@@ -69,10 +70,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Vad är ränta-på-ränta?', a: 'Räntan du tjänar läggs till kapitalet, så du tjänar ränta på både startbeloppet och tidigare intjänad ränta.' },
       { q: 'Hur ofta beräknas räntan?', a: 'Månadsvis, vilket är vanligt för sparkonton och fonder och ger en realistisk bild av tillväxten.' },
       { q: 'Tar kalkylatorn hänsyn till skatt eller inflation?', a: 'Nej, resultatet visar nominell tillväxt före skatt och inflation, tänkt som vägledning, inte finansiell rådgivning.' },
+      { q: 'Hur lång tid tar det för sparandet att dubblas?', a: 'Dela 72 med räntesatsen för en snabb uppskattning. Vid 6 procents ränta tar det ungefär 12 år, se 72-regeln ovan för mer.' },
     ],
     loancost: [
       { q: 'Hur räknas månadskostnaden ut?', a: 'Med den vanliga annuitetsformeln för lån, som ger en jämn månadskostnad där andelen ränta minskar och andelen amortering ökar över tid.' },
       { q: 'Skiljer sig detta från sparkalkylatorn?', a: 'Ja, sparkalkylatorn visar hur ett sparat belopp växer. Den här kalkylatorn visar vad ett lån eller en avbetalning faktiskt kostar dig totalt.' },
+      { q: 'Ingår avgifter och försäkringar i totalkostnaden?', a: 'Nej, kalkylatorn visar bara ränte- och amorteringskostnaden utifrån belopp, ränta och löptid. Avgifter, försäkringar och skatter varierar för mycket mellan långivare och länder för att kunna räknas in generellt.' },
+    ],
+    savingsgoal: [
+      { q: 'Vad gör jag om jag redan har tillräckligt sparat?', a: 'Då visas ett meddelande istället för en siffra — ditt nuvarande sparande räcker redan för att nå målet med den avkastning du angett, inget ytterligare månadssparande behövs.' },
+      { q: 'Vad händer om jag sänker den förväntade avkastningen?', a: 'Det krävda månadsbeloppet ökar, eftersom en lägre avkastning gör mindre av jobbet åt dig och du behöver bidra med mer själv.' },
+      { q: 'Kan jag använda den här för vilket sparmål som helst?', a: 'Ja, kalkylatorn räknar generellt utifrån belopp, tid och avkastning, oavsett om målet är en kontantinsats, en resa eller en buffert.' },
+    ],
+    tip: [
+      { q: 'Är dricksen jag anger inklusive eller exklusive moms?', a: 'Kalkylatorn räknar bara på notans totalbelopp som du anger, oavsett om moms redan är inräknad. Ange det belopp du faktiskt ser på notan.' },
+      { q: 'Delas dricksen jämnt även om vi beställde olika mycket?', a: 'Ja, delningen är alltid jämn över antalet personer. Om ni vill dela efter vad var och en åt, får ni räkna ut andelarna separat innan ni anger totalbeloppet.' },
+      { q: 'Vad är en rimlig dricks om jag är osäker?', a: '15 procent är en vanlig utgångspunkt i många sammanhang, se referenstabellen ovan, men dricksnormer varierar mycket mellan länder, så det är värt att kolla vad som är brukligt just där du är.' },
+    ],
+    salary: [
+      { q: 'Vilken skattesats ska jag ange?', a: 'Din effektiva skattesats, det vill säga hur stor andel av din totala bruttoinkomst som går till skatt, inte den högsta marginalskattesatsen. Se avsnittet ovan för skillnaden.' },
+      { q: 'Räknar den in sociala avgifter eller pensionsavsättningar?', a: 'Nej, kalkylatorn drar bara av den enda procentsats du anger. Om du vill inkludera andra avdrag behöver du räkna in dem i skattesatsen själv, eller dra av dem separat från nettobeloppet.' },
+      { q: 'Kan jag använda den här för att deklarera eller planera min skatt?', a: 'Nej, det här är en generell uppskattning, inte skatterådgivning för något specifikt land. Kontrollera alltid mot din lokala skattemyndighet för exakta siffror.' },
     ],
   },
 
@@ -90,6 +108,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Which mode should I use for a discount?', a: 'Use "Discount", enter the price and discount percentage to see the new price and how much you save.' },
       { q: 'How do I calculate a percentage increase?', a: 'Use "Percentage change", enter the original and new value to see the change as a percentage.' },
       { q: 'What\'s the difference between "percent of a number" and "what percentage"?', a: 'The first calculates a value from a percentage; the second works out what percentage a part represents of a whole.' },
+      { q: 'Is VAT just a discount in reverse?', a: 'Mathematically, yes. A discount subtracts a percentage from the price, VAT adds one. Use the "VAT" mode to add a percentage instead of subtracting it.' },
     ],
     age: [
       { q: 'How is my exact age calculated?', a: 'Calendar-correct from your birth date to the chosen date, shown in full years, months, and days.' },
@@ -130,10 +149,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'What is compound interest?', a: 'The interest you earn each period is added to your balance, so you earn interest on both your starting amount and past interest.' },
       { q: 'How often is interest calculated?', a: 'Monthly, which is common for savings accounts and funds, giving a realistic picture of growth over time.' },
       { q: 'Does the calculator account for tax or inflation?', a: 'No, the result shows nominal growth before tax and inflation, intended as guidance, not financial advice.' },
+      { q: 'How long does it take savings to double?', a: 'Divide 72 by the interest rate for a quick estimate. At 6% interest, that’s roughly 12 years, see the Rule of 72 above for more.' },
     ],
     loancost: [
       { q: 'How is the monthly payment calculated?', a: 'Using the standard loan amortization formula, which gives an even monthly payment where the interest portion decreases and the principal portion increases over time.' },
       { q: 'How is this different from the savings calculator?', a: 'The savings calculator shows how a saved amount grows. This calculator shows what a loan or installment purchase actually costs you in total.' },
+      { q: 'Does the total cost include fees and insurance?', a: "No, the calculator only shows the interest and principal cost based on amount, rate, and term. Fees, insurance, and taxes vary too much between lenders and countries to include as a general figure." },
+    ],
+    savingsgoal: [
+      { q: 'What if I already have enough saved?', a: "Then a message is shown instead of a number, your current savings already reach the goal at the return you entered, no further monthly savings needed." },
+      { q: 'What happens if I lower the expected return?', a: 'The required monthly amount goes up, because a lower return does less of the work for you and you need to contribute more yourself.' },
+      { q: 'Can I use this for any savings goal?', a: 'Yes, the calculator works generically from amount, time, and return, whether the goal is a down payment, a trip, or an emergency fund.' },
+    ],
+    tip: [
+      { q: 'Is the bill amount I enter including or excluding tax?', a: "The calculator just works with the total bill amount you enter, whether or not tax is already included. Enter whatever total you actually see on the bill." },
+      { q: 'Is the tip split evenly even if we ordered different amounts?', a: 'Yes, the split is always even across the number of people. If you want to split by what each person ordered, work out the shares separately before entering the total.' },
+      { q: "What's a reasonable tip if I'm not sure?", a: "15 percent is a common starting point in many contexts, see the reference table above, but tipping norms vary a lot by country, so it's worth checking what's customary where you are." },
+    ],
+    salary: [
+      { q: 'What tax rate should I enter?', a: 'Your effective tax rate, meaning what share of your total gross income goes to tax, not the highest marginal rate. See the section above for the difference.' },
+      { q: 'Does it account for social contributions or pension deductions?', a: 'No, the calculator only subtracts the single percentage you enter. If you want to include other deductions, factor them into the rate yourself, or subtract them separately from the net amount.' },
+      { q: 'Can I use this to file or plan my taxes?', a: "No, this is a generic estimate, not tax advice for any specific country. Always check against your local tax authority for exact figures." },
     ],
   },
 
@@ -151,6 +187,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Qual modo usar para um desconto?', a: 'Use "Desconto", informe o preço e a porcentagem de desconto para ver o novo preço e quanto você economiza.' },
       { q: 'Como calculo um aumento percentual?', a: 'Use "Variação percentual", informe o valor original e o novo valor para ver a mudança em porcentagem.' },
       { q: 'Qual a diferença entre "porcentagem de um número" e "qual porcentagem"?', a: 'O primeiro calcula um valor a partir de uma porcentagem; o segundo calcula que porcentagem uma parte representa de um total.' },
+      { q: 'Imposto é só um desconto ao contrário?', a: 'Matematicamente, sim. Um desconto subtrai uma porcentagem do preço, o imposto soma uma. Use o modo "Imposto" para somar uma porcentagem em vez de subtraí-la.' },
     ],
     age: [
       { q: 'Como minha idade exata é calculada?', a: 'De forma correta no calendário, da sua data de nascimento até a data escolhida, em anos, meses e dias completos.' },
@@ -191,10 +228,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'O que são juros compostos?', a: 'Os juros ganhos em cada período são somados ao saldo, então você ganha juros sobre o valor inicial e sobre os juros anteriores.' },
       { q: 'Com que frequência os juros são calculados?', a: 'Mensalmente, comum em contas de poupança e fundos, dando uma visão realista do crescimento ao longo do tempo.' },
       { q: 'A calculadora considera impostos ou inflação?', a: 'Não, o resultado mostra o crescimento nominal antes de impostos e inflação, é uma orientação, não consultoria financeira.' },
+      { q: 'Quanto tempo leva para a poupança dobrar?', a: 'Divida 72 pela taxa de juros para uma estimativa rápida. A 6% de juros, são cerca de 12 anos, veja a regra dos 72 acima para mais detalhes.' },
     ],
     loancost: [
       { q: 'Como a parcela mensal é calculada?', a: 'Usando a fórmula padrão de amortização de empréstimos, que dá uma parcela mensal uniforme onde a parte de juros diminui e a parte de amortização aumenta ao longo do tempo.' },
       { q: 'Qual a diferença em relação à calculadora de poupança?', a: 'A calculadora de poupança mostra como um valor poupado cresce. Esta calculadora mostra quanto um empréstimo ou compra parcelada realmente custa no total.' },
+      { q: 'O custo total inclui taxas e seguros?', a: 'Não, a calculadora mostra apenas o custo de juros e amortização com base no valor, na taxa e no prazo. Taxas administrativas, seguros e impostos variam demais entre credores e países para entrar num cálculo geral.' },
+    ],
+    savingsgoal: [
+      { q: 'E se eu já tiver o suficiente poupado?', a: 'Então uma mensagem é exibida em vez de um número, sua poupança atual já atinge a meta com o retorno que você informou, sem necessidade de poupança mensal adicional.' },
+      { q: 'O que acontece se eu reduzir o retorno esperado?', a: 'O valor mensal necessário aumenta, porque um retorno menor faz menos do trabalho por você e você precisa contribuir mais por conta própria.' },
+      { q: 'Posso usar isso para qualquer meta de poupança?', a: 'Sim, a calculadora funciona de forma genérica a partir de valor, prazo e retorno, seja a meta uma entrada, uma viagem ou uma reserva de emergência.' },
+    ],
+    tip: [
+      { q: 'O valor da conta que informo já inclui imposto ou não?', a: 'A calculadora trabalha apenas com o valor total da conta que você informar, esteja o imposto já incluído ou não. Informe o total que você realmente vê na conta.' },
+      { q: 'A gorjeta é dividida igualmente mesmo se pedimos quantias diferentes?', a: 'Sim, a divisão é sempre igual entre o número de pessoas. Se quiser dividir pelo que cada um pediu, calcule as partes separadamente antes de informar o total.' },
+      { q: 'Qual é uma gorjeta razoável se eu não tiver certeza?', a: '15 por cento é um ponto de partida comum em muitos contextos, veja a tabela de referência acima, mas as normas de gorjeta variam muito entre países, então vale a pena checar o que é costume no lugar onde você está.' },
+    ],
+    salary: [
+      { q: 'Qual alíquota devo informar?', a: 'Sua alíquota efetiva, ou seja, qual parcela da sua renda bruta total vai para impostos, não a maior alíquota marginal. Veja a seção acima para entender a diferença.' },
+      { q: 'Ela considera contribuições sociais ou descontos de previdência?', a: 'Não, a calculadora só subtrai a única porcentagem que você informar. Se quiser incluir outras deduções, incorpore-as na alíquota você mesmo, ou subtraia-as separadamente do valor líquido.' },
+      { q: 'Posso usar isso para declarar ou planejar meus impostos?', a: 'Não, isso é uma estimativa genérica, não é aconselhamento fiscal para nenhum país específico. Sempre confira com sua autoridade fiscal local para números exatos.' },
     ],
   },
 
@@ -212,6 +266,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Qué modo debo usar para un descuento?', a: 'Usa "Descuento", introduce el precio y el porcentaje de descuento para ver el nuevo precio y cuánto ahorras.' },
       { q: '¿Cómo calculo un aumento porcentual?', a: 'Usa "Cambio porcentual", introduce el valor original y el nuevo para ver el cambio en porcentaje.' },
       { q: '¿Cuál es la diferencia entre "porcentaje de un número" y "qué porcentaje"?', a: 'El primero calcula un valor a partir de un porcentaje; el segundo calcula qué porcentaje representa una parte de un total.' },
+      { q: '¿El IVA es solo un descuento al revés?', a: 'Matemáticamente, sí. Un descuento resta un porcentaje del precio, el IVA suma uno. Usa el modo "IVA" para sumar un porcentaje en lugar de restarlo.' },
     ],
     age: [
       { q: '¿Cómo se calcula mi edad exacta?', a: 'De forma correcta según el calendario, desde tu fecha de nacimiento hasta la fecha elegida, en años, meses y días completos.' },
@@ -252,10 +307,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '¿Qué es el interés compuesto?', a: 'El interés que ganas cada periodo se suma al saldo, así ganas interés tanto sobre el monto inicial como sobre el interés anterior.' },
       { q: '¿Con qué frecuencia se calcula el interés?', a: 'Mensualmente, algo común en cuentas de ahorro y fondos, lo que da una imagen realista del crecimiento con el tiempo.' },
       { q: '¿La calculadora tiene en cuenta impuestos o inflación?', a: 'No, el resultado muestra el crecimiento nominal antes de impuestos e inflación, es una guía, no asesoría financiera.' },
+      { q: '¿Cuánto tarda en duplicarse un ahorro?', a: 'Divide 72 entre la tasa de interés para una estimación rápida. Con un 6% de interés, son unos 12 años, consulta la regla del 72 más arriba para más detalle.' },
     ],
     loancost: [
       { q: '¿Cómo se calcula la cuota mensual?', a: 'Con la fórmula estándar de amortización de préstamos, que da una cuota mensual uniforme donde la parte de interés disminuye y la parte de capital aumenta con el tiempo.' },
       { q: '¿En qué se diferencia de la calculadora de ahorro?', a: 'La calculadora de ahorro muestra cómo crece un monto ahorrado. Esta calculadora muestra cuánto cuesta en total un préstamo o una compra a plazos.' },
+      { q: '¿El costo total incluye comisiones y seguros?', a: 'No, la calculadora solo muestra el costo de intereses y capital según el monto, la tasa y el plazo. Las comisiones, los seguros y los impuestos varían demasiado entre prestamistas y países para incluirlos en una cifra general.' },
+    ],
+    savingsgoal: [
+      { q: '¿Qué pasa si ya tengo suficiente ahorrado?', a: 'Entonces se muestra un mensaje en lugar de una cifra, tu ahorro actual ya alcanza la meta con el rendimiento que indicaste, sin necesidad de ahorro mensual adicional.' },
+      { q: '¿Qué pasa si bajo el rendimiento esperado?', a: 'El monto mensual necesario aumenta, porque un rendimiento menor hace menos trabajo por ti y necesitas aportar más por tu cuenta.' },
+      { q: '¿Puedo usar esto para cualquier meta de ahorro?', a: 'Sí, la calculadora funciona de forma genérica a partir del monto, el tiempo y el rendimiento, ya sea la meta un enganche, un viaje o un fondo de emergencia.' },
+    ],
+    tip: [
+      { q: '¿El monto de la cuenta que ingreso incluye o excluye impuestos?', a: 'La calculadora solo trabaja con el monto total de la cuenta que ingreses, ya sea que el impuesto esté incluido o no. Ingresa el total que realmente ves en la cuenta.' },
+      { q: '¿La propina se divide en partes iguales aunque pedimos cosas distintas?', a: 'Sí, la división siempre es igual entre el número de personas. Si quieres dividir según lo que pidió cada uno, calcula las partes por separado antes de ingresar el total.' },
+      { q: '¿Cuál es una propina razonable si no estoy seguro?', a: 'El 15 por ciento es un punto de partida común en muchos contextos, consulta la tabla de referencia arriba, pero las normas de propina varían mucho entre países, así que vale la pena verificar qué es costumbre donde estés.' },
+    ],
+    salary: [
+      { q: '¿Qué tasa de impuesto debo indicar?', a: 'Tu tasa efectiva de impuesto, es decir, qué porción de tu ingreso bruto total va a impuestos, no la tasa marginal más alta. Consulta la sección anterior para ver la diferencia.' },
+      { q: '¿Considera contribuciones sociales o descuentos de pensión?', a: 'No, la calculadora solo resta el único porcentaje que indiques. Si quieres incluir otras deducciones, incorpóralas tú mismo a la tasa, o réstalas por separado del monto neto.' },
+      { q: '¿Puedo usar esto para declarar o planificar mis impuestos?', a: 'No, esto es una estimación genérica, no es asesoría fiscal para ningún país específico. Verifica siempre con tu autoridad fiscal local para cifras exactas.' },
     ],
   },
 
@@ -273,6 +345,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Welchen Modus nutze ich für einen Rabatt?', a: 'Nutze "Rabatt", gib Preis und Rabattprozentsatz ein, um den neuen Preis und deine Ersparnis zu sehen.' },
       { q: 'Wie berechne ich eine prozentuale Steigerung?', a: 'Nutze "Prozentuale Veränderung", gib Ausgangs- und neuen Wert ein, um die Veränderung in Prozent zu sehen.' },
       { q: 'Was ist der Unterschied zwischen "Prozent einer Zahl" und "Wie viel Prozent"?', a: 'Ersteres berechnet einen Wert aus einem Prozentsatz, Letzteres berechnet, welchen Prozentsatz ein Teil eines Ganzen ausmacht.' },
+      { q: 'Ist die MwSt. einfach ein umgekehrter Rabatt?', a: 'Mathematisch gesehen ja. Ein Rabatt zieht einen Prozentsatz vom Preis ab, die MwSt. addiert einen. Nutze den Modus "MwSt.", um einen Prozentsatz zu addieren statt abzuziehen.' },
     ],
     age: [
       { q: 'Wie wird mein exaktes Alter berechnet?', a: 'Kalenderkorrekt von deinem Geburtsdatum bis zum gewählten Datum, angezeigt in vollen Jahren, Monaten und Tagen.' },
@@ -313,10 +386,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Was ist Zinseszins?', a: 'Die Zinsen, die du jede Periode verdienst, werden dem Saldo hinzugefügt, sodass du Zinsen auf den Startbetrag und frühere Zinsen verdienst.' },
       { q: 'Wie oft werden die Zinsen berechnet?', a: 'Monatlich, üblich bei Sparkonten und Fonds, was ein realistisches Bild des Wachstums über die Zeit gibt.' },
       { q: 'Berücksichtigt der Rechner Steuern oder Inflation?', a: 'Nein, das Ergebnis zeigt das nominale Wachstum vor Steuern und Inflation, gedacht als Orientierung, keine Finanzberatung.' },
+      { q: 'Wie lange dauert es, bis sich Erspartes verdoppelt?', a: 'Teile 72 durch den Zinssatz für eine schnelle Schätzung. Bei 6 % Zinsen sind das ungefähr 12 Jahre, siehe die 72er-Regel oben für mehr.' },
     ],
     loancost: [
       { q: 'Wie wird die monatliche Rate berechnet?', a: 'Mit der üblichen Tilgungsformel für Kredite, die eine gleichbleibende monatliche Rate ergibt, bei der der Zinsanteil sinkt und der Tilgungsanteil mit der Zeit steigt.' },
       { q: 'Wie unterscheidet sich das vom Sparrechner?', a: 'Der Sparrechner zeigt, wie ein gespartes Guthaben wächst. Dieser Rechner zeigt, was ein Kredit oder Ratenkauf dich insgesamt tatsächlich kostet.' },
+      { q: 'Sind Gebühren und Versicherungen in den Gesamtkosten enthalten?', a: 'Nein, der Rechner zeigt nur die Zins- und Tilgungskosten basierend auf Betrag, Zinssatz und Laufzeit. Gebühren, Versicherungen und Steuern unterscheiden sich zu stark zwischen Kreditgebern und Ländern, um sie allgemein einzurechnen.' },
+    ],
+    savingsgoal: [
+      { q: 'Was, wenn ich schon genug gespart habe?', a: 'Dann wird eine Meldung statt einer Zahl angezeigt, dein aktuelles Erspartes erreicht das Ziel bei der angegebenen Rendite bereits, kein weiteres monatliches Sparen nötig.' },
+      { q: 'Was passiert, wenn ich die erwartete Rendite senke?', a: 'Der benötigte monatliche Betrag steigt, weil eine niedrigere Rendite weniger Arbeit für dich übernimmt und du selbst mehr beitragen musst.' },
+      { q: 'Kann ich das für jedes Sparziel verwenden?', a: 'Ja, der Rechner funktioniert allgemein anhand von Betrag, Zeit und Rendite, egal ob das Ziel eine Anzahlung, eine Reise oder ein Notgroschen ist.' },
+    ],
+    tip: [
+      { q: 'Ist der eingegebene Rechnungsbetrag inklusive oder exklusive Steuer?', a: 'Der Rechner arbeitet nur mit dem gesamten Rechnungsbetrag, den du eingibst, unabhängig davon, ob Steuer bereits enthalten ist. Gib den Betrag ein, den du tatsächlich auf der Rechnung siehst.' },
+      { q: 'Wird das Trinkgeld gleich geteilt, auch wenn wir unterschiedlich viel bestellt haben?', a: 'Ja, die Teilung erfolgt immer gleichmäßig über die Personenzahl. Wenn du nach dem teilen willst, was jede Person bestellt hat, rechne die Anteile separat aus, bevor du den Gesamtbetrag eingibst.' },
+      { q: 'Was ist ein angemessenes Trinkgeld, wenn ich unsicher bin?', a: '15 Prozent sind in vielen Zusammenhängen ein üblicher Ausgangspunkt, siehe die Referenztabelle oben, aber Trinkgeldnormen unterscheiden sich stark je nach Land, es lohnt sich also zu prüfen, was dort üblich ist, wo du bist.' },
+    ],
+    salary: [
+      { q: 'Welchen Steuersatz sollte ich eingeben?', a: 'Deinen effektiven Steuersatz, also welcher Anteil deines gesamten Bruttoeinkommens an Steuern geht, nicht den höchsten Grenzsteuersatz. Siehe den Abschnitt oben für den Unterschied.' },
+      { q: 'Berücksichtigt er Sozialabgaben oder Rentenbeiträge?', a: 'Nein, der Rechner zieht nur den einen Prozentsatz ab, den du eingibst. Wenn du weitere Abzüge einbeziehen willst, rechne sie selbst in den Satz ein oder ziehe sie separat vom Nettobetrag ab.' },
+      { q: 'Kann ich das für meine Steuererklärung oder -planung nutzen?', a: 'Nein, das ist eine generische Schätzung, keine Steuerberatung für ein bestimmtes Land. Prüfe für genaue Zahlen immer bei deiner lokalen Steuerbehörde nach.' },
     ],
   },
 
@@ -334,6 +424,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '割引にはどのモードを使えばいいですか？', a: '「割引」モードを使い、価格と割引率を入力すると、新しい価格と節約額が表示されます。' },
       { q: '増加率はどう計算しますか？', a: '「変化率」モードを使い、元の値と新しい値を入力すると、変化率が表示されます。' },
       { q: '「数値のパーセント」と「何パーセントか」の違いは？', a: '前者はパーセントから値を計算し、後者は部分が全体の何パーセントかを計算します。' },
+      { q: '消費税は割引の逆のようなものですか？', a: '計算としてはその通りです。割引は価格からパーセントを引き、消費税はパーセントを足します。パーセントを引くのではなく足したい場合は「消費税」モードを使ってください。' },
     ],
     age: [
       { q: '正確な年齢はどう計算されますか？', a: '生年月日から指定日までカレンダーに基づき正確に計算され、年・月・日で表示されます。' },
@@ -374,10 +465,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '複利とは何ですか？', a: '各期間で得た利息が元本に加算され、元本と過去の利息の両方に利息がつく仕組みです。' },
       { q: '利息はどのくらいの頻度で計算されますか？', a: '毎月計算され、預金や投資信託で一般的な方式で、時間とともに増える様子を現実的に示します。' },
       { q: '税金やインフレは考慮されますか？', a: 'いいえ、結果は税金やインフレ前の名目成長を示すもので、助言ではなく目安としてご利用ください。' },
+      { q: '貯蓄が2倍になるまでどれくらいかかりますか？', a: '72を金利で割ると素早く目安がわかります。金利6%なら約12年です。詳しくは上記の72の法則をご覧ください。' },
     ],
     loancost: [
       { q: '月々の返済額はどう計算されますか?', a: '標準的なローン償却方式を使用しており、利息部分が減少し元金部分が時間とともに増加する、均等な月々の返済額が算出されます。' },
       { q: '積立計算機との違いは何ですか?', a: '積立計算機は積み立てた金額がどう増えるかを示します。このツールはローンや分割払いが実際に総額でいくらかかるかを示します。' },
+      { q: '総費用には手数料や保険料も含まれますか?', a: 'いいえ、この計算機は借入額・金利・返済期間に基づく利息と元金のコストのみを示します。手数料、保険料、税金は貸し手や国によって差が大きいため、一般的な数値としては含めていません。' },
+    ],
+    savingsgoal: [
+      { q: 'すでに十分な貯蓄がある場合はどうなりますか?', a: 'その場合は数値の代わりにメッセージが表示されます。入力した利回りで現在の貯蓄額がすでに目標に達しているため、追加の毎月の貯蓄は必要ありません。' },
+      { q: '期待利回りを下げるとどうなりますか?', a: '必要な毎月の金額が増えます。利回りが低いとそれだけ運用が担ってくれる部分が減り、自分で多く積み立てる必要があるからです。' },
+      { q: 'どんな貯蓄目標にも使えますか?', a: 'はい、この計算機は金額・期間・利回りから一般的に計算するので、頭金でも旅行でも緊急資金でも目標として使えます。' },
+    ],
+    tip: [
+      { q: '入力する会計金額は税込みですか、税抜きですか?', a: 'この計算機は、税込みかどうかにかかわらず、あなたが入力した会計の合計金額だけを扱います。実際に会計で目にする合計金額を入力してください。' },
+      { q: '注文した内容が違っていてもチップは均等に割られますか?', a: 'はい、常に人数で均等に割られます。各自が注文したものに応じて分けたい場合は、合計金額を入力する前に別途それぞれの取り分を計算してください。' },
+      { q: '迷ったときの目安となるチップの割合は?', a: '多くの場面で15%が一般的な出発点です（上記の参考表を参照）。ただしチップの習慣は国によって大きく異なるため、その土地の慣習を確認する価値があります。' },
+    ],
+    salary: [
+      { q: 'どの税率を入力すればいいですか?', a: '最も高い限界税率ではなく、実効税率、つまり総支給額のうちどれだけの割合が税金になるかを入力してください。違いについては上記のセクションをご覧ください。' },
+      { q: '社会保険料や年金の控除は考慮されますか?', a: 'いいえ、この計算機はあなたが入力した単一のパーセントのみを差し引きます。他の控除を含めたい場合は、税率に自分で織り込むか、手取り額から別途差し引いてください。' },
+      { q: 'これを確定申告や税金の計画に使えますか?', a: 'いいえ、これは一般的な見積もりであり、特定の国の税務アドバイスではありません。正確な数値については、必ず現地の税務当局に確認してください。' },
     ],
   },
 
@@ -395,6 +503,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '计算折扣应使用哪种模式？', a: '使用"折扣"模式，输入价格和折扣百分比，即可查看新价格和节省金额。' },
       { q: '如何计算百分比增长？', a: '使用"百分比变化"模式，输入原值和新值，即可查看变化百分比。' },
       { q: '"数值的百分比"和"占百分之多少"有什么区别？', a: '前者根据百分比计算数值，后者计算部分占总数的百分比。' },
+      { q: '增值税是不是相当于反向的折扣？', a: '在数学上是的。折扣是从价格中减去一个百分比，增值税是加上一个百分比。使用"增值税"模式来加上百分比，而不是减去。' },
     ],
     age: [
       { q: '我的精确年龄是如何计算的？', a: '根据日历规则，从出生日期计算到指定日期，以完整的年、月、日显示。' },
@@ -435,10 +544,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '什么是复利？', a: '每期获得的利息会计入本金，因此你既能从本金又能从之前的利息中获得利息。' },
       { q: '利息计算的频率是多少？', a: '按月计算，这在储蓄账户和基金中很常见，能更真实地反映长期增长情况。' },
       { q: '计算器是否考虑税收或通货膨胀？', a: '不考虑，结果显示的是税前和通胀前的名义增长, 仅供参考，非财务建议。' },
+      { q: '存款翻倍需要多长时间？', a: '用72除以利率即可快速估算。以6%的利率计算，大约需要12年，详见上面的72法则。' },
     ],
     loancost: [
       { q: '每月还款额是如何计算的?', a: '使用标准的贷款摊销公式, 得出一个均等的月还款额, 其中利息部分逐渐减少, 本金部分逐渐增加。' },
       { q: '这与储蓄计算器有什么不同?', a: '储蓄计算器显示存款金额如何增长。这个计算器显示贷款或分期付款实际总共要花费多少。' },
+      { q: '总费用包含手续费和保险吗?', a: '不包含，这个计算器只显示基于金额、利率和期限的利息和本金成本。手续费、保险和税费在不同贷款机构和国家之间差异太大，无法计入一个通用数字。' },
+    ],
+    savingsgoal: [
+      { q: '如果我已经存够了怎么办?', a: '那样会显示一条提示信息而不是数字——按照你输入的回报率，你目前的储蓄已经达到目标，不需要额外的月储蓄。' },
+      { q: '如果我降低预期回报率会怎样?', a: '所需月储蓄额会增加，因为较低的回报率能为你完成的部分变少，你自己需要投入更多。' },
+      { q: '这个可以用于任何储蓄目标吗?', a: '可以，这个计算器基于金额、时间和回报率通用计算，无论目标是首付款、旅行还是应急基金都适用。' },
+    ],
+    tip: [
+      { q: '我输入的账单金额是含税还是不含税?', a: '这个计算器只处理你输入的账单总金额，不管是否已经含税。请输入你在账单上实际看到的总金额。' },
+      { q: '即使我们点的东西不一样，小费也会平均分摊吗?', a: '是的，分摊始终按人数平均进行。如果你想按每个人实际点的东西来分摊，需要在输入总金额之前自行分别计算各自的份额。' },
+      { q: '如果不确定，多少小费比较合理?', a: '在很多场合，15%是一个常见的起点，可参考上面的参考表，但不同国家的小费习惯差异很大，值得先了解你所在地方的通行做法。' },
+    ],
+    salary: [
+      { q: '我应该输入什么税率?', a: '应输入你的实际税率，也就是总税前收入中有多少比例用于纳税，而不是最高边际税率。两者的区别请见上面的说明。' },
+      { q: '它是否考虑社保或养老金扣除?', a: '不考虑，这个计算器只会减去你输入的那一个百分比。如果你想计入其他扣除项，需要自己把它们折算进税率，或者从净收入中单独减去。' },
+      { q: '我可以用这个来报税或做税务规划吗?', a: '不可以，这只是一个通用估算，并非针对任何特定国家的税务建议。具体数字请务必咨询当地税务机关。' },
     ],
   },
 
@@ -456,6 +582,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '할인 계산에는 어떤 모드를 사용해야 하나요?', a: '"할인" 모드를 사용해 가격과 할인율을 입력하면 새 가격과 절약 금액을 확인할 수 있습니다.' },
       { q: '퍼센트 증가는 어떻게 계산하나요?', a: '"퍼센트 변화" 모드를 사용해 원래 값과 새 값을 입력하면 변화율을 확인할 수 있습니다.' },
       { q: '"숫자의 퍼센트"와 "몇 퍼센트인지"의 차이는 무엇인가요?', a: '전자는 퍼센트로 값을 계산하고, 후자는 부분이 전체의 몇 퍼센트인지를 계산합니다.' },
+      { q: '부가세는 그냥 반대 방향의 할인인가요?', a: '수학적으로는 그렇습니다. 할인은 가격에서 퍼센트를 빼고, 부가세는 퍼센트를 더합니다. 퍼센트를 빼는 대신 더하려면 "부가세" 모드를 사용하세요.' },
     ],
     age: [
       { q: '정확한 나이는 어떻게 계산되나요?', a: '생년월일부터 선택한 날짜까지 달력 기준으로 정확히 계산되어 년, 월, 일로 표시됩니다.' },
@@ -496,10 +623,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: '복리란 무엇인가요?', a: '매 기간 얻은 이자가 잔액에 더해져, 원금과 이전 이자 모두에 대해 이자를 받게 됩니다.' },
       { q: '이자는 얼마나 자주 계산되나요?', a: '매월 계산되며, 이는 저축 계좌나 펀드에서 일반적이며 시간에 따른 성장을 현실적으로 보여줍니다.' },
       { q: '계산기가 세금이나 인플레이션을 고려하나요?', a: '아니요, 결과는 세금과 인플레이션 전의 명목 성장을 보여줍니다, 참고용이며 금융 자문이 아닙니다.' },
+      { q: '저축이 두 배가 되는 데 얼마나 걸리나요?', a: '72를 이자율로 나누면 빠르게 추정할 수 있습니다. 금리 6%라면 약 12년입니다. 자세한 내용은 위의 72의 법칙을 참고하세요.' },
     ],
     loancost: [
       { q: '월 상환액은 어떻게 계산되나요?', a: '표준 대출 상환 공식을 사용하며, 시간이 지남에 따라 이자 비중은 줄고 원금 비중은 늘어나는 균등한 월 상환액을 계산합니다.' },
       { q: '저축 계산기와 어떻게 다른가요?', a: '저축 계산기는 저축한 금액이 어떻게 늘어나는지 보여줍니다. 이 계산기는 대출이나 할부 구매가 실제로 총 얼마나 드는지 보여줍니다.' },
+      { q: '총비용에 수수료와 보험료도 포함되나요?', a: '아니요, 이 계산기는 금액, 금리, 기간을 기준으로 한 이자와 원금 비용만 보여줍니다. 수수료, 보험료, 세금은 대출 기관과 국가마다 차이가 너무 커서 일반적인 수치로 포함하지 않습니다.' },
+    ],
+    savingsgoal: [
+      { q: '이미 충분히 저축했다면 어떻게 되나요?', a: '그렇다면 숫자 대신 메시지가 표시됩니다. 입력한 수익률로 현재 저축액이 이미 목표에 도달했으며, 추가 월 저축이 필요하지 않습니다.' },
+      { q: '예상 수익률을 낮추면 어떻게 되나요?', a: '필요한 월 저축액이 늘어납니다. 수익률이 낮을수록 수익이 대신해 주는 부분이 줄어들어 직접 더 많이 납입해야 하기 때문입니다.' },
+      { q: '어떤 저축 목표에도 사용할 수 있나요?', a: '네, 이 계산기는 금액, 기간, 수익률을 기반으로 범용적으로 작동하므로 계약금, 여행, 비상금 등 어떤 목표에도 사용할 수 있습니다.' },
+    ],
+    tip: [
+      { q: '입력하는 청구서 금액은 세금 포함인가요, 별도인가요?', a: '이 계산기는 세금 포함 여부와 상관없이 당신이 입력한 청구서 총액만 다룹니다. 실제로 청구서에 표시된 총액을 입력하세요.' },
+      { q: '서로 다른 금액을 주문해도 팁이 균등하게 나뉘나요?', a: '네, 항상 인원수에 따라 균등하게 나뉩니다. 각자 주문한 내용에 따라 나누고 싶다면, 총액을 입력하기 전에 몫을 따로 계산해야 합니다.' },
+      { q: '확신이 없을 때 적당한 팁은 얼마인가요?', a: '많은 상황에서 15%가 일반적인 시작점입니다(위 참고표 참조). 다만 팁 문화는 나라마다 크게 다르므로, 있는 곳의 관례를 확인해 보는 것이 좋습니다.' },
+    ],
+    salary: [
+      { q: '어떤 세율을 입력해야 하나요?', a: '가장 높은 한계세율이 아니라, 총 세전 소득 중 세금으로 나가는 비율인 실효세율을 입력해야 합니다. 차이점은 위 섹션을 참고하세요.' },
+      { q: '사회보험료나 연금 공제도 반영되나요?', a: '아니요, 이 계산기는 당신이 입력한 단일 비율만 차감합니다. 다른 공제를 포함하고 싶다면 직접 세율에 반영하거나, 실수령액에서 별도로 빼야 합니다.' },
+      { q: '이걸로 세금 신고나 세무 계획을 세울 수 있나요?', a: '아니요, 이는 범용 추정치이며 특정 국가에 대한 세무 조언이 아닙니다. 정확한 수치는 반드시 현지 세무 당국에 확인하세요.' },
     ],
   },
 
@@ -517,6 +661,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'छूट के लिए कौन सा मोड उपयोग करें?', a: '"छूट" मोड का उपयोग करें, कीमत और छूट प्रतिशत दर्ज करें ताकि नई कीमत और बचत दिख सके।' },
       { q: 'प्रतिशत वृद्धि कैसे निकालें?', a: '"प्रतिशत परिवर्तन" मोड का उपयोग करें, मूल और नया मान दर्ज करें ताकि परिवर्तन प्रतिशत में दिखे।' },
       { q: '"संख्या का प्रतिशत" और "कितना प्रतिशत" में क्या अंतर है?', a: 'पहला प्रतिशत से एक मान निकालता है, दूसरा यह निकालता है कि कोई भाग पूर्ण का कितना प्रतिशत है।' },
+      { q: 'क्या टैक्स बस उल्टी दिशा में छूट जैसा है?', a: 'गणितीय रूप से, हां। छूट कीमत में से एक प्रतिशत घटाती है, टैक्स एक प्रतिशत जोड़ता है। घटाने के बजाय जोड़ने के लिए "टैक्स" मोड का उपयोग करें।' },
     ],
     age: [
       { q: 'मेरी सटीक उम्र कैसे निकाली जाती है?', a: 'आपकी जन्मतिथि से चुनी गई तारीख़ तक कैलेंडर के अनुसार सटीक रूप से, पूर्ण वर्षों, महीनों और दिनों में दिखाई जाती है।' },
@@ -557,10 +702,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'चक्रवृद्धि ब्याज क्या है?', a: 'हर अवधि में अर्जित ब्याज को मूलधन में जोड़ दिया जाता है, जिससे आपको मूलधन और पिछले ब्याज दोनों पर ब्याज मिलता है।' },
       { q: 'ब्याज की गणना कितनी बार होती है?', a: 'मासिक रूप से, जो बचत खातों और फंडों में सामान्य है और समय के साथ वृद्धि की एक यथार्थवादी तस्वीर देता है।' },
       { q: 'क्या कैलकुलेटर टैक्स या महंगाई को ध्यान में रखता है?', a: 'नहीं, परिणाम टैक्स और महंगाई से पहले की नाममात्र वृद्धि दिखाता है, यह केवल मार्गदर्शन है, वित्तीय सलाह नहीं।' },
+      { q: 'बचत को दोगुना होने में कितना समय लगता है?', a: 'झटपट अंदाज़े के लिए 72 को ब्याज दर से भाग दें। 6% ब्याज पर, यह लगभग 12 साल है, ज़्यादा जानकारी के लिए ऊपर 72 का नियम देखें।' },
     ],
     loancost: [
       { q: 'मासिक किस्त की गणना कैसे होती है?', a: 'मानक ऋण परिशोधन फ़ॉर्मूले से, जो एक समान मासिक किस्त देता है जिसमें ब्याज का हिस्सा घटता है और मूलधन का हिस्सा समय के साथ बढ़ता है।' },
       { q: 'यह बचत कैलकुलेटर से कैसे अलग है?', a: 'बचत कैलकुलेटर दिखाता है कि बचाई गई राशि कैसे बढ़ती है। यह कैलकुलेटर दिखाता है कि ऋण या किस्तों पर खरीदारी की वास्तविक कुल लागत कितनी है।' },
+      { q: 'क्या कुल लागत में फ़ीस और बीमा शामिल हैं?', a: 'नहीं, यह कैलकुलेटर सिर्फ़ राशि, दर और अवधि के आधार पर ब्याज और मूलधन की लागत दिखाता है। फ़ीस, बीमा और टैक्स ऋणदाताओं और देशों के बीच बहुत अलग-अलग होते हैं, इसलिए इन्हें एक सामान्य आंकड़े में शामिल नहीं किया गया है।' },
+    ],
+    savingsgoal: [
+      { q: 'अगर मेरे पास पहले से ही पर्याप्त बचत है तो क्या होगा?', a: 'तब एक आंकड़े की जगह एक संदेश दिखाया जाएगा — आपके बताए गए रिटर्न पर आपकी मौजूदा बचत पहले ही लक्ष्य तक पहुंच चुकी है, किसी अतिरिक्त मासिक बचत की ज़रूरत नहीं है।' },
+      { q: 'अगर मैं अनुमानित रिटर्न कम कर दूं तो क्या होगा?', a: 'ज़रूरी मासिक राशि बढ़ जाती है, क्योंकि कम रिटर्न आपके लिए कम काम करता है और आपको खुद ज़्यादा योगदान देना पड़ता है।' },
+      { q: 'क्या मैं इसे किसी भी बचत लक्ष्य के लिए इस्तेमाल कर सकता हूं?', a: 'हां, यह कैलकुलेटर राशि, समय और रिटर्न के आधार पर सामान्य रूप से काम करता है, चाहे लक्ष्य डाउन पेमेंट हो, यात्रा हो, या आपातकालीन फंड हो।' },
+    ],
+    tip: [
+      { q: 'मैं जो बिल राशि डालता हूं वह टैक्स सहित है या बिना टैक्स के?', a: 'यह कैलकुलेटर सिर्फ़ आपके डाले गए कुल बिल राशि पर काम करता है, चाहे टैक्स पहले से शामिल हो या नहीं। बिल पर जो कुल राशि आपको दिखे, वही दर्ज करें।' },
+      { q: 'क्या अलग-अलग ऑर्डर करने पर भी टिप बराबर बंटती है?', a: 'हां, बंटवारा हमेशा लोगों की संख्या के हिसाब से बराबर होता है। अगर आप हर व्यक्ति के ऑर्डर के हिसाब से बांटना चाहते हैं, तो कुल राशि डालने से पहले हिस्से अलग से निकालें।' },
+      { q: 'अगर मुझे यकीन नहीं है तो कितनी टिप उचित है?', a: 'कई जगहों पर 15 प्रतिशत एक सामान्य शुरुआती बिंदु है, ऊपर संदर्भ तालिका देखें, लेकिन टिप के रिवाज़ देशों में बहुत अलग होते हैं, इसलिए यह जांचना अच्छा रहेगा कि आपकी जगह पर क्या आम है।' },
+    ],
+    salary: [
+      { q: 'मुझे कौन सी टैक्स दर डालनी चाहिए?', a: 'अपनी प्रभावी टैक्स दर, यानी आपकी कुल ग्रॉस इनकम का कितना हिस्सा टैक्स में जाता है, न कि सबसे ऊंची मार्जिनल दर। अंतर समझने के लिए ऊपर वाला भाग देखें।' },
+      { q: 'क्या यह सामाजिक अंशदान या पेंशन कटौती को ध्यान में रखता है?', a: 'नहीं, यह कैलकुलेटर सिर्फ़ आपके डाले गए एक ही प्रतिशत को घटाता है। अगर आप अन्य कटौतियां शामिल करना चाहते हैं, तो उन्हें खुद दर में जोड़ें, या नेट राशि से अलग से घटाएं।' },
+      { q: 'क्या मैं इसका उपयोग टैक्स फ़ाइल करने या योजना बनाने के लिए कर सकता हूं?', a: 'नहीं, यह एक सामान्य अनुमान है, किसी खास देश के लिए टैक्स सलाह नहीं। सटीक आंकड़ों के लिए हमेशा अपने स्थानीय टैक्स विभाग से जांच करें।' },
     ],
   },
 
@@ -578,6 +740,7 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Mode mana yang digunakan untuk diskon?', a: 'Gunakan "Diskon", masukkan harga dan persentase diskon untuk melihat harga baru dan jumlah yang kamu hemat.' },
       { q: 'Bagaimana cara menghitung kenaikan persentase?', a: 'Gunakan "Perubahan persen", masukkan nilai awal dan nilai baru untuk melihat perubahan dalam persentase.' },
       { q: 'Apa perbedaan antara "persen dari angka" dan "berapa persen"?', a: 'Yang pertama menghitung nilai dari persentase; yang kedua menghitung berapa persen suatu bagian dari keseluruhan.' },
+      { q: 'Apakah PPN hanya diskon yang dibalik?', a: 'Secara matematis, ya. Diskon mengurangi persentase dari harga, PPN menambahkannya. Gunakan mode "PPN" untuk menambahkan persentase alih-alih menguranginya.' },
     ],
     age: [
       { q: 'Bagaimana usia tepat saya dihitung?', a: 'Akurat sesuai kalender dari tanggal lahir hingga tanggal yang dipilih, ditampilkan dalam tahun, bulan, dan hari lengkap.' },
@@ -618,10 +781,27 @@ export const faqContent: Record<string, ToolFaqs> = {
       { q: 'Apa itu bunga berbunga?', a: 'Bunga yang diperoleh setiap periode ditambahkan ke saldo, sehingga kamu mendapatkan bunga dari jumlah awal maupun bunga sebelumnya.' },
       { q: 'Seberapa sering bunga dihitung?', a: 'Setiap bulan, yang umum untuk rekening tabungan dan dana investasi, memberikan gambaran realistis tentang pertumbuhan dari waktu ke waktu.' },
       { q: 'Apakah kalkulator memperhitungkan pajak atau inflasi?', a: 'Tidak, hasilnya menunjukkan pertumbuhan nominal sebelum pajak dan inflasi, dimaksudkan sebagai panduan, bukan nasihat keuangan.' },
+      { q: 'Berapa lama waktu yang dibutuhkan tabungan untuk berlipat ganda?', a: 'Bagi 72 dengan suku bunga untuk perkiraan cepat. Pada bunga 6%, itu sekitar 12 tahun, lihat Aturan 72 di atas untuk selengkapnya.' },
     ],
     loancost: [
       { q: 'Bagaimana cicilan bulanan dihitung?', a: 'Menggunakan rumus amortisasi pinjaman standar, yang menghasilkan cicilan bulanan rata di mana porsi bunga menurun dan porsi pokok meningkat seiring waktu.' },
       { q: 'Apa bedanya dengan kalkulator tabungan?', a: 'Kalkulator tabungan menunjukkan bagaimana jumlah yang ditabung tumbuh. Kalkulator ini menunjukkan berapa total biaya sebenarnya dari pinjaman atau pembelian cicilan.' },
+      { q: 'Apakah total biaya sudah termasuk biaya admin dan asuransi?', a: 'Tidak, kalkulator ini hanya menunjukkan biaya bunga dan pokok berdasarkan jumlah, suku bunga, dan jangka waktu. Biaya admin, asuransi, dan pajak terlalu bervariasi antar pemberi pinjaman dan negara untuk dimasukkan sebagai angka umum.' },
+    ],
+    savingsgoal: [
+      { q: 'Bagaimana jika tabunganku sudah cukup?', a: 'Maka pesan akan ditampilkan alih-alih angka, tabungan saat ini sudah mencapai target pada imbal hasil yang kamu masukkan, tidak perlu tabungan bulanan tambahan.' },
+      { q: 'Apa yang terjadi jika aku menurunkan perkiraan imbal hasil?', a: 'Jumlah bulanan yang dibutuhkan akan naik, karena imbal hasil yang lebih rendah mengerjakan lebih sedikit untukmu dan kamu perlu berkontribusi lebih banyak sendiri.' },
+      { q: 'Bisakah ini dipakai untuk target tabungan apa saja?', a: 'Ya, kalkulator ini bekerja secara umum berdasarkan jumlah, waktu, dan imbal hasil, baik targetnya uang muka, liburan, maupun dana darurat.' },
+    ],
+    tip: [
+      { q: 'Apakah jumlah tagihan yang saya masukkan sudah termasuk pajak atau belum?', a: 'Kalkulator ini hanya bekerja dengan jumlah total tagihan yang kamu masukkan, baik pajak sudah termasuk atau belum. Masukkan total yang benar-benar kamu lihat di tagihan.' },
+      { q: 'Apakah tip dibagi rata meski kami memesan jumlah yang berbeda?', a: 'Ya, pembagian selalu rata berdasarkan jumlah orang. Jika ingin membagi sesuai pesanan masing-masing, hitung bagiannya secara terpisah sebelum memasukkan total.' },
+      { q: 'Berapa tip yang wajar jika saya tidak yakin?', a: '15 persen adalah titik awal yang umum di banyak konteks, lihat tabel referensi di atas, tapi kebiasaan memberi tip sangat berbeda antar negara, jadi ada baiknya memeriksa apa yang lazim di tempatmu.' },
+    ],
+    salary: [
+      { q: 'Tarif pajak apa yang harus saya masukkan?', a: 'Tarif pajak efektifmu, yaitu berapa persen dari total pendapatan kotormu yang menjadi pajak, bukan tarif marjinal tertinggi. Lihat bagian di atas untuk perbedaannya.' },
+      { q: 'Apakah ini memperhitungkan iuran sosial atau potongan pensiun?', a: 'Tidak, kalkulator ini hanya mengurangi satu persentase yang kamu masukkan. Jika ingin memasukkan potongan lain, hitung sendiri ke dalam tarifnya, atau kurangi secara terpisah dari jumlah bersih.' },
+      { q: 'Bisakah saya menggunakan ini untuk lapor atau merencanakan pajak saya?', a: 'Tidak, ini adalah perkiraan generik, bukan nasihat pajak untuk negara tertentu. Selalu periksa dengan otoritas pajak setempat untuk angka yang tepat.' },
     ],
   },
 };

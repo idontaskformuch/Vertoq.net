@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { translations } from '../../../i18n/translations';
+import { langCodes } from '../../../i18n/languages';
+import { tipContent } from '../../../i18n/tipContent';
+import TipCalculator from '../../../components/TipCalculator.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+
+export function getStaticPaths() {
+  return langCodes.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = translations[lang as keyof typeof translations].tip;
+const c = tipContent[lang as keyof typeof tipContent];
+---
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="tip">
+  <section class="page-head">
+    <p class="eyebrow">Vertoq</p>
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+  </section>
+
+  <TipCalculator lang={lang} />
+
+  {c && (
+    <div class="content-block-group">
+      <section class="content-block">
+        <h2>{c.whatIsTip.heading}</h2>
+        <p>{c.whatIsTip.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.norms.heading}</h2>
+        <p>{c.norms.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.reference.heading}</h2>
+        <p>{c.reference.intro}</p>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr><th>{c.reference.goalHeader}</th><th>{c.reference.rangeHeader}</th></tr>
+            </thead>
+            <tbody>
+              {c.reference.rows.map(([level, pct]) => (
+                <tr><td>{level}</td><td>{pct}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.splitting.heading}</h2>
+        <p>{c.splitting.body}</p>
+      </section>
+
+      <section class="content-block related-calculators">
+        <h2>{c.related.heading}</h2>
+        <p>
+          <a href={`/${lang}/percent/`}>{c.related.linkText}</a> {c.related.description}
+        </p>
+      </section>
+    </div>
+  )}
+
+  <FaqSection lang={lang} tool="tip" />
+
+  <AdSlot />
+</Layout>

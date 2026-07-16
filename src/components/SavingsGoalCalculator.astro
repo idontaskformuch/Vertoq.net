@@ -1,0 +1,139 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].savingsgoal;
+---
+<div class="converter" id="savingsgoal-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="sg-target">{t.targetLabel}</label>
+      <input id="sg-target" type="number" value="200000" min="0" inputmode="numeric" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="sg-current">{t.currentLabel}</label>
+      <input id="sg-current" type="number" value="20000" min="0" inputmode="numeric" />
+    </div>
+  </div>
+
+  <div class="conv-grid" style="margin-top:14px">
+    <div class="field">
+      <label for="sg-years">{t.yearsLabel}</label>
+      <input id="sg-years" type="number" value="10" min="0" inputmode="numeric" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="sg-rate">{t.rateLabel}</label>
+      <input id="sg-rate" type="number" value="6" step="0.1" inputmode="decimal" />
+    </div>
+  </div>
+
+  <div class="result-row" style="margin-top:24px">
+    <span class="label">{t.resultLabel}</span>
+    <span class="value" id="sg-monthly">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.totalContributedLabel}</span>
+    <span class="value" id="sg-contributed" style="font-size:1.3rem">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.totalInterestLabel}</span>
+    <span class="value" id="sg-interest" style="font-size:1.3rem">—</span>
+  </div>
+  <p class="calc-error" id="sg-error" style="display:none">{t.errorMessage}</p>
+</div>
+
+<script>
+  const targetEl = document.getElementById('sg-target') as HTMLInputElement;
+  const currentEl = document.getElementById('sg-current') as HTMLInputElement;
+  const yearsEl = document.getElementById('sg-years') as HTMLInputElement;
+  const rateEl = document.getElementById('sg-rate') as HTMLInputElement;
+  const monthlyEl = document.getElementById('sg-monthly')!;
+  const contributedEl = document.getElementById('sg-contributed')!;
+  const interestEl = document.getElementById('sg-interest')!;
+  const errorEl = document.getElementById('sg-error')!;
+
+  function fmt(n: number) {
+    if (!isFinite(n)) return '—';
+    return Math.round(n).toString();
+  }
+
+  function clearResults() {
+    monthlyEl.textContent = '—';
+    contributedEl.textContent = '—';
+    interestEl.textContent = '—';
+  }
+
+  function showError() {
+    clearResults();
+    errorEl.style.display = 'block';
+  }
+
+  function clearError() {
+    errorEl.style.display = 'none';
+  }
+
+  function calc() {
+    const target = parseFloat(targetEl.value);
+    const current = parseFloat(currentEl.value);
+    const years = parseFloat(yearsEl.value);
+    const annualRate = parseFloat(rateEl.value);
+
+    if (isNaN(target) || isNaN(current) || isNaN(years) || isNaN(annualRate) || target <= 0 || current < 0 || years <= 0) {
+      clearResults();
+      clearError();
+      return;
+    }
+
+    const n = Math.round(years * 12);
+    const r = annualRate / 100 / 12;
+
+    let futureValueOfCurrent: number;
+    let monthly: number;
+
+    if (r === 0) {
+      futureValueOfCurrent = current;
+      monthly = (target - current) / n;
+    } else {
+      const factor = Math.pow(1 + r, n);
+      futureValueOfCurrent = current * factor;
+      monthly = (target - futureValueOfCurrent) * r / (factor - 1);
+    }
+
+    if (monthly <= 0) {
+      showError();
+      return;
+    }
+
+    clearError();
+    const totalContributed = monthly * n;
+    const totalInterest = target - current - totalContributed;
+
+    monthlyEl.textContent = fmt(monthly);
+    contributedEl.textContent = fmt(totalContributed);
+    interestEl.textContent = fmt(totalInterest);
+  }
+
+  [targetEl, currentEl, yearsEl, rateEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll<HTMLElement>('input, select, button'));
+    container.addEventListener('keydown', function(e: KeyboardEvent) {
+      if (e.key !== 'Enter') return;
+      const el = e.target as HTMLElement;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

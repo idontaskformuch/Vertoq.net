@@ -1,0 +1,93 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props { lang: string; }
+const { lang } = Astro.props as Props;
+const t = translations[lang as keyof typeof translations].salary;
+---
+<div class="converter" id="salary-calc">
+  <div class="conv-grid">
+    <div class="field">
+      <label for="sal-gross">{t.grossLabel}</label>
+      <input id="sal-gross" type="number" value="40000" min="0" inputmode="decimal" />
+    </div>
+    <span></span>
+    <div class="field">
+      <label for="sal-rate">{t.taxRateLabel}</label>
+      <input id="sal-rate" type="number" value="25" min="0" max="100" step="0.1" inputmode="decimal" />
+    </div>
+  </div>
+
+  <div class="result-row" style="margin-top:24px">
+    <span class="label">{t.netLabel}</span>
+    <span class="value" id="sal-net">—</span>
+  </div>
+  <div class="result-row">
+    <span class="label">{t.taxAmountLabel}</span>
+    <span class="value" id="sal-tax" style="font-size:1.3rem">—</span>
+  </div>
+  <p class="calc-error" id="sal-error" style="display:none">{t.errorMessage}</p>
+</div>
+
+<script>
+  const grossEl = document.getElementById('sal-gross') as HTMLInputElement;
+  const rateEl = document.getElementById('sal-rate') as HTMLInputElement;
+  const netEl = document.getElementById('sal-net')!;
+  const taxEl = document.getElementById('sal-tax')!;
+  const errorEl = document.getElementById('sal-error')!;
+
+  function fmt(n: number) {
+    if (!isFinite(n)) return '—';
+    return (Math.round(n * 100) / 100).toString();
+  }
+
+  function clearResults() {
+    netEl.textContent = '—';
+    taxEl.textContent = '—';
+  }
+
+  function calc() {
+    const gross = parseFloat(grossEl.value);
+    const rate = parseFloat(rateEl.value);
+
+    if (isNaN(gross) || isNaN(rate) || gross < 0) {
+      clearResults();
+      errorEl.style.display = 'none';
+      return;
+    }
+
+    if (rate < 0 || rate > 100) {
+      clearResults();
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    errorEl.style.display = 'none';
+    const tax = gross * (rate / 100);
+    const net = gross - tax;
+
+    netEl.textContent = fmt(net);
+    taxEl.textContent = fmt(tax);
+  }
+
+  [grossEl, rateEl].forEach((el) => el.addEventListener('input', calc));
+  calc();
+
+  // Enter-navigering: triggar beräkning och hoppar till nästa fält
+  (function() {
+    const container = document.querySelector('.converter');
+    if (!container) return;
+    const focusables = () => Array.from(container.querySelectorAll<HTMLElement>('input, select, button'));
+    container.addEventListener('keydown', function(e: KeyboardEvent) {
+      if (e.key !== 'Enter') return;
+      const el = e.target as HTMLElement;
+      if (!['INPUT', 'SELECT'].includes(el.tagName)) return;
+      e.preventDefault();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      const list = focusables();
+      const idx = list.indexOf(el);
+      if (idx >= 0 && idx < list.length - 1) list[idx + 1].focus();
+    });
+  })();
+</script>

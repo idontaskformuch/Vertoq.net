@@ -1,7 +1,7 @@
 ---
 import { faqContent, faqHeadings } from '../i18n/faq';
 
-interface Props { lang: string; tool: 'units' | 'time' | 'percent' | 'age' | 'bmi' | 'tdee' | 'bmr' | 'calorie' | 'bodyfat' | 'idealweight' | 'loan' | 'loancost'; }
+interface Props { lang: string; tool: 'units' | 'time' | 'percent' | 'age' | 'bmi' | 'tdee' | 'bmr' | 'calorie' | 'bodyfat' | 'idealweight' | 'loan' | 'loancost' | 'savingsgoal' | 'tip' | 'salary' | 'fraction' | 'ratio' | 'stddev'; }
 const { lang, tool } = Astro.props as Props;
 
 const items = faqContent[lang]?.[tool] ?? faqContent.en[tool];

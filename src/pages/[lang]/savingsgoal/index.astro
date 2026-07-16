@@ -2,8 +2,8 @@
 import Layout from '../../../layouts/Layout.astro';
 import { translations } from '../../../i18n/translations';
 import { langCodes } from '../../../i18n/languages';
-import { loanCostContent } from '../../../i18n/loanCostContent';
-import LoanCostCalculator from '../../../components/LoanCostCalculator.astro';
+import { savingsGoalContent } from '../../../i18n/savingsGoalContent';
+import SavingsGoalCalculator from '../../../components/SavingsGoalCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 
@@ -12,23 +12,23 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = translations[lang as keyof typeof translations].loancost;
-const c = loanCostContent[lang as keyof typeof loanCostContent];
+const t = translations[lang as keyof typeof translations].savingsgoal;
+const c = savingsGoalContent[lang as keyof typeof savingsGoalContent];
 ---
-<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="loancost">
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="savingsgoal">
   <section class="page-head">
     <p class="eyebrow">Vertoq</p>
     <h1>{t.title}</h1>
     <p>{t.intro}</p>
   </section>
 
-  <LoanCostCalculator lang={lang} />
+  <SavingsGoalCalculator lang={lang} />
 
   {c && (
     <div class="content-block-group">
       <section class="content-block">
-        <h2>{c.whatIsLoanCost.heading}</h2>
-        <p>{c.whatIsLoanCost.body}</p>
+        <h2>{c.whatIsSavingsGoal.heading}</h2>
+        <p>{c.whatIsSavingsGoal.body}</p>
       </section>
 
       <section class="content-block">
@@ -39,16 +39,6 @@ const c = loanCostContent[lang as keyof typeof loanCostContent];
       </section>
 
       <section class="content-block">
-        <h2>{c.amortization.heading}</h2>
-        <p>{c.amortization.body}</p>
-      </section>
-
-      <section class="content-block">
-        <h2>{c.factors.heading}</h2>
-        <p>{c.factors.body}</p>
-      </section>
-
-      <section class="content-block">
         <h2>{c.limitations.heading}</h2>
         <p>{c.limitations.body}</p>
       </section>
@@ -56,13 +46,16 @@ const c = loanCostContent[lang as keyof typeof loanCostContent];
       <section class="content-block related-calculators">
         <h2>{c.related.heading}</h2>
         <p>
-          <a href={`/${lang}/loan/`}>{c.related.linkText}</a> {c.related.description}
+          <a href={`/${lang}/loan/`}>{c.related.loanLinkText}</a> {c.related.loanDescription}
+        </p>
+        <p>
+          <a href={`/${lang}/loancost/`}>{c.related.loanCostLinkText}</a> {c.related.loanCostDescription}
         </p>
       </section>
     </div>
   )}
 
-  <FaqSection lang={lang} tool="loancost" />
+  <FaqSection lang={lang} tool="savingsgoal" />
 
   <AdSlot />
 </Layout>

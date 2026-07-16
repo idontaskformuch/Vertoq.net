@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { translations } from '../../../i18n/translations';
 import { langCodes } from '../../../i18n/languages';
+import { percentContent } from '../../../i18n/percentContent';
 import PercentCalculator from '../../../components/PercentCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = translations[lang as keyof typeof translations].percent;
+const c = percentContent[lang as keyof typeof percentContent];
 ---
 <Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="percent">
   <section class="page-head">
@@ -21,6 +23,34 @@ const t = translations[lang as keyof typeof translations].percent;
   </section>
 
   <PercentCalculator lang={lang} />
+
+  {c && (
+    <div class="content-block-group">
+      <section class="content-block">
+        <h2>{c.whatIsPercent.heading}</h2>
+        <p>{c.whatIsPercent.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.variants.heading}</h2>
+        <p>{c.variants.percentOf}</p>
+        <p>{c.variants.isWhatPercent}</p>
+        <p>{c.variants.change}</p>
+        <p>{c.variants.discount}</p>
+        <p>{c.variants.vat}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.commonMistakes.heading}</h2>
+        <p>{c.commonMistakes.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.useCases.heading}</h2>
+        <p>{c.useCases.body}</p>
+      </section>
+    </div>
+  )}
 
   <FaqSection lang={lang} tool="percent" />
 

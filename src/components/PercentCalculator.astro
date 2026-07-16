@@ -16,6 +16,7 @@ const labels = JSON.stringify({
     <button class="cat-tab" role="tab" aria-pressed="false" data-mode="isWhatPercent">{t.modes.isWhatPercent}</button>
     <button class="cat-tab" role="tab" aria-pressed="false" data-mode="change">{t.modes.change}</button>
     <button class="cat-tab" role="tab" aria-pressed="false" data-mode="discount">{t.modes.discount}</button>
+    <button class="cat-tab" role="tab" aria-pressed="false" data-mode="vat">{t.modes.vat}</button>
   </div>
 
   <!-- X% av Y -->
@@ -99,13 +100,36 @@ const labels = JSON.stringify({
       <span class="value" id="d-saved" style="font-size:1.3rem">—</span>
     </div>
   </div>
+
+  <!-- Moms/VAT -->
+  <div id="mode-vat" class="percent-mode" style="display:none">
+    <div class="conv-grid">
+      <div class="field">
+        <label for="v-price">{t.vat.priceLabel}</label>
+        <input id="v-price" type="number" value="850" />
+      </div>
+      <span></span>
+      <div class="field">
+        <label for="v-percent">{t.vat.percentLabel}</label>
+        <input id="v-percent" type="number" value="25" />
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.vat.resultLabel}</span>
+      <span class="value" id="v-result">—</span>
+    </div>
+    <div class="result-row">
+      <span class="label">{t.vat.vatAmountLabel}</span>
+      <span class="value" id="v-amount" style="font-size:1.3rem">—</span>
+    </div>
+  </div>
 </div>
 
 <script define:vars={{ labels }}>
   const dirLabels = JSON.parse(labels);
 
   const tabsEl = document.getElementById('percent-tabs');
-  const modes = ['percentOf', 'isWhatPercent', 'change', 'discount'];
+  const modes = ['percentOf', 'isWhatPercent', 'change', 'discount', 'vat'];
   const modeEls = {};
   modes.forEach((m) => { modeEls[m] = document.getElementById(`mode-${m}`); });
 
@@ -185,6 +209,26 @@ const labels = JSON.stringify({
   }
   [dPrice, dPercent].forEach((el) => el.addEventListener('input', calcDiscount));
   calcDiscount();
+
+  // Moms/VAT
+  const vPrice = document.getElementById('v-price');
+  const vPercent = document.getElementById('v-percent');
+  const vResult = document.getElementById('v-result');
+  const vAmount = document.getElementById('v-amount');
+  function calcVat() {
+    const price = parseFloat(vPrice.value);
+    const pct = parseFloat(vPercent.value);
+    if (isNaN(price) || isNaN(pct)) {
+      vResult.textContent = '—';
+      vAmount.textContent = '—';
+      return;
+    }
+    const added = price * (pct / 100);
+    vResult.textContent = fmt(price + added);
+    vAmount.textContent = fmt(added);
+  }
+  [vPrice, vPercent].forEach((el) => el.addEventListener('input', calcVat));
+  calcVat();
 
   // Enter-navigering: triggar beräkning och hoppar till nästa fält
   (function() {
