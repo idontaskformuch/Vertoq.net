@@ -1,19 +1,45 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../i18n/translations';
 import { langCodes } from '../../i18n/languages';
+import { aboutContent } from '../../i18n/aboutContent';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
 }
 
 const { lang } = Astro.params;
+const t = translations[lang as keyof typeof translations].about;
+const c = aboutContent[lang as keyof typeof aboutContent];
 ---
-<Layout lang={lang} title="About, Vertoq" description="About Vertoq" path="about">
+<Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="about">
   <section class="page-head">
     <p class="eyebrow">Vertoq</p>
-    <h1>About Us</h1>
-    <p>Welcome to Vertoq, your go to destination for fast and accurate calculations.</p>
-    <p>Vertoq is built with a focus on simplicity, speed and accuracy  in 10 languages.</p>
-    <p>Thank you for making us a part of your daily routine!</p>
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
   </section>
+
+  {c && (
+    <div class="content-block-group">
+      <section class="content-block">
+        <h2>{c.mission.heading}</h2>
+        <p>{c.mission.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.howItWorks.heading}</h2>
+        <p>{c.howItWorks.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.languages.heading}</h2>
+        <p>{c.languages.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.whyFree.heading}</h2>
+        <p>{c.whyFree.body}</p>
+      </section>
+    </div>
+  )}
 </Layout>

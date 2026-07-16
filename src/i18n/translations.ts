@@ -2,7 +2,7 @@ export const translations = {
   sv: {
     siteName: 'Vertoq',
     tagline: 'Snabba omvandlingar du kan lita på',
-    nav: { home: 'Hem', units: 'Enheter', time: 'Tid', percent: 'Procent', age: 'Ålder', bmi: 'BMI', loan: 'Sparande' },
+    nav: { home: 'Hem', units: 'Enheter', time: 'Tid', percent: 'Procent', age: 'Ålder', bmi: 'BMI', loan: 'Sparande', about: 'Om oss', contact: 'Kontakt', privacy: 'Integritetspolicy' },
     home: {
       heading: 'Verktyg för vardagsberäkningar',
       intro: 'Enkla, snabba och korrekta omvandlingsverktyg. Inget konto, inga nedladdningar, bara svaret du behöver.',
@@ -154,13 +154,20 @@ export const translations = {
       varianceLabel: 'Varians (population)', countLabel: 'Antal värden',
       errorMessage: 'Ange minst två giltiga tal, separerade med komma eller mellanslag.',
     },
+    privacy: { title: 'Integritetspolicy', metaDescription: 'Hur Vertoq hanterar data, cookies och samtycke.', intro: 'Öppen information om vilken data vi behandlar, vilka cookies som används och varför.' },
+    about: { title: 'Om oss', metaDescription: 'Vilka som ligger bakom Vertoq och varför siten finns.', intro: 'Vilka vi är och varför vi byggde Vertoq.' },
+    contact: { title: 'Kontakt', metaDescription: 'Kontakta Vertoq-teamet.', intro: 'Har du frågor, hittat ett fel, eller vill föreslå en ny kalkylator? Hör av dig.', emailLabel: 'E-post', responseNote: 'Vi svarar normalt inom några arbetsdagar.' },
+    cookieConsent: {
+      message: 'Vi använder nödvändiga cookies för att sidan ska fungera, och valfria cookies för annonser efter ditt godkännande.',
+      acceptAll: 'Acceptera alla', necessaryOnly: 'Endast nödvändiga', privacyLink: 'Läs vår integritetspolicy',
+    },
     footer: { rights: 'Alla rättigheter förbehållna.', disclaimer: 'Resultaten är avsedda som vägledning. Dubbelkolla vid kritiska beräkningar.' },
   },
 
   en: {
     siteName: 'Vertoq',
     tagline: 'Fast conversions you can rely on',
-    nav: { home: 'Home', units: 'Units', time: 'Time', percent: 'Percent', age: 'Age', bmi: 'BMI', loan: 'Savings' },
+    nav: { home: 'Home', units: 'Units', time: 'Time', percent: 'Percent', age: 'Age', bmi: 'BMI', loan: 'Savings', about: 'About', contact: 'Contact', privacy: 'Privacy Policy' },
     home: {
       heading: 'Tools for everyday calculations',
       intro: 'Simple, fast, accurate conversion tools. No account, no downloads, just the answer you need.',
@@ -312,13 +319,20 @@ export const translations = {
       varianceLabel: 'Variance (population)', countLabel: 'Number of values',
       errorMessage: 'Enter at least two valid numbers, separated by commas or spaces.',
     },
+    privacy: { title: 'Privacy Policy', metaDescription: 'How Vertoq handles data, cookies, and consent.', intro: 'Open information about what data we process, which cookies are used, and why.' },
+    about: { title: 'About', metaDescription: 'Who is behind Vertoq and why the site exists.', intro: 'Who we are and why we built Vertoq.' },
+    contact: { title: 'Contact', metaDescription: 'Contact the Vertoq team.', intro: "Have a question, found a bug, or want to suggest a new calculator? Get in touch.", emailLabel: 'Email', responseNote: 'We typically reply within a few business days.' },
+    cookieConsent: {
+      message: 'We use necessary cookies for the site to function, and optional cookies for advertising once you approve them.',
+      acceptAll: 'Accept all', necessaryOnly: 'Necessary only', privacyLink: 'Read our Privacy Policy',
+    },
     footer: { rights: 'All rights reserved.', disclaimer: 'Results are intended as guidance. Double-check for critical calculations.' },
   },
 
   pt: {
     siteName: 'Vertoq',
     tagline: 'Conversões rápidas em que você pode confiar',
-    nav: { home: 'Início', units: 'Unidades', time: 'Tempo', percent: 'Porcentagem', age: 'Idade', bmi: 'IMC', loan: 'Poupança' },
+    nav: { home: 'Início', units: 'Unidades', time: 'Tempo', percent: 'Porcentagem', age: 'Idade', bmi: 'IMC', loan: 'Poupança', about: 'Sobre', contact: 'Contato', privacy: 'Política de Privacidade' },
     home: {
       heading: 'Ferramentas para cálculos do dia a dia',
       intro: 'Ferramentas de conversão simples, rápidas e precisas. Sem conta, sem downloads, só a resposta que você precisa.',
@@ -470,13 +484,20 @@ export const translations = {
       varianceLabel: 'Variância (populacional)', countLabel: 'Número de valores',
       errorMessage: 'Informe pelo menos dois números válidos, separados por vírgulas ou espaços.',
     },
+    privacy: { title: 'Política de Privacidade', metaDescription: 'Como a Vertoq trata dados, cookies e consentimento.', intro: 'Informações abertas sobre quais dados processamos, quais cookies são usados e por quê.' },
+    about: { title: 'Sobre', metaDescription: 'Quem está por trás da Vertoq e por que o site existe.', intro: 'Quem somos e por que criamos a Vertoq.' },
+    contact: { title: 'Contato', metaDescription: 'Entre em contato com a equipe da Vertoq.', intro: 'Tem uma pergunta, encontrou um erro, ou quer sugerir uma nova calculadora? Fale com a gente.', emailLabel: 'E-mail', responseNote: 'Normalmente respondemos em poucos dias úteis.' },
+    cookieConsent: {
+      message: 'Usamos cookies necessários para o site funcionar, e cookies opcionais para publicidade depois que você os aprovar.',
+      acceptAll: 'Aceitar todos', necessaryOnly: 'Apenas necessários', privacyLink: 'Leia nossa Política de Privacidade',
+    },
     footer: { rights: 'Todos os direitos reservados.', disclaimer: 'Os resultados servem como orientação. Confira em cálculos críticos.' },
   },
 
   es: {
     siteName: 'Vertoq',
     tagline: 'Conversiones rápidas en las que puedes confiar',
-    nav: { home: 'Inicio', units: 'Unidades', time: 'Tiempo', percent: 'Porcentaje', age: 'Edad', bmi: 'IMC', loan: 'Ahorro' },
+    nav: { home: 'Inicio', units: 'Unidades', time: 'Tiempo', percent: 'Porcentaje', age: 'Edad', bmi: 'IMC', loan: 'Ahorro', about: 'Acerca de', contact: 'Contacto', privacy: 'Política de Privacidad' },
     home: {
       heading: 'Herramientas para cálculos cotidianos',
       intro: 'Herramientas de conversión simples, rápidas y precisas. Sin cuenta, sin descargas, solo la respuesta que necesitas.',
@@ -628,13 +649,20 @@ export const translations = {
       varianceLabel: 'Varianza (poblacional)', countLabel: 'Número de valores',
       errorMessage: 'Introduce al menos dos números válidos, separados por comas o espacios.',
     },
+    privacy: { title: 'Política de Privacidad', metaDescription: 'Cómo Vertoq maneja datos, cookies y consentimiento.', intro: 'Información abierta sobre qué datos procesamos, qué cookies se usan y por qué.' },
+    about: { title: 'Acerca de', metaDescription: 'Quién está detrás de Vertoq y por qué existe el sitio.', intro: 'Quiénes somos y por qué creamos Vertoq.' },
+    contact: { title: 'Contacto', metaDescription: 'Contacta al equipo de Vertoq.', intro: '¿Tienes una pregunta, encontraste un error, o quieres sugerir una nueva calculadora? Escríbenos.', emailLabel: 'Correo electrónico', responseNote: 'Normalmente respondemos en pocos días hábiles.' },
+    cookieConsent: {
+      message: 'Usamos cookies necesarias para que el sitio funcione, y cookies opcionales para publicidad una vez que las apruebes.',
+      acceptAll: 'Aceptar todas', necessaryOnly: 'Solo necesarias', privacyLink: 'Lee nuestra Política de Privacidad',
+    },
     footer: { rights: 'Todos los derechos reservados.', disclaimer: 'Los resultados son orientativos. Verifica en cálculos críticos.' },
   },
 
   de: {
     siteName: 'Vertoq',
     tagline: 'Schnelle Umrechnungen, denen du vertrauen kannst',
-    nav: { home: 'Start', units: 'Einheiten', time: 'Zeit', percent: 'Prozent', age: 'Alter', bmi: 'BMI', loan: 'Sparen' },
+    nav: { home: 'Start', units: 'Einheiten', time: 'Zeit', percent: 'Prozent', age: 'Alter', bmi: 'BMI', loan: 'Sparen', about: 'Über uns', contact: 'Kontakt', privacy: 'Datenschutzerklärung' },
     home: {
       heading: 'Werkzeuge für alltägliche Berechnungen',
       intro: 'Einfache, schnelle und präzise Umrechnungstools. Kein Konto, kein Download, nur die Antwort, die du brauchst.',
@@ -786,13 +814,20 @@ export const translations = {
       varianceLabel: 'Varianz (Grundgesamtheit)', countLabel: 'Anzahl der Werte',
       errorMessage: 'Gib mindestens zwei gültige Zahlen ein, getrennt durch Kommas oder Leerzeichen.',
     },
+    privacy: { title: 'Datenschutzerklärung', metaDescription: 'Wie Vertoq mit Daten, Cookies und Einwilligung umgeht.', intro: 'Offene Informationen darüber, welche Daten wir verarbeiten, welche Cookies verwendet werden und warum.' },
+    about: { title: 'Über uns', metaDescription: 'Wer hinter Vertoq steht und warum es die Seite gibt.', intro: 'Wer wir sind und warum wir Vertoq gebaut haben.' },
+    contact: { title: 'Kontakt', metaDescription: 'Kontaktiere das Vertoq-Team.', intro: 'Hast du eine Frage, einen Fehler gefunden, oder möchtest einen neuen Rechner vorschlagen? Melde dich.', emailLabel: 'E-Mail', responseNote: 'Wir antworten in der Regel innerhalb weniger Werktage.' },
+    cookieConsent: {
+      message: 'Wir verwenden notwendige Cookies, damit die Seite funktioniert, und optionale Cookies für Werbung, sobald du sie genehmigst.',
+      acceptAll: 'Alle akzeptieren', necessaryOnly: 'Nur notwendige', privacyLink: 'Lies unsere Datenschutzerklärung',
+    },
     footer: { rights: 'Alle Rechte vorbehalten.', disclaimer: 'Die Ergebnisse dienen als Orientierung. Bei kritischen Berechnungen bitte prüfen.' },
   },
 
   ja: {
     siteName: 'Vertoq',
     tagline: '信頼できる高速な変換',
-    nav: { home: 'ホーム', units: '単位', time: '時間', percent: 'パーセント', age: '年齢', bmi: 'BMI', loan: '積立' },
+    nav: { home: 'ホーム', units: '単位', time: '時間', percent: 'パーセント', age: '年齢', bmi: 'BMI', loan: '積立', about: 'サイトについて', contact: 'お問い合わせ', privacy: 'プライバシーポリシー' },
     home: {
       heading: '日常計算のためのツール',
       intro: 'シンプルで速く、正確な変換ツール。登録もダウンロードも不要, 必要な答えがすぐに見つかります。',
@@ -944,13 +979,20 @@ export const translations = {
       varianceLabel: '分散（母集団）', countLabel: 'データ数',
       errorMessage: 'カンマまたはスペースで区切って、有効な数値を2つ以上入力してください。',
     },
+    privacy: { title: 'プライバシーポリシー', metaDescription: 'Vertoqがデータ、クッキー、同意をどのように扱うか。', intro: '収集するデータ、使用するクッキー、その理由についての公開情報です。' },
+    about: { title: 'サイトについて', metaDescription: 'Vertoqの運営者とサイトの目的について。', intro: '私たちが何者で、なぜVertoqを作ったのか。' },
+    contact: { title: 'お問い合わせ', metaDescription: 'Vertoqチームへのお問い合わせ。', intro: 'ご質問、不具合の報告、新しい計算機のご提案などがあれば、お気軽にご連絡ください。', emailLabel: 'メール', responseNote: '通常、数営業日以内に返信いたします。' },
+    cookieConsent: {
+      message: '当サイトの動作に必要なクッキーと、承認いただいた場合のみ使用する広告用の任意のクッキーを使用しています。',
+      acceptAll: 'すべて同意する', necessaryOnly: '必須のみ', privacyLink: 'プライバシーポリシーを見る',
+    },
     footer: { rights: '無断複写・転載を禁じます。', disclaimer: '結果は目安です。重要な計算は再確認してください。' },
   },
 
   zh: {
     siteName: 'Vertoq',
     tagline: '值得信赖的快速换算',
-    nav: { home: '首页', units: '单位', time: '时间', percent: '百分比', age: '年龄', bmi: 'BMI', loan: '储蓄' },
+    nav: { home: '首页', units: '单位', time: '时间', percent: '百分比', age: '年龄', bmi: 'BMI', loan: '储蓄', about: '关于我们', contact: '联系我们', privacy: '隐私政策' },
     home: {
       heading: '日常计算工具',
       intro: '简单、快速、准确的换算工具。无需注册，无需下载, 直接获得你需要的答案。',
@@ -1102,13 +1144,20 @@ export const translations = {
       varianceLabel: '方差（总体）', countLabel: '数值个数',
       errorMessage: '请输入至少两个有效数字，用逗号或空格分隔。',
     },
+    privacy: { title: '隐私政策', metaDescription: 'Vertoq如何处理数据、Cookie和用户同意。', intro: '关于我们处理哪些数据、使用哪些Cookie以及原因的公开说明。' },
+    about: { title: '关于我们', metaDescription: 'Vertoq背后的团队以及创建本站的原因。', intro: '我们是谁，以及我们为什么创建了Vertoq。' },
+    contact: { title: '联系我们', metaDescription: '联系Vertoq团队。', intro: '有问题、发现了错误，或想建议一个新的计算器？欢迎联系我们。', emailLabel: '邮箱', responseNote: '我们通常会在几个工作日内回复。' },
+    cookieConsent: {
+      message: '我们使用网站运行所必需的Cookie，以及经你同意后用于广告的可选Cookie。',
+      acceptAll: '全部接受', necessaryOnly: '仅必要项', privacyLink: '查看我们的隐私政策',
+    },
     footer: { rights: '保留所有权利。', disclaimer: '结果仅供参考。关键计算请仔细核对。' },
   },
 
   ko: {
     siteName: 'Vertoq',
     tagline: '믿을 수 있는 빠른 변환',
-    nav: { home: '홈', units: '단위', time: '시간', percent: '퍼센트', age: '나이', bmi: 'BMI', loan: '저축' },
+    nav: { home: '홈', units: '단위', time: '시간', percent: '퍼센트', age: '나이', bmi: 'BMI', loan: '저축', about: '소개', contact: '문의하기', privacy: '개인정보처리방침' },
     home: {
       heading: '일상 계산을 위한 도구',
       intro: '간단하고 빠르고 정확한 변환 도구. 가입도, 다운로드도 필요 없습니다, 필요한 답만 바로 확인하세요.',
@@ -1260,13 +1309,20 @@ export const translations = {
       varianceLabel: '분산 (모집단)', countLabel: '값 개수',
       errorMessage: '쉼표나 공백으로 구분하여 유효한 숫자를 두 개 이상 입력하세요.',
     },
+    privacy: { title: '개인정보처리방침', metaDescription: 'Vertoq가 데이터, 쿠키, 동의를 처리하는 방식.', intro: '저희가 처리하는 데이터, 사용하는 쿠키, 그 이유에 대한 공개 정보입니다.' },
+    about: { title: '소개', metaDescription: 'Vertoq를 만든 사람들과 사이트가 존재하는 이유.', intro: '저희가 누구인지, 그리고 왜 Vertoq를 만들었는지.' },
+    contact: { title: '문의하기', metaDescription: 'Vertoq 팀에게 문의하기.', intro: '질문이 있으시거나, 오류를 발견하셨거나, 새로운 계산기를 제안하고 싶으시다면 연락해 주세요.', emailLabel: '이메일', responseNote: '보통 영업일 기준 며칠 내로 답변드립니다.' },
+    cookieConsent: {
+      message: '사이트 운영에 필요한 필수 쿠키와, 동의하신 경우에만 사용되는 광고용 선택적 쿠키를 사용합니다.',
+      acceptAll: '모두 동의', necessaryOnly: '필수 항목만', privacyLink: '개인정보처리방침 보기',
+    },
     footer: { rights: '모든 권리 보유.', disclaimer: '결과는 참고용입니다. 중요한 계산은 다시 확인하세요.' },
   },
 
   hi: {
     siteName: 'Vertoq',
     tagline: 'भरोसेमंद और तेज़ रूपांतरण',
-    nav: { home: 'होम', units: 'इकाइयाँ', time: 'समय', percent: 'प्रतिशत', age: 'उम्र', bmi: 'BMI', loan: 'बचत' },
+    nav: { home: 'होम', units: 'इकाइयाँ', time: 'समय', percent: 'प्रतिशत', age: 'उम्र', bmi: 'BMI', loan: 'बचत', about: 'हमारे बारे में', contact: 'संपर्क करें', privacy: 'गोपनीयता नीति' },
     home: {
       heading: 'रोज़मर्रा की गणनाओं के लिए उपकरण',
       intro: 'सरल, तेज़ और सटीक रूपांतरण उपकरण। कोई खाता नहीं, कोई डाउनलोड नहीं, सिर्फ़ वह जवाब जो आपको चाहिए।',
@@ -1418,13 +1474,20 @@ export const translations = {
       varianceLabel: 'प्रसरण (जनसंख्या)', countLabel: 'मानों की संख्या',
       errorMessage: 'कॉमा या स्पेस से अलग करके कम से कम दो मान्य संख्याएं दर्ज करें।',
     },
+    privacy: { title: 'गोपनीयता नीति', metaDescription: 'Vertoq डेटा, कुकीज़ और सहमति को कैसे संभालता है।', intro: 'हम कौन सा डेटा प्रोसेस करते हैं, कौन सी कुकीज़ इस्तेमाल होती हैं, और क्यों, इस बारे में खुली जानकारी।' },
+    about: { title: 'हमारे बारे में', metaDescription: 'Vertoq के पीछे कौन है और यह साइट क्यों बनाई गई।', intro: 'हम कौन हैं और हमने Vertoq क्यों बनाया।' },
+    contact: { title: 'संपर्क करें', metaDescription: 'Vertoq टीम से संपर्क करें।', intro: 'कोई सवाल है, कोई गड़बड़ी मिली है, या किसी नए कैलकुलेटर का सुझाव देना चाहते हैं? हमसे संपर्क करें।', emailLabel: 'ईमेल', responseNote: 'हम आमतौर पर कुछ कार्यदिवसों के भीतर जवाब देते हैं।' },
+    cookieConsent: {
+      message: 'साइट के काम करने के लिए हम ज़रूरी कुकीज़ का इस्तेमाल करते हैं, और आपकी मंज़ूरी के बाद विज्ञापन के लिए वैकल्पिक कुकीज़ का।',
+      acceptAll: 'सभी स्वीकारें', necessaryOnly: 'सिर्फ़ ज़रूरी', privacyLink: 'हमारी गोपनीयता नीति पढ़ें',
+    },
     footer: { rights: 'सर्वाधिकार सुरक्षित।', disclaimer: 'परिणाम केवल मार्गदर्शन के लिए हैं। महत्वपूर्ण गणनाओं के लिए दोबारा जाँच करें।' },
   },
 
   id: {
     siteName: 'Vertoq',
     tagline: 'Konversi cepat yang bisa diandalkan',
-    nav: { home: 'Beranda', units: 'Satuan', time: 'Waktu', percent: 'Persen', age: 'Usia', bmi: 'BMI', loan: 'Tabungan' },
+    nav: { home: 'Beranda', units: 'Satuan', time: 'Waktu', percent: 'Persen', age: 'Usia', bmi: 'BMI', loan: 'Tabungan', about: 'Tentang Kami', contact: 'Kontak', privacy: 'Kebijakan Privasi' },
     home: {
       heading: 'Alat untuk perhitungan sehari-hari',
       intro: 'Alat konversi yang sederhana, cepat, dan akurat. Tanpa akun, tanpa unduhan, langsung dapatkan jawaban yang kamu butuhkan.',
@@ -1575,6 +1638,13 @@ export const translations = {
       meanLabel: 'Rata-rata', populationLabel: 'Simpangan baku (populasi)', sampleLabel: 'Simpangan baku (sampel)',
       varianceLabel: 'Varians (populasi)', countLabel: 'Jumlah nilai',
       errorMessage: 'Masukkan setidaknya dua angka valid, dipisahkan dengan koma atau spasi.',
+    },
+    privacy: { title: 'Kebijakan Privasi', metaDescription: 'Bagaimana Vertoq menangani data, cookie, dan persetujuan.', intro: 'Informasi terbuka tentang data apa yang kami proses, cookie apa yang digunakan, dan alasannya.' },
+    about: { title: 'Tentang Kami', metaDescription: 'Siapa di balik Vertoq dan mengapa situs ini ada.', intro: 'Siapa kami dan mengapa kami membangun Vertoq.' },
+    contact: { title: 'Kontak', metaDescription: 'Hubungi tim Vertoq.', intro: 'Punya pertanyaan, menemukan bug, atau ingin menyarankan kalkulator baru? Hubungi kami.', emailLabel: 'Email', responseNote: 'Kami biasanya membalas dalam beberapa hari kerja.' },
+    cookieConsent: {
+      message: 'Kami menggunakan cookie yang diperlukan agar situs berfungsi, dan cookie opsional untuk iklan setelah kamu menyetujuinya.',
+      acceptAll: 'Terima semua', necessaryOnly: 'Hanya yang diperlukan', privacyLink: 'Baca Kebijakan Privasi kami',
     },
     footer: { rights: 'Hak cipta dilindungi.', disclaimer: 'Hasil ini hanya sebagai panduan. Periksa kembali untuk perhitungan penting.' },
   },
