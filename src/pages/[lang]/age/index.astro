@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { translations } from '../../../i18n/translations';
 import { langCodes } from '../../../i18n/languages';
+import { ageContent } from '../../../i18n/ageContent';
 import AgeCalculator from '../../../components/AgeCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = translations[lang as keyof typeof translations].age;
+const c = ageContent[lang as keyof typeof ageContent];
 ---
 <Layout lang={lang} title={`${t.title}, Vertoq`} description={t.metaDescription} path="age">
   <section class="page-head">
@@ -21,6 +23,39 @@ const t = translations[lang as keyof typeof translations].age;
   </section>
 
   <AgeCalculator lang={lang} />
+
+  {c && (
+    <div class="content-block-group">
+      <section class="content-block">
+        <h2>{c.whatItCalculates.heading}</h2>
+        <p>{c.whatItCalculates.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.howItWorks.heading}</h2>
+        <p><strong>{c.howItWorks.leapYearLabel}</strong> {c.howItWorks.leapYearBody}</p>
+        <p><strong>{c.howItWorks.monthLengthLabel}</strong> {c.howItWorks.monthLengthBody}</p>
+        <p><strong>{c.howItWorks.comparisonDateLabel}</strong> {c.howItWorks.comparisonDateBody}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.useCases.heading}</h2>
+        <p>{c.useCases.body}</p>
+      </section>
+
+      <section class="content-block">
+        <h2>{c.limitations.heading}</h2>
+        <p>{c.limitations.body}</p>
+      </section>
+
+      <section class="content-block related-calculators">
+        <h2>{c.related.heading}</h2>
+        <p>
+          <a href={`/${lang}/time/`}>{c.related.linkText}</a> {c.related.description}
+        </p>
+      </section>
+    </div>
+  )}
 
   <FaqSection lang={lang} tool="age" />
 
