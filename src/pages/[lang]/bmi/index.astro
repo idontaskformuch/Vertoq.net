@@ -6,6 +6,7 @@ import { bmiContent } from '../../../i18n/bmiContent';
 import BmiCalculator from '../../../components/BmiCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -102,6 +103,8 @@ const c = bmiContent[lang as keyof typeof bmiContent];
   )}
 
   <FaqSection lang={lang} tool="bmi" />
+
+  <ToolSchema lang={lang} tool="bmi" path="bmi" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

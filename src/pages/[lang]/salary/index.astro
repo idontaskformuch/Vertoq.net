@@ -6,6 +6,7 @@ import { salaryContent } from '../../../i18n/salaryContent';
 import SalaryCalculator from '../../../components/SalaryCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -51,6 +52,8 @@ const c = salaryContent[lang as keyof typeof salaryContent];
   )}
 
   <FaqSection lang={lang} tool="salary" />
+
+  <ToolSchema lang={lang} tool="salary" path="salary" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

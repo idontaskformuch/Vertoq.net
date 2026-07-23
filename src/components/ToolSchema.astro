@@ -1,0 +1,34 @@
+---
+import { toolCategories, type ToolSlug } from '../config/toolCategories';
+
+interface Props {
+  lang: string;
+  tool: ToolSlug;
+  path: string;
+  title: string;
+  description: string;
+}
+
+const { lang, tool, path, title, description } = Astro.props as Props;
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://vertoq.net';
+const url = `${site}/${lang}/${path}/`;
+
+// Gratis, ingen inloggning, körs helt i webbläsaren -- offers/price: 0 är en
+// korrekt beskrivning av verktyget, inte en påhittad detalj. Ingen
+// aggregateRating: vi har inga riktiga användarbetyg att rapportera.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: title,
+  url,
+  description,
+  applicationCategory: toolCategories[tool],
+  operatingSystem: 'Any (runs in browser)',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

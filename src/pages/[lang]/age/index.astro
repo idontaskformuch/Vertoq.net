@@ -6,6 +6,7 @@ import { ageContent } from '../../../i18n/ageContent';
 import AgeCalculator from '../../../components/AgeCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -58,6 +59,8 @@ const c = ageContent[lang as keyof typeof ageContent];
   )}
 
   <FaqSection lang={lang} tool="age" />
+
+  <ToolSchema lang={lang} tool="age" path="age" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

@@ -6,6 +6,7 @@ import { tdeeContent } from '../../../i18n/tdeeContent';
 import TdeeCalculator from '../../../components/TdeeCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -81,6 +82,8 @@ const c = tdeeContent[lang as keyof typeof tdeeContent];
   )}
 
   <FaqSection lang={lang} tool="tdee" />
+
+  <ToolSchema lang={lang} tool="tdee" path="tdee" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

@@ -6,6 +6,7 @@ import { ratioContent } from '../../../i18n/ratioContent';
 import RatioCalculator from '../../../components/RatioCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -56,6 +57,8 @@ const c = ratioContent[lang as keyof typeof ratioContent];
   )}
 
   <FaqSection lang={lang} tool="ratio" />
+
+  <ToolSchema lang={lang} tool="ratio" path="ratio" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

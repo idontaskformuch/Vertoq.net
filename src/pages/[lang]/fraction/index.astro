@@ -6,6 +6,7 @@ import { fractionContent } from '../../../i18n/fractionContent';
 import FractionCalculator from '../../../components/FractionCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -57,6 +58,8 @@ const c = fractionContent[lang as keyof typeof fractionContent];
   )}
 
   <FaqSection lang={lang} tool="fraction" />
+
+  <ToolSchema lang={lang} tool="fraction" path="fraction" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

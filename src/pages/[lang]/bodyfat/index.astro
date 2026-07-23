@@ -6,6 +6,7 @@ import { bodyFatContent } from '../../../i18n/bodyFatContent';
 import BodyFatCalculator from '../../../components/BodyFatCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -74,6 +75,8 @@ const c = bodyFatContent[lang as keyof typeof bodyFatContent];
   )}
 
   <FaqSection lang={lang} tool="bodyfat" />
+
+  <ToolSchema lang={lang} tool="bodyfat" path="bodyfat" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

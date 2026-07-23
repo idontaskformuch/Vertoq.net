@@ -6,6 +6,7 @@ import { idealWeightContent } from '../../../i18n/idealWeightContent';
 import IdealWeightCalculator from '../../../components/IdealWeightCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -68,6 +69,8 @@ const c = idealWeightContent[lang as keyof typeof idealWeightContent];
   )}
 
   <FaqSection lang={lang} tool="idealweight" />
+
+  <ToolSchema lang={lang} tool="idealweight" path="idealweight" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

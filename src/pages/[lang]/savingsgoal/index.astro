@@ -6,6 +6,7 @@ import { savingsGoalContent } from '../../../i18n/savingsGoalContent';
 import SavingsGoalCalculator from '../../../components/SavingsGoalCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -56,6 +57,8 @@ const c = savingsGoalContent[lang as keyof typeof savingsGoalContent];
   )}
 
   <FaqSection lang={lang} tool="savingsgoal" />
+
+  <ToolSchema lang={lang} tool="savingsgoal" path="savingsgoal" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

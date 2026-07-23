@@ -6,6 +6,7 @@ import { bmrContent } from '../../../i18n/bmrContent';
 import BmrCalculator from '../../../components/BmrCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -64,6 +65,8 @@ const c = bmrContent[lang as keyof typeof bmrContent];
   )}
 
   <FaqSection lang={lang} tool="bmr" />
+
+  <ToolSchema lang={lang} tool="bmr" path="bmr" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

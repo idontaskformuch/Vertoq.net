@@ -6,6 +6,7 @@ import { percentContent } from '../../../i18n/percentContent';
 import PercentCalculator from '../../../components/PercentCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -53,6 +54,8 @@ const c = percentContent[lang as keyof typeof percentContent];
   )}
 
   <FaqSection lang={lang} tool="percent" />
+
+  <ToolSchema lang={lang} tool="percent" path="percent" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

@@ -6,6 +6,7 @@ import { timeContent } from '../../../i18n/timeContent';
 import TimeCalculator from '../../../components/TimeCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -58,6 +59,8 @@ const c = timeContent[lang as keyof typeof timeContent];
   )}
 
   <FaqSection lang={lang} tool="time" />
+
+  <ToolSchema lang={lang} tool="time" path="time" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

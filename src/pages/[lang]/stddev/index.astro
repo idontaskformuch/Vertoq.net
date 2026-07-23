@@ -6,6 +6,7 @@ import { stddevContent } from '../../../i18n/stddevContent';
 import StdDevCalculator from '../../../components/StdDevCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -63,6 +64,8 @@ const c = stddevContent[lang as keyof typeof stddevContent];
   )}
 
   <FaqSection lang={lang} tool="stddev" />
+
+  <ToolSchema lang={lang} tool="stddev" path="stddev" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

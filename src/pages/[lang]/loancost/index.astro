@@ -6,6 +6,7 @@ import { loanCostContent } from '../../../i18n/loanCostContent';
 import LoanCostCalculator from '../../../components/LoanCostCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -63,6 +64,8 @@ const c = loanCostContent[lang as keyof typeof loanCostContent];
   )}
 
   <FaqSection lang={lang} tool="loancost" />
+
+  <ToolSchema lang={lang} tool="loancost" path="loancost" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

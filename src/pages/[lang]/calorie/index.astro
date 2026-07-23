@@ -6,6 +6,7 @@ import { calorieContent } from '../../../i18n/calorieContent';
 import CalorieCalculator from '../../../components/CalorieCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -80,6 +81,8 @@ const c = calorieContent[lang as keyof typeof calorieContent];
   )}
 
   <FaqSection lang={lang} tool="calorie" />
+
+  <ToolSchema lang={lang} tool="calorie" path="calorie" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

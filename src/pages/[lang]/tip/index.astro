@@ -6,6 +6,7 @@ import { tipContent } from '../../../i18n/tipContent';
 import TipCalculator from '../../../components/TipCalculator.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -68,6 +69,8 @@ const c = tipContent[lang as keyof typeof tipContent];
   )}
 
   <FaqSection lang={lang} tool="tip" />
+
+  <ToolSchema lang={lang} tool="tip" path="tip" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>

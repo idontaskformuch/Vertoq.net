@@ -6,6 +6,7 @@ import { unitsContent } from '../../../i18n/unitsContent';
 import UnitConverter from '../../../components/UnitConverter.astro';
 import FaqSection from '../../../components/FaqSection.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import ToolSchema from '../../../components/ToolSchema.astro';
 
 export function getStaticPaths() {
   return langCodes.map((lang) => ({ params: { lang } }));
@@ -57,6 +58,8 @@ const c = unitsContent[lang as keyof typeof unitsContent];
   )}
 
   <FaqSection lang={lang} tool="units" />
+
+  <ToolSchema lang={lang} tool="units" path="units" title={t.title} description={t.metaDescription} />
 
   <AdSlot />
 </Layout>
